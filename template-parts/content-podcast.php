@@ -36,7 +36,7 @@ $the_query = new WP_Query($args);
     $categories = get_the_category();
     $entry_date = get_the_date('d/m/Y');
 
-  $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*<\/figure>/is';
+      $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
     ?>
 
 <div class="flex flex-col w-full my-6" >

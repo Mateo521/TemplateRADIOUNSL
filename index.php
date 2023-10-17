@@ -2,7 +2,6 @@
 /*
 Template Name: Plantilla de Noticias
 */
-
 get_header();
 $excluded_category_id = 7; // descarte de podcasts
 $args_banner = array(
@@ -28,14 +27,9 @@ $imagenes = new WP_Query($args_banner);
 
 $the_query = new WP_Query($args); // Crea la consulta
 ?>
-
 <!--  bucle de noticias -->
-
-
 <!-- CAROUSEL -->
-
 <?php wp_reset_postdata();  ?>
-
 <div id="indicators-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
     <div class="relative overflow-hidden" id="carousel">
@@ -54,10 +48,6 @@ if(is_wp_error($response)){
 if (preg_match($link, $page_content, $matches)) {
     $link = $matches[1];
 }
-
-
-
-
 $response_etiqueta = wp_remote_get($link);
 
 if (!is_wp_error($response_etiqueta)) {
@@ -67,27 +57,8 @@ if (!is_wp_error($response_etiqueta)) {
   //$titl2e = '/<div[^>]*class="entry-tags"[^>]*>(.*?)<\/div>/is';
 $titl2e = '/<a href="([^"]+)" rel="tag">([^<]+)<\/a>/i';
 }
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
 ?>
-
-
-
    <a href="<?php echo $link ?>" target="_blank">
                 <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
                   <?php echo $link_e ?>
@@ -105,7 +76,6 @@ $titl2e = '/<a href="([^"]+)" rel="tag">([^<]+)<\/a>/i';
                                     <div class="relative w-full" style="color: white; padding: 0 75px;">
                                      <h4 class="rounded-lg text-white p-2 my-2 inline-flex" style="background-color: #0f3349;">NOTICIAS UNSL</h4> 
                                         <div class="flex text-xs flex-wrap">
-
                                           <?php                                 
 $matches = array();
 if (preg_match_all($titl2e, $page_content2, $matches, PREG_SET_ORDER)) {
@@ -114,72 +84,43 @@ if (preg_match_all($titl2e, $page_content2, $matches, PREG_SET_ORDER)) {
     foreach ($matches as $match) {
         $enlace = $match[1];
         $texto_etiqueta = $match[2];
-
-
         $etiquetas[] = array(
             'enlace' => $enlace,
             'texto' => $texto_etiqueta,
         );
     }
-
-
 }
-
 foreach ($etiquetas as $etiqueta) {
     $enlace = $etiqueta['enlace'];
     $texto = $etiqueta['texto'];
-
     // Imprime la etiqueta con el estilo deseado
        echo '<a href="' . $enlace . '" style="color: white; text-decoration: none;" target="_blank">';
     echo '<h4 class="rounded-lg text-white p-2 inline-flex" style="background-color: #1476B3; margin:3px;">'. $texto;
- 
     echo '</a></h4>';
 }
-        
                                          ?>
-
-                                                   
-  
-
                                         </div>
                                        <?php if(preg_match($title,$page_content,$matches2)){
-                                        echo  $matches2[0]; 
-                                      
-                                        } ?>
-
-                                           
-                                               
+                                        echo  $matches2[0];     
+                                        } ?>                                
                                     </div>
                                 </div>
                             </div>
                             </div>
                         </div>
             </a>
-
-
-
      <?php
-
-
         foreach ($institucional_query->posts as $post) : setup_postdata($post);
             // Obtener la URL de la primera imagen encontrada en el contenido
             $content = get_the_content();
             // Obtener el ID de la imagen destacada (thumbnail)
-
-
             preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
             $image_url = isset($matches[1]) ? $matches[1] : '';
             // Obtener título y etiquetas
             $entry_title = get_the_title();
             $entry_tags = get_the_tags();
-
-     
-
         ?>
-
-
-
-            <a href="<?php the_permalink(); ?>">
+      <a href="<?php the_permalink(); ?>">
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <!-- SI NO HAY IMAGEN -->
                     <?php if (!empty($image_url)) : ?>
@@ -193,41 +134,32 @@ foreach ($etiquetas as $etiqueta) {
                                     <div class="relative w-full" style="color: white; padding: 0 75px;">
                                         <h4 class="rounded-lg text-white p-2 my-2 inline-flex" style="background-color: #0f3349;">RADIO UNSL</h4> 
                                         <div class="flex text-xs">
-                                                    <h4 class="rounded-lg text-white p-2 mx-1 inline-flex" style="background-color: #1476B3;">INSTITUCIONAL</h4>
-                                            
+                                                        <a  href="<?php echo esc_url(home_url('/category/institucional')); ?>">
+                                                    <h4 class="rounded-lg text-white p-2 mx-1 inline-flex" style="background-color: #1476B3;"> INSTITUCIONAL</h4>
+                                      </a>  
+                         
                                         </div>
+           <a href="<?php the_permalink(); ?>">
                                         <h1 class="text-6xl mt-4" id="title"><?php echo esc_html($entry_title); ?></h1>
+                                             </a>
                                     </div>
                                 </div>
                             </div>
                             </div>
                         </div>
-            </a>
-
+         </a>
 <? endforeach; ?>
-
-
-
         <?php
-
-
         foreach ($imagenes->posts as $post) : setup_postdata($post);
             // Obtener la URL de la primera imagen encontrada en el contenido
             $content = get_the_content();
             // Obtener el ID de la imagen destacada (thumbnail)
-
-
             preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
             $image_url = isset($matches[1]) ? $matches[1] : '';
             // Obtener título y etiquetas
             $entry_title = get_the_title();
             $entry_tags = get_the_tags();
-
-     
-
         ?>
-
-
             <a href="<?php the_permalink(); ?>">
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <!-- SI NO HAY IMAGEN -->
@@ -256,13 +188,7 @@ foreach ($etiquetas as $etiqueta) {
                             </div>
                         </div>
             </a>
-
         <?php endforeach; ?>
-
-
-
-
-
     </div>
     <!-- Slider indicators -->
     <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
@@ -292,17 +218,11 @@ foreach ($etiquetas as $etiqueta) {
         </span>
     </button>
 </div>
-
 <!-- FINCAROUSEL -->
 <div class="flex justify-center p-8 bg-white">
     <div class="max-w-screen-xl w-full">
-
         <div class="grid md:grid-cols-3 gap-8">
-
-
             <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) :
-
-
                     $the_query->the_post();
                     $content = get_the_content();
                     preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
@@ -313,31 +233,19 @@ foreach ($etiquetas as $etiqueta) {
                     $categories = get_the_category();
                     $entry_date = get_the_date('d/m/Y');
 
-                    $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*<\/figure>/is';
-
-
-                   
+                    $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';      
             ?>
-
-
-                    <!-- 
-     <img src="" alt="">
-    <h2><a href="<?php the_permalink(); ?>" title="Read"></a></h2>
-    <?php the_excerpt(); ?>
-  
- -->
-
-
                     <div class="flex flex-col w-full my-6">
                         <a href="<?php the_permalink(); ?>">
                             <img class="w-full" src="<?php echo esc_url($image_url); ?>" id="noticia-g" alt="<?php echo esc_attr($entry_title); ?>">
-
                         </a>
                         <div class="p-6 w-full  bg-white h-full shadow-lg shadow-gray-500/50">
                             <a href="<?php the_permalink(); ?>">
-
                                 <h3 class="font-bold py-4" style="color: #07376A;"><?php the_title(); ?>
                                 </h3>
+      <a href="<?php the_permalink(); ?>">   
+    <?php the_excerpt(); ?>
+</a>
 <?php
 
                                        if(preg_match($pattern,$content,$matches2)){
@@ -346,27 +254,28 @@ foreach ($etiquetas as $etiqueta) {
                             ?>
                             <div class="flex justify-between items-center wrap gap-3">
                             <?php                
+   if (!empty($categories)) {
+    echo '<h5 class="text-md font-bold tracking-tight" style="text-transform:uppercase;font-size:12px;">';
 
-                                if (!empty($categories)) {
-                                    echo '<p style=" text-transform: uppercase; font-size:14px;" >';
-                                    foreach ($categories as $index => $category) {
-                                        echo esc_html($category->name);
-                                        if ($index !== count($categories) - 1) {
-                                            echo ', '; // Agregar coma y espacio entre categorías
-                                        }
-                                    }
-                                    echo '</p>';
-                                }
+    foreach ($categories as $index => $category) {
+        if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
+            $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
+            echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
+            
+            if ($index !== count($categories) - 1) {
+                echo ', '; // Agregar coma y espacio entre categorías
+            }
+        }
+    }
+
+    echo '</h5>';
+}
                                ?>
                                 <h5> <?php echo get_the_date(); ?></h5>
                                 </div>
                             </a>
                         </div>
-
                     </div>
-
-
-
             <?php endwhile;
             endif; ?>
         </div>
@@ -380,10 +289,7 @@ foreach ($etiquetas as $etiqueta) {
                 'prev_text' => '< Anterior',
                 'next_text' => 'Siguiente >'
             )); ?>
-
         </div>
-
-
     </div>
 </div>
 <style>
@@ -412,11 +318,4 @@ font-size: 3.75rem;
 </style>
 <?php wp_reset_postdata(); // Restaurar datos originales de la consulta 
 ?>
-
-
-
-
-
-
-
 <?php get_footer(); ?>
