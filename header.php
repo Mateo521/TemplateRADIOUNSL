@@ -11,6 +11,8 @@
     ?>
 </head>
 <body style="background-color:#282828;">
+
+
     <!-- HEADER -->
     <div class="z-50 w-full fixed" id="navbar">
         <nav class="border-gray-200 relative" id="bg-res">
@@ -193,7 +195,7 @@
                 </div>
             </a>
             <div>
-                <ul class="flex gap-3 text-white px-3 header-idioma items-center">
+                <ul class="flex gap-3 text-white px-3  items-center">
                     <li><a href="https://www.facebook.com/unslradio/?locale=es_LA" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="10.0003" cy="9.99996" r="8.33333" fill="#FAFAFA" />
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2149 7.06571C11.9552 7.01377 11.6044 6.97496 11.3838 6.97496C10.7865 6.97496 10.7476 7.23468 10.7476 7.65024V8.38999H12.2409L12.1107 9.92235H10.7476V14.5833H8.87796V9.92235H7.91699V8.38999H8.87796V7.44215C8.87796 6.14385 9.48816 5.41663 11.0202 5.41663C11.5525 5.41663 11.9421 5.49454 12.4484 5.59843L12.2149 7.06571Z" fill="#282828" />
@@ -214,6 +216,7 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7082 6.8242C14.8745 6.99049 14.9943 7.19744 15.0558 7.42445C15.4095 8.84822 15.3277 11.0968 15.0626 12.5755C15.0012 12.8026 14.8814 13.0095 14.7151 13.1758C14.5488 13.3421 14.3418 13.4619 14.1148 13.5234C13.2838 13.75 9.939 13.75 9.939 13.75C9.939 13.75 6.59422 13.75 5.76318 13.5234C5.53617 13.4619 5.32921 13.3421 5.16292 13.1758C4.99663 13.0095 4.8768 12.8026 4.81537 12.5755C4.45961 11.158 4.55713 8.90797 4.80851 7.43132C4.86993 7.20431 4.98976 6.99735 5.15605 6.83106C5.32234 6.66477 5.5293 6.54494 5.75631 6.48352C6.58735 6.25687 9.93213 6.25 9.93213 6.25C9.93213 6.25 13.2769 6.25 14.108 6.47665C14.335 6.53808 14.5419 6.6579 14.7082 6.8242ZM11.6423 10L8.86757 11.6071V8.39285L11.6423 10Z" fill="#282828"/>
 </svg>
                         </a></li>
+                        <li class="header-idioma"></li>
                 </ul>
             </div>
         </div>
@@ -271,7 +274,7 @@ function logostr(){
                         </li>
                     </ul>
 
-                    <ul class="flex gap-3 text-gray-400 items-center header-idioma">
+                    <ul class="flex gap-3 text-gray-400 items-center">
                         <a href="https://www.facebook.com/unslradio/?locale=es_LA" target="_blank">
                             <li><img width="18px" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="">
                             </li>
@@ -283,6 +286,7 @@ function logostr(){
                             <li><img width="18px" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt="">
                             </li>
                         </a>
+                        <li class="header-idioma"></li>
                     </ul>
                 </div>
             </div>
@@ -296,8 +300,14 @@ function logostr(){
 
 <style>
 
-
-
+.header-idioma{
+    width:35px;
+    height:35px;
+}
+.gglobe{
+    width:100%;
+    height:100%;
+}
 
 
 

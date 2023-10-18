@@ -7,7 +7,7 @@ Description:FRONTEND personalizado para Radio Universidad por Mateo, diseño hec
 Requires at least: 6.1
 Tested up to: 6.3
 Requires PHP: 5.6
-Version: 1.88
+Version: 1.97
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 Text Domain: Radio Universidad
@@ -261,3 +261,44 @@ ul.page-numbers li {
 
 
 
+#loading {
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    left: 0;
+    padding:8px;
+     z-index: 9999999;
+}
+#loading-2 {
+     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 11px;
+    padding: 5px;
+    z-index: 9999999;
+}
+.loader {
+    display:flex;
+    justify-content: center;
+    position: relative;
+    width: 85px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#FFF 50px, transparent 0),
+                      linear-gradient(#FFF 50px, transparent 0),
+                      linear-gradient(#FFF 50px, transparent 0),
+                      linear-gradient(#FFF 50px, transparent 0),
+                      linear-gradient(#FFF 50px, transparent 0),
+                      linear-gradient(#FFF 50px, transparent 0);
+    background-position: 0px center, 15px center, 30px center, 45px center, 60px center, 75px center, 90px center;
+    animation: rikSpikeRoll 0.65s linear infinite alternate;
+  }
+@keyframes rikSpikeRoll {
+  0% { background-size: 10px 3px;}
+  16% { background-size: 10px 50px, 10px 3px, 10px 3px, 10px 3px, 10px 3px, 10px 3px}
+  33% { background-size: 10px 30px, 10px 50px, 10px 3px, 10px 3px, 10px 3px, 10px 3px}
+  50% { background-size: 10px 10px, 10px 30px, 10px 50px, 10px 3px, 10px 3px, 10px 3px}
+  66% { background-size: 10px 3px, 10px 10px, 10px 30px, 10px 50px, 10px 3px, 10px 3px}
+  83% { background-size: 10px 3px, 10px 3px,  10px 10px, 10px 30px, 10px 50px, 10px 3px}
+  100% { background-size: 10px 3px, 10px 3px, 10px 3px,  10px 10px, 10px 30px, 10px 50px}
+}

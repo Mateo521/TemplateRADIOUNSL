@@ -3,7 +3,7 @@ wp_footer();
 ?>
 
 
-
+ 
 <!-- FOOTER -->
 
 <style>
@@ -176,6 +176,9 @@ REPRODUCTOR<svg data-accordion-icon="" class="w-3 h-3 shrink-0" aria-hidden="tru
 
             <div class="flex flex-col items-center pb-3">
                 <img id="radio-imagen2" src="" alt="" class="rounded-lg h-full" style="width:85px;"  >
+                     <div id="loading-2">
+                         <span class="loader"></span>
+                     </div>
                 <p class="m-0 p-0" id="open_close-2"></p>
             </div>
         </div>
@@ -225,9 +228,13 @@ REPRODUCTOR
 </h2>
 <div id="accordion-collapse-body-3"></div>
 </div>
+
     <div class=" w-full hidden md:flex" id="radio-3">
     
         <img id="radio-imagen" src="" alt="">
+       <div id="loading">
+   <span class="loader"></span>
+       </div>
         <div class="flex justify-between w-full">
             <div class="m-4">
                 <div class="p-1 text-sm rounded-lg text-white flex items-center gap-1 inline-flex" style="background-color:  #07376A;"><img src="https://i.giphy.com/media/R9vSQdiH6I5Bqi9xzx/giphy.webp" alt="" style="width:7px;"> En
@@ -517,7 +524,7 @@ stop.style.transform = 'translate(-50%, -50%)';
         else if(total>780 && total <900){
  document.getElementById("radio-imagen").src="http://radiounsl.byethost18.com/wp-content/themes/radiounsl/assets/images/icon-6.png";
         document.getElementById("radio-imagen2").src="http://radiounsl.byethost18.com/wp-content/themes/radiounsl/assets/images/icon-6.png";
-       return "<p style='font-size:12px;'>Frecuencia <br> Informativa 2da Edición</p>"
+       return "Sólo un café"
 
         }
          else if(total>900 && total <1080){
@@ -611,7 +618,21 @@ stop.style.transform = 'translate(-50%, -50%)';
  $(window).on('load', function () {
        $("#open_close").html(msg());
         $("#open_close-2").html(msg());
+
+       
  });
+
+function hideLoader() {
+
+    $('#loading').hide();
+    $('#loading-2').hide();
+}
+
+$(window).ready(hideLoader);
+
+// Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
+setTimeout(hideLoader, 20 * 1000);
+
 
 
   let activado2 = false;
@@ -626,13 +647,17 @@ function displayfooter(){
       var con = document.getElementById('open_close').innerHTML;
 
 if(con=="Frecuencia <br> Universitaria"){
+  $("#radio").css({bottom:"-135px"});
     $("#seccion-radio").css({bottom:"-140px"});
-}else if (con=='<p style="font-size:12px;">Frecuencia <br> Informativa 2da Edición</p>'){
-    console.log("a");
+
+
+}else if (con=='<p style="font-size:12px;">Frecuencia <br> Informativa 2da Edición</p>' || con=='<p style="font-size:12px;">Frecuencia <br> Informativa 1° Edición</p>'){
+     $("#radio").css({bottom:"-135px"});
+   
      $("#seccion-radio").css({bottom:"-128px"});
 }
 else{
-    $("#radio").css({bottom:"-135px"});
+     $("#radio").css({bottom:"-135px"});
     $("#seccion-radio").css({bottom:"-116px"});
 }
   }

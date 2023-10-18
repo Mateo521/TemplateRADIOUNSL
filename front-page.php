@@ -893,12 +893,11 @@ padding:0;
 <!--style="height:0;"-->
                             <div class="relative z-1" style="height:275px;">
                                 <a href="<?php the_permalink(); ?>">
-                                    <div class="absolute flex flex-col justify-center p-3" style="right: 0; bottom:0; z-index:3;">
+                                    <div class="absolute flex flex-col justify-center p-3" style="right: 0; bottom:0; z-index:3; background-color:#e5cc2663;">
                                         <svg id="svgs-pod" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                             <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
                                         </svg>
-                                        <p class="hora text-center p-1" style="filter: invert(1);
-mix-blend-mode: difference;"></p>
+                                        <p class="hora text-center p-1 text-white"></p>
                                     </div>
                                     <img class="rounded-t-lg w-full h-full object-cover absolute" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
                                 </a>
@@ -910,8 +909,14 @@ mix-blend-mode: difference;"></p>
 
                                    
                                
-                                </a>
-                             <a href="<?php the_permalink(); ?>">  <p class="mb-3 font-bold text-white dark:text-gray-400" style="color:#E5CC26;"><?php echo esc_html($entry_title); ?>
+                            
+                            
+                             
+                             
+                              <p class="mb-3 font-bold text-white dark:text-gray-400" style="color:#E5CC26;">
+                              <?php echo esc_html($entry_title); ?>
+
+                              
                                 </a> 
 
       <a href="<?php the_permalink(); ?>">                         
@@ -1024,12 +1029,12 @@ echo $textoRecortado;
                                 <img class="rounded-t-lg w-full" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" id="boxes-img"/>
                             </a>
 
-                            <div class="p-1" style="background-color:#F5F5F5 ;" >
-                                <div class="relative flex flex-col justify-center" style="bottom: 75px; float: right;">
+                            <div  style="background-color:#F5F5F5 ;" >
+                                <div class="relative p-1 flex flex-col justify-center" style="bottom: 72px; float: right; background-color:#00000087;">
                                     <svg class="svgs" height="2.5em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
                                     </svg>
-                                    <p class="text-white hora"></p>
+                                    <p class="text-white hora text-center"></p>
                                 </div>
                                 <a href="<?php the_permalink(); ?>" class="flex gap-5">
      <p class="mb-3 font-bold"><?php echo esc_html($entry_title); ?></p>
@@ -1228,10 +1233,10 @@ class Slider {
 
     window.addEventListener('keydown', e => {
       e = e || window.event;
-      if (e.keyCode == '39') {// right arrow
+      if (e.keyCode == '39') {// der arrow
         this.next();
       } else
-      if (e.keyCode == '37') {// left arrow
+      if (e.keyCode == '37') {// izq arrow
         this.prev();
       }
     });
