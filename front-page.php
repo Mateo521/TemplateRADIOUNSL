@@ -148,11 +148,12 @@ foreach ($etiquetas as $etiqueta) {
   
 
                                         </div>
+                                        <div style="padding-bottom:45px;">
                                        <?php if(preg_match($title,$page_content,$matches2)){
                                         echo  $matches2[0]; 
                                       
                                         } ?>
-
+</div>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +190,7 @@ foreach ($etiquetas as $etiqueta) {
                                       </a>  
                                         </div>
                         <a href="<?php the_permalink(); ?>">
-                                        <h1 class="text-6xl mt-4" id="title"><?php echo esc_html($entry_title); ?></h1>
+                                        <h1 class="text-6xl mt-4" id="title" style="padding-bottom:45px;"><?php echo esc_html($entry_title); ?></h1>
                                    </a>     
                                     </div>
                                 </div>
@@ -233,7 +234,7 @@ foreach ($etiquetas as $etiqueta) {
                                             <?php endif; ?>
                                         </div>
                                         <a href="<?php the_permalink(); ?>">
-                                            <h1 class="text-6xl mt-4" id="title"><?php echo esc_html($entry_title); ?></h1>
+                                              <h1 class="text-6xl mt-4" id="title" style="padding-bottom:45px;"><?php echo esc_html($entry_title); ?></h1>
                                         </a>
                                     </div>
                                 </div>
@@ -337,15 +338,8 @@ endif;
                             <p style="color: #07376A; text-transform: uppercase;" class="font-bold py-4"><?php echo esc_html($entry_title); ?></p>
  </a>
 
-                            <?php
-                             if(preg_match($pattern,$content,$matches2)){
-                                                echo $matches2[0];
-                                            }
+        <!--                                                    *   *   *   *   *   **  *   *   *   **  *   *   **  *   -->
 
-  
-
-
-                                            ?>
   <a href="<?php the_permalink(); ?>">   
     <?php the_excerpt(); ?>
 </a>
