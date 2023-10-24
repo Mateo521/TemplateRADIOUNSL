@@ -99,7 +99,7 @@ $titl2e = '/<a href="([^"]+)" rel="tag">([^<]+)<\/a>/i';
                   <?php echo $link_e ?>
                    <?php if(preg_match($image,$page_content,$img)): ?>
                                     
-                        <div class="w-full h-full" id="carousel-r" style="background-image: url(<?php echo  $img[1]?>);   background-position:center; background-size: cover;">
+                        <div class="w-full h-full" id="carousel-r" style="background-image: url(<?php echo  $img[1]?>); background-size: cover;">
   <?php endif;     ?>
                  
                        <!-- SI NO HAY IMAGEN -->
@@ -718,7 +718,20 @@ padding:0;
     line-height: 1;
         margin-top: 1rem;
 }
+#carousel-r{
+     animation-name: slidein;
+      animation: desp-x 50s infinite;
+}
+@media screen and (min-width:1111px){
+#carousel-r{
+     animation: desp-y 50s infinite;
+}
+}
 @media screen and (max-width:766px){
+
+    
+   
+    
     
 .entry-title{
     font-size:25px;
@@ -1087,7 +1100,11 @@ echo $textoRecortado;
 
     </div>
 
-
+<style>
+#boxes figure{
+background-color:#F5F5F5 ;
+}
+</style>
 
 </section>
 <!-- FINSECCION PODCAST -->
@@ -1148,7 +1165,9 @@ function obtenerDuracionDeTodosLosAudios() {
   function cargarMetadato(audio) {
     return new Promise(function(resolve) {
       audio.onloadedmetadata = function() {
-        resolve(audio.duration);
+
+            resolve(audio.duration);
+        
       };
     });
   }
@@ -1168,9 +1187,9 @@ function obtenerDuracionDeTodosLosAudios() {
 
 
     for (var j = 0; j < duraciones.length; j++) {
-        console.log(duraciones[j]);
+     //   console.log(duraciones[j]);
       if (duraciones[j] != 0) {
-        hora1[j].innerHTML = Math.floor(duraciones[j] / 60) + ' m';
+        hora1[j].innerHTML = Math.floor(duraciones[j] / 60) + ' min';
       }
     }
   });
