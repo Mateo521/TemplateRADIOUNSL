@@ -527,7 +527,7 @@ echo $textoRecortado;
 
 <!-- SECCION SLIDER -->
 
-<div class=" flex justify-center px-6 hidden md:flex" style="background-color: #F0F0F0;">
+<div class=" flex justify-center px-6 " style="background-color: #F0F0F0;"> <!--hidden  md:flex -->
 
     <div id="default-carousel" class="relative w-full max-w-screen-xl" data-carousel="slide" style="padding: 25px 0 60px 0;">
         <!-- Carousel wrapper -->
@@ -562,7 +562,7 @@ echo $textoRecortado;
                             <svg class="svgs" id="svg-new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
                             </svg>
-                            <div class="flex items-center gap-4 text-4xl  py-6 px-1 md:p-1 text-center font-extrabold tracking-tight leading-none text-white">
+                            <div class="flex items-center gap-4 md:text-4xl  py-6 px-1 md:p-1 text-center font-extrabold tracking-tight leading-none text-white">
                             <h2 id="info-slider">
                               
                             <?php
@@ -641,7 +641,7 @@ echo $textoRecortado;
 
 
 </div>
-
+<!--
  
 
 <div class="slider  md:hidden block p-3">
@@ -649,16 +649,10 @@ echo $textoRecortado;
   <ul class="slides-container">
 
 <?php foreach ($programacion_query->posts as $post) : setup_postdata($post); 
-                   
-
-
-                    // Obtener la URL de la primera imagen encontrada en el contenido
                     $content = get_the_content();
                     preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
                     $image_url = isset($matches[1]) ? $matches[1] : '';
-                    // Obtener título y etiquetas
                     $entry_title = get_the_title();
-
                     $categories = get_the_category();
                     $entry_date = get_the_date('d/m/Y');
                     ?>
@@ -672,7 +666,7 @@ echo $textoRecortado;
       <p><?php echo esc_html($entry_title); ?> </p>
       
 <div class="flex items-center justify-center">
-        <svg class="svgs" id="svg-new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <svg class="svgs" id="svg-new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                 <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
                             </svg>
       <p>  <?php
@@ -681,18 +675,15 @@ echo $textoRecortado;
                             if ($category->slug !== "sin-categoria" && $category->slug !== "programacion") {
                                 echo esc_html($category->name);
                                 if ($index !== count($categories) - 1) {
-                                    echo ', '; // Agregar coma y espacio entre las categorías
+                                    echo ', '; 
                                 }
                             }
                         }
                             ?></p>
-
                             </div>
     <p>
       <?php
-
                         preg_match_all('/<p[^>]+id="horario"[^>]*>(.*?)<\/p>/is', $content, $matches);
-                        // Mostrar los párrafos encontrados
                         if (!empty($matches[0])) {
                             foreach ($matches[0] as $paragraph) {
                                 echo $paragraph;
@@ -709,7 +700,14 @@ echo $textoRecortado;
   </ul>
   </a>
 </div>
+
+
+
+-->
 <style>
+#horario{
+    font-size:
+}
 #news-audio .wp-block-audio audio{
 padding:0;
 }
@@ -724,7 +722,7 @@ padding:0;
 }
 @media screen and (min-width:1111px){
 #carousel-r{
-     animation: desp-y 50s infinite;
+     animation: desp-y 75s infinite;
 }
 }
 @media screen and (max-width:766px){

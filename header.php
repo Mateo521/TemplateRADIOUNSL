@@ -10,7 +10,7 @@
     wp_head();
     ?>
 </head>
-<body style="background-color:#282828;">
+<body style="background-color:#282828;" id="fuente">
 
 
     <!-- HEADER -->
@@ -195,7 +195,7 @@
                 </div>
             </a>
             <div>
-                <ul class="flex gap-3 text-white px-3  items-center">
+                <ul class="flex gap-3 text-white px-3  items-center" style="flex-wrap:wrap;">
                     <li><a href="https://www.facebook.com/unslradio/?locale=es_LA" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="10.0003" cy="9.99996" r="8.33333" fill="#FAFAFA" />
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2149 7.06571C11.9552 7.01377 11.6044 6.97496 11.3838 6.97496C10.7865 6.97496 10.7476 7.23468 10.7476 7.65024V8.38999H12.2409L12.1107 9.92235H10.7476V14.5833H8.87796V9.92235H7.91699V8.38999H8.87796V7.44215C8.87796 6.14385 9.48816 5.41663 11.0202 5.41663C11.5525 5.41663 11.9421 5.49454 12.4484 5.59843L12.2149 7.06571Z" fill="#282828" />
@@ -301,6 +301,7 @@ function logostr(){
 <style>
 
 .header-idioma{
+    padding:2px;
     width:35px;
     height:35px;
 }
@@ -312,7 +313,7 @@ function logostr(){
 
 
 #relleno{
-height: 140px;
+height: 155px;
 }
 @media screen and (max-width:766px){
     

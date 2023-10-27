@@ -124,8 +124,8 @@ if ($is_podcast) :
                      endif;
 
 ?>
-<div class="flex w-full justify-center p-8  bg-white">
-    <div class="max-w-screen-md">
+<div class="flex w-full justify-center p-8 bg-white" id="noticia">
+    <div class="max-w-screen-md" id="txt-in">
 
         <h1 class="md:text-4xl text-2xl my-3" style="color:#07376A;"><?php echo esc_html($entry_title); ?></h1>
       
@@ -158,6 +158,71 @@ if (!empty($categories)) {
             <p> <?php echo esc_html($entry_date); ?></p>
 
         </div>
+<!-- PRUEBAS PARA NOTICIAS.UNSL.EDU.AR -->
+<div class="flex items-center gap-3">
+<button onclick="tipografia();">Dislexia</button>
+<button onclick="blancoynegro();">Blanco y negro</button>
+<button onclick="sintesisdevoz();">Síntesis de voz</button>
+</div>
+<script>
+
+function tipografia() {
+  var fon = document.getElementById("fuente");
+  if (fon.className == "") {
+    fon.className = 'tipog';
+  } else {
+    fon.className = '';
+  }
+}
+function blancoynegro() {
+    document.body.classList.toggle("grayscale");
+}
+var buton = true;
+function sintesisdevoz(){
+        var synth = window.speechSynthesis;
+let textContent = document.getElementById('noticia').innerText;
+
+var voices = synth.getVoices();
+var utterance = new SpeechSynthesisUtterance(textContent);
+
+if(buton){
+
+
+utterance.voice = voices.filter(
+	  function(voice) { 
+	    return voice.name == 'Monica';
+	  })[0];
+
+      synth.speak(utterance);
+
+      buton = false;
+}
+else{
+buton = !buton;
+synth.cancel();
+}
+
+
+}
+
+
+</script>
+
+<style>
+ body {
+    transition: filter 1s; /* Change "1s" to any time you'd like */
+  }
+  body.grayscale {
+    /* grayscale(1) makes the website grayscale */
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+  }
+
+.tipog{
+    font-family:opendyslexic;
+}
+</style>
+<!--FIN PRUEBAS PARA NOTICIAS.UNSL.EDU.AR -->
         <? if (!$is_podcast) : ?>
 
 <? if(count($imagenes)>1):?>
@@ -171,7 +236,7 @@ if (!empty($categories)) {
       
 
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img  style="object-fit:cover;" src="<?php echo esc_url($imagen); ?>" alt="" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" >
+            <img id="carousel-p"  style="object-fit:cover;" src="<?php echo esc_url($imagen); ?>" alt="" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" >
         </div>
 
       <? endforeach; ?>
@@ -521,13 +586,23 @@ document.addEventListener('DOMContentLoaded', function() {
 .wp-block-audio audio{
     margin-top:10px;
 }
-    .podcasts audio::-webkit-media-controls-play-button,
+.podcasts audio::-webkit-media-controls-play-button,
 .podcasts audio::-webkit-media-controls-panel {
   background-color: #E5CC26;
-
 }
 #thumb{
     margin:55px 0;
+}
+#default-carousel img{
+       object-position:right;
+        animation:slideImage-x 15s ease-in infinite;
+}
+}
+@media screen and (min-width:789px){
+#default-carousel img{
+       object-position:top;
+        animation:slideImage-y 25s ease-in infinite;
+        }
 }
 @media screen and (max-width:766px){
     #infos-podcasts{
@@ -538,10 +613,35 @@ document.addEventListener('DOMContentLoaded', function() {
         margin:0;
     }
 }
-
     video {
         padding: 15px 0;
     }
+    @keyframes slideImage-x{
+
+    0% {
+        object-position:left;
+    }
+    50% {
+        object-position:right;
+    }
+    100% {
+        object-position:left;
+    }
+
+}
+@keyframes slideImage-y{
+
+    0% {
+        object-position:top;
+    }
+    50% {
+        object-position:bottom;
+    }
+    100% {
+        object-position:top;
+    }
+    
+}
 </style>
 
 <?php get_footer(); ?>
