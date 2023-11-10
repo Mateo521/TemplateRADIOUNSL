@@ -159,6 +159,7 @@ if (!empty($categories)) {
 
         </div>
 <!-- PRUEBAS PARA NOTICIAS.UNSL.EDU.AR -->
+<!--
 <div class="flex items-center gap-3">
 <button onclick="tipografia();">Dislexia</button>
 <button onclick="blancoynegro();">Blanco y negro</button>
@@ -222,6 +223,7 @@ synth.cancel();
     font-family:opendyslexic;
 }
 </style>
+-->
 <!--FIN PRUEBAS PARA NOTICIAS.UNSL.EDU.AR -->
         <? if (!$is_podcast) : ?>
 

@@ -53,7 +53,7 @@ if(is_wp_error($response)){
     echo "error";
 }else{
     $page_content = wp_remote_retrieve_body($response);
-    $title = '/<h3[^>]*class="entry-title"[^>]*>.*<\/h3>/is';
+ $title = '/<h3[^>]*class="entry-title"[^>]*>(.*?)<\/h3>/is';
     $image = '/<div class="entry-thumb "[^>]*>\s*<a[^>]*>\s*<img[^>]+src="([^"]+)"[^>]*>\s*<\/a>\s*<\/div>/i';
     $link = '/<div class="entry-thumb "[^>]*>\s*<a[^>]*\s+href="([^"]+)"/i';
 
