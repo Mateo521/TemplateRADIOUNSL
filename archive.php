@@ -1,3 +1,0 @@
-<?php
-//TODAVIA SIN USO
-?>

@@ -47,7 +47,7 @@ $institucional_query = new WP_Query($args_institucional);
     <div class="relative overflow-hidden" id="carousel">
 <!---->
 <?php
-$response = wp_remote_get('http://www.noticias.unsl.edu.ar/category/principal/');
+$response = wp_remote_get('https://noticias.unsl.edu.ar/?cat=6');
 
 if(is_wp_error($response)){
     echo "error";
