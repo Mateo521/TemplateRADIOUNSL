@@ -78,7 +78,7 @@ foreach ($item->category as $cat) {
         <!-- Slide de la noticia desde RSS -->
         <div class="swiper-slide">
             <a href="<?php echo esc_url($link); ?>" target="_blank">
-                <div class="w-full h-[400px] bg-cover bg-center relative" style="background-image: url('<?php echo esc_url($image); ?>');">
+                <div  class="carousel-r w-full h-[400px] bg-cover bg-center relative " style="background-image: url('<?php echo esc_url($image); ?>');">
                     <div class="absolute inset-0  flex flex-col justify-end p-6">
                         <h4 class="bg-[#0f3349] text-white px-3 py-1 rounded mb-2 inline-flex w-max">NOTICIAS UNSL</h4>
                         <?php foreach ($categories as $cat): ?>
@@ -99,7 +99,7 @@ foreach ($item->category as $cat) {
             ?>
             <div class="swiper-slide">
                 <a href="<?php the_permalink(); ?>">
-                    <div class="w-full h-[400px] bg-cover bg-center relative bg-[url('<?php echo esc_url($image_url); ?>')]">
+                    <div class="w-full carousel-r  h-[400px] bg-cover bg-center relative bg-[url('<?php echo esc_url($image_url); ?>')]">
                         <div class="absolute inset-0 flex flex-col justify-end p-6">
                             <h4 class="bg-[#0f3349] w-max text-white px-3 py-1 rounded mb-2 inline-flex">RADIO UNSL</h4>
                             <?php if ($entry_tags): ?>
@@ -453,13 +453,13 @@ foreach ($item->category as $cat) {
         margin-top: 1rem;
     }
 
-    #carousel-r {
+    .carousel-r {
         animation-name: slidein;
         animation: desp-x 50s infinite;
     }
 
     @media screen and (min-width:1111px) {
-        #carousel-r {
+        .carousel-r {
             animation: desp-y 75s infinite;
         }
     }
