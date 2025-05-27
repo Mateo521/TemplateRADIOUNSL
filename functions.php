@@ -1,7 +1,5 @@
 
 <?php
-
-
 function radio_sop()
 
 {
@@ -172,9 +170,6 @@ function custom_comment_callback($comment, $args, $depth) {
             </div>
                 </div>
             </header>
-        
-      
-
         </article>
         <style>
             .comment-avatar{
@@ -217,4 +212,19 @@ body { background: #07376A; }
 }
 add_action('login_head', 'login_background');
 
+
+
+
+
+
+add_theme_support('post-thumbnails');
+
+
+
+
+
+
+
 ?>
+
+

@@ -35,10 +35,10 @@ $comment_form_args = array(
     'fields' => array(
         'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Nombre', 'domain' ) . '</label> ' .
                     ( $req ? '<span class="required">*</span>' : '' ) .
-                    '<input id="author" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required name="author" type="text" value="' . esc_attr( $comment_author ) . '" size="30"' . $aria_req . ' /></p>',
+                    '<input id="author" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required name="author" type="text" value="' . esc_attr( $comment_author ) . '" size="30"' . $req . ' /></p>',
         'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email', 'domain' ) . '</label> ' .
                     ( $req ? '<span class="required">*</span>' : '' ) .
-                    '<input id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required name="email" type="text" value="' . esc_attr( $comment_email ) . '" size="30"' . $aria_req . ' /></p>',
+                    '<input id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required name="email" type="text" value="' . esc_attr( $comment_email ) . '" size="30"' . $req . ' /></p>',
     ),
     'comment_field' => '<p class="comment-form-comment">' .
                        '<label for="comment">' . __( 'Comentario', 'domain' ) . '</label>' .

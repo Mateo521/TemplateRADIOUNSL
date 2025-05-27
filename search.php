@@ -12,8 +12,8 @@
 
                         <?php while (have_posts()) : the_post();
                             $content = get_the_content();
-                            preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-                            $image_url = isset($matches[1]) ? $matches[1] : '';
+                       
+                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                             $categories = get_the_category();
                             $date = get_the_date();
 

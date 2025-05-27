@@ -18,8 +18,8 @@ while (have_posts()) :
     $entry_tags = get_the_tags();
     $categories = get_the_category();
     // Construye la URL de la entrada
-    $spotify_url = get_post_meta(get_the_ID(),'spotify-podcast-url',true);
-    
+    $spotify_url = get_post_meta(get_the_ID(), 'spotify-podcast-url', true);
+
     $entry_url = home_url("$year/$month/$day/$title");
     $entry_date = get_the_date('d/m/Y');
     // Muestra el contenido de la entrada
@@ -27,18 +27,12 @@ while (have_posts()) :
     // $content = preg_replace('/<p\s+id="subtitulo"[^>]*>.*?<\/p>/i', '', $content); elimina subtitulos
     $fragments = preg_split('/(<img[^>]+>)/', $content, -1, PREG_SPLIT_DELIM_CAPTURE);
 
-    preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-  //  $image_url = isset($matches[1]) ? $matches[1] : '';
 
 
- $imagenes = array();
-        preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
+    $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
-        if (!empty($matches[1])) :
-            foreach ($matches[1] as $image_url) :
-                $imagenes[] = $image_url;
-            endforeach;
-        endif;
+
+
 
 
     $is_podcast = false;
@@ -60,46 +54,51 @@ if ($is_podcast) :
 ?>
     <div class="flex w-full justify-center p-8 text-white" style="background: rgb(7,55,106); background: linear-gradient(180deg, rgba(7,55,106,1) 0%, rgba(0,0,0,1) 100%);">
         <div class="max-w-screen-md w-full">
-            <div class="flex w-full gap-8 justify-between" id="infos-podcasts" >
+            <div class="flex w-full gap-8 justify-between" id="infos-podcasts">
                 <div class="p-6 w-full">
-              <!-- CATEGORÍAS  -->
-              <!--
-           <?php     
-              if (!empty($categories)) {
-    echo '<h5 class=" text-md font-bold tracking-tight" style="text-transform:uppercase;">';
+                    <!-- CATEGORÍAS  -->
+                    <!--
+           <?php
+            if (!empty($categories)) {
+                echo '<h5 class=" text-md font-bold tracking-tight" style="text-transform:uppercase;">';
 
-    foreach ($categories as $index => $category) {
-        if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
-            $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
-            echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-            
-            if ($index !== count($categories) - 1) {
-                echo ' '; // Agregar coma y espacio entre categorías
-            }
-        }
-    }
+                foreach ($categories as $index => $category) {
+                    if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
+                        $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
+                        echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
 
-    echo '</h5>';
-}?>
--->    
-                    <?php    
+                        if ($index !== count($categories) - 1) {
+                            echo ' '; // Agregar coma y espacio entre categorías
+                        }
+                    }
+                }
+
+                echo '</h5>';
+            } ?>
+-->
+                    <?php
                     if ($entry_tags) : ?>
                         <?php foreach ($entry_tags as $tag) : ?>
-                            <p class="rounded-lg text-white p-1  inline-flex" style="background-color: #1476B3; font-size:13px;"><a  href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"><?php echo esc_html($tag->name); ?></a></p>
+                            <p class="rounded-lg text-white p-1  inline-flex" style="background-color: #1476B3; font-size:13px;"><a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"><?php echo esc_html($tag->name); ?></a></p>
                         <?php endforeach; ?>
                     <?php endif; ?>
-                   <p class="subtitulos font-bold pb-3"> </p> 
-                   
-                   <p class="subtextos"></p>
-                            
-                   <div  class="podcasts"></div>
+                    <p class="subtitulos font-bold pb-3"> </p>
+
+                    <p class="subtextos"></p>
+
+                    <div class="podcasts"></div>
                 </div>
                 <div style="max-width:205px;" class="w-full h-full">
-<? if(count($imagenes)>1):?>
-                 <img class=" rounded-md" style="height:205px;" id="thumb" src="<?php echo esc_url($imagenes[0]); ?>" alt="<?php echo esc_attr(get_the_title());?>">  
-<?else: ?>
-          <img class=" rounded-md" style="height:205px;" id="thumb" src="<?php echo esc_url($imagenes[0]); ?>" alt="<?php echo esc_attr(get_the_title());?>">
-      <?endif; ?>  
+                    <?php
+
+
+                    if ($thumbnail_url): ?>
+                        <div class="py-2">
+                            <img class="rounded-md w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                        </div>
+                    <?php endif; ?>
+
+
                 </div>
             </div>
 
@@ -115,535 +114,341 @@ if ($is_podcast) :
 
 <?php
 
-               
-                    if($spotify_url):
-                        ?>
-                    <iframe src= "<?php echo esc_url($spotify_url) ?>"></iframe>
 
-                    <?php
-                     endif;
+if ($spotify_url):
+?>
+    <iframe src="<?php echo esc_url($spotify_url) ?>"></iframe>
+
+<?php
+endif;
 
 ?>
 <div class="flex w-full justify-center p-8 bg-white" id="noticia">
     <div class="max-w-screen-md" id="txt-in">
 
         <h1 class="md:text-4xl text-2xl my-3" style="color:#07376A;"><?php echo esc_html($entry_title); ?></h1>
-      
+
         <div class="flex gap-3 items-center">
 
-<!-- CATEGORÍAS  -->
+            <!-- CATEGORÍAS  -->
             <?php
-        
-if (!empty($categories)) {
-    echo '<h5 class=" text-md font-bold tracking-tight" style="text-transform:uppercase;">';
 
-    foreach ($categories as $index => $category) {
-        if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
-            $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
-            echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-            
-            if ($index !== count($categories) - 1) {
-                echo ', '; // Agregar coma y espacio entre categorías
+            if (!empty($categories)) {
+                echo '<h5 class=" text-md font-bold tracking-tight" style="text-transform:uppercase;">';
+
+                foreach ($categories as $index => $category) {
+                    if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
+                        $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
+                        echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
+
+                        if ($index !== count($categories) - 1) {
+                            echo ', '; // Agregar coma y espacio entre categorías
+                        }
+                    }
+                }
+
+                echo '</h5>';
             }
-        }
-    }
-
-    echo '</h5>';
-}
             if ($entry_tags) : ?>
                 <?php foreach ($entry_tags as $tag) : ?>
-                    <p class="rounded-lg text-white p-1  inline-flex" style="background-color: #1476B3; font-size:13px;"><a  href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"><?php echo esc_html($tag->name); ?></a></p>
+                    <p class="rounded-lg text-white p-1  inline-flex" style="background-color: #1476B3; font-size:13px;"><a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"><?php echo esc_html($tag->name); ?></a></p>
                 <?php endforeach; ?>
             <?php endif; ?>
             <p> <?php echo esc_html($entry_date); ?></p>
 
         </div>
-<!-- PRUEBAS PARA NOTICIAS.UNSL.EDU.AR -->
-<!--
-<div class="flex items-center gap-3">
-<button onclick="tipografia();">Dislexia</button>
-<button onclick="blancoynegro();">Blanco y negro</button>
-<button onclick="sintesisdevoz();">Síntesis de voz</button>
-</div>
-<script>
 
-function tipografia() {
-  var fon = document.getElementById("fuente");
-  if (fon.className == "") {
-    fon.className = 'tipog';
-  } else {
-    fon.className = '';
-  }
-}
-function blancoynegro() {
-    document.body.classList.toggle("grayscale");
-}
-var buton = true;
-function sintesisdevoz(){
-        var synth = window.speechSynthesis;
-let textContent = document.getElementById('noticia').innerText;
+        <?php
+        if ($thumbnail_url): ?>
+            <div class="py-2">
+                <img class="rounded-md w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+            </div>
+        <?php endif; ?>
 
-var voices = synth.getVoices();
-var utterance = new SpeechSynthesisUtterance(textContent);
-
-if(buton){
+        <?php the_content(); ?>
 
 
-utterance.voice = voices.filter(
-	  function(voice) { 
-	    return voice.name == 'Monica';
-	  })[0];
-
-      synth.speak(utterance);
-
-      buton = false;
-}
-else{
-buton = !buton;
-synth.cancel();
-}
 
 
-}
 
 
-</script>
-
-<style>
- body {
-    transition: filter 1s; /* Change "1s" to any time you'd like */
-  }
-  body.grayscale {
-    /* grayscale(1) makes the website grayscale */
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-  }
-
-.tipog{
-    font-family:opendyslexic;
-}
-</style>
--->
-<!--FIN PRUEBAS PARA NOTICIAS.UNSL.EDU.AR -->
-        <? if (!$is_podcast) : ?>
-
-<? if(count($imagenes)>1):?>
-<div class="py-6">
-        <div id="default-carousel" class="relative w-full" data-carousel="slide">
-    <!-- Carousel wrapper -->
-     <div class="relative overflow-hidden  h-96">
-
-    <? foreach ($imagenes as $imagen) : ?>
-              
-      
-
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img id="carousel-p"  style="object-fit:cover;" src="<?php echo esc_url($imagen); ?>" alt="" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" >
-        </div>
-
-      <? endforeach; ?>
-    </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-<?php foreach ($imagenes as $index => $imagen) : ?>
-    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide <?php echo esc_attr($index + 1); ?>" data-carousel-slide-to="<?php echo esc_attr($index); ?>"></button>
-<?php endforeach; ?>
-
-    </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Anterior</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Siguiente</span>
-        </span>
-    </button>
-</div>
-</div>
-        
-<? else:?>
-
-<img src="<?php echo esc_url($imagenes[0]); ?>" class="py-6 w-full"/>
-
-<? endif; ?>
-
-        <?php else:?>
-        
-            <? if(count($imagenes)==2):?>
-                 <img class="w-full"  id="thumb" src="<?php echo esc_url($imagenes[1]); ?>" alt="<?php echo esc_attr(get_the_title());?>">
-
-            <?elseif(count($imagenes)>2):?>
-                 <div class="py-6">
-        <div id="default-carousel" class="relative w-full" data-carousel="slide">
-    <!-- Carousel wrapper -->
-     <div class="relative overflow-hidden  h-96">
-
-    <? foreach ($imagenes as $imagen) : ?>
-              
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img style="object-fit:cover;" src="<?php echo esc_url($imagen); ?>" alt="" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" >
-        </div>
-
-      <? endforeach; ?>
-    </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-<?php foreach ($imagenes as $index => $imagen) : ?>
-    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide <?php echo esc_attr($index + 1); ?>" data-carousel-slide-to="<?php echo esc_attr($index); ?>"></button>
-<?php endforeach; ?>
-    </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Anterior</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Siguiente</span>
-        </span>
-    </button>
-</div>
-</div>    
-      <?endif; ?>    
-         <?php endif;?>
-        <hr> 
         <div class="py-3">
-           <?php    
-            foreach ($fragments as $fragment) {
-                if (!preg_match('/<img[^>]+>/', $fragment)) {
-                    echo $fragment;
-                }
-            }
-            ?>
-<div class="flex gap-5 items-center py-5">
-<p class="px-2 bold">COMPARTIR</p>
-<a href="mailto:?Título&body=Radio Universidad Nacional de San Luis:%20<?php the_permalink(); ?>"  target="blank">
-<svg width="25" height="25" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.667 0.333328H2.33366C1.41699 0.333328 0.675326 1.08333 0.675326 1.99999L0.666992 12C0.666992 12.9167 1.41699 13.6667 2.33366 13.6667H15.667C16.5837 13.6667 17.3337 12.9167 17.3337 12V1.99999C17.3337 1.08333 16.5837 0.333328 15.667 0.333328ZM15.667 3.66666L9.00033 7.83333L2.33366 3.66666V1.99999L9.00033 6.16666L15.667 1.99999V3.66666Z" fill="#282828"/>
-</svg>
-</a>
-<a target="_blank" href="https://facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
-<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.0003 1.66667C5.39783 1.66667 1.66699 5.39751 1.66699 10C1.66699 14.1775 4.74449 17.6275 8.75449 18.23V12.2083H6.69283V10.0175H8.75449V8.56001C8.75449 6.14667 9.93033 5.08751 11.9362 5.08751C12.897 5.08751 13.4045 5.15834 13.6453 5.19084V7.10251H12.277C11.4253 7.10251 11.1278 7.91001 11.1278 8.82V10.0175H13.6237L13.2853 12.2083H11.1287V18.2475C15.1962 17.6967 18.3337 14.2183 18.3337 10C18.3337 5.39751 14.6028 1.66667 10.0003 1.66667Z" fill="#282828"/>
-</svg>
+            <div class="flex gap-5 items-center py-5">
+                <p class="px-2 bold">COMPARTIR</p>
+                <a href="mailto:?Título&body=Radio Universidad Nacional de San Luis:%20<?php the_permalink(); ?>" target="blank">
+                    <svg width="25" height="25" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.667 0.333328H2.33366C1.41699 0.333328 0.675326 1.08333 0.675326 1.99999L0.666992 12C0.666992 12.9167 1.41699 13.6667 2.33366 13.6667H15.667C16.5837 13.6667 17.3337 12.9167 17.3337 12V1.99999C17.3337 1.08333 16.5837 0.333328 15.667 0.333328ZM15.667 3.66666L9.00033 7.83333L2.33366 3.66666V1.99999L9.00033 6.16666L15.667 1.99999V3.66666Z" fill="#282828" />
+                    </svg>
+                </a>
+                <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
+                    <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0003 1.66667C5.39783 1.66667 1.66699 5.39751 1.66699 10C1.66699 14.1775 4.74449 17.6275 8.75449 18.23V12.2083H6.69283V10.0175H8.75449V8.56001C8.75449 6.14667 9.93033 5.08751 11.9362 5.08751C12.897 5.08751 13.4045 5.15834 13.6453 5.19084V7.10251H12.277C11.4253 7.10251 11.1278 7.91001 11.1278 8.82V10.0175H13.6237L13.2853 12.2083H11.1287V18.2475C15.1962 17.6967 18.3337 14.2183 18.3337 10C18.3337 5.39751 14.6028 1.66667 10.0003 1.66667Z" fill="#282828" />
+                    </svg>
 
-</a>
-<a target="_blank" href="https://wa.me/?text=<?php the_permalink(); ?>" target="blank" data-action="share/whatsapp/share">
-<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.8978 4.10666C14.1628 2.37083 11.7961 1.49499 9.31111 1.69499C5.97028 1.96333 3.04194 4.28666 2.06194 7.49166C1.36194 9.78166 1.65611 12.1725 2.79611 14.1475L1.71611 17.7333C1.61278 18.0775 1.92694 18.4017 2.27444 18.3092L6.02778 17.3033C7.24361 17.9667 8.61194 18.3158 10.0053 18.3167H10.0086C13.5044 18.3167 16.7344 16.1783 17.8519 12.8658C18.9403 9.63583 18.1353 6.34666 15.8978 4.10666ZM14.0819 12.9617C13.9086 13.4475 13.0594 13.9158 12.6778 13.95C12.2961 13.985 11.9386 14.1225 10.1819 13.43C8.06778 12.5967 6.73278 10.4292 6.62944 10.2908C6.52528 10.1517 5.78028 9.16332 5.78028 8.13999C5.78028 7.11666 6.31778 6.61333 6.50861 6.40583C6.69944 6.19749 6.92444 6.14583 7.06361 6.14583C7.20194 6.14583 7.34111 6.14583 7.46195 6.15083C7.61028 6.15666 7.77444 6.16416 7.93028 6.50999C8.11528 6.92166 8.51944 7.94999 8.57111 8.05416C8.62278 8.15833 8.65778 8.27999 8.58861 8.41833C8.51944 8.55666 8.48444 8.64332 8.38111 8.76499C8.27694 8.88666 8.16278 9.03583 8.06944 9.12916C7.96528 9.23249 7.85694 9.34583 7.97778 9.55333C8.09944 9.76166 8.51611 10.4425 9.13444 10.9933C9.92944 11.7017 10.5986 11.9208 10.8069 12.0258C11.0153 12.13 11.1361 12.1125 11.2578 11.9733C11.3794 11.835 11.7778 11.3667 11.9161 11.1583C12.0544 10.95 12.1936 10.985 12.3844 11.0542C12.5753 11.1233 13.5978 11.6267 13.8053 11.7308C14.0136 11.835 14.1519 11.8867 14.2036 11.9733C14.2553 12.0592 14.2553 12.4758 14.0819 12.9617Z" fill="#282828"/>
-</svg>
+                </a>
+                <a target="_blank" href="https://wa.me/?text=<?php the_permalink(); ?>" target="blank" data-action="share/whatsapp/share">
+                    <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8978 4.10666C14.1628 2.37083 11.7961 1.49499 9.31111 1.69499C5.97028 1.96333 3.04194 4.28666 2.06194 7.49166C1.36194 9.78166 1.65611 12.1725 2.79611 14.1475L1.71611 17.7333C1.61278 18.0775 1.92694 18.4017 2.27444 18.3092L6.02778 17.3033C7.24361 17.9667 8.61194 18.3158 10.0053 18.3167H10.0086C13.5044 18.3167 16.7344 16.1783 17.8519 12.8658C18.9403 9.63583 18.1353 6.34666 15.8978 4.10666ZM14.0819 12.9617C13.9086 13.4475 13.0594 13.9158 12.6778 13.95C12.2961 13.985 11.9386 14.1225 10.1819 13.43C8.06778 12.5967 6.73278 10.4292 6.62944 10.2908C6.52528 10.1517 5.78028 9.16332 5.78028 8.13999C5.78028 7.11666 6.31778 6.61333 6.50861 6.40583C6.69944 6.19749 6.92444 6.14583 7.06361 6.14583C7.20194 6.14583 7.34111 6.14583 7.46195 6.15083C7.61028 6.15666 7.77444 6.16416 7.93028 6.50999C8.11528 6.92166 8.51944 7.94999 8.57111 8.05416C8.62278 8.15833 8.65778 8.27999 8.58861 8.41833C8.51944 8.55666 8.48444 8.64332 8.38111 8.76499C8.27694 8.88666 8.16278 9.03583 8.06944 9.12916C7.96528 9.23249 7.85694 9.34583 7.97778 9.55333C8.09944 9.76166 8.51611 10.4425 9.13444 10.9933C9.92944 11.7017 10.5986 11.9208 10.8069 12.0258C11.0153 12.13 11.1361 12.1125 11.2578 11.9733C11.3794 11.835 11.7778 11.3667 11.9161 11.1583C12.0544 10.95 12.1936 10.985 12.3844 11.0542C12.5753 11.1233 13.5978 11.6267 13.8053 11.7308C14.0136 11.835 14.1519 11.8867 14.2036 11.9733C14.2553 12.0592 14.2553 12.4758 14.0819 12.9617Z" fill="#282828" />
+                    </svg>
 
-</svg>
-</a>
-<a href="https://twitter.com/intent/tweet?text=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
-<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.8333 2.5H4.16667C3.24583 2.5 2.5 3.24583 2.5 4.16667V15.8333C2.5 16.7542 3.24583 17.5 4.16667 17.5H15.8333C16.7542 17.5 17.5 16.7542 17.5 15.8333V4.16667C17.5 3.24583 16.7542 2.5 15.8333 2.5ZM14.2083 7.92833C14.2083 8 14.2083 8.07083 14.2083 8.21417C14.2083 10.9283 12.1367 14.0717 8.35083 14.0717C7.20833 14.0717 6.13667 13.7142 5.20833 13.1433C5.35083 13.1433 5.56583 13.1433 5.70833 13.1433C6.63667 13.1433 7.56583 12.7858 8.28 12.2858C7.35167 12.2858 6.6375 11.6433 6.35167 10.8575C6.49417 10.8575 6.6375 10.9292 6.70917 10.9292C6.92333 10.9292 7.06667 10.9292 7.28083 10.8575C6.3525 10.6433 5.63833 9.8575 5.63833 8.8575C5.92417 9 6.21 9.07167 6.56667 9.14333C5.995 8.64333 5.63833 8.07167 5.63833 7.3575C5.63833 7 5.71 6.64333 5.92417 6.3575C6.92417 7.57167 8.42417 8.42917 10.1383 8.5C10.1383 8.3575 10.0667 8.21417 10.0667 8C10.0667 6.8575 10.995 5.92833 12.1383 5.92833C12.71 5.92833 13.2808 6.1425 13.6383 6.57083C14.1383 6.49917 14.5667 6.285 14.9242 6.07083C14.7817 6.57083 14.4242 6.92833 13.9958 7.21333C14.4242 7.14167 14.7817 7.07083 15.21 6.85583C14.9225 7.28583 14.5658 7.6425 14.2083 7.92833Z" fill="#282828"/>
-</svg>
-</a>
-</div>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/intent/tweet?text=<?php the_permalink(); ?>" target="blank" rel="noopener noreferrer">
+                    <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8333 2.5H4.16667C3.24583 2.5 2.5 3.24583 2.5 4.16667V15.8333C2.5 16.7542 3.24583 17.5 4.16667 17.5H15.8333C16.7542 17.5 17.5 16.7542 17.5 15.8333V4.16667C17.5 3.24583 16.7542 2.5 15.8333 2.5ZM14.2083 7.92833C14.2083 8 14.2083 8.07083 14.2083 8.21417C14.2083 10.9283 12.1367 14.0717 8.35083 14.0717C7.20833 14.0717 6.13667 13.7142 5.20833 13.1433C5.35083 13.1433 5.56583 13.1433 5.70833 13.1433C6.63667 13.1433 7.56583 12.7858 8.28 12.2858C7.35167 12.2858 6.6375 11.6433 6.35167 10.8575C6.49417 10.8575 6.6375 10.9292 6.70917 10.9292C6.92333 10.9292 7.06667 10.9292 7.28083 10.8575C6.3525 10.6433 5.63833 9.8575 5.63833 8.8575C5.92417 9 6.21 9.07167 6.56667 9.14333C5.995 8.64333 5.63833 8.07167 5.63833 7.3575C5.63833 7 5.71 6.64333 5.92417 6.3575C6.92417 7.57167 8.42417 8.42917 10.1383 8.5C10.1383 8.3575 10.0667 8.21417 10.0667 8C10.0667 6.8575 10.995 5.92833 12.1383 5.92833C12.71 5.92833 13.2808 6.1425 13.6383 6.57083C14.1383 6.49917 14.5667 6.285 14.9242 6.07083C14.7817 6.57083 14.4242 6.92833 13.9958 7.21333C14.4242 7.14167 14.7817 7.07083 15.21 6.85583C14.9225 7.28583 14.5658 7.6425 14.2083 7.92833Z" fill="#282828" />
+                    </svg>
+                </a>
+            </div>
         </div>
         <div class="flex items-center gap-3">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 20L4 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM6 12H4V10H6V12ZM6 9H4V7H6V9ZM6 6H4V4H6V6ZM13 12H8V10H13V12ZM16 9H8V7H16V9ZM16 6H8V4H16V6Z" fill="#535353"/>
-</svg>
-        <h1 class="my-6 text-xl font-bold" style="color:#535353;">Dejanos un comentario</h1>
-     
-        </div>
-
-
-
-<!-- SECCION COMENTARIOS -->
-
-
-<?php
-$comments = get_comments(array(
-    'post_id' => get_the_ID(),
-    'status' => 'approve', // Obtener solo comentarios aprobados
-));
-
-// Mostrar los comentarios
-while (have_posts()) : the_post();
-    comments_template();
-endwhile;
-?>
-<!-- FIN SECCION COMENTARIOS -->
-
-
-<!-- ULTIMAS NOTICIAS PODCASTS -->
-<?php if ($is_podcast) : ?>
-    <h1 class="font-bold text-xl">Últimos podcasts</h1>
-<div class="grid grid-cols-4 gap-8 py-6" id="grids" style="justify-items: center;">
-
-<?php
-
-$args_podcasts = array(
-'category_name' => 'podcast', // Nombre de la categoría de podcasts
-'posts_per_page' => 4 // Mostrar todas las noticias de podcasts
-);
-$podcasts_query = new WP_Query($args_podcasts);
-if ($podcasts_query->have_posts()) :
-$counter = 0;
-while ($podcasts_query->have_posts()) :
-$counter++;
-
-$podcasts_query->the_post();
-$thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
-$content = get_the_content();
-preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-$image_url = isset($matches[1]) ? $matches[1] : '';
-$short_content = mb_substr($content, 0, 400);
-if (strlen($content) > 400) {
-    $short_content .= '...';
-}
-
-// Obtener título y etiquetas
-
-$entry_title = get_the_title();
-$categories = get_the_category();
-$entry_date = get_the_date('d/m/Y');
-
-if ($counter >= 8) :
-    continue;
-endif;
-?>
-<div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid " id="boxes">
-    <a href="<?php the_permalink(); ?>">
-        <img class="rounded-t-lg w-full" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" id="boxes-img"/>
-    </a>
-    <div class="p-1 rounded-b-lg" style="background-color:#041824 ;" >
-        <div class="relative flex flex-col justify-center" style="bottom: 50px; float: right;">
-            <svg class="svgs" height="2.5em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 20L4 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM6 12H4V10H6V12ZM6 9H4V7H6V9ZM6 6H4V4H6V6ZM13 12H8V10H13V12ZM16 9H8V7H16V9ZM16 6H8V4H16V6Z" fill="#535353" />
             </svg>
+            <h1 class="my-6 text-xl font-bold" style="color:#535353;">Dejanos un comentario</h1>
+
         </div>
-        <a href="<?php the_permalink(); ?>" class="flex gap-5">
-   <p class="mb-3 font-bold" style="color:#E5CC26;"><?php echo esc_html($entry_title); ?></p>
-        </a>
-     <!-- CATEGORÍAS  -->
-                    <?php
-          if (!empty($categories)) {
-    echo '<h5 class=" text-md font-bold tracking-tight text-white" style="text-transform:uppercase;font-size:11px;">';
 
-    foreach ($categories as $index => $category) {
-        if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
-            $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
-            echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-            
-            if ($index !== count($categories) - 1) {
-                echo ', '; // Agregar coma y espacio entre categorías
-            }
-        }
-    }
 
-    echo '</h5>';
-}
 
-            ?>
-    </div>
-</div>
+        <!-- SECCION COMENTARIOS -->
 
-<?php
-endwhile;
-//  wp_reset_postdata();
-endif;
-?>
-</div>
 
-<div class="flex justify-center" style="padding: 50px 0;">
-<a href="<?php echo esc_url(home_url('/podcasts')); ?>">
-<div class="m-6 p-3 text-center font-bold rounded-lg inline-flex justify-center" style="background-color: #E5CC26;">Más podcasts</div>
-</a>
-</div>
-<?php endif; ?>
-<!-- ULTIMAS NOTICIAS -->
-<?php if (!$is_podcast) : ?>
-    <h1 class="font-bold text-xl">Últimas noticias</h1>
-<div class="grid grid-cols-4 gap-8 py-6" id="grids" style="justify-items: center;">
+        <?php
+        $comments = get_comments(array(
+            'post_id' => get_the_ID(),
+            'status' => 'approve', // Obtener solo comentarios aprobados
+        ));
 
-<?php
+        // Mostrar los comentarios
+        while (have_posts()) : the_post();
+            comments_template();
+        endwhile;
+        ?>
+        <!-- FIN SECCION COMENTARIOS -->
 
-$args = array(
-    'posts_per_page' => 4,
-    'post_status' => 'publish',
-    'category__not_in' => array(7,8)
-);
-$noticias_query = new WP_Query($args);
-if ($noticias_query->have_posts()) :
-$counter = 0;
-while ($noticias_query->have_posts()) :
-$counter++;
 
-$noticias_query->the_post();
-$thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
-$content = get_the_content();
-preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-$image_url = isset($matches[1]) ? $matches[1] : '';
-$short_content = mb_substr($content, 0, 400);
-if (strlen($content) > 400) {
-    $short_content .= '...';
-}
+        <!-- ULTIMAS NOTICIAS PODCASTS -->
+        <?php if ($is_podcast) : ?>
+            <h1 class="font-bold text-xl">Últimos podcasts</h1>
+            <div class="grid grid-cols-4 gap-8 py-6" id="grids" style="justify-items: center;">
 
-// Obtener título y etiquetas
+                <?php
+                $args_podcasts = array(
+                    'category_name' => 'podcast',
+                    'posts_per_page' => 4,
+                    'post__not_in' => array(get_the_ID())
+                );
 
-$entry_title = get_the_title();
-$categories = get_the_category();
-$entry_date = get_the_date('d/m/Y');
+                $podcasts_query = new WP_Query($args_podcasts);
+                if ($podcasts_query->have_posts()) :
+                    while ($podcasts_query->have_posts()) :
+                        $podcasts_query->the_post();
 
-if ($counter >= 8) :
-    continue;
-endif;
-?>
-<div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid " id="boxes">
-    <a href="<?php the_permalink(); ?>">
-        <img class="rounded-t-lg w-full" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" id="boxes-img"/>
-    </a>
-    <div class="p-1 rounded-b-lg" style="background-color:#F5F5F5 ;" >
-        <div class="relative flex flex-col justify-center" style="bottom: 50px; float: right;">
-            <svg class="svgs" height="2.5em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
-            </svg>
-        </div>
-        <a href="<?php the_permalink(); ?>" class="flex gap-5">
-         <p class="mb-3 font-bold" style="color:#07376A;"><?php echo esc_html($entry_title); ?></p>
+                        $entry_title = get_the_title();
+                        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                        $categories = get_the_category();
+                ?>
+                        <div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid " id="boxes">
+                            <?php if ($thumbnail_url): ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <img class="rounded-t-lg w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" id="boxes-img" />
+                                </a>
+                            <?php endif; ?>
+                            <div class="p-1 rounded-b-lg" style="background-color:#041824;">
+                                <div class="relative flex flex-col justify-center" style="bottom: 50px; float: right;">
+                                    <svg class="svgs" height="2.5em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
+                                    </svg>
+                                </div>
+                                <a href="<?php the_permalink(); ?>" class="flex gap-5">
+                                    <p class="mb-3 font-bold" style="color:#E5CC26;"><?php echo esc_html($entry_title); ?></p>
+                                </a>
+                                <?php if (!empty($categories)) : ?>
+                                    <h5 class="text-md font-bold tracking-tight text-white" style="text-transform:uppercase;font-size:11px;">
+                                        <?php
+                                        foreach ($categories as $index => $category) {
+                                            if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
+                                                $category_link = get_category_link($category->term_id);
+                                                echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
+                                                if ($index !== count($categories) - 1) {
+                                                    echo ', ';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </h5>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
 
-        </a>
-       
-<!-- CATEGORÍAS  -->
-            <?php
-           if (!empty($categories)) {
-    echo '<h5 class=" text-md font-bold tracking-tight" style="text-transform:uppercase; font-size:12px;">';
+            <div class="flex justify-center" style="padding: 50px 0;">
+                <a href="<?php echo esc_url(home_url('/podcasts')); ?>">
+                    <div class="m-6 p-3 text-center font-bold rounded-lg inline-flex justify-center" style="background-color: #E5CC26;">Más podcasts</div>
+                </a>
+            </div>
+        <?php endif; ?>
 
-    foreach ($categories as $index => $category) {
-        if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
-            $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
-            echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-            
-            if ($index !== count($categories) - 1) {
-                echo ', '; // Agregar coma y espacio entre categorías
-            }
-        }
-    }
+        <!-- ULTIMAS NOTICIAS -->
+        <?php if (!$is_podcast) : ?>
+            <h1 class="font-bold text-xl">Últimas noticias</h1>
+            <div class="grid grid-cols-4 gap-8 py-6" id="grids" style="justify-items: center;">
+                <?php
+                $args_news = array(
+                    'category__not_in' => array(get_cat_ID('podcast')),
+                    'posts_per_page' => 4,
+                    'post__not_in' => array(get_the_ID())
+                );
 
-    echo '</h5>';
-}
+                $news_query = new WP_Query($args_news);
+                if ($news_query->have_posts()) :
+                    while ($news_query->have_posts()) :
+                        $news_query->the_post();
+                        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                        $entry_title = get_the_title();
+                        $categories = get_the_category();
+                ?>
+                        <div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid " id="boxes">
+                            <?php if ($thumbnail_url): ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <img class="rounded-t-lg w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" id="boxes-img" />
+                                </a>
+                            <?php endif; ?>
+                            <div class="p-1 rounded-b-lg" style="background-color:#041824;">
+                                <a href="<?php the_permalink(); ?>" class="flex gap-5">
+                                    <p class="mb-3 font-bold" style="color:#E5CC26;"><?php echo esc_html($entry_title); ?></p>
+                                </a>
+                                <?php if (!empty($categories)) : ?>
+                                    <h5 class="text-md font-bold tracking-tight text-white" style="text-transform:uppercase;font-size:11px;">
+                                        <?php
+                                        foreach ($categories as $index => $category) {
+                                            if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
+                                                $category_link = get_category_link($category->term_id);
+                                                echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
+                                                if ($index !== count($categories) - 1) {
+                                                    echo ', ';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </h5>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
+            <div class="flex justify-center" style="padding: 50px 0;">
+                <a href="<?php echo esc_url(home_url('/noticias')); ?>">
+                    <div class="m-6 p-3 text-center font-bold rounded-lg inline-flex justify-center text-white" style="background-color: #07376A">Más noticias</div>
+                </a>
+            </div>
+        <?php endif; ?>
 
-            ?>
-
-    </div>
-</div>
-
-<?php
-endwhile;
-//  wp_reset_postdata();
-endif;
-?>
-</div>
-<div class="flex justify-center" style="padding: 50px 0;">
-<a href="<?php echo esc_url(home_url('/noticias')); ?>">
-<div class="m-6 p-3 text-center font-bold rounded-lg inline-flex justify-center text-white" style="background-color: #07376A">Más noticias</div>
-</a>
-</div>
-<?php endif; ?>
     </div>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var subtituloElement = document.getElementById('subtitulo');
-  var subtextoElement = document.getElementById('subtexto');
-  var podcastElement = document.getElementById('podcast');
-  var otraUbicacionContainer_1 = document.querySelector('.subtitulos');
-  var otraUbicacionContainer_2 = document.querySelector('.subtextos');
-  var otraUbicacionContainer_3 = document.querySelector('.podcasts');
-  if (subtituloElement && subtextoElement && podcastElement &&
-      otraUbicacionContainer_1 && otraUbicacionContainer_2 && otraUbicacionContainer_3) {
-    var subtituloClone = subtituloElement.cloneNode(true);
-    var subtextoClone = subtextoElement.cloneNode(true);
-    var podcastClone = podcastElement.cloneNode(true);
-    subtituloElement.remove();
-    subtextoElement.remove();
-    podcastElement.remove();
-    otraUbicacionContainer_1.appendChild(subtituloClone);
-    otraUbicacionContainer_2.appendChild(subtextoClone);
-    otraUbicacionContainer_3.appendChild(podcastClone);
-  }
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        var subtituloElement = document.getElementById('subtitulo');
+        var subtextoElement = document.getElementById('subtexto');
+        var podcastElement = document.getElementById('podcast');
+        var otraUbicacionContainer_1 = document.querySelector('.subtitulos');
+        var otraUbicacionContainer_2 = document.querySelector('.subtextos');
+        var otraUbicacionContainer_3 = document.querySelector('.podcasts');
+        if (subtituloElement && subtextoElement && podcastElement &&
+            otraUbicacionContainer_1 && otraUbicacionContainer_2 && otraUbicacionContainer_3) {
+            var subtituloClone = subtituloElement.cloneNode(true);
+            var subtextoClone = subtextoElement.cloneNode(true);
+            var podcastClone = podcastElement.cloneNode(true);
+            subtituloElement.remove();
+            subtextoElement.remove();
+            podcastElement.remove();
+            otraUbicacionContainer_1.appendChild(subtituloClone);
+            otraUbicacionContainer_2.appendChild(subtextoClone);
+            otraUbicacionContainer_3.appendChild(podcastClone);
+        }
+    });
 </script>
 <style>
-.wp-block-audio audio{
-    margin-top:10px;
-}
-.podcasts audio::-webkit-media-controls-play-button,
-.podcasts audio::-webkit-media-controls-panel {
-  background-color: #E5CC26;
-}
-#thumb{
-    margin:55px 0;
-}
-#default-carousel img{
-       object-position:right;
-        animation:slideImage-x 15s ease-in infinite;
-}
-}
-@media screen and (min-width:789px){
-#default-carousel img{
-       object-position:top;
-        animation:slideImage-y 25s ease-in infinite;
+    .wp-block-audio audio {
+        margin-top: 10px;
+    }
+
+    .podcasts audio::-webkit-media-controls-play-button,
+    .podcasts audio::-webkit-media-controls-panel {
+        background-color: #E5CC26;
+    }
+
+    #thumb {
+        margin: 55px 0;
+    }
+
+    #default-carousel img {
+        object-position: right;
+        animation: slideImage-x 15s ease-in infinite;
+    }
+
+    @media screen and (min-width:789px) {
+        #default-carousel img {
+            object-position: top;
+            animation: slideImage-y 25s ease-in infinite;
         }
-}
-@media screen and (max-width:766px){
-    #infos-podcasts{
-        align-items:center;
-        flex-direction:column-reverse;
     }
-    #thumb{
-        margin:0;
+
+    @media screen and (max-width:766px) {
+        #infos-podcasts {
+            align-items: center;
+            flex-direction: column-reverse;
+        }
+
+        #thumb {
+            margin: 0;
+        }
     }
-}
+
     video {
         padding: 15px 0;
     }
-    @keyframes slideImage-x{
 
-    0% {
-        object-position:left;
-    }
-    50% {
-        object-position:right;
-    }
-    100% {
-        object-position:left;
+    @keyframes slideImage-x {
+
+        0% {
+            object-position: left;
+        }
+
+        50% {
+            object-position: right;
+        }
+
+        100% {
+            object-position: left;
+        }
+
     }
 
-}
-@keyframes slideImage-y{
+    @keyframes slideImage-y {
 
-    0% {
-        object-position:top;
+        0% {
+            object-position: top;
+        }
+
+        50% {
+            object-position: bottom;
+        }
+
+        100% {
+            object-position: top;
+        }
+
     }
-    50% {
-        object-position:bottom;
-    }
-    100% {
-        object-position:top;
-    }
-    
-}
 </style>
 
 <?php get_footer(); ?>

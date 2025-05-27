@@ -464,7 +464,35 @@ audio::-webkit-media-controls-enclosure {
 }
 
             </style>
-<script>
+
+            <script>
+  const swiper = new Swiper('.mySwiper', {
+    loop: true,
+    grabCursor: true,
+    spaceBetween: 20,
+    slidesPerView: 1,
+    centeredSlides: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 5000,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+      },
+      1024: {
+        slidesPerView: 1,
+      }
+    }
+  });
+
 
 function Adelantar(){
     console.log("adelantar a vivo.");

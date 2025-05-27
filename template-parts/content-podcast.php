@@ -28,8 +28,9 @@ $the_query = new WP_Query($args);
     
     $the_query->the_post();
     $content = get_the_content();
-    preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-    $image_url = isset($matches[1]) ? $matches[1] : '';
+   
+    
+    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
     // Obtener título y etiquetas
     $entry_title = get_the_title();
 
