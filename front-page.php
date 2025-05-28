@@ -267,112 +267,71 @@ foreach ($item->category as $cat) {
 
 <!-- SECCION SLIDER -->
 
-<div class=" flex justify-center px-6 " style="background-color: #F0F0F0;"> <!--hidden  md:flex -->
 
-    <div id="default-carousel" class="relative w-full max-w-screen-xl" data-carousel="slide" style="padding: 25px 0 60px 0;">
-        <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden md:h-96">
+<div class="flex justify-center px-6" style="background-color: #F0F0F0;">
+    <div class="relative w-full max-w-screen-xl">
+        <div class="swiper newSwiper" style="padding: 25px 0 60px 0;">
+            <div class="swiper-wrapper h-56 md:h-96">
+                <?php foreach ($programacion_query->posts as $post) : setup_postdata($post);
+                    $content = get_the_content();
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                    $entry_title = get_the_title();
+                    $categories = get_the_category();
+                    $entry_date = get_the_date('d/m/Y');
+                ?>
 
-            <?php foreach ($programacion_query->posts as $post) : setup_postdata($post);
-
-
-
-                // Obtener la URL de la primera imagen encontrada en el contenido
-                $content = get_the_content();
-                $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                // Obtener título y etiquetas
-                $entry_title = get_the_title();
-
-                $categories = get_the_category();
-                $entry_date = get_the_date('d/m/Y');
-            ?>
-
-
-                <!-- Item -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="<?php the_permalink(); ?>">
-                        <div style="background-image: url(<?php echo esc_url($image_url); ?>); background-size: cover; background-position: center;" class="w-full h-full">
-                            <div class="absolute w-full h-full z-1 " id="bg-2"></div>
-                            <div class="flex justify-center flex-col relative" style="top: 50%; transform: translateY(-50%);">
-                                <h1 id="titulo-slider" class="text-2xl text-center font-extrabold tracking-tight leading-none text-white">
-                                    <i><?php echo esc_html($entry_title); ?></i>
-                                </h1>
-                                <div class="flex items-center justify-center">
-                                    <svg class="svgs" id="svg-new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
-                                    </svg>
-                                    <div class="flex items-center gap-4 md:text-4xl  py-6 px-1 md:p-1 text-center font-extrabold tracking-tight leading-none text-white">
-                                        <h2 id="info-slider">
-
-                                            <?php
-                                            foreach ($categories as $index => $category) {
-
-                                                if ($category->slug !== "sin-categoria" && $category->slug !== "programacion") {
-                                                    echo esc_html($category->name);
-                                                    if ($index !== count($categories) - 1) {
-                                                        echo ', '; // Agregar coma y espacio entre las categorías
+                    <div class="swiper-slide">
+                        <a href="<?php the_permalink(); ?>">
+                            <div style="background-image: url(<?php echo esc_url($image_url); ?>); background-size: cover; background-position: center;" class="w-full h-full relative">
+                                <div class="absolute w-full h-full z-1" id="bg-2"></div>
+                                <div class="flex justify-center flex-col absolute inset-0" style="top: 50%; transform: translateY(-50%);">
+                                    <h1 id="titulo-slider" class="text-2xl text-center font-extrabold tracking-tight leading-none text-white">
+                                        <i><?php echo esc_html($entry_title); ?></i>
+                                    </h1>
+                                    <div class="flex items-center justify-center">
+                                        <svg class="svgs" id="svg-new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path d="..." />
+                                        </svg>
+                                        <div class="flex items-center gap-4 md:text-4xl py-6 px-1 md:p-1 text-center font-extrabold tracking-tight leading-none text-white">
+                                            <h2 id="info-slider">
+                                                <?php
+                                                foreach ($categories as $index => $category) {
+                                                    if ($category->slug !== "sin-categoria" && $category->slug !== "programacion") {
+                                                        echo esc_html($category->name);
+                                                        if ($index !== count($categories) - 1) {
+                                                            echo ', ';
+                                                        }
                                                     }
+                                                }
+                                                ?>
+                                            </h2>
+                                            <?php
+                                            preg_match_all('/<p[^>]+id="horario"[^>]*>(.*?)<\/p>/is', $content, $matches);
+                                            if (!empty($matches[0])) {
+                                                foreach ($matches[0] as $paragraph) {
+                                                    echo $paragraph;
                                                 }
                                             }
                                             ?>
-
-                                        </h2>
-                                        <?php
-                                        preg_match_all('/<p[^>]+id="horario"[^>]*>(.*?)<\/p>/is', $content, $matches);
-                                        // Mostrar los párrafos encontrados
-                                        if (!empty($matches[0])) {
-                                            foreach ($matches[0] as $paragraph) {
-                                                echo $paragraph;
-                                            }
-                                        }
-                                        ?>
+                                        </div>
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination mt-6"></div>
+
+            <!-- Navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <!-- Slider indicators -->
-        <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-6 left-1/2 m-6" id="slider">
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 6" data-carousel-slide-to="5"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 7" data-carousel-slide-to="6"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 8" data-carousel-slide-to="7"></button>
-            <button type="button" class="w-2 h-2 rounded-full" aria-current="false" aria-label="Slide 9" data-carousel-slide-to="8"></button>
-
-
-        </div>
-        <!-- Slider controls -->
-
-        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-                </svg>
-                <span class="sr-only">Previous</span>
-            </span>
-        </button>
-        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                </svg>
-                <span class="sr-only">Next</span>
-            </span>
-        </button>
-
     </div>
-
-
-
+</div>
 
 
 

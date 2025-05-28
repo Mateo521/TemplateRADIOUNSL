@@ -247,37 +247,44 @@ endif;
                         $entry_title = get_the_title();
                         $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $categories = get_the_category();
+                        $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
-                        <div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid " id="boxes">
-                            <?php if ($thumbnail_url): ?>
-                                <a href="<?php the_permalink(); ?>">
-                                    <img class="rounded-t-lg w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" id="boxes-img" />
-                                </a>
-                            <?php endif; ?>
-                            <div class="p-1 rounded-b-lg" style="background-color:#041824;">
-                                <div class="relative flex flex-col justify-center" style="bottom: 50px; float: right;">
+                         <div class="flex flex-col h-full rounded-lg shadow overflow-hidden bg-[#041824]" >
+                            <a href="<?php the_permalink(); ?>" class="relative block h-24 w-full overflow-hidden">
+                                <img class="w-full h-full object-cover" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
+
+                                <div class="absolute right-0 bottom-0 p-1 bg-black bg-opacity-60 flex items-center justify-center">
                                     <svg class="svgs" height="2.5em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
                                     </svg>
                                 </div>
-                                <a href="<?php the_permalink(); ?>" class="flex gap-5">
-                                    <p class="mb-3 font-bold" style="color:#E5CC26;"><?php echo esc_html($entry_title); ?></p>
-                                </a>
-                                <?php if (!empty($categories)) : ?>
-                                    <h5 class="text-md font-bold tracking-tight text-white" style="text-transform:uppercase;font-size:11px;">
-                                        <?php
-                                        foreach ($categories as $index => $category) {
-                                            if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
-                                                $category_link = get_category_link($category->term_id);
-                                                echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-                                                if ($index !== count($categories) - 1) {
-                                                    echo ', ';
+                            </a>
+
+                            <div class="flex-1 flex flex-col justify-between bg-[#041824] px-3 py-2">
+                                <div class="text-[#e5cc26]">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <p class="font-bold text-sm line-clamp-2 mb-2"><?php echo esc_html($entry_title); ?></p>
+                                    </a>
+
+                                    <?php if (!empty($categories)) : ?>
+                                        <h5 class="text-xs font-semibold uppercase tracking-tight">
+                                            <?php
+                                            foreach ($categories as $index => $category) {
+                                                if (!in_array($category->slug, ['sin-categoria', 'podcast'])) {
+                                                    $link = get_category_link($category->term_id);
+                                                    echo '<a href="' . esc_url($link) . '">' . esc_html($category->name) . '</a> ';
                                                 }
                                             }
-                                        }
-                                        ?>
-                                    </h5>
-                                <?php endif; ?>
+                                            ?>
+                                        </h5>
+                                    <?php endif; ?>
+                                </div>
+
+                                <?php
+                                if (preg_match($pattern, $content, $matches2)) {
+                                    echo '<div class="mt-2">' . $matches2[0] . '</div>';
+                                }
+                                ?>
                             </div>
                         </div>
                 <?php
@@ -312,32 +319,44 @@ endif;
                         $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $entry_title = get_the_title();
                         $categories = get_the_category();
+                        $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
-                        <div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid " id="boxes">
-                            <?php if ($thumbnail_url): ?>
-                                <a href="<?php the_permalink(); ?>">
-                                    <img class="rounded-t-lg w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" id="boxes-img" />
-                                </a>
-                            <?php endif; ?>
-                            <div class="p-1 rounded-b-lg" style="background-color:#041824;">
-                                <a href="<?php the_permalink(); ?>" class="flex gap-5">
-                                    <p class="mb-3 font-bold" style="color:#E5CC26;"><?php echo esc_html($entry_title); ?></p>
-                                </a>
-                                <?php if (!empty($categories)) : ?>
-                                    <h5 class="text-md font-bold tracking-tight text-white" style="text-transform:uppercase;font-size:11px;">
-                                        <?php
-                                        foreach ($categories as $index => $category) {
-                                            if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
-                                                $category_link = get_category_link($category->term_id);
-                                                echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-                                                if ($index !== count($categories) - 1) {
-                                                    echo ', ';
+                        <div class="flex flex-col h-full rounded-lg shadow bg-white overflow-hidden">
+                            <a href="<?php the_permalink(); ?>" class="relative block h-24 w-full overflow-hidden">
+                                <img class="w-full h-full object-cover" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
+
+                                <div class="absolute right-0 bottom-0 p-1 bg-black bg-opacity-60 flex items-center justify-center">
+                                    <svg class="svgs" height="2.5em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
+                                    </svg>
+                                </div>
+                            </a>
+
+                            <div class="flex-1 flex flex-col justify-between bg-[#F5F5F5] px-3 py-2">
+                                <div>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <p class="font-bold text-sm line-clamp-2 mb-2"><?php echo esc_html($entry_title); ?></p>
+                                    </a>
+
+                                    <?php if (!empty($categories)) : ?>
+                                        <h5 class="text-xs font-semibold uppercase tracking-tight">
+                                            <?php
+                                            foreach ($categories as $index => $category) {
+                                                if (!in_array($category->slug, ['sin-categoria', 'podcast'])) {
+                                                    $link = get_category_link($category->term_id);
+                                                    echo '<a href="' . esc_url($link) . '">' . esc_html($category->name) . '</a> ';
                                                 }
                                             }
-                                        }
-                                        ?>
-                                    </h5>
-                                <?php endif; ?>
+                                            ?>
+                                        </h5>
+                                    <?php endif; ?>
+                                </div>
+
+                                <?php
+                                if (preg_match($pattern, $content, $matches2)) {
+                                    echo '<div class="mt-2">' . $matches2[0] . '</div>';
+                                }
+                                ?>
                             </div>
                         </div>
                 <?php

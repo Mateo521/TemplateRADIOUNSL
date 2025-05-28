@@ -1,26 +1,13 @@
 <?php
 
 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args_lunes_a_viernes = array(
-    'category_name' => 'lunes-a-viernes',
-     // Cambia esto al slug de tu categoría
-    'post_type' => 'post', // Cambia esto al tipo de contenido de tus noticias si es diferente
-    'posts_per_page' => 6, // Cambia el número de noticias por página según la preferencia :)
-);
-$args_sabados = array(
-    'category_name' => 'sabados',
-     // Cambia esto al slug de tu categoría
-    'post_type' => 'post', // Cambia esto al tipo de contenido de tus noticias si es diferente
-    'posts_per_page' => 3, // Cambia el número de noticias por página según la preferencia :)
-);
+
 /*
 Template Name: Plantilla de Podcasts
 */
 
 get_header();
-$the_query_lunes_a_viernes = new WP_Query($args_lunes_a_viernes);
-$the_query_sabados = new WP_Query($args_sabados);
+
 ?>
 <!-- TITULO -->
 <div class="flex justify-center md:gap-12 gap-3 items-baseline" style="background-color: #F5F5F5; padding:15px 0;">
@@ -51,68 +38,105 @@ $the_query_sabados = new WP_Query($args_sabados);
      
 
     <!-- SECCIONPROGRAMACION -->
-    <div class="grid md:grid-cols-3 gap-8" style="padding-bottom: 35px;">
 
-
-<?php if ($the_query_lunes_a_viernes->have_posts()) : while ($the_query_lunes_a_viernes->have_posts()) :
-
-
-        $the_query_lunes_a_viernes->the_post();
-        $content = get_the_content();
-        preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-        $image_url = isset($matches[1]) ? $matches[1] : '';
-        // Obtener título y etiquetas
-        $entry_title = get_the_title();
-
-        $categories = get_the_category();
-        $entry_date = get_the_date('d/m/Y');
-
-
-?>
-        <div class="grid grid-rows-2 w-full my-6 h-full">
-            <div style="height:175px;" class="h-full">
-                <a href="<?php the_permalink(); ?>">
-                    <img class="w-full h-full" src="<?php echo esc_url($image_url); ?>" id="noticia-g" alt="">
-
-                </a>
-            </div>
-            <div class="p-6 w-full  bg-white h-full shadow-lg shadow-gray-500/50 ">
-                <a href="<?php the_permalink(); ?>">
-                    <h3 style="color: #07376A;" class="font-bold"><?php echo esc_html($entry_title); ?></h3>
-                    <p style="color:#1476B3;">
-                        <?php
-                        foreach ($categories as $index => $category) {
-
-                            if ($category->slug !== "sin-categoria" && $category->slug !== "programacion") {
-                                echo esc_html($category->name);
-                                if ($index !== count($categories) - 1) {
-                                    echo ' '; // Agregar coma y espacio entre las categorías
-                                }
-                            }
-                        }
-                        ?></p>
-                    <div class="flex justify-between font-bold">
-                        <?php
-                        preg_match_all('/<p[^>]+id="horario"[^>]*>(.*?)<\/p>/is', $content, $matches);
-                        // Mostrar los párrafos encontrados
-                        if (!empty($matches[0])) {
-                            foreach ($matches[0] as $paragraph) {
-                                echo $paragraph;
-                            }
-                        }
-                        ?>
-                        <p>></p>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-
-
-
-<?php endwhile;
-endif; ?>
-</div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Nada Secreto logo white italic text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/08b5ca9e-ca26-4783-6594-e4ca92b3a894.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Nada secreto
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      7 a 9:30 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Sonido Urbano logo white bold text with city skyline and microphone in studio background" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/c2ab6dd0-90f0-46c7-6992-f93151e24fb0.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Sonido urbano
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      9:30 a 12 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="La Locomotora logo white train icon and text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/e5257a93-5b91-4cab-8ede-e68c43f74066.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      La locomotora
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      17 a 19 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Rock del país
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      21:30 a 23 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Rock del país
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      21:30 a 23 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Rock del país
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      21:30 a 23 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+  </div>
 
 <!-- FINSECCIONPROGRAMACION -->
 
@@ -134,69 +158,104 @@ endif; ?>
 
 
     <!-- SECCIONPROGRAMACION -->
-    <div class="grid md:grid-cols-3 gap-8" style="padding-bottom: 35px;">
-
-
-<?php if ($the_query_sabados->have_posts()) : while ($the_query_sabados->have_posts()) :
-
-
-        $the_query_sabados->the_post();
-        $content = get_the_content();
-        preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-        $image_url = isset($matches[1]) ? $matches[1] : '';
-        // Obtener título y etiquetas
-        $entry_title = get_the_title();
-
-        $categories = get_the_category();
-        $entry_date = get_the_date('d/m/Y');
-
-
-?>
-        <div class="grid grid-rows-2 w-full my-6 h-full">
-            <div style="height:175px;" class="h-full">
-                <a href="<?php the_permalink(); ?>">
-                    <img class="w-full h-full" src="<?php echo esc_url($image_url); ?>" id="noticia-g" alt="">
-
-                </a>
-            </div>
-            <div class="p-6 w-full  bg-white h-full shadow-lg shadow-gray-500/50 ">
-                <a href="<?php the_permalink(); ?>">
-                    <h3 style="color: #07376A;" class="font-bold"><?php echo esc_html($entry_title); ?></h3>
-                    <p style="color:#1476B3;">
-                        <?php
-                        foreach ($categories as $index => $category) {
-
-                            if ($category->slug !== "sin-categoria" && $category->slug !== "programacion") {
-                                echo esc_html($category->name);
-                                if ($index !== count($categories) - 1) {
-                                    echo ' '; // Agregar coma y espacio entre las categorías
-                                }
-                            }
-                        }
-                        ?></p>
-                    <div class="flex justify-between font-bold">
-                        <?php
-                        preg_match_all('/<p[^>]+id="horario"[^>]*>(.*?)<\/p>/is', $content, $matches);
-                        // Mostrar los párrafos encontrados
-                        if (!empty($matches[0])) {
-                            foreach ($matches[0] as $paragraph) {
-                                echo $paragraph;
-                            }
-                        }
-                        ?>
-                        <p>></p>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-
-
-
-<?php endwhile;
-endif; ?>
-</div>
-
+   <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Nada Secreto logo white italic text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/08b5ca9e-ca26-4783-6594-e4ca92b3a894.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Nada secreto
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      7 a 9:30 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Sonido Urbano logo white bold text with city skyline and microphone in studio background" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/c2ab6dd0-90f0-46c7-6992-f93151e24fb0.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Sonido urbano
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      9:30 a 12 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="La Locomotora logo white train icon and text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/e5257a93-5b91-4cab-8ede-e68c43f74066.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      La locomotora
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      17 a 19 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Rock del país
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      21:30 a 23 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Rock del país
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      21:30 a 23 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+   <article class="bg-white rounded-md shadow-md overflow-hidden">
+    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
+    <div class="p-4">
+     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
+      Rock del país
+     </h3>
+     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+      Lunes a viernes
+     </p>
+     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
+      21:30 a 23 h
+      <i class="fas fa-chevron-right text-sm">
+      </i>
+     </p>
+    </div>
+   </article>
+  </div>
 <!-- FINSECCIONPROGRAMACION -->
 
 
