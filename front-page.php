@@ -78,7 +78,7 @@ foreach ($item->category as $cat) {
         <!-- Slide de la noticia desde RSS -->
         <div class="swiper-slide">
             <a href="<?php echo esc_url($link); ?>" target="_blank">
-                <div  class="carousel-r w-full h-[400px] bg-cover bg-center relative " style="background-image: url('<?php echo esc_url($image); ?>');">
+                <div class="carousel-r w-full h-[400px] bg-cover bg-center relative " style="background-image: url('<?php echo esc_url($image); ?>');">
                     <div class="absolute inset-0  flex flex-col justify-end p-6">
                         <h4 class="bg-[#0f3349] text-white px-3 py-1 rounded mb-2 inline-flex w-max">NOTICIAS UNSL</h4>
                         <?php foreach ($categories as $cat): ?>
@@ -106,7 +106,7 @@ foreach ($item->category as $cat) {
                                 <?php foreach ($entry_tags as $tag): ?>
                                     <span class="bg-[#1476B3] w-max inline-flex gap-1 text-white px-2 py-1 rounded mr-1 text-xs"><?php echo esc_html($tag->name); ?></span>
                                 <?php endforeach; ?>
-                                
+
                             <?php endif; ?>
                             <h3 class="text-white text-2xl mt-3"><?php echo esc_html($entry_title); ?></h3>
                         </div>
@@ -267,75 +267,96 @@ foreach ($item->category as $cat) {
 
 <!-- SECCION SLIDER -->
 
-
-<div class="flex justify-center px-6" style="background-color: #F0F0F0;">
-    <div class="relative w-full max-w-screen-xl">
-        <div class="swiper newSwiper" style="padding: 25px 0 60px 0;">
-            <div class="swiper-wrapper h-56 md:h-96">
-                <?php foreach ($programacion_query->posts as $post) : setup_postdata($post);
-                    $content = get_the_content();
-                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                    $entry_title = get_the_title();
-                    $categories = get_the_category();
-                    $entry_date = get_the_date('d/m/Y');
-                ?>
-
-                    <div class="swiper-slide">
-                        <a href="<?php the_permalink(); ?>">
-                            <div style="background-image: url(<?php echo esc_url($image_url); ?>); background-size: cover; background-position: center;" class="w-full h-full relative">
-                                <div class="absolute w-full h-full z-1" id="bg-2"></div>
-                                <div class="flex justify-center flex-col absolute inset-0" style="top: 50%; transform: translateY(-50%);">
-                                    <h1 id="titulo-slider" class="text-2xl text-center font-extrabold tracking-tight leading-none text-white">
-                                        <i><?php echo esc_html($entry_title); ?></i>
-                                    </h1>
-                                    <div class="flex items-center justify-center">
-                                        <svg class="svgs" id="svg-new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                            <path d="..." />
-                                        </svg>
-                                        <div class="flex items-center gap-4 md:text-4xl py-6 px-1 md:p-1 text-center font-extrabold tracking-tight leading-none text-white">
-                                            <h2 id="info-slider">
-                                                <?php
-                                                foreach ($categories as $index => $category) {
-                                                    if ($category->slug !== "sin-categoria" && $category->slug !== "programacion") {
-                                                        echo esc_html($category->name);
-                                                        if ($index !== count($categories) - 1) {
-                                                            echo ', ';
-                                                        }
-                                                    }
-                                                }
-                                                ?>
-                                            </h2>
-                                            <?php
-                                            preg_match_all('/<p[^>]+id="horario"[^>]*>(.*?)<\/p>/is', $content, $matches);
-                                            if (!empty($matches[0])) {
-                                                foreach ($matches[0] as $paragraph) {
-                                                    echo $paragraph;
-                                                }
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                <?php endforeach; ?>
+<section class="bg-[#F0F0F0]  p-6 ">
+    <div class="swiper newSwiper max-w-7xl rounded-lg">
+        <div class="swiper-wrapper h-96">
+            <div class="swiper-slide relative w-full">
+                <img alt="Radio studio with people wearing headphones and microphones, computers and radio equipment on a wooden table" class="w-full h-full object-center object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/2dad245b-14e6-40c9-f1f1-68af863581f4.jpg" width="1200" />
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
+                        NADA SECRETO
+                    </h1>
+                    <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <i class="fas fa-clock">
+                        </i>
+                        LUNES a VIERNES: 7 a 9:30 h
+                    </p>
+                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                        AL AIRE
+                    </button>
+                </div>
             </div>
-
-            <!-- Pagination -->
-            <div class="swiper-pagination mt-6"></div>
-
-            <!-- Navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-slide relative w-full">
+                <img alt="Radio studio with people wearing headphones and microphones, computers and radio equipment on a wooden table" class="w-full h-full object-center object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/2dad245b-14e6-40c9-f1f1-68af863581f4.jpg" width="1200" />
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
+                        NADA SECRETO
+                    </h1>
+                    <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <i class="fas fa-clock">
+                        </i>
+                        LUNES a VIERNES: 7 a 9:30 h
+                    </p>
+                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                        AL AIRE
+                    </button>
+                </div>
+            </div>
+            <div class="swiper-slide relative w-full">
+                <img alt="Radio studio with people wearing headphones and microphones, computers and radio equipment on a wooden table" class="w-full h-full object-center object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/2dad245b-14e6-40c9-f1f1-68af863581f4.jpg" width="1200" />
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
+                        NADA SECRETO
+                    </h1>
+                    <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <i class="fas fa-clock">
+                        </i>
+                        LUNES a VIERNES: 7 a 9:30 h
+                    </p>
+                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                        AL AIRE
+                    </button>
+                </div>
+            </div>
+            <div class="swiper-slide relative w-full">
+                <img alt="Radio studio with people wearing headphones and microphones, computers and radio equipment on a wooden table" class="w-full h-full object-center object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/2dad245b-14e6-40c9-f1f1-68af863581f4.jpg" width="1200" />
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
+                        NADA SECRETO
+                    </h1>
+                    <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <i class="fas fa-clock">
+                        </i>
+                        LUNES a VIERNES: 7 a 9:30 h
+                    </p>
+                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                        AL AIRE
+                    </button>
+                </div>
+            </div>
+            <div class="swiper-slide relative w-full">
+                <img alt="Radio studio with people wearing headphones and microphones, computers and radio equipment on a wooden table" class="w-full h-full object-center object-cover" height="300" src="https://storage.googleapis.com/a1aa/image/2dad245b-14e6-40c9-f1f1-68af863581f4.jpg" width="1200" />
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
+                        NADA SECRETO
+                    </h1>
+                    <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <i class="fas fa-clock">
+                        </i>
+                        LUNES a VIERNES: 7 a 9:30 h
+                    </p>
+                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                        AL AIRE
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination mt-3">
         </div>
     </div>
-</div>
 
-
-
-    <!-- FINSECCION SLIDER -->
+</section>
+<!-- FINSECCION SLIDER -->
 
 
 </div>
@@ -472,7 +493,8 @@ foreach ($item->category as $cat) {
     .slider .slides-container.moving .parallax {
         transition: none;
     }
-    .swiper-pagination-bullet-active{
+
+    .swiper-pagination-bullet-active {
         background-color: #07376A !important;
 
     }
