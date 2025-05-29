@@ -16,10 +16,10 @@ get_header();
                 LUNES A VIERNES DE 17 A 19 H
             </p>
             <p class="  mb-2 leading-tight">
-                Staff: Conducido por Hernán Corral e Ivana Pereyra. Juan Valdeón a cargo de la producción y de las noticias universitarias; Cristina Sosa frente de la información judicial; Gladys Aguilar de las noticias legislativas y de actualidad; y Danny Cayumán con entrevistas a bandas y artistas musicales. producción de Juan Valdeón.
+              <b>  Staff:</b> Conducido por Hernán Corral e Ivana Pereyra. Juan Valdeón a cargo de la producción y de las noticias universitarias; Cristina Sosa frente de la información judicial; Gladys Aguilar de las noticias legislativas y de actualidad; y Danny Cayumán con entrevistas a bandas y artistas musicales. producción de Juan Valdeón.
             </p>
             <p class="  mb-2 leading-tight">
-                Descripción: La Locomotora es el clásico de las tardes radiales de San Luis transmitiendo desde hace 23 años. Somos un programa que brinda información actualizada, noticias del entretenimiento y entrevistas de interés. Además, las columnas de deporte, espectáculo y una exquisita selección musical
+             <b>Descripción:</b> La Locomotora es el clásico de las tardes radiales de San Luis transmitiendo desde hace 23 años. Somos un programa que brinda información actualizada, noticias del entretenimiento y entrevistas de interés. Además, las columnas de deporte, espectáculo y una exquisita selección musical
             </p>
             <p class="  mb-6 leading-tight">
                 Detrás, un gran equipo de profesionales que trabaja día tras día con dedicación para acompañar e informar a quienes escuchan.
@@ -47,11 +47,26 @@ get_header();
             <h2 class=" sm:text-sm font-normal mb-4">Últimas noticias de La Locomotora</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
-                $noticias_query = new WP_Query([
-                    'category_name' => 'la-locomotora',
-                    'posts_per_page' => 3,
+                      $noticias_query = new WP_Query([
                     'post_type' => 'post',
+                    'posts_per_page' => 3,
+                    'tax_query' => [
+                        'relation' => 'AND',
+                        [
+                            'taxonomy' => 'category',
+                            'field' => 'slug',
+                            'terms' => ['la-locomotora'],
+                            'operator' => 'IN',
+                        ],
+                        [
+                            'taxonomy' => 'category',
+                            'field' => 'slug',
+                            'terms' => ['podcast'],
+                            'operator' => 'NOT IN',
+                        ],
+                    ],
                 ]);
+
 
                 while ($noticias_query->have_posts()) : $noticias_query->the_post();
                 ?>
@@ -89,10 +104,22 @@ get_header();
             <h2 class=" sm:text-sm font-normal mb-4">Últimos podcasts de La Locomotora</h2>
             <div class="flex gap-3 overflow-x-auto pb-2">
                 <?php
-                $podcast_query = new WP_Query([
-                    'category_name' => 'podcast,la-locomotora',
-                    'posts_per_page' => 6,
+                  $podcast_query = new WP_Query([
                     'post_type' => 'post',
+                    'posts_per_page' => 6,
+                    'tax_query' => [
+                        [
+                            'taxonomy' => 'category',
+                            'field' => 'slug',
+                            'terms' => ['podcast'],
+                        ],
+                        [
+                            'taxonomy' => 'category',
+                            'field' => 'slug',
+                            'terms' => ['la-locomotora'],
+                        ],
+                        'relation' => 'AND',
+                    ],
                 ]);
 
                 while ($podcast_query->have_posts()) : $podcast_query->the_post();

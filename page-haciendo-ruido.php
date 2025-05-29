@@ -19,7 +19,7 @@ get_header();
                 LUNES A VIERNES DE 9 A 13 H
             </p>
             <p class="  mb-2 leading-tight">
-                Staff: Conducido por Pablo Oro, Ada Arena y Javier Mamy. Producción a
+              <b> Staff: </b> Conducido por Pablo Oro, Ada Arena y Javier Mamy. Producción a
                 cargo de Hernán Corral, los móviles de exteriores a cargo de Cristina Sosa y
                 Gladys Aguilar. Información legislativa de Verónica Miranda y la operación
                 técnica de Rodrigo Moraga. Además, cuenta con dos columnas diarias de los
@@ -27,7 +27,7 @@ get_header();
                 temáticas y disciplinas.
             </p>
             <p class="  mb-2 leading-tight">
-                Magazine de interés general con información local, nacional e
+                <b>Descripción:</b>  Magazine de interés general con información local, nacional e
                 internacional, comentarios, entrevistas, móviles en vivo, columnistas,
                 segmentos especiales y buena música.
             </p>

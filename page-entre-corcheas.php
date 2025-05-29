@@ -1,5 +1,5 @@
 <?php
-/* Template Name: SOLO UN CAFÉ */
+/* Template Name: Entre Corcheas */
 get_header();
 ?>
 
@@ -8,26 +8,24 @@ get_header();
     <div class="relative  flex justify-center items-center h-96">
         <img class="w-full h-full absolute z-0  object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" alt="Fondo programación">
 
-        <p class="z-10 relative  md:!text-6xl !text-2xl  text-gray-100 bold">SOLO UN CAFÉ</p>
+        <p class="z-10 relative  md:!text-6xl !text-2xl  text-gray-100 bold">Entre Corcheas</p>
     </div>
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section class="mb-12">
             <h1 class="font-extrabold text-xl sm:text-2xl leading-tight mb-1 tracking-wide">
-                SOLO UN CAFÉ
+                Entre Corcheas
             </h1>
             <p class=" sm:text-sm text-[#2a6ad1] font-semibold mb-6">
-                LUNES A VIERNES DE 13 A 14 H
+                LUNES A LAS 14 H
             </p>
             <p class="  mb-2 leading-tight">
-            <b>Staff:</b>  Idea y conducción: Oscar Ángel Flores, producción a cargo de Lucas
-                Gallardo.
-                Posproducción y redes: Ivana Pereyra
-            </p>
-            <p class="  mb-2 leading-tight">
-              <b>Descripción:</b>   Programa de entrevistas y análisis político y social.
-                En todas las redes.
+                La música es ritmo, historia y pasión… y en <b><i>Entre Corcheas</i></b> tienen su espacio.
+                Descubrí sonidos, conocé a los artistas y viví cada nota.
+                Javier Mamy trae la historia, anécdotas y curiosidades de nuestros músicos y
+                bandas
 
             </p>
+
             <div class="flex flex-wrap gap-3">
                 <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664555555">
                     <i class="fab fa-whatsapp">
@@ -40,17 +38,17 @@ get_header();
                     Radio Universidad Nacional de San Luis
 
                 </a>
-                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/programasolouncafe979/?hl=es" rel="noopener noreferrer" target="_blank">
+                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/unslradio/?hl=es" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-instagram">
                     </i>
-                    programasolouncafe979
+                    unslradio
 
                 </a>
             </div>
         </section>
 
         <section class="mb-10">
-            <h2 class=" sm:text-sm font-normal mb-4">Últimas noticias de SOLO UN CAFÉ</h2>
+            <h2 class=" sm:text-sm font-normal mb-4">Últimas noticias de Entre Corcheas</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
                 $noticias_query = new WP_Query([
@@ -61,7 +59,7 @@ get_header();
                         [
                             'taxonomy' => 'category',
                             'field' => 'slug',
-                            'terms' => ['solo-un-cafe'],
+                            'terms' => ['entre-corcheas'],
                             'operator' => 'IN',
                         ],
                         [
@@ -93,7 +91,7 @@ get_header();
                             </div>
 
                             <div class="p-3 flex-1 flex flex-col justify-between">
-                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">SOLO UN CAFÉ</p>
+                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">Entre Corcheas</p>
                                 <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2">
                                     <?php the_title(); ?>
                                 </h3>
@@ -109,7 +107,7 @@ get_header();
 
 
         <section>
-            <h2 class=" sm:text-sm font-normal mb-4">Últimos podcasts de SOLO UN CAFÉ</h2>
+            <h2 class=" sm:text-sm font-normal mb-4">Últimos podcasts de Entre Corcheas</h2>
             <div class="flex gap-3 overflow-x-auto pb-2">
                 <?php
                 $podcast_query = new WP_Query([
@@ -124,7 +122,7 @@ get_header();
                         [
                             'taxonomy' => 'category',
                             'field' => 'slug',
-                            'terms' => ['solo-un-cafe'],
+                            'terms' => ['entre-corcheas'],
                         ],
                         'relation' => 'AND',
                     ],
@@ -150,7 +148,7 @@ get_header();
                             </div>
 
                             <div class="p-3 flex-1 flex flex-col justify-between">
-                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">SOLO UN CAFÉ</p>
+                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">Entre Corcheas</p>
                                 <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2">
                                     <?php the_title(); ?>
                                 </h3>

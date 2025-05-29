@@ -5,29 +5,36 @@ get_header();
 
 <div class="bg-white">
 
-    <img class="w-full" src="http://10.230.5.252/radiounsl/wp-content/uploads/2025/05/Captura-de-pantalla-2025-05-27-094945.png" alt="">
+    <div class="relative  flex justify-center items-center h-96">
+        <img class="w-full h-full absolute z-0  object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" alt="Fondo programación">
 
+        <p class="z-10 relative  md:!text-6xl !text-2xl  text-gray-100 bold">ROCK DEL PAÍS</p>
+    </div>
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section class="mb-12">
             <h1 class="font-extrabold text-xl sm:text-2xl leading-tight mb-1 tracking-wide">
                 ROCK DEL PAÍS
             </h1>
             <p class=" sm:text-sm text-[#2a6ad1] font-semibold mb-6">
-                LUNES A VIERNES DE 7 A 9 H
+                LUNES A VIERNES DE 21 A 23 H
             </p>
             <p class="  mb-2 leading-tight">
-                Staff: Producción general y conducción de Mario Otero. En la producción e
-                informes especiales, Verónica Miranda. La información judicial Cristina Sosa.
-                Desde exteriores participa Gladys Aguilar. La locución es de Leonardo
-                Mancuello. El operador técnico es Rodrigo Moraga
+                <b> Staff: </b> Conducción y producción general Danny Cayuman. Operación técnica
+                Gustavo Altamira y Ricardo Ayala
             </p>
             <p class="  mb-2 leading-tight">
-                Es un programa "típicamente periodístico", en tanto sólo hace
-                periodismo. Procura mantener la centralidad de los temas locales, con voces
-                plurales, de todos los sectores políticos y sociales. En este sentido ha marcado
-                una agenda alternativa a la clásica de los gobiernos. Se caracteriza por las
-                entrevistas a los protagonistas de las noticias, con los que invariablemente se
-                procura profundizar los temas. Es referencia en la información parlamentaria.
+                <b>Descripción:</b>
+                Rock del País es un programa de rock que se emite desde hace
+                16 años en Radio Universidad Nacional de San Luis . Rock del País es el
+                programa diario más longevo de la región, tiene más de 200 entrevistas a
+                bandas nacionales e internacionales por año, se destaca también la presencia
+                del programa en redes sociales y las presentaciones de discos y singles de
+                manera exclusiva. <br><br>
+                Rock del País ha sido desde un primer momento el primer programa de rock de
+                San Luis que dio lugar a bandas de la provincia de San Luis a través de la
+                difusión del material grabado por las mismas, como así también de entrevistas,
+                acústicos y promoción de recitales. Siempre se tiene como eje para el
+                programa el desarrollo de la cultura rock de San Luis.
             </p>
             <div class="flex flex-wrap gap-3">
                 <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664555555">
@@ -35,15 +42,16 @@ get_header();
                     </i>
                     2664555555
                 </a>
-                <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/NADASECRETO97.9" rel="noopener noreferrer" target="_blank">
+                <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/ROCKDELPAISRADIO/?locale=es_LA" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-facebook-f">
                     </i>
-                    ROCK DEL PAÍS UNSL
+                    ROCKDELPAISRADIO
                 </a>
-                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/nadasecretounsl/?hl=es" rel="noopener noreferrer" target="_blank">
+                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/unslradio/?hl=es" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-instagram">
                     </i>
-                    nadasecretounsl
+                    unslradio
+
                 </a>
             </div>
         </section>

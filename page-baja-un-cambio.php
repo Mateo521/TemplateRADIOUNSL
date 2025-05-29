@@ -16,10 +16,10 @@ get_header();
                 LUNES A VIERNES DE 18 A 21 H
             </p>
             <p class="  mb-2 leading-tight">
-                Staff: Conducido por Hernán Corral e Ivana Pereyra. Juan Valdeón a cargo de la producción y de las noticias universitarias; Cristina Sosa frente de la información judicial; Gladys Aguilar de las noticias legislativas y de actualidad; y Danny Cayumán con entrevistas a bandas y artistas musicales. producción de Juan Valdeón.
+           <b> Staff:</b> Conducido por Hernán Corral e Ivana Pereyra. Juan Valdeón a cargo de la producción y de las noticias universitarias; Cristina Sosa frente de la información judicial; Gladys Aguilar de las noticias legislativas y de actualidad; y Danny Cayumán con entrevistas a bandas y artistas musicales. producción de Juan Valdeón.
             </p>
             <p class="  mb-2 leading-tight">
-                Descripción: La Locomotora es el clásico de las tardes radiales de San Luis transmitiendo desde hace 23 años. Somos un programa que brinda información actualizada, noticias del entretenimiento y entrevistas de interés. Además, las columnas de deporte, espectáculo y una exquisita selección musical
+             <b>  Descripción:</b>  La Locomotora es el clásico de las tardes radiales de San Luis transmitiendo desde hace 23 años. Somos un programa que brinda información actualizada, noticias del entretenimiento y entrevistas de interés. Además, las columnas de deporte, espectáculo y una exquisita selección musical
             </p>
             <p class="  mb-6 leading-tight">
                 Detrás, un gran equipo de profesionales que trabaja día tras día con dedicación para acompañar e informar a quienes escuchan.

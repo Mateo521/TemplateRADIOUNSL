@@ -19,15 +19,15 @@ get_header();
                 LUNES A VIERNES DE <br> 10 A 10:15 H <br> 12 A 12:15 H <br> 16 A 16:15 H <br> 20 A 20:15 H
             </p>
             <p class="  mb-2 leading-tight">
-              Staff: Conducción de Leonardo Mancuello, Ada Arena, Pablo Almada e Ivana
-Pereyra. Producción Hernán Corral y Mauricio Di Pasquale.
+             <b>  Staff:</b>  Conducción de Leonardo Mancuello, Ada Arena, Pablo Almada e Ivana
+                Pereyra. Producción Hernán Corral y Mauricio Di Pasquale.
 
             </p>
             <p class="  mb-2 leading-tight">
-                Es un informativo con más de 30 años al aire. Desde 2025
-cuenta con cuatro ediciones de 15 minutos, brindando información local,
-universitaria, nacional e internacional. Además boletines cada 30 minutos,
-durante toda la jornada
+              <b>Descripción:</b>  Es un informativo con más de 30 años al aire. Desde 2025
+                cuenta con cuatro ediciones de 15 minutos, brindando información local,
+                universitaria, nacional e internacional. Además boletines cada 30 minutos,
+                durante toda la jornada
             </p>
             <div class="flex flex-wrap gap-3">
                 <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664555555">
@@ -38,20 +38,20 @@ durante toda la jornada
                 <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/unslradio" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-facebook-f">
                     </i>
-                    Radio Universidad Nacional de San Luis 
+                    Radio Universidad Nacional de San Luis
 
                 </a>
                 <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/unslradio/?hl=es" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-instagram">
                     </i>
-                    unslradio 
+                    unslradio
 
                 </a>
             </div>
         </section>
 
         <section class="mb-10">
-            <h2 class=" sm:text-sm font-normal mb-4">Últimas noticias de HACIENDO RUIDO</h2>
+            <h2 class=" sm:text-sm font-normal mb-4">Últimas noticias de FRECUENCIA INFORMATIVA</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
                 $noticias_query = new WP_Query([
@@ -62,7 +62,7 @@ durante toda la jornada
                         [
                             'taxonomy' => 'category',
                             'field' => 'slug',
-                            'terms' => ['haciendo-ruido'],
+                            'terms' => ['frecuencia-informativa'],
                             'operator' => 'IN',
                         ],
                         [
@@ -94,7 +94,7 @@ durante toda la jornada
                             </div>
 
                             <div class="p-3 flex-1 flex flex-col justify-between">
-                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">HACIENDO RUIDO</p>
+                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">FRECUENCIA INFORMATIVA</p>
                                 <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2">
                                     <?php the_title(); ?>
                                 </h3>
@@ -110,7 +110,7 @@ durante toda la jornada
 
 
         <section>
-            <h2 class=" sm:text-sm font-normal mb-4">Últimos podcasts de HACIENDO RUIDO</h2>
+            <h2 class=" sm:text-sm font-normal mb-4">Últimos podcasts de FRECUENCIA INFORMATIVA</h2>
             <div class="flex gap-3 overflow-x-auto pb-2">
                 <?php
                 $podcast_query = new WP_Query([
@@ -125,7 +125,7 @@ durante toda la jornada
                         [
                             'taxonomy' => 'category',
                             'field' => 'slug',
-                            'terms' => ['haciendo-ruido'],
+                            'terms' => ['frecuencia-informativa'],
                         ],
                         'relation' => 'AND',
                     ],
@@ -151,7 +151,7 @@ durante toda la jornada
                             </div>
 
                             <div class="p-3 flex-1 flex flex-col justify-between">
-                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">HACIENDO RUIDO</p>
+                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">FRECUENCIA INFORMATIVA</p>
                                 <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2">
                                     <?php the_title(); ?>
                                 </h3>

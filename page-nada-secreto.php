@@ -19,13 +19,13 @@ get_header();
                 LUNES A VIERNES DE 7 A 9 H
             </p>
             <p class="  mb-2 leading-tight">
-                Staff: Producción general y conducción de Mario Otero. En la producción e
+                <b>Staff:</b> Producción general y conducción de Mario Otero. En la producción e
                 informes especiales, Verónica Miranda. La información judicial Cristina Sosa.
                 Desde exteriores participa Gladys Aguilar. La locución es de Leonardo
                 Mancuello. El operador técnico es Rodrigo Moraga
             </p>
             <p class="  mb-2 leading-tight">
-                Es un programa "típicamente periodístico", en tanto sólo hace
+                <b>Descripción:</b> un programa "típicamente periodístico", en tanto sólo hace
                 periodismo. Procura mantener la centralidad de los temas locales, con voces
                 plurales, de todos los sectores políticos y sociales. En este sentido ha marcado
                 una agenda alternativa a la clásica de los gobiernos. Se caracteriza por las
