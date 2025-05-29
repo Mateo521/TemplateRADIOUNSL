@@ -82,9 +82,9 @@ if ($is_podcast) :
                             <p class="rounded-lg text-white p-1  inline-flex" style="background-color: #1476B3; font-size:13px;"><a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"><?php echo esc_html($tag->name); ?></a></p>
                         <?php endforeach; ?>
                     <?php endif; ?>
-                    <p class="subtitulos font-bold pb-3"> </p>
+                    <div class="subtitulos font-bold pb-3"> </div>
 
-                    <p class="subtextos"></p>
+                    <div class="subtextos"></div>
 
                     <div class="podcasts"></div>
                 </div>
@@ -249,7 +249,7 @@ endif;
                         $categories = get_the_category();
                         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
-                         <div class="flex flex-col h-full rounded-lg shadow overflow-hidden bg-[#041824]" >
+                        <div class="flex flex-col h-full rounded-lg shadow overflow-hidden bg-[#041824]">
                             <a href="<?php the_permalink(); ?>" class="relative block h-24 w-full overflow-hidden">
                                 <img class="w-full h-full object-cover" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
 
@@ -375,32 +375,48 @@ endif;
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var subtituloElement = document.getElementById('subtitulo');
-        var subtextoElement = document.getElementById('subtexto');
-        var podcastElement = document.getElementById('podcast');
-        var otraUbicacionContainer_1 = document.querySelector('.subtitulos');
-        var otraUbicacionContainer_2 = document.querySelector('.subtextos');
-        var otraUbicacionContainer_3 = document.querySelector('.podcasts');
-        if (subtituloElement && subtextoElement && podcastElement &&
-            otraUbicacionContainer_1 && otraUbicacionContainer_2 && otraUbicacionContainer_3) {
-            var subtituloClone = subtituloElement.cloneNode(true);
-            var subtextoClone = subtextoElement.cloneNode(true);
-            var podcastClone = podcastElement.cloneNode(true);
-            subtituloElement.remove();
-            subtextoElement.remove();
-            podcastElement.remove();
-            otraUbicacionContainer_1.appendChild(subtituloClone);
-            otraUbicacionContainer_2.appendChild(subtextoClone);
-            otraUbicacionContainer_3.appendChild(podcastClone);
-        }
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+    var subtituloElement = document.getElementById('subtitulo');
+    var subtextoElement = document.getElementById('subtexto');
+    var podcastElement = document.getElementById('podcast');
+
+    var otraUbicacionContainer_1 = document.querySelector('.subtitulos');
+    var otraUbicacionContainer_2 = document.querySelector('.subtextos');
+    var otraUbicacionContainer_3 = document.querySelector('.podcasts');
+
+    if (subtituloElement && otraUbicacionContainer_1) {
+        var subtituloClone = subtituloElement.cloneNode(true);
+        subtituloElement.remove();
+        otraUbicacionContainer_1.appendChild(subtituloClone);
+    }
+
+    if (subtextoElement && otraUbicacionContainer_2) {
+        var subtextoClone = subtextoElement.cloneNode(true);
+        subtextoElement.remove();
+        otraUbicacionContainer_2.appendChild(subtextoClone);
+    }
+
+    if (podcastElement && otraUbicacionContainer_3) {
+        var podcastClone = podcastElement.cloneNode(true);
+        podcastElement.remove();
+        otraUbicacionContainer_3.appendChild(podcastClone);
+    }
+});
+
 </script>
 <style>
     .wp-block-audio audio {
-        margin-top: 10px;
+        border-radius: 10px;
     }
 
+    .wp-block-image {
+        padding: 10px 0;
+
+    }
+.wp-block-image img {
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
     .podcasts audio::-webkit-media-controls-play-button,
     .podcasts audio::-webkit-media-controls-panel {
         background-color: #E5CC26;

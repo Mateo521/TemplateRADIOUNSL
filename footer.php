@@ -313,7 +313,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     }
 
     .wp-block-audio audio {
-        padding-bottom: 10px;
+
         width: 100%;
         min-width: inherit !important;
     }
