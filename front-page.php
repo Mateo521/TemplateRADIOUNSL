@@ -317,7 +317,8 @@ foreach ($item->category as $cat) {
                     <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                         <i class="fas fa-clock text-center">
                         </i>
-                        LUNES a VIERNES: <p class="text-xl"> 10 a 10:15 h <br> 12 a 12:15 h <br> 16 a 16:15 h <br> 20 a 20:15 h </p>
+                        LUNES a VIERNES:
+                    <p class="text-xl"> 10 a 10:15 h <br> 12 a 12:15 h <br> 16 a 16:15 h <br> 20 a 20:15 h </p>
                     </p>
                     <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
@@ -356,7 +357,7 @@ foreach ($item->category as $cat) {
                     </button>
                 </div>
             </div>
-             <div class="swiper-slide relative w-full">
+            <div class="swiper-slide relative w-full">
                 <img alt="Radio studio with people wearing headphones and microphones, computers and radio equipment on a wooden table" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
                 <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
                     <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
@@ -516,7 +517,7 @@ foreach ($item->category as $cat) {
         transition: none;
     }
 
-   
+
 
     .swiper-pagination-bullet {
         background-color: rgb(203, 228, 255) !important;
@@ -660,86 +661,81 @@ foreach ($item->category as $cat) {
                                     <img class="rounded-t-lg w-full h-full object-cover absolute" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
                                 </a>
                             </div>
-                            <div class="p-5" style="background-color:#041824 ;">
-
-
-                                <a href="<?php the_permalink(); ?>" class="flex gap-5 w-full justify-between">
+                            <div>
 
 
 
+                                <div class="p-5" style="background-color:#041824 ;">
+
+
+                                    <a href="<?php the_permalink(); ?>" class="flex gap-5 w-full justify-between">
 
 
 
 
-                                    <p class="mb-3 font-bold text-white dark:text-gray-400" style="color:#E5CC26;">
-                                        <?php echo esc_html($entry_title); ?>
 
 
-                                </a>
 
-                                <a href="<?php the_permalink(); ?>">
-                                    <p class="py-2 text-white">
+                                        <p class="mb-3 font-bold text-white dark:text-gray-400" style="color:#E5CC26;">
+                                            <?php echo esc_html($entry_title); ?>
+
+
+                                    </a>
+
+                                    <a href="<?php the_permalink(); ?>">
+                                        <p class="py-2 text-white">
+                                            <?php
+
+                                            $contenido = wp_strip_all_tags(get_the_content());
+                                            $textoRecortado = wp_trim_words($contenido, 20, '...');
+                                            echo $textoRecortado;
+                                            ?>
+                                        </p>
+                                    </a>
+
+
+
+                                    <div class="flex items-center justify-between">
+                                        <h6 class="text-gray-500"><?php echo esc_html($entry_date); ?></h6>
                                         <?php
-                                        $contenido = wp_strip_all_tags(get_the_content());
-                                        $limiteCaracteres = 100;
-
-                                        if (strlen($contenido) > $limiteCaracteres) {
-
-                                            $textoRecortado = substr($contenido, 0, $limiteCaracteres);
 
 
-                                            $textoRecortado .= '...';
-                                        } else {
+                                        if (!empty($categories)) {
+                                            echo '<h5 class="text-white text-md font-bold tracking-tight" style="text-transform:uppercase;font-size:12px;">';
 
-                                            $textoRecortado = $contenido;
+                                            foreach ($categories as $index => $category) {
+                                                if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
+                                                    $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
+                                                    echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
+
+                                                    if ($index !== count($categories) - 1) {
+                                                        echo ' '; // Agregar coma y espacio entre categorías
+                                                    }
+                                                }
+                                            }
+
+                                            echo '</h5>';
                                         }
 
-
-                                        echo $textoRecortado;
                                         ?>
-                                    </p>
-                                </a>
 
 
+
+
+
+
+
+
+                                        <!--   <p class="mb-3 font-normal text-white dark:text-gray-400"><?php echo esc_html(strip_tags($short_content)); ?></p> -->
+                                    </div>
+                                </div>
                                 <?php
                                 if (preg_match($pattern, $content, $matches2)) {
                                     echo $matches2[0];
                                 }
                                 ?>
-                                <div class="flex items-center justify-between">
-                                    <h6 class="text-gray-500"><?php echo esc_html($entry_date); ?></h6>
-                                    <?php
-
-
-                                    if (!empty($categories)) {
-                                        echo '<h5 class="text-white text-md font-bold tracking-tight" style="text-transform:uppercase;font-size:12px;">';
-
-                                        foreach ($categories as $index => $category) {
-                                            if ($category->slug !== "sin-categoria" && $category->slug !== "podcast") {
-                                                $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
-                                                echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-
-                                                if ($index !== count($categories) - 1) {
-                                                    echo ' '; // Agregar coma y espacio entre categorías
-                                                }
-                                            }
-                                        }
-
-                                        echo '</h5>';
-                                    }
-
-                                    ?>
-
-
-
-
-
-
-
-
-                                    <!--   <p class="mb-3 font-normal text-white dark:text-gray-400"><?php echo esc_html(strip_tags($short_content)); ?></p> -->
-                                </div>
                             </div>
+
                         </div>
 
                 <?php
@@ -754,7 +750,7 @@ foreach ($item->category as $cat) {
 
 
 
-            <div class="grid grid-cols-6 gap-8 py-6" id="grids">
+            <div class="grid gap-4 md:grid-cols-1 grid-cols-6 py-6 px-2" id="grids">
 
                 <?php
                 if ($podcasts_query->have_posts()) :
@@ -768,7 +764,11 @@ foreach ($item->category as $cat) {
                         $categories = get_the_category();
                         $content = get_the_content();
                         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
-
+                        $has_audio = preg_match($pattern, $content, $matches2);
+                        $card_classes = 'flex flex-col h-full rounded-lg shadow bg-white overflow-hidden transition-all duration-300';
+                        if ($has_audio) {
+                            $card_classes .= ' has-audio';
+                        }
                         if ($counter <= 3) continue;
                 ?>
 
@@ -802,12 +802,13 @@ foreach ($item->category as $cat) {
                                         </h5>
                                     <?php endif; ?>
                                 </div>
-
-                                <?php
-                                if (preg_match($pattern, $content, $matches2)) {
-                                    echo '<div class="mt-2">' . $matches2[0] . '</div>';
-                                }
-                                ?>
+                                <div class="<?php echo $card_classes; ?>">
+                                    <?php
+                                    if (preg_match($pattern, $content, $matches2)) {
+                                        echo $matches2[0];
+                                    }
+                                    ?>
+                                </div>
                             </div>
                         </div>
 
@@ -884,7 +885,100 @@ foreach ($item->category as $cat) {
     </div>
 </div>
 <!-- FINSECCION FORMULARIO -->
+
+
+
+
+
+
+
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+/*
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (isMobile) return;
+        
+*/
+
+        const grid = document.querySelector("#grids");
+
+        if (!grid) return;
+
+        const audios = grid.querySelectorAll("audio");
+
+        audios.forEach((audio, index) => {
+            // Oculta el reproductor nativo
+            audio.style.display = "none";
+
+            // Crear contenedor de controles
+            const controls = document.createElement("div");
+            controls.className = "flex items-center justify-center space-x-1 p-1 bg-gray-100 rounded-lg shadow";
+
+            // Botones
+            const playBtn = document.createElement("button");
+            playBtn.innerHTML = "▶️";
+            playBtn.className = "p-1 text-sm rounded-full bg-blue-500 text-white hover:bg-blue-600 transition";
+
+            const back10Btn = document.createElement("button");
+            back10Btn.innerHTML = "⏪ 10s";
+            back10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+
+            const forward10Btn = document.createElement("button");
+            forward10Btn.innerHTML = "⏩ 10s";
+            forward10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+
+            const restartBtn = document.createElement("button");
+            restartBtn.innerHTML = "⏮️";
+            restartBtn.className = "p-1 text-sm bg-red-400 text-white rounded hover:bg-red-500";
+
+            // Estado local de reproducción
+            let playing = false;
+
+            playBtn.addEventListener("click", () => {
+                if (playing) {
+                    audio.pause();
+                    playBtn.innerHTML = "▶️";
+                } else {
+                    audio.play();
+                    playBtn.innerHTML = "⏸️";
+                }
+                playing = !playing;
+            });
+
+            back10Btn.addEventListener("click", () => {
+                audio.currentTime = Math.max(0, audio.currentTime - 10);
+            });
+
+            forward10Btn.addEventListener("click", () => {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+            });
+
+            restartBtn.addEventListener("click", () => {
+                audio.currentTime = 0;
+                audio.play();
+                playing = true;
+                playBtn.innerHTML = "⏸️";
+            });
+
+            // Insertar controles
+            controls.appendChild(restartBtn);
+            controls.appendChild(back10Btn);
+            controls.appendChild(playBtn);
+            controls.appendChild(forward10Btn);
+
+            // Insertar controles justo después del <audio>
+            audio.parentElement.appendChild(controls);
+        });
+    });
+
+
+
+
+
+
+
     function obtenerDuracionDeTodosLosAudios() {
         var tiempo = [];
         var bloquesAudio = document.querySelectorAll('#podcasts-6 .max-w-sm');

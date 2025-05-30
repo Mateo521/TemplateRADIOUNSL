@@ -327,7 +327,7 @@
 
         }
     </style>
-    <script>
+    <!--script>
         if ($(window).width() < 766 || $(window).height() < 480) {
             var prevScrollpos = window.pageYOffset;
             window.onscroll = function() {
@@ -342,4 +342,4 @@
                 prevScrollpos = currentScrollPos;
             }
         }
-    </script>
+    </script-->
