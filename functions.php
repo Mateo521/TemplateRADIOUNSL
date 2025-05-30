@@ -12,7 +12,7 @@ function linksradio_unsl_estilos()
 {
     $version = wp_get_theme()->get('Version');
     wp_enqueue_style('unsl_estilo-style', get_template_directory_uri() . "/style.css", array('unsl_estilo-flowbite'), $version, 'all');
-    wp_enqueue_style('unsl_estilo-flowbite', "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css", array(), '1.8.0', 'all');
+    wp_enqueue_style('unsl_estilo-flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css", array(), '1.8.0', 'all');
 }
 
 add_action('wp_enqueue_scripts', 'linksradio_unsl_estilos');
@@ -21,7 +21,13 @@ add_action('wp_enqueue_scripts', 'linksradio_unsl_estilos');
 function linksradio_unsl_scripts()
 {
 
-    wp_enqueue_script('unsl_estilo-flowbite', "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js", array(), '1.8.0', false);
+
+    wp_enqueue_script('tailwindcss', "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4", array(), '1.8.0', false);
+
+
+    wp_enqueue_script('unsl_estilo-flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js", array(), '1.8.0', false);
+
+
 
     wp_enqueue_script('unsl_estilo-fontawesome', "https://kit.fontawesome.com/19e7896a5a.js", array(), '1.0', false);
 

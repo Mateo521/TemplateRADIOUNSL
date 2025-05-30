@@ -28,20 +28,20 @@ if ($noticias_query->have_posts()) : ?>
             <div class="grid md:grid-cols-3 gap-8">
 
                 <?php while ($noticias_query->have_posts()) : $noticias_query->the_post(); ?>
-                    <a href="<?php the_permalink(); ?>">
-                        <div class="flex flex-col w-full my-6">
+                    <div class="flex flex-col w-full my-6 bg-white rounded-md shadow-lg shadow-gray-500/50 overflow-hidden transition-transform duration-300 hover:scale-101 hover:shadow-xl">
                         <?php
-                         $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                     if ($thumbnail_url): ?>
-                            <img class="rounded-t-md"   src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        if ($thumbnail_url): ?>
+                            <img class="rounded-t-md w-full object-cover" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" />
                         <?php endif; ?>
-                        
-                            <div class="p-6 w-full bg-white h-full shadow-lg shadow-gray-500/50">
-                                <h2 class="font-bold py-4" style="color:#07376A;"><?php the_title(); ?></h2>
-                                <?php the_excerpt(); ?>
-                            </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h2 class="font-bold py-4 text-[#07376A] text-lg leading-tight"><?php the_title(); ?></h2>
+                            <div class="flex-grow text-gray-700 text-sm leading-relaxed"><?php the_excerpt(); ?></div>
+                            <a href="<?php the_permalink(); ?>" class="mt-4 inline-block text-[#07376A] font-semibold hover:text-[#05507a] transition-colors duration-300">
+                                Leer más <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 <?php endwhile; ?>
 
             </div>
@@ -69,39 +69,39 @@ wp_reset_postdata();
 ?>
 
 <style>
-.pagination {
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
+    .pagination {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+    }
 
-.pagination .current {
-    display: inline-block;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    color: whitesmoke;
-    background-color: #282828;
-    text-decoration: none;
-}
+    .pagination .current {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0 5px;
+        border: 1px solid #ccc;
+        color: whitesmoke;
+        background-color: #282828;
+        text-decoration: none;
+    }
 
-.pagination .current:hover {
-    color: white;
-}
+    .pagination .current:hover {
+        color: white;
+    }
 
-.pagination a {
-    display: inline-block;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    background-color: #f4f4f4;
-    text-decoration: none;
-}
+    .pagination a {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0 5px;
+        border: 1px solid #ccc;
+        background-color: #f4f4f4;
+        text-decoration: none;
+    }
 
-.pagination a:hover {
-    background-color: #ddd;
-}
+    .pagination a:hover {
+        background-color: #ddd;
+    }
 </style>
 
 <?php

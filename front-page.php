@@ -37,7 +37,7 @@ $institucional_query = new WP_Query($args_institucional);
 
 
 
-$rss_url = 'https://noticias.unsl.edu.ar/?call_custom_simple_rss=1&csrp_cat=6';
+$rss_url = 'https://noticias.unsl.edu.ar/?call_custom_simple_rss=1';
 $rss = simplexml_load_file($rss_url);
 
 if ($rss !== false && isset($rss->channel->item[0])) {
@@ -58,8 +58,26 @@ if ($rss !== false && isset($rss->channel->item[0])) {
 }
 
 $categories = [];
+
 foreach ($item->category as $cat) {
-    $categories[] = (string)$cat;
+    $category = (string)$cat;
+
+    
+    $categoryName = match ($category) {
+        '3' => 'Institucional',
+        '4' => 'Ciencia',
+        '2218' => 'Coronavirus',
+        '7' => 'Destacado',
+        '8' => 'Cultura',
+        '9' => 'Entrevistas',
+        '5' => 'Sociedad',
+        '6' => 'Principal',
+        '639' => 'UNSL TV',
+        '3457' => 'Laboratorios',
+        default => 'Desconocida',
+    };
+
+    $categories[] = $categoryName;
 }
 ?>
 
@@ -750,7 +768,7 @@ foreach ($item->category as $cat) {
 
 
 
-            <div class="grid gap-4 md:grid-cols-1 grid-cols-6 py-6 px-2" id="grids">
+            <div class="grid gap-4 grid-cols-1 md:grid-cols-6 py-6 px-2" id="grids">
 
                 <?php
                 if ($podcasts_query->have_posts()) :

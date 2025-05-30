@@ -230,7 +230,7 @@ endif;
         <!-- ULTIMAS NOTICIAS PODCASTS -->
         <?php if ($is_podcast) : ?>
             <h1 class="font-bold text-xl">Últimos podcasts</h1>
-            <div class="grid grid-cols-4 gap-8 py-6" id="grids" style="justify-items: center;">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6 "  style="justify-items: center;">
 
                 <?php
                 $args_podcasts = array(
@@ -247,6 +247,7 @@ endif;
                         $entry_title = get_the_title();
                         $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $categories = get_the_category();
+                        $content = get_the_content();
                         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
                         <div class="flex flex-col h-full rounded-lg shadow overflow-hidden bg-[#041824]">
@@ -281,6 +282,7 @@ endif;
                                 </div>
 
                                 <?php
+                                $matches2 = [];
                                 if (preg_match($pattern, $content, $matches2)) {
                                     echo '<div class="mt-2">' . $matches2[0] . '</div>';
                                 }
@@ -304,7 +306,7 @@ endif;
         <!-- ULTIMAS NOTICIAS -->
         <?php if (!$is_podcast) : ?>
             <h1 class="font-bold text-xl">Últimas noticias</h1>
-            <div class="grid grid-cols-4 gap-8 py-6" id="grids" style="justify-items: center;">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6"  style="justify-items: center;">
                 <?php
                 $args_news = array(
                     'category__not_in' => array(get_cat_ID('podcast')),
@@ -319,6 +321,7 @@ endif;
                         $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $entry_title = get_the_title();
                         $categories = get_the_category();
+                      $content = get_the_content();
                         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
                         <div class="flex flex-col h-full rounded-lg shadow bg-white overflow-hidden">
@@ -353,6 +356,7 @@ endif;
                                 </div>
 
                                 <?php
+                                     $matches2 = [];
                                 if (preg_match($pattern, $content, $matches2)) {
                                     echo '<div class="mt-2">' . $matches2[0] . '</div>';
                                 }

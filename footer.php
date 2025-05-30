@@ -535,7 +535,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     });
 
 
-    const themeURL = "<?php echo get_template_directory_uri(); ?>";
+      const themeURL = "<?php echo get_template_directory_uri(); ?>";
 
     function Adelantar() {
         console.log("adelantar a vivo.");
@@ -585,23 +585,13 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         const img1 = document.getElementById("radio-imagen");
         const img2 = document.getElementById("radio-imagen2");
 
-        if (img1) {
-            img1.onerror = () => {
-                console.warn("Error cargando img1. Imagen fallback.");
-                img1.src = themeURL + "/assets/images/icon-5.png";
-            };
+        if (img1 && img2) {
             img1.src = src;
-        }
-
-        if (img2) {
-            img2.onerror = () => {
-                console.warn("Error cargando img2. Imagen fallback.");
-                img2.src = themeURL + "/assets/images/icon-5.png";
-            };
             img2.src = src;
+        } else {
+            console.warn("No se encontraron las imágenes del radio.");
         }
     }
-
 
     function horarioslav(date) {
         const total = date.getHours() * 60 + date.getMinutes();
@@ -665,12 +655,12 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         const match = horarios.find(h => total >= h.start && total <= h.end);
 
         if (match) {
-
-            setRadioImage(themeURL + `/assets/images/${match.img}`);
+            
+            setRadioImage(themeURL +`/assets/images/${match.img}`);
             return match.text;
         }
 
-        setRadioImage(themeURL + "/assets/images/icon-5.png");
+        setRadioImage(themeURL +"/assets/images/icon-5.png");
         return "Música";
     }
 
@@ -697,12 +687,12 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         const match = horarios.find(h => total >= h.start && total <= h.end);
 
         if (match) {
-
+      
             setRadioImage(themeURL + "/assets/images/radio-9.png");
             return match.text;
         }
 
-
+     
         setRadioImage(themeURL + "/assets/images/icon-5.png");
 
         return "Música";
@@ -739,8 +729,8 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                     return horariossab(date);
                     break;
                 default:
-                    document.getElementById("radio-imagen").src = themeURL + "/assets/images/icon-5.png";
-                    document.getElementById("radio-imagen2").src = themeURL + "/images/icon-5.png";
+                    document.getElementById("radio-imagen").src = themeURL+"/assets/images/icon-5.png";
+                    document.getElementById("radio-imagen2").src = themeURL+"/images/icon-5.png";
                     return "Música";
             }
         }
