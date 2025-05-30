@@ -136,57 +136,99 @@
 
     <!-- STAFF -->
     <section style="background: #07376A;">
-        <h1 class="text-7xl text-center font-bold text-white"
-            style="padding: 55px 0 25px 0; font-family: 'Antonio', sans-serif;">STAFF</h1>
-        <h1 class="text-4xl text-center font-bold text-white"
+   
+     <h1 class="text-4xl text-center font-bold text-white"
             style="padding: 55px 0 25px 0;font-family: 'Antonio', sans-serif;">DIRECCIÓN</h1>
         <div class="flex justify-center">
             <div class="max-w-screen-xl p-6 w-full">
                 <div class="grid w-full md:grid-cols-4 grid-cols-2 gap-5" id="staffs-img">
                     <div class="flex flex-col" id="padd-staff">
-                        <img class="rounded-full" id="padd-staff" src="https://randomuser.me/api/portraits/men/92.jpg"
+                        <img class="rounded-full" id="padd-staff" src="https://randomuser.me/api/portraits/men/66.jpg"
                             alt="Nombre y Apellido">
                         <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
                         </p>
                         <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
-
-                                                        
-<!-- Modal toggle -->
-<button data-modal-target="staticModal" data-modal-toggle="staticModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 my-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  Mostrar Información
-</button>
                     </div>
 
                     <div class="flex flex-col" id="padd-staff">
-                        <img class="rounded-full " id="padd-staff" src="https://randomuser.me/api/portraits/men/91.jpg"
+                        <img class="rounded-full " id="padd-staff" src="https://randomuser.me/api/portraits/men/65.jpg"
                             alt="Nombre y Apellido">
                         <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
                         </p>
                         <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
-
-                        <!-- Modal toggle -->
-<button data-modal-target="staticModal-2" data-modal-toggle="staticModal-2" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 my-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  Mostrar Información
-</button>
                     </div>
                     <div class="flex flex-col " id="padd-staff">
                         <img class="rounded-full " id="padd-staff"
-                            src="https://randomuser.me/api/portraits/women/90.jpg" alt="Nombre y Apellido">
+                            src="https://randomuser.me/api/portraits/women/63.jpg" alt="Nombre y Apellido">
                         <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
                         </p>
                         <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
                     </div>
                     <div class="flex flex-col " id="padd-staff">
                         <img class="rounded-full " id="padd-staff"
-                            src="https://randomuser.me/api/portraits/women/36.jpg" alt="Nombre y Apellido">
+                            src="https://randomuser.me/api/portraits/women/52.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/women/58.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/women/59.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/men/38.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/women/37.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/men/36.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/women/34.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/women/35.jpg" alt="Nombre y Apellido">
+                        <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
+                        </p>
+                        <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
+                    </div>
+                    <div class="flex flex-col " id="padd-staff">
+                        <img class="rounded-full " id="padd-staff"
+                            src="https://randomuser.me/api/portraits/women/32.jpg" alt="Nombre y Apellido">
                         <p class="text-center text-white font-bolds" style="padding: 15px 0 10px 0;">Juan <br> Gonzalez
                         </p>
                         <p class="text-center  font-bold" style="color:#E5CC26">NADA SECRETO</p>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
 

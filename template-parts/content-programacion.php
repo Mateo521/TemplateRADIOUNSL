@@ -11,292 +11,258 @@ get_header();
 ?>
 <!-- TITULO -->
 <div class="flex justify-center md:gap-12 gap-3 items-baseline" style="background-color: #F5F5F5; padding:15px 0;">
-    <h1 id="titulo-categoria" class="font-bold" style=" font-family: 'Antonio', sans-serif; color:#07376A;">PROGRAMACIÓN</h1>
-    <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-4.png" alt="">
+  <h1 id="titulo-categoria" class="font-bold" style=" font-family: 'Antonio', sans-serif; color:#07376A;">PROGRAMACIÓN</h1>
+  <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-4.png" alt="">
 </div>
 <!-- FINTITULO -->
 <div>
-    <img class="w-full" src="<?php echo get_template_directory_uri(); ?>/assets/images/banner-2.png" alt="">
+  <img class="w-full" src="<?php echo get_template_directory_uri(); ?>/assets/images/banner-2.png" alt="">
 </div>
 <div class="flex justify-center p-8 bg-white">
-    <div class="max-w-screen-xl w-full">
-
-
-    <!-- ACORDION -->
-    
-<div id="accordion-collapse" data-accordion="collapse">
-  <h2 id="accordion-collapse-heading-1">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
-      <span  style="color:#07376A;" class="font-bold">Lunes a Viernes</span>
-      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-      </svg>
-    </button>
-  </h2>
-  <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-     
-
-    <!-- SECCIONPROGRAMACION -->
-
-    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Nada Secreto logo white italic text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/08b5ca9e-ca26-4783-6594-e4ca92b3a894.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Nada secreto
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
+  <section class="max-w-7xl w-full">
+    <!-- Lunes a viernes heading -->
+    <h2 id="toggle-lunes" class="text-sm font-semibold text-[#003366] flex items-center gap-1 mb-6 cursor-pointer select-none">
       Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      7 a 9:30 h
-      <i class="fas fa-chevron-right text-sm">
+      <i class="fas fa-chevron-up text-[#003366] text-xs transition-transform duration-300" id="icon-lunes">
       </i>
-     </p>
+    </h2>
+    <!-- Grid for Lunes a viernes -->
+    <div id="content-lunes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 transition-height" style="height:auto; opacity:1;">
+      <!-- Card 1 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Nada secreto logo in white italic text on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/9e28573b-1aba-4fa6-220d-c0e6a9337bc4.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Nada secreto
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Lunes a viernes
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            7 a 9:30 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
+      <!-- Card 2 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Sonido urbano white logo on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/db445afd-e676-46a8-f572-c32c2219f7ad.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Sonido urbano
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Lunes a viernes
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            9:30 a 12 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
+      <!-- Card 3 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="La locomotora white logo on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/58889d7e-3bdb-454c-f692-d284048282f2.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            La locomotora
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Lunes a viernes
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            17 a 19 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
+      <!-- Card 4 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Rock del país white logo on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/b5c16a95-9a1a-4b23-03e3-73fb2ee335f0.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Rock del país
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Lunes a viernes
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            21:30 a 23 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
+      <!-- Card 5 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Rock del país white logo on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/b5c16a95-9a1a-4b23-03e3-73fb2ee335f0.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Rock del país
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Lunes a viernes
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            21:30 a 23 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
+      <!-- Card 6 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Rock del país white logo on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/b5c16a95-9a1a-4b23-03e3-73fb2ee335f0.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Rock del país
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Lunes a viernes
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            21:30 a 23 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
     </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Sonido Urbano logo white bold text with city skyline and microphone in studio background" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/c2ab6dd0-90f0-46c7-6992-f93151e24fb0.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Sonido urbano
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      9:30 a 12 h
-      <i class="fas fa-chevron-right text-sm">
+    <!-- Sábados heading -->
+    <h2 id="toggle-sabados" class="text-sm font-semibold text-[#003366] flex items-center gap-1 mb-6 cursor-pointer select-none">
+      Sábados
+      <i class="fas fa-chevron-up text-[#003366] text-xs transition-transform duration-300" id="icon-sabados">
       </i>
-     </p>
+    </h2>
+    <!-- Grid for Sábados -->
+    <div id="content-sabados" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-height" style="height:auto; opacity:1;">
+      <!-- Card 1 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Rock Nacional text on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/813d1b14-d728-4b95-c7a6-0c9008120ccd.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Rock Nacional
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Sábados
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            8 a 9 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
+      <!-- Card 2 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Sonidos de Latinoamérica text on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/a102de11-aa9e-4279-5f08-2272cfe48b3a.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Sonidos de Latinoamérica
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Sábados
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            9 a 10 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
+      <!-- Card 3 -->
+      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+        <img alt="Tangos y milongas text on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/eb016dd2-bece-45c4-28fe-897dcc805b71.jpg" width="600" />
+        <div class="p-4">
+          <h3 class="text-sm font-semibold text-[#003366] mb-1">
+            Tangos y milongas
+          </h3>
+          <p class="text-xs text-[#0056b3] mb-0.5">
+            Sábados
+          </p>
+          <p class="text-xs text-gray-700 mb-0 flex justify-between items-center">
+            10 a 11 h
+            <i class="fas fa-chevron-right text-gray-400 text-xs">
+            </i>
+          </p>
+        </div>
+      </article>
     </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="La Locomotora logo white train icon and text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/e5257a93-5b91-4cab-8ede-e68c43f74066.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      La locomotora
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      17 a 19 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Rock del país
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      21:30 a 23 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Rock del país
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      21:30 a 23 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Rock del país
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      21:30 a 23 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-  </div>
-
-<!-- FINSECCIONPROGRAMACION -->
-
-
-    </div>
-  </div>
-  <h2 id="accordion-collapse-heading-2">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
-      <span   style="color:#07376A;" class="font-bold">Sábados</span>
-      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-      </svg>
-    </button>
-  </h2>
-  <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
-    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-      
-
-
-
-    <!-- SECCIONPROGRAMACION -->
-   <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Nada Secreto logo white italic text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/08b5ca9e-ca26-4783-6594-e4ca92b3a894.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Nada secreto
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      7 a 9:30 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Sonido Urbano logo white bold text with city skyline and microphone in studio background" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/c2ab6dd0-90f0-46c7-6992-f93151e24fb0.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Sonido urbano
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      9:30 a 12 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="La Locomotora logo white train icon and text on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/e5257a93-5b91-4cab-8ede-e68c43f74066.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      La locomotora
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      17 a 19 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Rock del país
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      21:30 a 23 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Rock del país
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      21:30 a 23 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-   <article class="bg-white rounded-md shadow-md overflow-hidden">
-    <img alt="Rock del País logo white text with stars and lightning bolts on black transparent background over microphone in studio" class="w-full h-48 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/35a257b7-b858-4d45-b499-9c34f9fb1195.jpg" width="600"/>
-    <div class="p-4">
-     <h3 class="text-sm font-semibold text-[#0c2e5a] mb-1">
-      Rock del país
-     </h3>
-     <p class="text-sm text-blue-600 mb-0.5 cursor-pointer">
-      Lunes a viernes
-     </p>
-     <p class="text-sm text-[#0c2e5a] flex items-center justify-between">
-      21:30 a 23 h
-      <i class="fas fa-chevron-right text-sm">
-      </i>
-     </p>
-    </div>
-   </article>
-  </div>
-<!-- FINSECCIONPROGRAMACION -->
-
-
-
-
+  </section>
 </div>
-  </div>
-</div>
-
-    <!-- FINACORDION -->
-
-
-
-    </div>
-</div>
-<style>
-    .next,
-    .prev {
-        color: #07376A;
-        font-weight: 700;
-
-    }
-
-    .current {
-        background-color: #A9A9A9;
-        padding: 5px 15px;
-        border-radius: 4px;
-    }
-</style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Encuentra el elemento del subtítulo por su id
-        var fecha = document.getElementById('horario');
-        var otraUbicacionContainer_3 = document.querySelector('.horarios');
-        // Mueve el subtítulo al nuevo contenedor
-        fecha.appendChild(otraUbicacionContainer_3);
+  // Helper function to animate height and opacity toggle
+  function toggleSection(buttonId, contentId, iconId) {
+    const button = document.getElementById(buttonId);
+    const content = document.getElementById(contentId);
+    const icon = document.getElementById(iconId);
+
+    button.addEventListener('click', () => {
+      if (content.style.height && content.style.height !== '0px') {
+        // Collapse
+        const currentHeight = content.scrollHeight;
+        content.style.height = currentHeight + 'px'; // set current height to enable transition
+        requestAnimationFrame(() => {
+          content.style.height = '0px';
+          content.style.opacity = '0';
+        });
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        // Expand
+        content.style.height = 'auto';
+        const autoHeight = content.scrollHeight;
+        content.style.height = '0px';
+        content.style.opacity = '0';
+        requestAnimationFrame(() => {
+          content.style.height = autoHeight + 'px';
+          content.style.opacity = '1';
+        });
+        icon.style.transform = 'rotate(0deg)';
+      }
     });
+
+    // After transition ends, fix height to auto if expanded or keep 0 if collapsed
+    content.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'height') {
+        if (content.style.height !== '0px') {
+          content.style.height = 'auto';
+        }
+      }
+    });
+  }
+
+  toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
+  toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
 </script>
-<?php wp_reset_postdata(); // Restaurar datos originales de la consulta 
-?>
+
+<style>
+  .transition-height {
+    transition-property: height, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+    overflow: hidden;
+  }
+
+
+  .next,
+  .prev {
+    color: #07376A;
+    font-weight: 700;
+
+  }
+
+  .current {
+    background-color: #A9A9A9;
+    padding: 5px 15px;
+    border-radius: 4px;
+  }
+</style>
+
+
 
 
 
