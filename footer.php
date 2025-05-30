@@ -291,7 +291,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     </symbol>
 </svg>
 <!-- FINSECCION RADIO -->
-<audio id="player" controls="controls" class="hidden inline-flex" src="https://01.solumedia.com.ar:8366/stream"></audio>
+<audio id="player" controls="controls" class="hidden inline-flex" src="#!"></audio> <!-- http://01.solumedia.com.ar:8366/stream -->
 <style>
     .noticia-der {
         border-top-left-radius: 0.5rem;

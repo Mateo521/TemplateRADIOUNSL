@@ -292,7 +292,7 @@ foreach ($item->category as $cat) {
 <!-- SECCION SLIDER -->
 
 <section class="bg-[#F0F0F0]  p-6 ">
-    <div class="swiper newSwiper max-w-7xl rounded-lg h-96">
+    <div class="swiper newSwiper max-w-7xl h-96 rounded-lg">
         <div class="swiper-wrapper ">
             <div class="swiper-slide relative w-full">
                 <img alt="Radio studio with people wearing headphones and microphones, computers and radio equipment on a wooden table" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
