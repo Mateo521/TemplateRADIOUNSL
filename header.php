@@ -21,7 +21,7 @@
 
 </head>
 
-<body id="fuente">
+<body id="fuente" class="bg-[#282828]">
 
     <!--div class="hidden" id="loader">
         <div class="flex items-center justify-center h-screen">
