@@ -46,7 +46,7 @@ if ($rss !== false && isset($rss->channel->item[0])) {
     $title = (string) $item->title;
     $link = (string) $item->link;
 
-    // Obtener imagen desde <enclosure> o <media:content>
+   
     $image = '';
 
     if (isset($item->enclosure)) {
@@ -400,69 +400,8 @@ foreach ($item->category as $cat) {
 <!-- FINSECCION SLIDER -->
 
 
-</div>
-<!--
- 
-
-<div class="slider  md:hidden block p-3">
-<a href="<?php echo esc_url(home_url('/programacion')); ?>">
-  <ul class="slides-container">
-
-<?php foreach ($programacion_query->posts as $post) : setup_postdata($post);
-    $content = get_the_content();
-    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-    $entry_title = get_the_title();
-    $categories = get_the_category();
-    $entry_date = get_the_date('d/m/Y');
-?>
-
-    <li class="slide"  style="background-image: url(<?php echo esc_url($image_url); ?>); background-size: cover; background-position: center; pointer-events:none;" >
-         
-       <div style="position:absolute;width:100%;height:100%;" id="bg-2"></div>
-      <div class="parallax">
-      <div class="center">
-
-      <p><?php echo esc_html($entry_title); ?> </p>
-      
-<div class="flex items-center justify-center">
-        <svg class="svgs" id="svg-new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
-                            </svg>
-      <p>  <?php
-            foreach ($categories as $index => $category) {
-
-                if ($category->slug !== "sin-categoria" && $category->slug !== "programacion") {
-                    echo esc_html($category->name);
-                    if ($index !== count($categories) - 1) {
-                        echo ', ';
-                    }
-                }
-            }
-            ?></p>
-                            </div>
-    <p>
-      <?php
-        preg_match_all('/<p[^>]+id="horario"[^>]*>(.*?)<\/p>/is', $content, $matches);
-        if (!empty($matches[0])) {
-            foreach ($matches[0] as $paragraph) {
-                echo $paragraph;
-            }
-        }
-        ?>
-</p>
-</div>
-      </div>
-     
-    </li>
-
-   <?php endforeach; ?>
-  </ul>
-  </a>
-</div>
 
 
-
--->
 <style>
     #news-audio .wp-block-audio audio {
         padding: 0;
@@ -593,24 +532,12 @@ foreach ($item->category as $cat) {
         background-color: #E5CC26;
     }
 
-    /*
-
-.slider .slide:nth-child(6n+2) { background: #e74c3c; }
-.slider .slide:nth-child(6n+3) { background: #3498db; }
-.slider .slide:nth-child(6n+4) { background: #9b59b6; }
-.slider .slide:nth-child(6n+5) { background: #34495e; }
-.slider .slide:nth-child(6n+6) { background: #f1c40f; }
-*/
+   
     #podcast {
         padding: 0;
     }
 
-    /*
-.gt_switcher_wrapper{
-    top:65px !important;
-    right:0;
-}
-*/
+  
 </style>
 
 

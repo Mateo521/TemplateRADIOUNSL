@@ -85,6 +85,15 @@ wp_footer();
 
     </footer>
 </div>
+
+
+
+
+
+
+
+
+
 <!-- Main modal -->
 <div id="modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-md max-h-full">
@@ -154,6 +163,73 @@ wp_footer();
         </div>
     </div>
 </div>
+
+
+</div> <!-- cierra .barba-container -->
+</div> <!-- cierra #barba-wrapper -->
+
+
+
+<script>
+  // Helper function to animate height and opacity toggle
+  function toggleSection(buttonId, contentId, iconId) {
+    const button = document.getElementById(buttonId);
+    const content = document.getElementById(contentId);
+    const icon = document.getElementById(iconId);
+
+    button.addEventListener('click', () => {
+      if (content.style.height && content.style.height !== '0px') {
+        // Collapse
+        const currentHeight = content.scrollHeight;
+        content.style.height = currentHeight + 'px'; // set current height to enable transition
+        requestAnimationFrame(() => {
+          content.style.height = '0px';
+          content.style.opacity = '0';
+        });
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        // Expand
+        content.style.height = 'auto';
+        const autoHeight = content.scrollHeight;
+        content.style.height = '0px';
+        content.style.opacity = '0';
+        requestAnimationFrame(() => {
+          content.style.height = autoHeight + 'px';
+          content.style.opacity = '1';
+        });
+        icon.style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // After transition ends, fix height to auto if expanded or keep 0 if collapsed
+    content.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'height') {
+        if (content.style.height !== '0px') {
+          content.style.height = 'auto';
+        }
+      }
+    });
+  }
+
+  toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
+  toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var swiper3 = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            grabCursor: true
+        });
+    });
+</script>
+
+
 <!-- FINFOOTER -->
 <!-- SECCION RADIO -->
 <div class="w-full block" style="height: 115px; background-color:#282828;"></div>
@@ -291,7 +367,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     </symbol>
 </svg>
 <!-- FINSECCION RADIO -->
-<audio id="player" preload="none" controls="controls" class="hidden inline-flex" src="http://01.solumedia.com.ar:8366/stream"></audio> <!-- http://190.122.236.218:8000/stream -->
+<audio id="player" preload="none" controls="controls" class="hidden" src="http://01.solumedia.com.ar:8366/stream"></audio> <!-- http://190.122.236.218:8000/stream -->
 <style>
     .noticia-der {
         border-top-left-radius: 0.5rem;
@@ -535,7 +611,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     });
 
 
-      const themeURL = "<?php echo get_template_directory_uri(); ?>";
+    const themeURL = "<?php echo get_template_directory_uri(); ?>";
 
     function Adelantar() {
         console.log("adelantar a vivo.");
@@ -655,12 +731,12 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         const match = horarios.find(h => total >= h.start && total <= h.end);
 
         if (match) {
-            
-            setRadioImage(themeURL +`/assets/images/${match.img}`);
+
+            setRadioImage(themeURL + `/assets/images/${match.img}`);
             return match.text;
         }
 
-        setRadioImage(themeURL +"/assets/images/icon-5.png");
+        setRadioImage(themeURL + "/assets/images/icon-5.png");
         return "Música";
     }
 
@@ -687,12 +763,12 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         const match = horarios.find(h => total >= h.start && total <= h.end);
 
         if (match) {
-      
+
             setRadioImage(themeURL + "/assets/images/radio-9.png");
             return match.text;
         }
 
-     
+
         setRadioImage(themeURL + "/assets/images/icon-5.png");
 
         return "Música";
@@ -729,8 +805,8 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                     return horariossab(date);
                     break;
                 default:
-                    document.getElementById("radio-imagen").src = themeURL+"/assets/images/icon-5.png";
-                    document.getElementById("radio-imagen2").src = themeURL+"/images/icon-5.png";
+                    document.getElementById("radio-imagen").src = themeURL + "/assets/images/icon-5.png";
+                    document.getElementById("radio-imagen2").src = themeURL + "/images/icon-5.png";
                     return "Música";
             }
         }
@@ -798,9 +874,91 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         }
         activado2 = !activado2;
     }
+
+/*
+    function toggleSection(buttonId, contentId, iconId) {
+        const button = document.getElementById(buttonId);
+        const content = document.getElementById(contentId);
+        const icon = document.getElementById(iconId);
+
+        button.addEventListener('click', () => {
+            if (content.style.height && content.style.height !== '0px') {
+                // Collapse
+                const currentHeight = content.scrollHeight;
+                content.style.height = currentHeight + 'px'; // set current height to enable transition
+                requestAnimationFrame(() => {
+                    content.style.height = '0px';
+                    content.style.opacity = '0';
+                });
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                // Expand
+                content.style.height = 'auto';
+                const autoHeight = content.scrollHeight;
+                content.style.height = '0px';
+                content.style.opacity = '0';
+                requestAnimationFrame(() => {
+                    content.style.height = autoHeight + 'px';
+                    content.style.opacity = '1';
+                });
+                icon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // After transition ends, fix height to auto if expanded or keep 0 if collapsed
+        content.addEventListener('transitionend', (e) => {
+            if (e.propertyName === 'height') {
+                if (content.style.height !== '0px') {
+                    content.style.height = 'auto';
+                }
+            }
+        });
+    }
+
+    toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
+    toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
+    */
 </script>
 
-   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+
+<script src="https://unpkg.com/@barba/core"></script>
+
+<script>
+    barba.init({
+        transitions: [{
+            name: 'default-transition',
+            async leave(data) {
+                await data.current.container.animate([{
+                    opacity: 1
+                }, {
+                    opacity: 0
+                }], {
+                    duration: 300,
+                    easing: 'ease'
+                }).finished;
+            },
+            enter(data) {
+                data.next.container.animate([{
+                    opacity: 0
+                }, {
+                    opacity: 1
+                }], {
+                    duration: 300,
+                    easing: 'ease'
+                });
+            }
+        }],
+        views: [{
+            namespace: 'default', // o puedes poner uno por página si usas `data-barba-namespace`
+            afterEnter(data) {
+                // 👇 Aquí vuelves a inicializar tus scripts
+                initBotones(); // tu función personalizada para botones
+            }
+        }]
+    });
+</script>
 
 </body>
 

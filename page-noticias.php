@@ -120,20 +120,8 @@ get_header();
             <div class="swiper-button-prev"></div>
         </div>
 </section>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var swiper3 = new Swiper('.swiper-container', {
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 20,
-            grabCursor: true
-        });
-    });
-</script>
+
+
 
 <?php endif;
     wp_reset_postdata(); ?>

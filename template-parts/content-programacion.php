@@ -194,50 +194,6 @@ get_header();
   </section>
 </div>
 
-<script>
-  // Helper function to animate height and opacity toggle
-  function toggleSection(buttonId, contentId, iconId) {
-    const button = document.getElementById(buttonId);
-    const content = document.getElementById(contentId);
-    const icon = document.getElementById(iconId);
-
-    button.addEventListener('click', () => {
-      if (content.style.height && content.style.height !== '0px') {
-        // Collapse
-        const currentHeight = content.scrollHeight;
-        content.style.height = currentHeight + 'px'; // set current height to enable transition
-        requestAnimationFrame(() => {
-          content.style.height = '0px';
-          content.style.opacity = '0';
-        });
-        icon.style.transform = 'rotate(180deg)';
-      } else {
-        // Expand
-        content.style.height = 'auto';
-        const autoHeight = content.scrollHeight;
-        content.style.height = '0px';
-        content.style.opacity = '0';
-        requestAnimationFrame(() => {
-          content.style.height = autoHeight + 'px';
-          content.style.opacity = '1';
-        });
-        icon.style.transform = 'rotate(0deg)';
-      }
-    });
-
-    // After transition ends, fix height to auto if expanded or keep 0 if collapsed
-    content.addEventListener('transitionend', (e) => {
-      if (e.propertyName === 'height') {
-        if (content.style.height !== '0px') {
-          content.style.height = 'auto';
-        }
-      }
-    });
-  }
-
-  toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
-  toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
-</script>
 
 <style>
   .transition-height {
