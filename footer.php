@@ -170,64 +170,7 @@ wp_footer();
 
 
 
-<script>
-  // Helper function to animate height and opacity toggle
-  function toggleSection(buttonId, contentId, iconId) {
-    const button = document.getElementById(buttonId);
-    const content = document.getElementById(contentId);
-    const icon = document.getElementById(iconId);
 
-    button.addEventListener('click', () => {
-      if (content.style.height && content.style.height !== '0px') {
-        // Collapse
-        const currentHeight = content.scrollHeight;
-        content.style.height = currentHeight + 'px'; // set current height to enable transition
-        requestAnimationFrame(() => {
-          content.style.height = '0px';
-          content.style.opacity = '0';
-        });
-        icon.style.transform = 'rotate(180deg)';
-      } else {
-        // Expand
-        content.style.height = 'auto';
-        const autoHeight = content.scrollHeight;
-        content.style.height = '0px';
-        content.style.opacity = '0';
-        requestAnimationFrame(() => {
-          content.style.height = autoHeight + 'px';
-          content.style.opacity = '1';
-        });
-        icon.style.transform = 'rotate(0deg)';
-      }
-    });
-
-    // After transition ends, fix height to auto if expanded or keep 0 if collapsed
-    content.addEventListener('transitionend', (e) => {
-      if (e.propertyName === 'height') {
-        if (content.style.height !== '0px') {
-          content.style.height = 'auto';
-        }
-      }
-    });
-  }
-
-  toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
-  toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var swiper3 = new Swiper('.swiper-container', {
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 20,
-            grabCursor: true
-        });
-    });
-</script>
 
 
 <!-- FINFOOTER -->
@@ -555,62 +498,6 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 </style>
 
 <script>
-    const swiper = new Swiper('.mySwiper', {
-        loop: true,
-        grabCursor: true,
-        spaceBetween: 20,
-        slidesPerView: 1,
-        centeredSlides: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 5000,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-            },
-            1024: {
-                slidesPerView: 1,
-            }
-        }
-    });
-
-
-    const swiper2 = new Swiper('.newSwiper', {
-        loop: true,
-        grabCursor: true,
-        spaceBetween: 20,
-        slidesPerView: 1,
-        centeredSlides: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 5000,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-            },
-            1024: {
-                slidesPerView: 1,
-            }
-        }
-    });
-
-
     const themeURL = "<?php echo get_template_directory_uri(); ?>";
 
     function Adelantar() {
@@ -875,60 +762,213 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         activado2 = !activado2;
     }
 
-/*
-    function toggleSection(buttonId, contentId, iconId) {
-        const button = document.getElementById(buttonId);
-        const content = document.getElementById(contentId);
-        const icon = document.getElementById(iconId);
+    /*
+        function toggleSection(buttonId, contentId, iconId) {
+            const button = document.getElementById(buttonId);
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
 
-        button.addEventListener('click', () => {
-            if (content.style.height && content.style.height !== '0px') {
-                // Collapse
-                const currentHeight = content.scrollHeight;
-                content.style.height = currentHeight + 'px'; // set current height to enable transition
-                requestAnimationFrame(() => {
+            button.addEventListener('click', () => {
+                if (content.style.height && content.style.height !== '0px') {
+                    // Collapse
+                    const currentHeight = content.scrollHeight;
+                    content.style.height = currentHeight + 'px'; // set current height to enable transition
+                    requestAnimationFrame(() => {
+                        content.style.height = '0px';
+                        content.style.opacity = '0';
+                    });
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    // Expand
+                    content.style.height = 'auto';
+                    const autoHeight = content.scrollHeight;
                     content.style.height = '0px';
                     content.style.opacity = '0';
-                });
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                // Expand
-                content.style.height = 'auto';
-                const autoHeight = content.scrollHeight;
-                content.style.height = '0px';
-                content.style.opacity = '0';
-                requestAnimationFrame(() => {
-                    content.style.height = autoHeight + 'px';
-                    content.style.opacity = '1';
-                });
-                icon.style.transform = 'rotate(0deg)';
-            }
-        });
-
-        // After transition ends, fix height to auto if expanded or keep 0 if collapsed
-        content.addEventListener('transitionend', (e) => {
-            if (e.propertyName === 'height') {
-                if (content.style.height !== '0px') {
-                    content.style.height = 'auto';
+                    requestAnimationFrame(() => {
+                        content.style.height = autoHeight + 'px';
+                        content.style.opacity = '1';
+                    });
+                    icon.style.transform = 'rotate(0deg)';
                 }
-            }
-        });
-    }
+            });
 
-    toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
-    toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
-    */
+            // After transition ends, fix height to auto if expanded or keep 0 if collapsed
+            content.addEventListener('transitionend', (e) => {
+                if (e.propertyName === 'height') {
+                    if (content.style.height !== '0px') {
+                        content.style.height = 'auto';
+                    }
+                }
+            });
+        }
+
+        toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
+        toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
+        */
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
 
 <script src="https://unpkg.com/@barba/core"></script>
-
 <script>
+    function initGlobalScripts() {
+        console.log("🔄 Scripts globales ejecutados");
+
+    }
+
+
+    function initHomeScripts() {
+        console.log("🔄 Scripts de home ejecutados");
+
+
+        /*    document.addEventListener('DOMContentLoaded', function() {*/
+        var swiper3 = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            grabCursor: true
+        });
+        /*   });*/
+
+
+
+        const swiper = new Swiper('.mySwiper', {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 20,
+            slidesPerView: 1,
+            centeredSlides: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+
+
+        const swiper2 = new Swiper('.newSwiper', {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 20,
+            slidesPerView: 1,
+            centeredSlides: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+
+    }
+
+
+
+
+    function initSinglePageScripts() {
+        console.log("🧩 JS para single.php cargado");
+
+    }
+
+    function initNoticiasPageScripts() {
+
+        
+            const swiper = new Swiper('.swiper-container', {
+                loop: false,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                slidesPerView: 1,
+                spaceBetween: 10,
+             
+            });
+       
+
+
+
+    }
+
+    function initProgramacionPageScripts() {
+        function toggleSection(buttonId, contentId, iconId) {
+            const button = document.getElementById(buttonId);
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+
+            button.addEventListener('click', () => {
+                if (content.style.height && content.style.height !== '0px') {
+                    // Collapse
+                    const currentHeight = content.scrollHeight;
+                    content.style.height = currentHeight + 'px'; // set current height to enable transition
+                    requestAnimationFrame(() => {
+                        content.style.height = '0px';
+                        content.style.opacity = '0';
+                    });
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    // Expand
+                    content.style.height = 'auto';
+                    const autoHeight = content.scrollHeight;
+                    content.style.height = '0px';
+                    content.style.opacity = '0';
+                    requestAnimationFrame(() => {
+                        content.style.height = autoHeight + 'px';
+                        content.style.opacity = '1';
+                    });
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // After transition ends, fix height to auto if expanded or keep 0 if collapsed
+            content.addEventListener('transitionend', (e) => {
+                if (e.propertyName === 'height') {
+                    if (content.style.height !== '0px') {
+                        content.style.height = 'auto';
+                    }
+                }
+            });
+        }
+
+        toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
+        toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
+
+    }
+
     barba.init({
         transitions: [{
-            name: 'default-transition',
+            name: 'fade',
             async leave(data) {
                 await data.current.container.animate([{
                     opacity: 1
@@ -951,14 +991,38 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
             }
         }],
         views: [{
-            namespace: 'default', // o puedes poner uno por página si usas `data-barba-namespace`
-            afterEnter(data) {
-                // 👇 Aquí vuelves a inicializar tus scripts
-                initBotones(); // tu función personalizada para botones
-            }
-        }]
+                namespace: 'single',
+                afterEnter() {
+                    initSinglePageScripts();
+                }
+            },
+            {
+                namespace: 'page-programacion',
+                afterEnter() {
+                    initProgramacionPageScripts();
+                }
+            },
+            {
+                namespace: 'front-page',
+                afterEnter() {
+                    initHomeScripts();
+                }
+            },
+            {
+                namespace: 'page-noticias',
+                afterEnter() {
+                    initNoticiasPageScripts();
+                }
+            },
+        ]
+    });
+
+    // Hook global después de cada entrada
+    barba.hooks.afterEnter(() => {
+        initGlobalScripts();
     });
 </script>
+
 
 </body>
 
