@@ -46,11 +46,6 @@
 
 
 
-    <div id="barba-wrapper" data-barba="wrapper">
-        <div class="barba-container"
-            data-barba="container"
-            data-barba-namespace="<?= $namespace ?>">
-
 
 
             <div class="z-50 w-full fixed" id="navbar">
@@ -58,8 +53,8 @@
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center">
 
-                            <img class="h-20 hidden md:block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2.png" alt="LOGO RADION UNSL" />
-                            <img class="h-20 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="LOGO RADION UNSL" />
+                            <img class="h-20 hidden md:block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2.png" alt="LOGO RADIO UNSL" />
+                            <img class="h-20 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="LOGO RADIO UNSL" />
 
 
                         </a>
@@ -84,7 +79,7 @@
                                 </div>
 
                                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-                                    <input type="search" id="search-navbar" name="s" class="block w-full pr-5  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Qué estás buscando?" style="padding-right: 35px;
+                                    <input type="search" id="search-navbar-2" name="s" class="block w-full pr-5  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Qué estás buscando?" style="padding-right: 35px;
     margin-right: 6px;" />
 
                                 </form>
@@ -314,6 +309,11 @@
                     </div>
                 </nav>
             </div>
+
+    <div id="barba-wrapper" data-barba="wrapper">
+        <div class="barba-container"
+            data-barba="container"
+            data-barba-namespace="<?= $namespace ?>">
 
 
 

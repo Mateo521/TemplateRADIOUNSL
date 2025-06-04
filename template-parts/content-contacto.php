@@ -50,7 +50,7 @@
 
 
         <div class="relative w-full h-full p-6"
-            style="background-image: url(https://source.unsplash.com/random/500x500?sig=8); background-position: center; background-size: cover;">
+            style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/images/contacto.jpg); background-position: center; background-size: cover;">
             <div class="absolute w-full h-full z-1 " style="background-color: #000000a1; top: 0; left: 0;"></div>
 
             <div class="z-30 relative text-white text-center">

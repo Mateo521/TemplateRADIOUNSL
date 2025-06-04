@@ -14,8 +14,8 @@ $args_estatico = array(
 
 
 $args_podcasts = array(
-    'category_name' => 'podcast', // Nombre de la categoría de podcasts
-    'posts_per_page' => 9 // Mostrar todas las noticias de podcasts
+    'category_name' => 'podcast',
+    'posts_per_page' => 9 
 );
 
 $args_institucional = array(
@@ -24,7 +24,7 @@ $args_institucional = array(
 );
 
 $args_programacion = array(
-    'category_name' => 'programacion', // Nombre de la categoría de programacion
+    'category_name' => 'programacion', 
     'posts_per_page' => 9
 );
 

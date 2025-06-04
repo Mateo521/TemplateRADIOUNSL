@@ -761,65 +761,28 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         }
         activado2 = !activado2;
     }
-
-    /*
-        function toggleSection(buttonId, contentId, iconId) {
-            const button = document.getElementById(buttonId);
-            const content = document.getElementById(contentId);
-            const icon = document.getElementById(iconId);
-
-            button.addEventListener('click', () => {
-                if (content.style.height && content.style.height !== '0px') {
-                    // Collapse
-                    const currentHeight = content.scrollHeight;
-                    content.style.height = currentHeight + 'px'; // set current height to enable transition
-                    requestAnimationFrame(() => {
-                        content.style.height = '0px';
-                        content.style.opacity = '0';
-                    });
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
-                    // Expand
-                    content.style.height = 'auto';
-                    const autoHeight = content.scrollHeight;
-                    content.style.height = '0px';
-                    content.style.opacity = '0';
-                    requestAnimationFrame(() => {
-                        content.style.height = autoHeight + 'px';
-                        content.style.opacity = '1';
-                    });
-                    icon.style.transform = 'rotate(0deg)';
-                }
-            });
-
-            // After transition ends, fix height to auto if expanded or keep 0 if collapsed
-            content.addEventListener('transitionend', (e) => {
-                if (e.propertyName === 'height') {
-                    if (content.style.height !== '0px') {
-                        content.style.height = 'auto';
-                    }
-                }
-            });
-        }
-
-        toggleSection('toggle-lunes', 'content-lunes', 'icon-lunes');
-        toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
-        */
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
 
 
 <script src="https://unpkg.com/@barba/core"></script>
+
+
 <script>
+
+
+
+
     function initGlobalScripts() {
-        console.log("🔄 Scripts globales ejecutados");
+
+
 
     }
 
 
     function initHomeScripts() {
-        console.log("🔄 Scripts de home ejecutados");
+
 
 
         /*    document.addEventListener('DOMContentLoaded', function() {*/
@@ -898,7 +861,8 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 
 
     function initSinglePageScripts() {
-        console.log("🧩 JS para single.php cargado");
+
+
 
     }
 
@@ -929,16 +893,16 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 
             button.addEventListener('click', () => {
                 if (content.style.height && content.style.height !== '0px') {
-                    // Collapse
+
                     const currentHeight = content.scrollHeight;
-                    content.style.height = currentHeight + 'px'; // set current height to enable transition
+                    content.style.height = currentHeight + 'px';
                     requestAnimationFrame(() => {
                         content.style.height = '0px';
                         content.style.opacity = '0';
                     });
                     icon.style.transform = 'rotate(180deg)';
                 } else {
-                    // Expand
+
                     content.style.height = 'auto';
                     const autoHeight = content.scrollHeight;
                     content.style.height = '0px';
@@ -951,7 +915,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                 }
             });
 
-            // After transition ends, fix height to auto if expanded or keep 0 if collapsed
+
             content.addEventListener('transitionend', (e) => {
                 if (e.propertyName === 'height') {
                     if (content.style.height !== '0px') {
@@ -984,7 +948,10 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
-                }); 
+                });
+
+
+
 
                 data.next.container.animate([{
                     opacity: 0
@@ -1000,6 +967,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                 namespace: 'single',
                 afterEnter() {
                     initSinglePageScripts();
+
                 }
             },
             {
@@ -1023,10 +991,12 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         ]
     });
 
-    // Hook global después de cada entrada
+/*
     barba.hooks.afterEnter(() => {
-        initGlobalScripts();
+        reloadFlowbite();
+        reattachMenuToggle();
     });
+    */
 </script>
 
 

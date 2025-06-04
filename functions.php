@@ -22,8 +22,9 @@ function linksradio_unsl_scripts()
 {
 
 
-    wp_enqueue_script('tailwindcss', "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4", array(), '1.8.0', false);
+    wp_enqueue_script('tailwindcss', "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4", array(), '4.1.0', false);
 
+    wp_enqueue_script('flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js", array(), '3.1.2', false);
 
 
 
