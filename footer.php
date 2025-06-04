@@ -887,18 +887,27 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
             const content = document.getElementById(contentId);
             const icon = document.getElementById(iconId);
 
+            document.getElementById('content-lunes').style.height = '0px';
+            document.getElementById('content-lunes').style.opacity = '0';
+            document.getElementById('content-lunes').style.overflow = 'hidden';
+
+            document.getElementById('content-sabados').style.height = '0px';
+            document.getElementById('content-sabados').style.opacity = '0';
+            document.getElementById('content-sabados').style.overflow = 'hidden';
+
+
             button.addEventListener('click', () => {
                 if (content.style.height && content.style.height !== '0px') {
-
                     const currentHeight = content.scrollHeight;
                     content.style.height = currentHeight + 'px';
                     requestAnimationFrame(() => {
                         content.style.height = '0px';
                         content.style.opacity = '0';
                     });
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
 
+        
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
                     content.style.height = 'auto';
                     const autoHeight = content.scrollHeight;
                     content.style.height = '0px';
@@ -907,9 +916,12 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                         content.style.height = autoHeight + 'px';
                         content.style.opacity = '1';
                     });
-                    icon.style.transform = 'rotate(0deg)';
+
+
+                    icon.style.transform = 'rotate(180deg)';
                 }
             });
+
 
 
             content.addEventListener('transitionend', (e) => {

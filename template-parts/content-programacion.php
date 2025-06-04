@@ -23,7 +23,7 @@ get_header();
     <!-- Lunes a viernes heading -->
     <h2 id="toggle-lunes" class="text-sm font-semibold text-[#003366] flex items-center gap-1 mb-6 cursor-pointer select-none">
       Lunes a viernes
-      <i class="fas fa-chevron-up text-[#003366] text-xs transition-transform duration-300" id="icon-lunes">
+      <i class="fas fa-chevron-up text-[#003366] rotate-180 text-xs transition-transform duration-300" id="icon-lunes">
       </i>
     </h2>
     <!-- Grid for Lunes a viernes -->
@@ -134,7 +134,7 @@ get_header();
     <!-- Sábados heading -->
     <h2 id="toggle-sabados" class="text-sm font-semibold text-[#003366] flex items-center gap-1 mb-6 cursor-pointer select-none">
       Sábados
-      <i class="fas fa-chevron-up text-[#003366] text-xs transition-transform duration-300" id="icon-sabados">
+      <i class="fas fa-chevron-up text-[#003366] text-xs rotate-180 transition-transform duration-300" id="icon-sabados">
       </i>
     </h2>
     <!-- Grid for Sábados -->
