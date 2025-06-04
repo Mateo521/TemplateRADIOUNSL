@@ -60,253 +60,122 @@
         <h1 class="text-4xl font-extrabold text-center mb-10">
             STAFF
         </h1>
-        <!-- DIRECCIÓN -->
+
         <section class="mb-14">
-            <h2 class="text-xl font-extrabold text-center mb-8">
-                DIRECCIÓN
-            </h2>
-           <div class="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
+            <h2 class="text-xl font-extrabold text-center mb-8">DIRECCIÓN</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
 
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a young man with short dark hair wearing a dark shirt, looking to the side" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/d89b3718-c77d-49d4-97ca-5285d66a6789.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-1.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a woman with blonde hair, smiling, outdoors with blurred background" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/6063340b-9991-4b26-947d-f67acb90e747.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-2.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a woman with dark hair wearing a red top, smiling" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/869eb958-6ceb-4570-fc2f-ca71c3d1356f.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-3.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with glasses and short hair, arms crossed, wearing a light shirt" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/90ea3cee-2238-425a-45c7-2f876ffdfffa.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-4.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
             </div>
         </section>
+
         <!-- LOCUCIÓN -->
         <section class="mb-14">
-            <h2 class="text-xl font-extrabold text-center mb-8">
-                LOCUCIÓN
-            </h2>
-            <div class="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
+            <h2 class="text-xl font-extrabold text-center mb-8">LOCUCIÓN</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
 
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a woman with blonde hair, smiling, indoors with gray background" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/06804118-9597-4f5c-67d9-a38bac51954e.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-5.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a bald man with glasses and beard, wearing a brown shirt" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/e73cbea8-06cb-4388-84ee-cd9128c841c8.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-6.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with glasses and short hair wearing a suit and white shirt" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/76679bde-6705-419d-6713-b8182d7b7526.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-7.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with beard and cap, red background" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/ef3a631f-60fb-4880-cf0d-6f575ac479a7.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-8.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a young man with short dark hair wearing a dark shirt, looking to the side" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/d89b3718-c77d-49d4-97ca-5285d66a6789.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-9.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with short dark hair and beard, smiling, blue background" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/f02c603c-d223-43ca-91b4-fd25bc13415b.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-10.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a woman with long dark hair, smiling, black top" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/33619265-b26b-4040-6b36-81d3e789b716.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-11.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with glasses and short hair, wearing a gray shirt" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/ab563d5e-892a-4926-bc48-e6cbbfd31ca7.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-12.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with short hair, smiling, outdoors with trees in background" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/76f8c90e-9359-4b15-2159-628839ab1389.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-13.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a woman with dark hair, smiling, red background" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/e4576689-0742-4ff2-80a7-1f139665bc37.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-14.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with beard and shaved head, white shirt" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/5b9a231d-02d0-4937-b5ab-ce91586aa44a.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-15.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a woman with sunglasses and curly hair, smiling" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/251df699-1ec0-4be0-317d-ad0da4244871.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-16.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
             </div>
         </section>
+
         <!-- PRODUCCIÓN -->
         <section>
-            <h2 class="text-xl font-extrabold text-center mb-8">
-                PRODUCCIÓN
-            </h2>
-         <div class="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
+            <h2 class="text-xl font-extrabold text-center mb-8">PRODUCCIÓN</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
 
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a woman with long dark hair, dark top, studio lighting" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/f5a2ffdf-f5f2-43a1-7041-d961b5c50662.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-17.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with beard and shaved head, studio lighting" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/0d195ba8-8b8c-4f19-d871-28d981a740e3.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-18.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
+                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
-                <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with beard and glasses, holding a camera, black and white" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/d54598b3-784c-4d94-fd46-439b0d0d022d.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
-                </div>
-                <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait of a man with beard and jacket, outdoors, smiling" class="rounded-full w-40 h-40 object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/c8d2aa97-319f-4194-3fd5-1b8dc25103e1.jpg" width="120" />
-                    <p class="mt-2 text-center text-base leading-tight">
-                        Juan
-                        <br />
-                        Gonzalez
-                    </p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">
-                        NADA SECRETO
-                    </p>
-                </div>
+
             </div>
         </section>
+
+
     </div>
 </div>
 
