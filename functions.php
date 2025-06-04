@@ -229,6 +229,36 @@ add_theme_support('post-thumbnails');
 
 
 
+add_theme_support('title-tag');
+
+
+function mi_titulo_personalizado($title) {
+    if (is_single()) {
+        $post_id = get_the_ID();
+        $categoria = get_the_category($post_id);
+        $nombre_categoria = $categoria ? $categoria[0]->name . ' - ' : '';
+        $titulo_post = get_the_title($post_id);
+        return $nombre_categoria . $titulo_post . ' | ' . get_bloginfo('name');
+    }
+    return $title;
+}
+add_filter('pre_get_document_title', 'mi_titulo_personalizado');
+
+
+
+function meta_description_personalizada() {
+    if (is_single()) {
+        global $post;
+        $excerpt = strip_tags($post->post_excerpt ? $post->post_excerpt : wp_trim_words($post->post_content, 30));
+        echo '<meta name="description" content="' . esc_attr($excerpt) . '">' . "\n";
+    } elseif (is_home() || is_front_page()) {
+        echo '<meta name="description" content="' . get_bloginfo('name') . '">' . "\n";
+    } else {
+        echo '<meta name="description" content="' . get_bloginfo('description') . '">' . "\n";
+    }
+}
+add_action('wp_head', 'meta_description_personalizada');
+
 
 ?>
 
