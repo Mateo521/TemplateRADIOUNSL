@@ -770,10 +770,6 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 
 
 <script>
-
-
-
-
     function initGlobalScripts() {
 
 
@@ -991,12 +987,27 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         ]
     });
 
-/*
+
     barba.hooks.afterEnter(() => {
-        reloadFlowbite();
-        reattachMenuToggle();
+
+
+
+        const menu = document.getElementById('navbar-search');
+        const toggle = document.querySelector('[data-collapse-toggle]');
+        const links = menu?.querySelectorAll('a');
+
+        if (menu && toggle && links) {
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+
     });
-    */
 </script>
 
 
