@@ -3,8 +3,13 @@ get_header();
 $args = array(
     'posts_per_page' => 3,
     'post_status' => 'publish',
-    'category__not_in' => array(7, 8, 21)
+    'category__not_in' => array(
+        get_cat_ID('pdocast'),
+        get_cat_ID('institucional'),
+       /* get_cat_ID('NombreCategoria3')*/
+    )
 );
+
 
 $args_estatico = array(
     'posts_per_page' => 1,
