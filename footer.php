@@ -94,6 +94,13 @@ wp_footer();
 
 
 
+
+</div> <!-- cierra .barba-container -->
+</div> <!-- cierra #barba-wrapper -->
+
+
+
+
 <!-- Main modal -->
 <div id="modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-md max-h-full">
@@ -113,14 +120,13 @@ wp_footer();
             </div>
             <!-- Modal body -->
             <div class="p-6">
-                <p class="text-sm font-normal text-gray-500 dark:text-gray-400">ABC</p>
+                <p id="prog" class="text-sm font-normal text-gray-500 dark:text-gray-400"></p>
                 <ul class="my-4 space-y-3">
                     <li>
                         <a target="_blank" href="https://wa.me/?text=radiouniversidad.unsl.edu.ar" data-action="share/whatsapp/share" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                             <img class="h-5" src="<?php echo get_template_directory_uri(); ?>/assets/images/WhatsApp.svg" />
 
                             <span class="flex-1 ml-3 whitespace-nowrap">Whatsapp</span>
-                            <span class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Popular</span>
                         </a>
                     </li>
                     <li>
@@ -142,34 +148,20 @@ wp_footer();
                     <li>
                         <a href="https://twitter.com/intent/tweet?text=radiouniversidad.unsl.edu.ar" rel="noopener noreferrer" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                             <img class="h-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/Twitter-X-New-Logo-Vector-2.png" />
-                            <span class="flex-1 ml-3 whitespace-nowrap">Twitter</span>
+                            <span class="flex-1 ml-3 whitespace-nowrap">X</span>
                         </a>
                     </li>
                     <li>
                         <a href="mailto:?Título&body=Contenido:%20[radiouniversidad.unsl.edu.ar]" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                             <img class="h-5" src="<?php echo get_template_directory_uri(); ?>/assets/images/Circle-icons-mail.svg" />
-                            <span class="flex-1 ml-3 whitespace-nowrap">E-Mail</span>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Correo</span>
                         </a>
                     </li>
                 </ul>
-                <div>
-                    <a href="#" class="inline-flex items-center text-xs font-normal text-gray-500 hover:underline dark:text-gray-400">
-                        <svg class="w-3 h-3 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.529 7.988a2.502 2.502 0 0 1 5 .191A2.441 2.441 0 0 1 10 10.582V12m-.01 3.008H10M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        ABC</a>
-                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-</div> <!-- cierra .barba-container -->
-</div> <!-- cierra #barba-wrapper -->
-
-
-
 
 
 
@@ -204,9 +196,8 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         </div>
     </div>
     <div id="radio" class="container-4 md:hidden absolute flex justify-center w-full items-center md:gap-5 gap-1" style="left:-49px;">
-        <label class=" md:hidden flex" style="">
-            <input type="range" id="vol" max="1" min="0" step="0.01" value="1" onchange="changevolume(this.value)" style="background-color:inherit;" />
-            </input>
+        <label class=" md:hidden flex">
+            <input type="range" id="vol-mobile" min="0" max="1" value="1" step="0.01" onchange="changevolume(this.value)" style="background-color:inherit;" />
             <!-- 
         <span id="display1">
             100
@@ -266,7 +257,6 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     <div class="container-4 hidden absolute md:flex justify-center w-full gap-8" style="top: 50%; transform: translateY(-50%); align-items:center; left:-46px;">
         <label class=" hidden md:block" style=" margin:0;z-index:45; padding:0;  ">
             <input type="range" id="vol" min="0" max="1" value="1" step="0.01" onchange="changevolume(this.value)" style="background-color:inherit;" />
-            </input>
             <!--
         <span id="display1">
             100
@@ -504,6 +494,18 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         console.log("adelantar a vivo.");
     }
 
+
+    function isiOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+
+    if (isiOS()) {
+        const volumeSlider = document.getElementById("vol-mobile");
+        volumeSlider.style.display = "none"; // o: volumeSlider.disabled = true;
+    }
+
+
+
     function changevolume(amount) {
         var audioobject = document.getElementById("player");
         audioobject.volume = amount;
@@ -701,9 +703,30 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     $(window).on('load', function() {
         $("#open_close").html(msg());
         $("#open_close-2").html(msg());
+        $("#prog").html("Escuchá en vivo " + msg());
 
 
     });
+
+    $(document).ready(function () {
+    setTimeout(function () {
+        const mensaje = $("#prog").text().trim(); 
+        const url = "https://radiouniversidad.unsl.edu.ar"; 
+        const texto = encodeURIComponent(`${mensaje} ${url}`);
+
+      
+        $('a[href^="https://wa.me/"]').attr('href', `https://wa.me/?text=${texto}`);
+
+       
+        $('a[href*="twitter.com/intent/tweet"]').attr('href', `https://twitter.com/intent/tweet?text=${texto}`);
+
+      
+        $('a[href*="facebook.com/sharer/sharer.php"]').attr('href', `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(mensaje)}`);
+
+        
+        $('a[href^="mailto:"]').attr('href', `mailto:?subject=${encodeURIComponent("Escuchá en vivo")}&body=${encodeURIComponent(`${mensaje} ${url}`)}`);
+    }, 300);
+});
 
     function hideLoader() {
 
@@ -905,7 +928,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                         content.style.opacity = '0';
                     });
 
-        
+
                     icon.style.transform = 'rotate(0deg)';
                 } else {
                     content.style.height = 'auto';
