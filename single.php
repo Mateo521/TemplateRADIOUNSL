@@ -126,7 +126,7 @@ endif;
 <div class="flex w-full justify-center p-8 bg-white" id="noticia">
     <div class="max-w-screen-md" id="txt-in">
 
-        <h1 class="md:text-4xl text-2xl my-3" style="color:#07376A;"><?php echo esc_html($entry_title); ?></h1>
+        <h1 class="md:text-4xl text-2xl my-3" style="color:#486faf;"><?php echo esc_html($entry_title); ?></h1>
 
         <div class="flex gap-3 items-center">
 
@@ -371,43 +371,14 @@ endif;
             </div>
             <div class="flex justify-center" style="padding: 50px 0;">
                 <a href="<?php echo esc_url(home_url('/noticias')); ?>">
-                    <div class="m-6 p-3 text-center font-bold rounded-lg inline-flex justify-center text-white" style="background-color: #07376A">Más noticias</div>
+                    <div class="m-6 p-3 text-center font-bold rounded-lg inline-flex justify-center text-white" style="background-color: #486faf">Más noticias</div>
                 </a>
             </div>
         <?php endif; ?>
 
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    var subtituloElement = document.getElementById('subtitulo');
-    var subtextoElement = document.getElementById('subtexto');
-    var podcastElement = document.getElementById('podcast');
 
-    var otraUbicacionContainer_1 = document.querySelector('.subtitulos');
-    var otraUbicacionContainer_2 = document.querySelector('.subtextos');
-    var otraUbicacionContainer_3 = document.querySelector('.podcasts');
-
-    if (subtituloElement && otraUbicacionContainer_1) {
-        var subtituloClone = subtituloElement.cloneNode(true);
-        subtituloElement.remove();
-        otraUbicacionContainer_1.appendChild(subtituloClone);
-    }
-
-    if (subtextoElement && otraUbicacionContainer_2) {
-        var subtextoClone = subtextoElement.cloneNode(true);
-        subtextoElement.remove();
-        otraUbicacionContainer_2.appendChild(subtextoClone);
-    }
-
-    if (podcastElement && otraUbicacionContainer_3) {
-        var podcastClone = podcastElement.cloneNode(true);
-        podcastElement.remove();
-        otraUbicacionContainer_3.appendChild(podcastClone);
-    }
-});
-
-</script>
 <style>
     .wp-block-audio audio {
         border-radius: 10px;

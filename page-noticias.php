@@ -151,9 +151,9 @@ if ($noticias_query->have_posts()) : ?>
                             <img class="rounded-t-md w-full object-cover" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" />
                         <?php endif; ?>
                         <div class="p-6 flex flex-col flex-grow">
-                            <h2 class="font-bold py-4 text-[#07376A] text-lg leading-tight"><?php the_title(); ?></h2>
+                            <h2 class="font-bold py-4 text-[#486faf] text-lg leading-tight"><?php the_title(); ?></h2>
                             <div class="flex-grow text-gray-700 text-sm leading-relaxed"><?php the_excerpt(); ?></div>
-                            <a href="<?php the_permalink(); ?>" class="mt-4 inline-block text-[#07376A] font-semibold hover:text-[#05507a] transition-colors duration-300">
+                            <a href="<?php the_permalink(); ?>" class="mt-4 inline-block text-[#486faf] font-semibold hover:text-[#05507a] transition-colors duration-300">
                                 Leer más <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>

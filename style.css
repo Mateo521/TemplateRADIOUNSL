@@ -7,7 +7,7 @@ Description:FRONTEND personalizado para Radio Universidad por Mateo, diseño hec
 Requires at least: 6.1
 Tested up to: 6.3
 Requires PHP: 5.6
-Version: 2.06
+Version: 2.08
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 Text Domain: Radio Universidad
@@ -129,7 +129,7 @@ grid-template-columns:1fr;
 }
    
 #bg-2{
-    background-color: #07376A;
+    background-color: #486faf;
     opacity:0.75;
 }
 
@@ -188,7 +188,7 @@ grid-template-columns:1fr;
         font-size:25px;
     }
     #bg-res{
-        background-color:#07376A;
+        background-color:#486faf;
     }
     #info-t{
         margin:15px 0 ;
@@ -284,12 +284,12 @@ ul.page-numbers li {
     width: 85px;
     height: 50px;
     background-repeat: no-repeat;
-    background-image: linear-gradient(#07376A 50px, transparent 0),
-                      linear-gradient(#07376A 50px, transparent 0),
-                      linear-gradient(#07376A 50px, transparent 0),
-                      linear-gradient(#07376A 50px, transparent 0),
-                      linear-gradient(#07376A 50px, transparent 0),
-                      linear-gradient(#07376A 50px, transparent 0);
+    background-image: linear-gradient(#486faf 50px, transparent 0),
+                      linear-gradient(#486faf 50px, transparent 0),
+                      linear-gradient(#486faf 50px, transparent 0),
+                      linear-gradient(#486faf 50px, transparent 0),
+                      linear-gradient(#486faf 50px, transparent 0),
+                      linear-gradient(#486faf 50px, transparent 0);
     background-position: 0px center, 15px center, 30px center, 45px center, 60px center, 75px center, 90px center;
     animation: rikSpikeRoll 0.65s linear infinite alternate;
   }
@@ -326,3 +326,194 @@ ul.page-numbers li {
                  
                   
                 } 
+
+
+
+
+  .noticia-der {
+        border-top-left-radius: 0.5rem;
+
+    }
+
+    @media screen and (max-width:766px) {
+
+
+        .noticia-der {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem
+        }
+
+    }
+
+    audio::-webkit-media-controls-enclosure {
+        border-radius: 0;
+    }
+
+    .wp-block-audio audio {
+
+        width: 100%;
+        min-width: inherit !important;
+    }
+    .wp-block-audio{
+
+         margin:0;
+    }
+
+    .icons {
+        display: none;
+    }
+
+
+    button {
+        border: 0;
+    }
+
+    button:focus {
+        border: none;
+        outline: 0 !important;
+        outline-style: none;
+    }
+
+    .container-4 .btn {
+        position: relative;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background: #486faf;
+        transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        cursor: pointer;
+    }
+
+    .container-4 .btn:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        z-index: 2;
+    }
+
+    .container-4 .btn:active {
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .container-4 .btn:active:after {
+        box-shadow: inset 0px -2px 5px white, inset 0px 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .container-4 .btn.active.play-pause .icon.pause {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    .container-4 .btn.active.play-pause .icon.play {
+        opacity: 0;
+        transform: translate(-50%, 50%);
+    }
+
+    .container-4 .btn .icon-container,
+    .container-4 .btn a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container-4 .btn a {
+        z-index: 10;
+    }
+
+    .container-4 .btn .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: inline-block;
+        fill: #EBEBEB;
+        height: 1.4rem;
+        vertical-align: middle;
+        width: 1.4rem;
+        transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .container-4 .btn.play-pause .icon.pause {
+        opacity: 0;
+        transform: translate(-50%, 50%);
+    }
+
+
+    #navbar {
+        transition: top 0.3s;
+    }
+
+    #radio {
+        transition: bottom 0.3s;
+    }
+
+    #envivo {
+        display: none;
+    }
+
+    #info-search {
+        width: 750px;
+    }
+
+    #boxes {
+        //   grid-template-rows:1fr 1fr;
+    }
+
+    #boxes-img {
+        object-fit: cover;
+        height: 100%;
+    }
+
+    #radio {
+
+        height: 150px;
+    }
+
+    iframe {
+        position: relative;
+        width: 100%;
+    }
+
+    @media screen and (max-width:766px) {
+        #radio {
+            height: 135px;
+
+        }
+
+        #boxes-img {
+            height: inherit;
+        }
+
+        #boxes {
+            display: block;
+        }
+
+        #info-search {
+            width: 350px;
+        }
+
+        input[type="range"] {
+            -ms-transform: scale(.75);
+            /* IE 9 */
+            -webkit-transform: scale(.75);
+            /* Chrome, Safari, Opera */
+            transform: scale(.75);
+        }
+    }
+
+
+    #seccion-radio {
+
+        -webkit-transition: all 0.3s cubic-bezier(.53, -0.01, .52, 1);
+        -moz-transition: all 0.3s cubic-bezier(.53, -0.01, .52, 1);
+        -ms-transition: all 0.3s cubic-bezier(.53, -0.01, .52, 1);
+        -o-transition: all 0.3s cubic-bezier(.53, -0.01, .52, 1);
+        transition: all 0.3s cubic-bezier(.53, -0.01, .52, 1);
+    }   

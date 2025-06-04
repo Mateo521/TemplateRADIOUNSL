@@ -76,7 +76,7 @@ display:inline-flex;
 border-radius:5px;
 margin:10px 0;
         padding:5px 7px;
-        background-color:#07376A;
+        background-color:#486faf;
     }
 
 

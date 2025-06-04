@@ -7,7 +7,6 @@
     <meta name="description" content="En 1.989 el rector de la Universidad Nacional de San Luis licenciado Alberto Puchmüller, impulsa la conformación de un grupo de trabajo, para que se aboque al análisis de factibilidad para la puesta en marcha de una radio de frecuencia modulada en la ciudad de San Luis y otra en Villa Mercedes. La comisión elabora el correspondiente anteproyecto de creación de las dos radios universitarias. A solicitud del Sr. Rector, el Poder Ejecutivo Nacional a través del decreto 482/89, autoriza a la Universidad Nacional de San Luis para que instale y opere dos servicios de modulación de frecuencia en las ciudades de San Luis y Villa Mercedes. Sobre la base del anteproyecto y de la autorización de Presidencia de la Nación, el Consejo Superior de la Universidad Nacional de San Luis aprueba la ordenanza 15/1.989, en donde ordena la creación en el ámbito de la U.N.S.L., de dos servicios de radiodifusión sonora con modulación de frecuencia">
   
 
-    <link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png">
 
 
     <!-- Swiper CSS -->
@@ -265,7 +264,7 @@
                         activado = !activado;
                     }
                 </script>
-                <nav style="background-color: #07376A;box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.1); " class="hidden md:block  z-50">
+                <nav style="background-color: #486faf;box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.1); " class="hidden md:block  z-50">
                     <div class="max-w-screen-xl px-4 py-3 mx-auto">
                         <div class="flex items-center justify-between">
                             <?php

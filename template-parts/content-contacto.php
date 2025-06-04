@@ -11,7 +11,7 @@
 
     <div class="md:grid grid-cols-2 items-center bg-white" style="justify-items: center;">
         <div class="text-center p-6">
-            <h1 class="text-4xl font-bold" style="color: #07376A;">Dejanos un mensaje</h1>
+            <h1 class="text-4xl font-bold" style="color: #486faf;">Dejanos un mensaje</h1>
 
             <div class="flex justify-center ">
                 <div style="max-width: 640px;width: 100%;">
@@ -39,7 +39,7 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required style="padding: 5px 5px 45px 5px;">
                         </div>
-                        <button style="background-color: #07376A; margin: 25px 0 100px 0;" type="submit" name="contact_form_submit"
+                        <button style="background-color: #486faf; margin: 25px 0 100px 0;" type="submit" name="contact_form_submit"
                             class=" text-white text-center  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3 text-center dark:bg-blue-600">Enviar
                             mensaje</button>
                     </form>

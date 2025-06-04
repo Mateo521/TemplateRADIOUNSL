@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<div class="bg-[#003366] text-white">
+<div class="bg-[#35698c] text-white">
     <div class="max-w-7xl  mx-auto px-4 py-10">
         <h1 class="text-4xl font-extrabold text-center mb-10">
             STAFF

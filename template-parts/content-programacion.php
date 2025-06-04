@@ -11,7 +11,7 @@ get_header();
 ?>
 <!-- TITULO -->
 <div class="flex justify-center md:gap-12 gap-3 items-baseline" style="background-color: #F5F5F5; padding:15px 0;">
-  <h1 id="titulo-categoria" class="font-bold" style=" font-family: 'Antonio', sans-serif; color:#07376A;">PROGRAMACIÓN</h1>
+  <h1 id="titulo-categoria" class="font-bold" style=" font-family: 'Antonio', sans-serif; color:#486faf;">PROGRAMACIÓN</h1>
   <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-4.png" alt="">
 </div>
 <!-- FINTITULO -->
@@ -206,7 +206,7 @@ get_header();
 
   .next,
   .prev {
-    color: #07376A;
+    color: #486faf;
     font-weight: 700;
 
   }

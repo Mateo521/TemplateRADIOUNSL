@@ -32,7 +32,7 @@
                                 </div>
 
                                 <div class="p-8">
-                                    <h2 class="font-bold py-3 " style="color:#07376A;"><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></h2>
+                                    <h2 class="font-bold py-3 " style="color:#486faf;"><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></h2>
 
 
 <?php

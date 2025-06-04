@@ -159,7 +159,7 @@ $the_query = new WP_Query($args);
 
     .next,
     .prev {
-        color: #07376A;
+        color: #486faf;
         font-weight: 700;
 
     }

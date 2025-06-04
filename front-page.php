@@ -176,7 +176,7 @@ foreach ($item->category as $cat) {
 
                     <div class="p-6 w-full bg-white h-full shadow-lg shadow-gray-500/50">
                         <a href="<?php the_permalink(); ?>">
-                            <p style="color: #07376A; text-transform: uppercase;" class="font-bold py-4"><?php echo esc_html($entry_title); ?></p>
+                            <p style="color: #486faf; text-transform: uppercase;" class="font-bold py-4"><?php echo esc_html($entry_title); ?></p>
                         </a>
 
                         <a href="<?php the_permalink(); ?>">
@@ -231,7 +231,7 @@ foreach ($item->category as $cat) {
 
                             <div class="p-3 bg-white rounded-r-lg">
                                 <a href="<?php the_permalink(); ?>">
-                                    <h3 style="color: #07376A;" class="font-bold py-4"><?php echo esc_html($entry_title); ?></h3>
+                                    <h3 style="color: #486faf;" class="font-bold py-4"><?php echo esc_html($entry_title); ?></h3>
 
                                     <p class="py-2">
                                         <?php
@@ -286,7 +286,7 @@ foreach ($item->category as $cat) {
     </div>
     <div class="flex justify-center" style="padding: 50px 0;">
         <a href="<?php echo esc_url(home_url('/noticias')); ?>">
-            <div class="m-6 p-3 text-center rounded-lg inline-flex text-white justify-center" style="background-color: #07376A;">Más noticias</div>
+            <div class="m-6 p-3 text-center rounded-lg inline-flex text-white justify-center" style="background-color: #486faf;">Más noticias</div>
         </a>
     </div>
 </section>
@@ -801,7 +801,7 @@ foreach ($item->category as $cat) {
                     una universidad abierta que se vincula con la comunidad que le da sentido y justifica su razón de
                     ser.</p>
                 <a href="<?php echo esc_url(home_url('/institucional')); ?>">
-                    <p class="rounded-lg p-4 text-white inline-flex" style="background-color: #07376A;"> Conocé nuestra
+                    <p class="rounded-lg p-4 text-white inline-flex" style="background-color: #486faf;"> Conocé nuestra
                         historia</p>
                 </a>
             </div>
@@ -811,7 +811,7 @@ foreach ($item->category as $cat) {
 <!-- FINSECCION CARD -->
 
 <!-- SECCION FORMULARIO -->
-<h1 class="py-6 md:text-4xl text-2xl font-bold text-center bg-white" style="color:#07376A;">Dejanos un mensaje</h1>
+<h1 class="py-6 md:text-4xl text-2xl font-bold text-center bg-white" style="color:#486faf;">Dejanos un mensaje</h1>
 <div class="flex justify-center  bg-white">
 
     <div style="max-width: 640px;width: 100%;">
@@ -829,7 +829,7 @@ foreach ($item->category as $cat) {
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mensaje</label>
                 <textarea name="message" placeholder="Tu mensaje" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required style="padding: 5px 5px 45px 5px;"></textarea>
             </div>
-            <button name="contact_form_submit" style="position: relative; left: 50%; transform: translateX(-50%); background-color: #07376A; margin: 50px 0 100px 0;" type="submit" class=" text-white text-center  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600">Enviar
+            <button name="contact_form_submit" style="position: relative; left: 50%; transform: translateX(-50%); background-color: #486faf; margin: 50px 0 100px 0;" type="submit" class=" text-white text-center  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600">Enviar
                 mensaje</button>
         </form>
     </div>

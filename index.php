@@ -68,7 +68,7 @@ $titl2e = '/<a href="([^"]+)" rel="tag">([^<]+)<\/a>/i';
   <?php endif;     ?>
                  
                        <!-- SI NO HAY IMAGEN -->
-                      <!--      <div class="w-full h-full" id="carousel-r" style="background-color:#07376A;   background-position:center; background-size: cover;">
+                      <!--      <div class="w-full h-full" id="carousel-r" style="background-color:#486faf;   background-position:center; background-size: cover;">
                           -->
                             <div class="absolute w-full h-full z-1 " id="bg-1"></div>
                             <div class="flex justify-center h-full">
@@ -126,7 +126,7 @@ foreach ($etiquetas as $etiqueta) {
                     <?php if (!empty($image_url)) : ?>
                         <div class="w-full h-full" id="carousel-r" style="background-image: url(<?php echo esc_url($image_url); ?>);   background-position:center; background-size: cover;">
                         <?php else : ?>
-                            <div class="w-full h-full" id="carousel-r" style="background-color:#07376A;   background-position:center; background-size: cover;">
+                            <div class="w-full h-full" id="carousel-r" style="background-color:#486faf;   background-position:center; background-size: cover;">
                             <?php endif; ?>
                             <div class="absolute w-full h-full z-1 " id="bg-1"></div>
                             <div class="flex justify-center h-full">
@@ -166,7 +166,7 @@ foreach ($etiquetas as $etiqueta) {
                     <?php if (!empty($image_url)) : ?>
                         <div class="w-full h-full" id="carousel-r" style="background-image: url(<?php echo esc_url($image_url); ?>);   background-position:center; background-size: cover;">
                         <?php else : ?>
-                            <div class="w-full h-full" id="carousel-r" style="background-color:#07376A;   background-position:center; background-size: cover;">
+                            <div class="w-full h-full" id="carousel-r" style="background-color:#486faf;   background-position:center; background-size: cover;">
                             <?php endif; ?>
                             <div class="absolute w-full h-full z-1 " id="bg-1"></div>
                             <div class="flex justify-center h-full">
@@ -241,7 +241,7 @@ foreach ($etiquetas as $etiqueta) {
                         </a>
                         <div class="p-6 w-full  bg-white h-full shadow-lg shadow-gray-500/50">
                             <a href="<?php the_permalink(); ?>">
-                                <h3 class="font-bold py-4" style="color: #07376A;"><?php the_title(); ?>
+                                <h3 class="font-bold py-4" style="color: #486faf;"><?php the_title(); ?>
                                 </h3>
       <a href="<?php the_permalink(); ?>">   
     <?php the_excerpt(); ?>
@@ -305,7 +305,7 @@ font-size: 3.75rem;
 }
     .next,
     .prev {
-        color: #07376A;
+        color: #486faf;
         font-weight: 700;
 
     }

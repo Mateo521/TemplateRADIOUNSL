@@ -1,4 +1,3 @@
-
 <?php
 function radio_sop()
 
@@ -25,6 +24,10 @@ function linksradio_unsl_scripts()
     wp_enqueue_script('tailwindcss', "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4", array(), '4.1.0', false);
 
     wp_enqueue_script('flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js", array(), '3.1.2', false);
+/*
+    wp_enqueue_script('barba', "https://unpkg.com/@barba/core", array(), '3.1.2', false);
+
+    wp_enqueue_script('main', get_template_directory_uri() . "/assets/main.js", array(), '1.0.0', false);*/
 
 
 
@@ -57,7 +60,7 @@ function save_contact_form_message_as_comment()
         wp_insert_comment($comment_data);
         wp_redirect(home_url());
         exit;
-}
+    }
 }
 
 add_action('init', 'save_contact_form_message_as_comment');
@@ -160,29 +163,31 @@ add_action('pre_get_posts', 'wpse_modify_home_category_query');
 
 <?php
 
-function custom_comment_callback($comment, $args, $depth) {
-    ?>
+function custom_comment_callback($comment, $args, $depth)
+{
+?>
     <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
         <article class="comment">
             <header class="comment-meta flex gap-5 py-3 mx-3">
 
-            <?php echo get_avatar($comment, 60, '', 'Avatar del usuario', array('class' => 'comment-avatar')); ?>
-<div>
-                <cite class="font-bold comment-author" ><?php comment_author(); ?></cite>
-                <time class="comment-time" style="color:#535353;"><?php comment_date(); ?></time>
-                <div class="comment-content">
-                <?php comment_text(); ?>
-            </div>
+                <?php echo get_avatar($comment, 60, '', 'Avatar del usuario', array('class' => 'comment-avatar')); ?>
+                <div>
+                    <cite class="font-bold comment-author"><?php comment_author(); ?></cite>
+                    <time class="comment-time" style="color:#535353;"><?php comment_date(); ?></time>
+                    <div class="comment-content">
+                        <?php comment_text(); ?>
+                    </div>
                 </div>
             </header>
         </article>
         <style>
-            .comment-avatar{
-                border-radius:50%;
+            .comment-avatar {
+                border-radius: 50%;
             }
-                .comment-author {
-    font-style: normal; 
-}
+
+            .comment-author {
+                font-style: normal;
+            }
         </style>
     <?php
 }
@@ -190,7 +195,8 @@ function custom_comment_callback($comment, $args, $depth) {
 
 /*LOGIN PERSONALIZADO*/
 
-function custom_login_logo() {
+function custom_login_logo()
+{
     echo '<style type="text/css">
         .login h1 a {
           background-image: url(https://radiouniversidad.unsl.edu.ar/images/icons/logo2.png) ;
@@ -202,14 +208,16 @@ function custom_login_logo() {
 }
 add_action('login_head', 'custom_login_logo');
 
-function login_url(){
-return "http://radiounsl.byethost18.com"; 
+function login_url()
+{
+    return "http://radiounsl.byethost18.com";
 }
 add_filter('login_headerurl', 'login_url');
 
-function login_background() {
-echo '<style type="text/css">
-body { background: #07376A; }
+function login_background()
+{
+    echo '<style type="text/css">
+body { background: #486faf; }
 .login form { background: #cfd9e3; }
 .login #nav a{ color:white;}
 .login #backtoblog a { color:White;}
@@ -232,7 +240,8 @@ add_theme_support('post-thumbnails');
 add_theme_support('title-tag');
 
 
-function mi_titulo_personalizado($title) {
+function mi_titulo_personalizado($title)
+{
     if (is_single()) {
         $post_id = get_the_ID();
         $categoria = get_the_category($post_id);
@@ -246,7 +255,8 @@ add_filter('pre_get_document_title', 'mi_titulo_personalizado');
 
 
 
-function meta_description_personalizada() {
+function meta_description_personalizada()
+{
     if (is_single()) {
         global $post;
         $excerpt = strip_tags($post->post_excerpt ? $post->post_excerpt : wp_trim_words($post->post_content, 30));
@@ -260,6 +270,4 @@ function meta_description_personalizada() {
 add_action('wp_head', 'meta_description_personalizada');
 
 
-?>
-
-
+    ?>

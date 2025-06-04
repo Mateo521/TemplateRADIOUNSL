@@ -38,7 +38,7 @@ if ($current_category) {
                                 <?php endif; ?>
 
                                 <div class="p-6 flex flex-col justify-between">
-                                    <h2 class="font-bold py-4" style="color:#07376A;"><?php the_title(); ?></h2>
+                                    <h2 class="font-bold py-4" style="color:#486faf;"><?php the_title(); ?></h2>
                                     <p class="text-base"><?php the_excerpt(); ?></p>
                                 </div>
                             </div>
