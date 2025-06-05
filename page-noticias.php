@@ -7,7 +7,10 @@ get_header();
 ?>
 
 
-<h1 class="m-0 pb-4 pt-8 text-3xl bg-white text-center font-bold">Noticias</h1>
+ <div class="flex justify-center md:gap-12 gap-3 items-baseline" style="background-color: white; padding:15px 0;">
+        <h1 id="titulo-categoria" class="font-bold" style=" font-family: 'Antonio', sans-serif;">NOTICIAS</h1>
+        <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-2.png" alt="">
+    </div>
 <section class="bg-white pb-2">
     <?php
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
@@ -260,7 +263,7 @@ wp_reset_postdata();
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    
+
 
     .pagination {
         justify-content: center;
