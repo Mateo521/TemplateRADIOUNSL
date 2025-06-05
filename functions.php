@@ -12,6 +12,8 @@ function linksradio_unsl_estilos()
     $version = wp_get_theme()->get('Version');
     wp_enqueue_style('unsl_estilo-style', get_template_directory_uri() . "/style.css", array('unsl_estilo-flowbite'), $version, 'all');
     wp_enqueue_style('unsl_estilo-flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css", array(), '1.8.0', 'all');
+
+    wp_enqueue_style('lightbox-css', get_template_directory_uri() . "/assets/lightbox2-2.11.4/src/css/lightbox.css", array(), '1.1.0', 'all');
 }
 
 add_action('wp_enqueue_scripts', 'linksradio_unsl_estilos');
@@ -26,14 +28,16 @@ function linksradio_unsl_scripts()
     wp_enqueue_script('flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js", array(), '3.1.2', false);
 /*
     wp_enqueue_script('barba', "https://unpkg.com/@barba/core", array(), '3.1.2', false);
-
-    wp_enqueue_script('main', get_template_directory_uri() . "/assets/main.js", array(), '1.0.0', false);*/
+*/
+    
 
 
 
     wp_enqueue_script('unsl_estilo-fontawesome', "https://kit.fontawesome.com/19e7896a5a.js", array(), '1.0', false);
 
     wp_enqueue_script('unsl_estilo-jquery', "https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js", array(), '3.6.4', false);
+
+    wp_enqueue_script('lightbox', get_template_directory_uri() . "/assets/lightbox2-2.11.4/src/js/lightbox.js", array(), '1.0.0', false);
 }
 
 add_action('wp_enqueue_scripts', 'linksradio_unsl_scripts');

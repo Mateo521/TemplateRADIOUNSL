@@ -595,6 +595,9 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         }
         activado2 = !activado2;
     }
+
+
+    
 </script>
 
 
@@ -718,6 +721,22 @@ function initSinglePageScripts() {
             otraUbicacionContainer_3.appendChild(podcastClone);
         }
     });
+
+  jQuery(document).ready(function($) {
+        $('#noticia img').each(function(index) {
+            var imgSrc = $(this).attr('src');
+            var hasGalleryParent = $(this).parents('figure.wp-block-gallery').length > 0;
+            var imgLink = $('<a>', {
+                href: imgSrc,
+                'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1)
+            });
+            var imgElement = $('<img>', {
+                src: imgSrc
+            });
+            $(this).wrap(imgLink).after(imgElement).remove();
+        });
+    });
+    
 }
 
 
