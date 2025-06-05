@@ -157,17 +157,17 @@ endif;
             <p> <?php echo esc_html($entry_date); ?></p>
 
         </div>
-
-        <?php
-        if ($thumbnail_url): ?>
-            <div class="py-2">
-                <img class="rounded-md w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-            </div>
-        <?php endif; ?>
-
-        <?php the_content(); ?>
+        <div id="entrada">
+            <?php
+            if ($thumbnail_url): ?>
+                <div class="py-2">
+                    <img class="rounded-md w-full" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                </div>
+            <?php endif; ?>
 
 
+            <?php the_content(); ?>
+        </div>
 
 
 
@@ -230,7 +230,7 @@ endif;
         <!-- ULTIMAS NOTICIAS PODCASTS -->
         <?php if ($is_podcast) : ?>
             <h1 class="font-bold text-xl">Últimos podcasts</h1>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6 "  style="justify-items: center;">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6 " style="justify-items: center;">
 
                 <?php
                 $args_podcasts = array(
@@ -306,7 +306,7 @@ endif;
         <!-- ULTIMAS NOTICIAS -->
         <?php if (!$is_podcast) : ?>
             <h1 class="font-bold text-xl">Últimas noticias</h1>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6"  style="justify-items: center;">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-6" style="justify-items: center;">
                 <?php
                 $args_news = array(
                     'category__not_in' => array(get_cat_ID('podcast')),
@@ -321,7 +321,7 @@ endif;
                         $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $entry_title = get_the_title();
                         $categories = get_the_category();
-                      $content = get_the_content();
+                        $content = get_the_content();
                         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
                         <div class="flex flex-col h-full rounded-lg shadow bg-white overflow-hidden">
@@ -356,7 +356,7 @@ endif;
                                 </div>
 
                                 <?php
-                                     $matches2 = [];
+                                $matches2 = [];
                                 if (preg_match($pattern, $content, $matches2)) {
                                     echo '<div class="mt-2">' . $matches2[0] . '</div>';
                                 }
@@ -388,10 +388,12 @@ endif;
         padding: 10px 0;
 
     }
-.wp-block-image img {
+
+    .wp-block-image img {
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
     .podcasts audio::-webkit-media-controls-play-button,
     .podcasts audio::-webkit-media-controls-panel {
         background-color: #E5CC26;

@@ -723,7 +723,7 @@ function initSinglePageScripts() {
     });
 
   jQuery(document).ready(function($) {
-        $('#noticia img').each(function(index) {
+        $('#entrada img').each(function(index) {
             var imgSrc = $(this).attr('src');
             var hasGalleryParent = $(this).parents('figure.wp-block-gallery').length > 0;
             var imgLink = $('<a>', {
