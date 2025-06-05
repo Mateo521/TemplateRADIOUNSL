@@ -144,21 +144,37 @@ if ($noticias_query->have_posts()) : ?>
             <div class="grid md:grid-cols-3 gap-8">
 
                 <?php while ($noticias_query->have_posts()) : $noticias_query->the_post(); ?>
-                    <div class="flex flex-col w-full my-6 bg-white rounded-md shadow-lg shadow-gray-500/50 overflow-hidden transition-transform duration-300 hover:scale-101 hover:shadow-xl">
-                        <?php
-                        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                        if ($thumbnail_url): ?>
-                            <img class="rounded-t-md w-full object-cover" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" />
-                        <?php endif; ?>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h2 class="font-bold py-4 text-[#486faf] text-lg leading-tight"><?php the_title(); ?></h2>
-                            <div class="flex-grow text-gray-700 text-sm leading-relaxed"><?php the_excerpt(); ?></div>
-                            <a href="<?php the_permalink(); ?>" class="mt-4 inline-block text-[#486faf] font-semibold hover:text-[#05507a] transition-colors duration-300">
-                                Leer más <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
+    <article class="flex flex-col w-full my-6 bg-white rounded-md shadow-lg shadow-gray-500/20 overflow-hidden hover-scale">
+        <a aria-label="Leer noticia: <?php echo esc_attr(get_the_title()); ?>" class="card-link" href="<?php the_permalink(); ?>">
+            <div class="card-image-wrapper">
+                <?php
+                $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                if ($thumbnail_url): ?>
+                    <img 
+                        alt="<?php echo esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) ?: 'Imagen destacada de la noticia'); ?>" 
+                        height="338" 
+                        loading="lazy" 
+                        src="<?php echo esc_url($thumbnail_url); ?>" 
+                        width="600" 
+                    />
+                <?php endif; ?>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h2 class="font-bold py-4 text-[#486faf] text-lg leading-tight">
+                    <?php the_title(); ?>
+                </h2>
+                <p class="flex-grow text-gray-700 text-sm leading-relaxed clamp-4">
+                    <?php echo wp_trim_words(get_the_excerpt(), 25); ?>
+                </p>
+                <div class="mt-4 inline-flex items-center text-[#486faf] font-semibold hover:text-[#05507a] transition-colors duration-300">
+                    Leer más
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </div>
+            </div>
+        </a>
+    </article>
+<?php endwhile; ?>
+
 
             </div>
         </div>
@@ -188,6 +204,64 @@ wp_reset_postdata();
 
 
 <style>
+
+
+ .hover-scale {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform, box-shadow;
+    }
+    .hover-scale:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(72, 111, 175, 0.4);
+      z-index: 10;
+    }
+    /* Fix image aspect ratio and uniform height */
+    .card-image-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
+      border-top-left-radius: 0.375rem; /* rounded-t-md */
+      border-top-right-radius: 0.375rem;
+      background: #e2e8f0;
+    }
+    .card-image-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s ease;
+      border-top-left-radius: 0.375rem;
+      border-top-right-radius: 0.375rem;
+      will-change: transform;
+    }
+    .card-image-wrapper:hover img {
+      transform: scale(1.1);
+    }
+    /* Entire card clickable */
+    .card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      height: 100%;
+    }
+    .card-link:focus-visible {
+      outline: 3px solid #486faf;
+      outline-offset: 3px;
+    }
+    /* Clamp excerpt to 4 lines */
+    .clamp-4 {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+
     .pagination {
         justify-content: center;
         display: flex;

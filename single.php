@@ -157,7 +157,7 @@ endif;
             <p> <?php echo esc_html($entry_date); ?></p>
 
         </div>
-        <div id="entrada">
+     <div id="entrada">     </div>
             <?php
             if ($thumbnail_url): ?>
                 <div class="py-2">
@@ -167,7 +167,7 @@ endif;
 
 
             <?php the_content(); ?>
-        </div>
+      
 
 
 
