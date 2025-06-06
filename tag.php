@@ -18,69 +18,46 @@ if ($current_tag) {
 
     <?php
 
-    // Obtener la cantidad total de entradas en la consulta actual
-
+ 
     $total_posts = wp_count_posts();
 
 
 
-    // Personalizar la cantidad de noticias por página para la página de etiqueta
-
     global $query_string;
 
-    query_posts($query_string . '&posts_per_page=9'); // Cambia "9" al número deseado de noticias por página
+    query_posts($query_string . '&posts_per_page=9'); 
 
 
 
-    if (have_posts()) : ?>486faf
+       if (have_posts()) : ?>
 
         <div class="flex justify-center p-8 bg-white">
 
             <div class="max-w-screen-xl w-full">
 
                 <div class="grid md:grid-cols-3 gap-8">
-
                     <?php while (have_posts()) : the_post(); ?>
-
-                        <a href="<?php the_permalink(); ?>">
-
-                            <div class="flex flex-col w-full my-6">
-
+                        <a href="<?php the_permalink(); ?>" class="card">
+                            <div class="flex flex-col w-full my-6 bg-white h-full shadow-lg shadow-gray-500/50">
                                 <?php
-
                                 $content = get_the_content();
+                                $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                                if ($thumbnail_url) : ?>
+                                    <div class="image-container">
+                                        <img class="card-img rounded-t-xl" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                    </div>
+                                <?php endif; ?>
 
-                                preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-
-                                if ($matches) {
-
-                                    $img_src = $matches[1]; // La URL de la primera imagen
-
-                                    echo '<img class="rounded-t-lg" src="' . $img_src . '" alt="Imagen de la noticia">';
-
-                                }
-
-                                ?>
-
-                                <div class="p-6 w-full bg-white h-full shadow-lg shadow-gray-500/50">
-
-
-
-                                    <h2 style="color: #07376A;" class="font-bold py-4" ><?php the_title(); ?></h2>
-
-
-
-                                    <?php the_excerpt(); ?>
-
+                                <div class="p-6 flex flex-col justify-between">
+                                    <h2 class="font-bold py-4" style="color:#486faf;"><?php the_title(); ?></h2>
+                                    <p class="text-base"><?php the_excerpt(); ?></p>
                                 </div>
-
                             </div>
-
                         </a>
-
                     <?php endwhile; ?>
-
                 </div>
+
+
 
             </div>
 
@@ -88,42 +65,40 @@ if ($current_tag) {
 
         <div class="pagination bg-white">
 
-    <?php
+            <?php
 
-    global $wp_query;
+            global $wp_query;
 
-    $big = 999999999; // Número grande para asegurarnos de que no haya problemas con la paginación
+            $big = 999999999;
 
-    echo paginate_links(array(
+            echo paginate_links(array(
 
-        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
 
-        'format' => '?paged=%#%',
+                'format' => '?paged=%#%',
 
-        'current' => max(1, get_query_var('paged')),
+                'current' => max(1, get_query_var('paged')),
 
-        'total' => $wp_query->max_num_pages,
+                'total' => $wp_query->max_num_pages,
 
-        'prev_text' => __('&laquo; Anterior'),
+                'prev_text' => __('&laquo; Anterior'),
 
-        'next_text' => __('Siguiente &raquo;')
+                'next_text' => __('Siguiente &raquo;')
 
-    ));
+            ));
 
-    ?>
+            ?>
 
-</div>
+        </div>
 
-<?php else : ?>
+    <?php else : ?>
 
-    <p>No se encontraron entradas en esta etiqueta.</p>
+        <p>No se encontraron entradas en esta categoría.</p>
 
-<?php endif; 
-
+<?php endif;
 } else {
 
-    echo '<h1>Etiqueta no encontrada</h1>';
-
+    echo '<h1>Categoría no encontrada</h1>';
 }
 
 ?>

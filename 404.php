@@ -9,7 +9,6 @@ get_header();
 <section class="bg-white">
 
 
-486faf
 <div class="error-page">
 
   <div>
@@ -35,7 +34,7 @@ get_header();
   display: flex;
 
   align-items: center;
-486faf
+
   justify-content: center;
 
   text-align: center;
@@ -70,7 +69,6 @@ get_header();
 
   color: transparent;
 
-  /* webkit only for graceful degradation to IE */
 
   background: -webkit-repeating-linear-gradient(-45deg, #295B92, #114780, #07376A, #0F335A, #4B80BB, #4B80BB, #234A75);
 

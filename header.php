@@ -60,6 +60,8 @@
                         </a>
                         <div class="flex md:order-2">
 
+                           
+
                             <div class="relative hidden md:flex flex gap-5 items-center">
                                 <div class="rounded-lg  bg-red-500 text-white p-1 w-full" style="max-width:130px;">
 
