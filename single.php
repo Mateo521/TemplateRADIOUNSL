@@ -123,12 +123,12 @@ if ($spotify_url):
 endif;
 
 ?>
-<div class="flex w-full justify-center p-8 bg-white" id="noticia">
+<div class="flex w-full justify-center p-3 md:p-8 bg-white" id="noticia">
     <div class="max-w-screen-md" id="txt-in">
 
         <h1 class="md:text-4xl text-2xl my-3" style="color:#486faf;"><?php echo esc_html($entry_title); ?></h1>
 
-        <div class="flex gap-3 items-center">
+        <div class="flex gap-3 flex-wrap items-center">
 
             <!-- CATEGORÍAS  -->
             <?php

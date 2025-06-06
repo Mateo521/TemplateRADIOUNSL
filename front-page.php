@@ -795,9 +795,9 @@ foreach ($item->category as $cat) {
     <div class="max-w-screen-xl  bg-white" id="card-i">
         <div class="grid grid-cols-2 shadow-lg shadow-gray-500/50" id="historia">
             <img class="w-full h-full object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/aire.png" alt="">
-            <div class=" w-full text-center p-6 m-6">
-                <h1 class="text-5xl font-bold p-6" id="title-card">30 años de Radio Universidad</h1>
-                <p class="text-xl p-6 font-bold" id="title-card-2">La misión de la emisora es representar los valores de
+            <div class=" w-full text-center md:px-6 px-2 py-3  ">
+                <h1 class="md:text-5xl text-2xl font-bold p-6" id="title-card">30 años de Radio Universidad</h1>
+                <p class="text-xl p-3 md:p-6 font-bold" id="title-card-2">La misión de la emisora es representar los valores de
                     una universidad abierta que se vincula con la comunidad que le da sentido y justifica su razón de
                     ser.</p>
                 <a href="<?php echo esc_url(home_url('/institucional')); ?>">
@@ -843,86 +843,7 @@ foreach ($item->category as $cat) {
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-/*
-        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-        if (isMobile) return;
-        
-*/
-
-        const grid = document.querySelector("#grids");
-
-        if (!grid) return;
-
-        const audios = grid.querySelectorAll("audio");
-
-        audios.forEach((audio, index) => {
-            // Oculta el reproductor nativo
-            audio.style.display = "none";
-
-            // Crear contenedor de controles
-            const controls = document.createElement("div");
-            controls.className = "flex items-center justify-center space-x-1 p-1 bg-gray-100 rounded-lg shadow";
-
-            // Botones
-            const playBtn = document.createElement("button");
-            playBtn.innerHTML = "▶️";
-            playBtn.className = "p-1 text-sm rounded-full bg-blue-500 text-white hover:bg-blue-600 transition";
-
-            const back10Btn = document.createElement("button");
-            back10Btn.innerHTML = "⏪ 10s";
-            back10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
-
-            const forward10Btn = document.createElement("button");
-            forward10Btn.innerHTML = "⏩ 10s";
-            forward10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
-
-            const restartBtn = document.createElement("button");
-            restartBtn.innerHTML = "⏮️";
-            restartBtn.className = "p-1 text-sm bg-red-400 text-white rounded hover:bg-red-500";
-
-            // Estado local de reproducción
-            let playing = false;
-
-            playBtn.addEventListener("click", () => {
-                if (playing) {
-                    audio.pause();
-                    playBtn.innerHTML = "▶️";
-                } else {
-                    audio.play();
-                    playBtn.innerHTML = "⏸️";
-                }
-                playing = !playing;
-            });
-
-            back10Btn.addEventListener("click", () => {
-                audio.currentTime = Math.max(0, audio.currentTime - 10);
-            });
-
-            forward10Btn.addEventListener("click", () => {
-                audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-            });
-
-            restartBtn.addEventListener("click", () => {
-                audio.currentTime = 0;
-                audio.play();
-                playing = true;
-                playBtn.innerHTML = "⏸️";
-            });
-
-            // Insertar controles
-            controls.appendChild(restartBtn);
-            controls.appendChild(back10Btn);
-            controls.appendChild(playBtn);
-            controls.appendChild(forward10Btn);
-
-            // Insertar controles justo después del <audio>
-            audio.parentElement.appendChild(controls);
-        });
-    });
-
+    
 
 
 

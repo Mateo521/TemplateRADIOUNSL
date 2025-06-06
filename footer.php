@@ -618,6 +618,86 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 
 
 
+/*
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (isMobile) return;
+        
+*/
+
+        const grid = document.querySelector("#grids");
+
+        if (!grid) return;
+
+        const audios = grid.querySelectorAll("audio");
+
+        audios.forEach((audio, index) => {
+            // Oculta el reproductor nativo
+            audio.style.display = "none";
+
+            // Crear contenedor de controles
+            const controls = document.createElement("div");
+            controls.className = "flex items-center justify-center space-x-1 p-1 bg-gray-100 rounded-lg shadow";
+
+            // Botones
+            const playBtn = document.createElement("button");
+            playBtn.innerHTML = "▶️";
+            playBtn.className = "p-1 text-sm rounded-full bg-blue-500 text-white hover:bg-blue-600 transition";
+
+            const back10Btn = document.createElement("button");
+            back10Btn.innerHTML = "⏪ 10s";
+            back10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+
+            const forward10Btn = document.createElement("button");
+            forward10Btn.innerHTML = "⏩ 10s";
+            forward10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+
+            const restartBtn = document.createElement("button");
+            restartBtn.innerHTML = "⏮️";
+            restartBtn.className = "p-1 text-sm bg-red-400 text-white rounded hover:bg-red-500";
+
+            // Estado local de reproducción
+            let playing = false;
+
+            playBtn.addEventListener("click", () => {
+                if (playing) {
+                    audio.pause();
+                    playBtn.innerHTML = "▶️";
+                } else {
+                    audio.play();
+                    playBtn.innerHTML = "⏸️";
+                }
+                playing = !playing;
+            });
+
+            back10Btn.addEventListener("click", () => {
+                audio.currentTime = Math.max(0, audio.currentTime - 10);
+            });
+
+            forward10Btn.addEventListener("click", () => {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+            });
+
+            restartBtn.addEventListener("click", () => {
+                audio.currentTime = 0;
+                audio.play();
+                playing = true;
+                playBtn.innerHTML = "⏸️";
+            });
+
+            // Insertar controles
+            controls.appendChild(restartBtn);
+            controls.appendChild(back10Btn);
+            controls.appendChild(playBtn);
+            controls.appendChild(forward10Btn);
+
+            // Insertar controles justo después del <audio>
+            audio.parentElement.appendChild(controls);
+        });
+  
+
+
+
         /*    document.addEventListener('DOMContentLoaded', function() {*/
         var swiper3 = new Swiper('.swiper-container', {
             navigation: {
