@@ -290,7 +290,7 @@ function mostrar_clima_san_luis() {
             const tempMax = data.daily.temperature_2m_max[hoy];
 
             document.getElementById("widget-clima").innerHTML = `
-                <div style="background:#eee;padding:15px;border-radius:10px;text-align:center;">
+                <div style="padding:15px;border-radius:10px;text-align:center;">
                     <h3>Ciudad de San Luis</h3>
                     <p><strong>Mín:</strong> ${tempMin}°C<br><strong>Máx:</strong> ${tempMax}°C</p>
                     <p>Despejado ☀️</p>

@@ -839,6 +839,96 @@ foreach ($item->category as $cat) {
 
 
 
+<!--div class="relative w-full  p-6 text-white" >
+   <div class="backdrop-brightness-50 backdrop-blur-sm p-6 rounded-lg">
+    <h1 class="font-fredoka text-3xl text-white text-center leading-tight">
+     Pronóstico del Clima
+    </h1>
+    <p class="text-center text-base mt-1 mb-6">
+     Viernes 6 de junio
+    </p>
+    <div class="text-center mb-6">
+     <h2 class="font-bold uppercase text-white text-lg mb-3">
+      Ciudad de San Luis
+     </h2>
+     <div class="flex justify-center items-center space-x-6">
+      <div class="flex flex-col items-center">
+       <img alt="Ícono de sol amarillo brillante para clima despejado" class="w-12 h-12" height="48" src="https://storage.googleapis.com/a1aa/image/640bcd42-5e0d-4e04-97fe-f6300c376805.jpg" width="48"/>
+       <p class="text-xs mt-1">
+        Despejado
+       </p>
+      </div>
+      <div class="flex flex-col items-center">
+       <span class="font-fredoka text-6xl leading-none">
+        5°
+       </span>
+       <span class="text-sm font-semibold">
+        Min.
+       </span>
+      </div>
+      <div class="flex flex-col items-center">
+       <span class="font-fredoka text-6xl leading-none">
+        23°
+       </span>
+       <span class="text-sm font-semibold">
+        Max.
+       </span>
+      </div>
+     </div>
+    </div>
+    <hr class="border-t border-white border-opacity-40 mb-4"/>
+    <div class="space-y-4 text-white text-sm font-semibold">
+     <div class="flex items-center justify-between border-b border-white border-opacity-40 pb-2">
+      <span class="uppercase font-bold">
+       Villa Mercedes
+      </span>
+      <div class="flex items-center space-x-2">
+       <img alt="Ícono de sol amarillo para clima despejado" class="w-6 h-6" height="24" src="https://storage.googleapis.com/a1aa/image/33f3cfd8-13e8-47c5-e64e-ab58f8e5e8b9.jpg" width="24"/>
+       <div class="text-right">
+        <p>
+         Min: 3°C
+        </p>
+        <p>
+         Máx: 23°C
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="flex items-center justify-between border-b border-white border-opacity-40 pb-2">
+      <span class="uppercase font-bold">
+       Villa de Merlo
+      </span>
+      <div class="flex items-center space-x-2">
+       <img alt="Ícono de sol con nube para clima parcialmente nublado" class="w-6 h-6" height="24" src="https://storage.googleapis.com/a1aa/image/25ac39d5-d04e-4135-bf59-21b431a2926f.jpg" width="24"/>
+       <div class="text-right">
+        <p>
+         Min: 7°C
+        </p>
+        <p>
+         Máx: 21°C
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="flex items-center justify-between border-b border-white border-opacity-40 pb-2">
+      <span class="uppercase font-bold">
+       Unión
+      </span>
+      <div class="flex items-center space-x-2">
+       <img alt="Ícono de sol amarillo para clima despejado" class="w-6 h-6" height="24" src="https://storage.googleapis.com/a1aa/image/33f3cfd8-13e8-47c5-e64e-ab58f8e5e8b9.jpg" width="24"/>
+       <div class="text-right">
+        <p>
+         Min: 5°C
+        </p>
+        <p>
+         Máx: 26°C
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div-->
 
 
 

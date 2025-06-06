@@ -10,7 +10,61 @@ wp_footer();
     #seccion-radio {
         bottom: -116px;
     }
-</style>
+
+  
+
+    .marquee-wrapper {
+      width: 100%;
+   
+      overflow: hidden;
+
+      background:url("http://10.230.5.252/radiounsl/wp-content/themes/TemplateRADIOUNSL/assets/images/pexels-photo-5317562.jpeg");
+      border: 1px solid rgba(255 255 255 / 0.2);
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+      white-space: nowrap;
+      position: relative;
+     padding: 5px 0;
+    }
+    .marquee-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 65s linear infinite;
+      font-weight: 600;
+    
+      user-select: none;
+    }
+    @keyframes marquee {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .city-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-right: 3rem;
+      white-space: nowrap;
+    }
+   
+  
+    .weather-icon {
+
+
+      width: 24px;
+      height: 24px;
+
+      vertical-align: middle;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+    }
+  </style>
+  <div  class="marquee-wrapper" aria-label="Clima actual de ciudades">
+    <div class="marquee-content" id="marquee"></div>
+  </div>
+
+
 
 <div class="footer">
     <footer id="footer">
@@ -73,6 +127,7 @@ wp_footer();
                     </li>
                 </ul>
             </div>
+            
         </div>
         <hr>
 
@@ -299,6 +354,85 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 
 
 <script>
+
+
+
+  const ciudades = [
+  { nombre: "Ciudad de San Luis", lat: -33.295, lon: -66.3356 },
+  { nombre: "Villa de Merlo", lat: -32.344, lon: -65.099 },
+  { nombre: "Unión", lat: -33.283, lon: -66.333 },
+  { nombre: "La Punta", lat: -33.801, lon: -66.374 },
+  { nombre: "Luján", lat: -33.622, lon: -66.420 },
+  { nombre: "El Trapiche", lat: -32.873, lon: -66.203 },
+  { nombre: "Santa Rosa del Conlara", lat: -32.523, lon: -65.039 },
+  { nombre: "Callejón de los 7 Hermanos", lat: -33.466, lon: -66.122 },
+  { nombre: "Renca", lat: -32.991, lon: -66.029 },
+  { nombre: "Potrero de los Funes", lat: -32.566, lon: -66.125 },
+  { nombre: "San Francisco del Monte de Oro", lat: -32.696, lon: -65.308 },
+];
+
+    const iconos = {
+  clear: `<img class="weather-icon" src="https://openweathermap.org/img/wn/01d.png" alt="Sol despejado" />`,
+  partly_cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/03d.png" alt="Parcialmente nublado" />`,
+  cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/04d.png" alt="Nublado" />`,
+  rain: `<img class="weather-icon" src="https://openweathermap.org/img/wn/09d.png" alt="Lluvia" />`,
+  snow: `<img class="weather-icon" src="https://openweathermap.org/img/wn/13d.png" alt="Nieve" />`,
+  default: `<img class="weather-icon" src="https://placehold.co/24x24/png?text=?" alt="Clima desconocido" />`,
+};
+
+
+    function obtenerIcono(code) {
+      if ([0].includes(code)) return iconos.clear;
+      if ([1, 2, 3].includes(code)) return iconos.partly_cloudy;
+      if ([45, 48].includes(code)) return iconos.cloudy;
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return iconos.rain;
+      if ([71, 73, 75, 85, 86].includes(code)) return iconos.snow;
+      return iconos.default;
+    }
+
+    function descripcionClima(code) {
+      if ([0].includes(code)) return "Despejado";
+      if ([1, 2, 3].includes(code)) return "Parcial";
+      if ([45, 48].includes(code)) return "Nublado";
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "Lluvia";
+      if ([71, 73, 75, 85, 86].includes(code)) return "Nieve";
+      return "Desconocido";
+    }
+
+    async function obtenerClima(ciudad) {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${ciudad.lat}&longitude=${ciudad.lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=America/Argentina/Buenos_Aires`;
+      const res = await fetch(url);
+      const data = await res.json();
+      const hoy = 0;
+      return {
+        nombre: ciudad.nombre,
+        tempMin: data.daily.temperature_2m_min[hoy],
+        tempMax: data.daily.temperature_2m_max[hoy],
+        weathercode: data.daily.weathercode[hoy],
+      };
+    }
+
+    async function cargarMarquee() {
+      const datos = await Promise.all(ciudades.map(obtenerClima));
+      const contenido = datos
+        .map(({ nombre, tempMin, tempMax, weathercode }) => {
+          const icono = obtenerIcono(weathercode);
+          const desc = descripcionClima(weathercode);
+          return `
+            <span class="city-block" aria-label="Clima en ${nombre}: mínimo ${tempMin} grados, máximo ${tempMax} grados, ${desc}">
+              <span class="city-name">${nombre}:</span>
+              <span class="temp">${tempMin}° / ${tempMax}°C</span>
+              ${icono}
+            </span>
+          `;
+        })
+        .join("");
+      document.getElementById("marquee").innerHTML = contenido;
+    }
+
+    cargarMarquee();
+
+
     const themeURL = "<?php echo get_template_directory_uri(); ?>";
 
     function Adelantar() {
