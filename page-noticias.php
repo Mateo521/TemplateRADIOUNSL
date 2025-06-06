@@ -7,9 +7,9 @@ get_header();
 ?>
 
 
- <div class="flex justify-center md:gap-12 gap-3 items-baseline" style="background-color: white; padding:15px 0;">
-        <h1 id="titulo-categoria" class="font-bold" style=" font-family: 'Antonio', sans-serif;">NOTICIAS</h1>
-        <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-2.png" alt="">
+ <div class="flex justify-center md:gap-12 gap-3 items-baseline" style="background-color:#F3F3F3; padding:15px 0;">
+        <h1 id="titulo-categoria" class="font-bold text- text-[#1476B3]" style=" font-family: 'Antonio', sans-serif;">NOTICIAS</h1>
+        <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-11.png" alt="">
     </div>
 <section class="bg-white pb-2">
     <?php
@@ -29,14 +29,16 @@ get_header();
     $latest_news_query = new WP_Query($args_latest);
 
     if ($latest_news_query->have_posts()) : ?>
-        <div class="swiper-container max-w-7xl my-8 relative " style="position: relative;">
+        <div class="swiper-container  my-8 relative " style="position: relative;"> <!-- max-w-7xl -->
             <style>
-                /* Posición relativa para que los botones se ubiquen correctamente */
+        
                 .swiper-container {
                     width: 100%;
 
                     margin: 0 auto;
+/*
                     border-radius: 12px;
+*/
                     overflow: hidden;
                     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
                 }
@@ -58,7 +60,9 @@ get_header();
                     inset: 0;
                     background: linear-gradient(to top, rgba(7, 55, 106, 0.8), rgba(7, 55, 106, 0.3));
                     z-index: 0;
+/* 
                     border-radius: 12px;
+*/
                 }
 
                 .swiper-slide>div {
@@ -219,14 +223,16 @@ wp_reset_postdata();
       box-shadow: 0 20px 40px rgba(72, 111, 175, 0.4);
       z-index: 10;
     }
-    /* Fix image aspect ratio and uniform height */
+
     .card-image-wrapper {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      padding-top: 56.25%; 
       overflow: hidden;
-      border-top-left-radius: 0.375rem; /* rounded-t-md */
+/*
+      border-top-left-radius: 0.375rem; 
       border-top-right-radius: 0.375rem;
+*/
       background: #e2e8f0;
     }
     .card-image-wrapper img {
@@ -238,14 +244,16 @@ wp_reset_postdata();
       object-fit: cover;
       object-position: center;
       transition: transform 0.5s ease;
+/* 
       border-top-left-radius: 0.375rem;
       border-top-right-radius: 0.375rem;
+*/
       will-change: transform;
     }
     .card-image-wrapper:hover img {
       transform: scale(1.1);
     }
-    /* Entire card clickable */
+    
     .card-link {
       display: block;
       color: inherit;
@@ -256,7 +264,7 @@ wp_reset_postdata();
       outline: 3px solid #486faf;
       outline-offset: 3px;
     }
-    /* Clamp excerpt to 4 lines */
+   
     .clamp-4 {
       display: -webkit-box;
       -webkit-line-clamp: 4;
