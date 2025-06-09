@@ -11,84 +11,90 @@ wp_footer();
         bottom: -116px;
     }
 
-  
-   .mySwiper .swiper-button-prev,
-   .mySwiper .swiper-button-next {
-      background-color:#8aa8d0;
-      border-radius: 9999px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white !important;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 8px rgb(20 118 179 / 0.4);
-      z-index: 10;
+
+    .mySwiper .swiper-button-prev,
+    .mySwiper .swiper-button-next {
+        background-color: rgb(77, 158, 209);
+        border-radius: 9999px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white !important;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 8px rgb(20 118 179 / 0.4);
+        z-index: 10;
     }
-   .mySwiper .swiper-button-prev:hover,
-   .mySwiper .swiper-button-next:hover {
-      background-color: #0f4a73;
-      transform: scale(1.15);
-      box-shadow: 0 6px 12px rgb(15 74 115 / 0.6);
+
+    .mySwiper .swiper-button-prev:hover,
+    .mySwiper .swiper-button-next:hover {
+        background-color: #0f4a73;
+        transform: scale(1.15);
+        box-shadow: 0 6px 12px rgb(15 74 115 / 0.6);
     }
+
     .mySwiper .swiper-button-prev::after,
     .mySwiper .swiper-button-next::after {
-      font-size: 20px;
-      font-weight: 900;
+        font-size: 20px;
+        font-weight: 900;
     }
 
 
     .marquee-wrapper {
-      width: 100%;
-   
-      overflow: hidden;
+        width: 100%;
 
-      background:url("http://10.230.5.252/radiounsl/wp-content/themes/TemplateRADIOUNSL/assets/images/pexels-photo-5317562.jpeg");
-      border: 1px solid rgba(255 255 255 / 0.2);
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
-      white-space: nowrap;
-      position: relative;
-     padding: 5px 0;
+        overflow: hidden;
+
+        background: url("http://10.230.5.252/radiounsl/wp-content/themes/TemplateRADIOUNSL/assets/images/pexels-photo-5317562.jpeg");
+        border: 1px solid rgba(255 255 255 / 0.2);
+        box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+        white-space: nowrap;
+        position: relative;
+        padding: 5px 0;
     }
+
     .marquee-content {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 65s linear infinite;
-      font-weight: 600;
-    
-      user-select: none;
+        display: inline-block;
+        padding-left: 100%;
+        animation: marquee 65s linear infinite;
+        font-weight: 600;
+
+        user-select: none;
     }
+
     @keyframes marquee {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
     }
+
     .city-block {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-right: 3rem;
-      white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-right: 3rem;
+        white-space: nowrap;
     }
-   
-  
+
+
     .weather-icon {
 
 
-      width: 24px;
-      height: 24px;
+        width: 24px;
+        height: 24px;
 
-      vertical-align: middle;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+        vertical-align: middle;
+        filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
     }
-  </style>
-  <div  class="marquee-wrapper" aria-label="Clima actual de ciudades">
+</style>
+<div class="marquee-wrapper" aria-label="Clima actual de ciudades">
     <div class="marquee-content" id="marquee"></div>
-  </div>
+</div>
 
 
 
@@ -108,7 +114,7 @@ wp_footer();
             <div class="p-2">
                 <p class="pb-8"> CONTACTO</p>
                 <div class="w-full">
-                             <img class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="">
+                    <img class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="">
 
                 </div>
                 <p class="py-3">Teléfono: +54(0266)</p>
@@ -153,7 +159,7 @@ wp_footer();
                     </li>
                 </ul>
             </div>
-            
+
         </div>
         <hr>
 
@@ -273,25 +279,31 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     </div>
     <div id="radio" class="container-4 md:hidden absolute flex justify-center w-full items-center md:gap-5 gap-1" style="left:-49px;">
         <label class=" md:hidden flex">
-            <input type="range" id="vol-mobile" min="0" max="1" value="1" step="0.01" onchange="changevolume(this.value)" style="background-color:inherit;" />
-            <!-- 
+           <input type="range" id="vol-mobile" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" />   <!-- 
         <span id="display1">
             100
         </span>
          -->
         </label>
-        <button onclick="togglePlay()" class="btn play-pause">
+
+
+
+        <button class="btn play-pause">
             <div class="icon-container">
-                <svg class="icon play">
+                <svg class="icon play" id="playbutton-5">
                     <use xlink:href="#play"></use>
                 </svg>
             </div>
             <div class="icon-container">
-                <svg class="icon pause">
+                <svg class="icon pause" id="stopbutton-5">
                     <use xlink:href="#pause"></use>
                 </svg>
             </div>
         </button>
+
+
+
+
         <button type="button" data-modal-target="modal" data-modal-toggle="modal">
             <svg class="px-1" width="35" height="35" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15 20C14.1667 20 13.4583 19.7083 12.875 19.125C12.2917 18.5417 12 17.8333 12 17C12 16.8833 12.0083 16.7623 12.025 16.637C12.0417 16.5123 12.0667 16.4 12.1 16.3L5.05 12.2C4.76667 12.45 4.45 12.6457 4.1 12.787C3.75 12.929 3.38333 13 3 13C2.16667 13 1.45833 12.7083 0.875 12.125C0.291667 11.5417 0 10.8333 0 10C0 9.16667 0.291667 8.45833 0.875 7.875C1.45833 7.29167 2.16667 7 3 7C3.38333 7 3.75 7.07067 4.1 7.212C4.45 7.354 4.76667 7.55 5.05 7.8L12.1 3.7C12.0667 3.6 12.0417 3.48767 12.025 3.363C12.0083 3.23767 12 3.11667 12 3C12 2.16667 12.2917 1.45833 12.875 0.875C13.4583 0.291667 14.1667 0 15 0C15.8333 0 16.5417 0.291667 17.125 0.875C17.7083 1.45833 18 2.16667 18 3C18 3.83333 17.7083 4.54167 17.125 5.125C16.5417 5.70833 15.8333 6 15 6C14.6167 6 14.25 5.929 13.9 5.787C13.55 5.64567 13.2333 5.45 12.95 5.2L5.9 9.3C5.93333 9.4 5.95833 9.51233 5.975 9.637C5.99167 9.76233 6 9.88333 6 10C6 10.1167 5.99167 10.2373 5.975 10.362C5.95833 10.4873 5.93333 10.6 5.9 10.7L12.95 14.8C13.2333 14.55 13.55 14.354 13.9 14.212C14.25 14.0707 14.6167 14 15 14C15.8333 14 16.5417 14.2917 17.125 14.875C17.7083 15.4583 18 16.1667 18 17C18 17.8333 17.7083 18.5417 17.125 19.125C16.5417 19.7083 15.8333 20 15 20Z" fill="#282828" />
@@ -332,14 +344,13 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     </div>
     <div class="container-4 hidden absolute md:flex justify-center w-full gap-8" style="top: 50%; transform: translateY(-50%); align-items:center; left:-46px;">
         <label class=" hidden md:block" style=" margin:0;z-index:45; padding:0;  ">
-            <input type="range" id="vol" min="0" max="1" value="1" step="0.01" onchange="changevolume(this.value)" style="background-color:inherit;" />
-            <!--
+<input type="range" id="vol" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" />            <!--
         <span id="display1">
             100
         </span>
           -->
         </label>
-        <button class="btn play-pause" onclick="togglePlay()">
+        <button class="btn play-pause">
             <div class="icon-container">
                 <svg class="icon play" id="playbutton-5">
                     <use xlink:href="#play"></use>
@@ -351,6 +362,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
                 </svg>
             </div>
         </button>
+
 
         <!--
 <button onclick="Adelantar();">Adelantar</button>

@@ -65,7 +65,7 @@
                             <div class="relative hidden md:flex flex gap-5 items-center">
                                 <div class="rounded-lg  bg-red-500 text-white p-1 w-full" style="max-width:130px;">
 
-                                    <button type="submit" onclick="togglePlay()" class="flex gap-3 items-center">
+                                    <button type="submit"  class="flex gap-3 items-center btn play-pause" data-id="5">
                                         <img src="https://i.giphy.com/media/R9vSQdiH6I5Bqi9xzx/giphy.webp" alt="" style="width:7px;"> Radio en vivo
                                     </button>
                                 </div>

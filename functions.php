@@ -46,7 +46,7 @@ add_action('wp_enqueue_scripts', 'linksradio_unsl_scripts');
 
    function mi_tema_scripts() {
     // Registrar el archivo JS principal
-    wp_enqueue_script('main', get_template_directory_uri() . "/assets/main.js", array(), '1.0.0', false);
+    wp_enqueue_script('main', get_template_directory_uri() . "/assets/main.js", array(), '1.0.0', true);
 
     // Pasar la URL del tema a JavaScript
     wp_localize_script('main', 'miTema', array(
