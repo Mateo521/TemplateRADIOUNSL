@@ -12,6 +12,32 @@ wp_footer();
     }
 
   
+   .mySwiper .swiper-button-prev,
+   .mySwiper .swiper-button-next {
+      background-color:#8aa8d0;
+      border-radius: 9999px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white !important;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 8px rgb(20 118 179 / 0.4);
+      z-index: 10;
+    }
+   .mySwiper .swiper-button-prev:hover,
+   .mySwiper .swiper-button-next:hover {
+      background-color: #0f4a73;
+      transform: scale(1.15);
+      box-shadow: 0 6px 12px rgb(15 74 115 / 0.6);
+    }
+    .mySwiper .swiper-button-prev::after,
+    .mySwiper .swiper-button-next::after {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
 
     .marquee-wrapper {
       width: 100%;
