@@ -26,9 +26,9 @@ function linksradio_unsl_scripts()
     wp_enqueue_script('tailwindcss', "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4", array(), '4.1.0', false);
 
     wp_enqueue_script('flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js", array(), '3.1.2', false);
-/*
+
     wp_enqueue_script('barba', "https://unpkg.com/@barba/core", array(), '3.1.2', false);
-*/
+
     
 
 
@@ -41,6 +41,19 @@ function linksradio_unsl_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'linksradio_unsl_scripts');
+
+
+
+   function mi_tema_scripts() {
+    // Registrar el archivo JS principal
+    wp_enqueue_script('main', get_template_directory_uri() . "/assets/main.js", array(), '1.0.0', false);
+
+    // Pasar la URL del tema a JavaScript
+    wp_localize_script('main', 'miTema', array(
+        'themeURL' => get_template_directory_uri(),
+    ));
+}
+add_action('wp_enqueue_scripts', 'mi_tema_scripts');
 
 
 

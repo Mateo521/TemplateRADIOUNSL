@@ -1,7 +1,82 @@
+   document.addEventListener("DOMContentLoaded", function() {
+  const ciudades = [
+  { nombre: "San Luis", lat: -33.30157712276608, lon: -66.3405876778769 }, 
+  { nombre: "Villa de Merlo", lat: -32.347, lon: -65.049 },
+  { nombre: "Unión", lat: -33.283, lon: -65.835 },
+  { nombre: "La Punta", lat: -33.215, lon: -66.291 },
+  { nombre: "Luján", lat: -32.385, lon: -65.622 },
+  { nombre: "El Trapiche", lat: -33.10679314167354, lon: -66.06208112533947 },
+  { nombre: "Santa Rosa del Conlara", lat: -32.343, lon: -65.195 },
+  { nombre: "Renca", lat: -32.981, lon: -65.663 },
+  { nombre: "Potrero de los Funes", lat: -33.246, lon: -66.239 },
+  { nombre: "San Francisco del Monte de Oro", lat: -32.603, lon: -66.117 }
+];
 
-    const themeURL = "http://10.230.5.252/radiounsl/wp-content/themes/TemplateRADIOUNSL/";
 
-document.addEventListener('DOMContentLoaded', function() {
+    const iconos = {
+  clear: `<img class="weather-icon" src="https://openweathermap.org/img/wn/01d.png" alt="Sol despejado" />`,
+  partly_cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/03d.png" alt="Parcialmente nublado" />`,
+  cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/04d.png" alt="Nublado" />`,
+  rain: `<img class="weather-icon" src="https://openweathermap.org/img/wn/09d.png" alt="Lluvia" />`,
+  snow: `<img class="weather-icon" src="https://openweathermap.org/img/wn/13d.png" alt="Nieve" />`,
+  default: `<img class="weather-icon" src="https://placehold.co/24x24/png?text=?" alt="Clima desconocido" />`,
+};
+
+
+    function obtenerIcono(code) {
+      if ([0].includes(code)) return iconos.clear;
+      if ([1, 2, 3].includes(code)) return iconos.partly_cloudy;
+      if ([45, 48].includes(code)) return iconos.cloudy;
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return iconos.rain;
+      if ([71, 73, 75, 85, 86].includes(code)) return iconos.snow;
+      return iconos.default;
+    }
+
+    function descripcionClima(code) {
+      if ([0].includes(code)) return "Despejado";
+      if ([1, 2, 3].includes(code)) return "Parcial";
+      if ([45, 48].includes(code)) return "Nublado";
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "Lluvia";
+      if ([71, 73, 75, 85, 86].includes(code)) return "Nieve";
+      return "Desconocido";
+    }
+
+    async function obtenerClima(ciudad) {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${ciudad.lat}&longitude=${ciudad.lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=America/Argentina/Buenos_Aires`;
+      const res = await fetch(url);
+      const data = await res.json();
+      const hoy = 0;
+      return {
+        nombre: ciudad.nombre,
+        tempMin: data.daily.temperature_2m_min[hoy],
+        tempMax: data.daily.temperature_2m_max[hoy],
+        weathercode: data.daily.weathercode[hoy],
+      };
+    }
+
+    async function cargarMarquee() {
+      const datos = await Promise.all(ciudades.map(obtenerClima));
+      const contenido = datos
+        .map(({ nombre, tempMin, tempMax, weathercode }) => {
+          const icono = obtenerIcono(weathercode);
+          const desc = descripcionClima(weathercode);
+          return `
+            <span class="city-block" aria-label="Clima en ${nombre}: mínimo ${tempMin} grados, máximo ${tempMax} grados, ${desc}">
+              <span class="city-name">${nombre}:</span>
+              <span class="temp">${tempMin}° / ${tempMax}°C</span>
+              ${icono}
+            </span>
+          `;
+        })
+        .join("");
+      document.getElementById("marquee").innerHTML = contenido;
+    }
+
+    cargarMarquee();
+
+
+    const themeURL = miTema.themeURL;
+
 
     function Adelantar() {
         console.log("adelantar a vivo.");
@@ -31,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     });
+
+ 
     var myAudio = document.getElementById("player");
     var isPlaying = false;
 
@@ -241,8 +318,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 300);
 });
 
-});
-
     function hideLoader() {
 
         $('#loading').hide();
@@ -256,8 +331,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    let activado2 = false;
 
+});
+
+    let activado2 = false;
     function displayfooter() {
 
         if (activado2) {
@@ -301,8 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-
-
+        
 
     function initGlobalScripts() {
 
@@ -312,6 +388,86 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function initHomeScripts() {
+
+
+
+/*
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (isMobile) return;
+        
+*/
+
+        const grid = document.querySelector("#grids");
+
+        if (!grid) return;
+
+        const audios = grid.querySelectorAll("audio");
+
+        audios.forEach((audio, index) => {
+            // Oculta el reproductor nativo
+            audio.style.display = "none";
+
+            // Crear contenedor de controles
+            const controls = document.createElement("div");
+            controls.className = "flex items-center justify-center space-x-1 p-1 bg-gray-100 rounded-lg shadow";
+
+            // Botones
+            const playBtn = document.createElement("button");
+            playBtn.innerHTML = "▶️";
+            playBtn.className = "p-1 text-sm rounded-full bg-blue-500 text-white hover:bg-blue-600 transition";
+
+            const back10Btn = document.createElement("button");
+            back10Btn.innerHTML = "⏪ 10s";
+            back10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+
+            const forward10Btn = document.createElement("button");
+            forward10Btn.innerHTML = "⏩ 10s";
+            forward10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+
+            const restartBtn = document.createElement("button");
+            restartBtn.innerHTML = "⏮️";
+            restartBtn.className = "p-1 text-sm bg-red-400 text-white rounded hover:bg-red-500";
+
+            // Estado local de reproducción
+            let playing = false;
+
+            playBtn.addEventListener("click", () => {
+                if (playing) {
+                    audio.pause();
+                    playBtn.innerHTML = "▶️";
+                } else {
+                    audio.play();
+                    playBtn.innerHTML = "⏸️";
+                }
+                playing = !playing;
+            });
+
+            back10Btn.addEventListener("click", () => {
+                audio.currentTime = Math.max(0, audio.currentTime - 10);
+            });
+
+            forward10Btn.addEventListener("click", () => {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+            });
+
+            restartBtn.addEventListener("click", () => {
+                audio.currentTime = 0;
+                audio.play();
+                playing = true;
+                playBtn.innerHTML = "⏸️";
+            });
+
+            // Insertar controles
+            controls.appendChild(restartBtn);
+            controls.appendChild(back10Btn);
+            controls.appendChild(playBtn);
+            controls.appendChild(forward10Btn);
+
+            // Insertar controles justo después del <audio>
+            audio.parentElement.appendChild(controls);
+        });
+  
 
 
 
@@ -389,18 +545,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+function initSinglePageScripts() {
+    // Asegura que el DOM del container esté listo
+    requestAnimationFrame(() => {
+        const subtituloElement = document.getElementById('subtitulo');
+        const subtextoElement = document.getElementById('subtexto');
+        const podcastElement = document.getElementById('podcast');
 
-    function initSinglePageScripts() {
+        const otraUbicacionContainer_1 = document.querySelector('.subtitulos');
+        const otraUbicacionContainer_2 = document.querySelector('.subtextos');
+        const otraUbicacionContainer_3 = document.querySelector('.podcasts');
 
+        if (subtituloElement && otraUbicacionContainer_1) {
+            const subtituloClone = subtituloElement.cloneNode(true);
+            subtituloElement.remove();
+            otraUbicacionContainer_1.appendChild(subtituloClone);
+        }
 
+        if (subtextoElement && otraUbicacionContainer_2) {
+            const subtextoClone = subtextoElement.cloneNode(true);
+            subtextoElement.remove();
+            otraUbicacionContainer_2.appendChild(subtextoClone);
+        }
 
-    }
+        if (podcastElement && otraUbicacionContainer_3) {
+            const podcastClone = podcastElement.cloneNode(true);
+            podcastElement.remove();
+            otraUbicacionContainer_3.appendChild(podcastClone);
+        }
+    });
+
+  jQuery(document).ready(function($) {
+        $('#entrada img').each(function(index) {
+            var imgSrc = $(this).attr('src');
+            var hasGalleryParent = $(this).parents('figure.wp-block-gallery').length > 0;
+            var imgLink = $('<a>', {
+                href: imgSrc,
+                'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1)
+            });
+            var imgElement = $('<img>', {
+                src: imgSrc
+            });
+            $(this).wrap(imgLink).after(imgElement).remove();
+        });
+    });
+    
+}
+
 
     function initNoticiasPageScripts() {
 
 
         const swiper = new Swiper('.swiper-container', {
             loop: false,
+                  effect: "fade",
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -471,7 +669,7 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleSection('toggle-sabados', 'content-sabados', 'icon-sabados');
 
     }
-
+   document.addEventListener("DOMContentLoaded", function() {
     barba.init({
         transitions: [{
             name: 'fade',
@@ -554,3 +752,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     });
+
+});
