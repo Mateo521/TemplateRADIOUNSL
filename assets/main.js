@@ -4,27 +4,17 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
-
-
     const myAudio = document.getElementById("player");
-    
     const volumeSliders = [document.getElementById("vol"), document.getElementById("vol-mobile")];
     volumeSliders.forEach(slider => {
         slider.addEventListener("input", function () {
             myAudio.volume = this.value;
         });
     });
-
-
-
-
     function changevolume(amount) {
         var audioobject = document.getElementById("player");
         audioobject.volume = amount;
     }
-
-
-
     const playButton = document.querySelectorAll(".btn.play-pause");
     const playIcon = document.getElementById('playbutton-5');
     const stopIcon = document.getElementById('stopbutton-5');
@@ -57,14 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
         stopIcon.style.transform = 'translate(-50%, -50%)';
     };
 
-
-
-
-
-
     const ciudades = [
         { nombre: "San Luis", lat: -33.30157712276608, lon: -66.3405876778769 },
-        { nombre: "Villa de Merlo", lat: -32.347, lon: -65.049 },
+        { nombre: "Villa de Merlo", lat: -32.34837185554736, lon: -65.01371473234181 }, 
         { nombre: "Unión", lat: -33.283, lon: -65.835 },
         { nombre: "La Punta", lat: -33.215, lon: -66.291 },
         { nombre: "Luján", lat: -32.385, lon: -65.622 },
@@ -74,8 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { nombre: "Potrero de los Funes", lat: -33.246, lon: -66.239 },
         { nombre: "San Francisco del Monte de Oro", lat: -32.603, lon: -66.117 }
     ];
-
-
     const iconos = {
         clear: `<img class="weather-icon" src="https://openweathermap.org/img/wn/01d.png" alt="Sol despejado" />`,
         partly_cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/03d.png" alt="Parcialmente nublado" />`,
@@ -430,76 +413,81 @@ function initHomeScripts() {
             
     */
 
-    const grid = document.querySelector("#grids");
+     const grid = document.querySelector("#grids");
 
     if (!grid) return;
 
     const audios = grid.querySelectorAll("audio");
 
-    audios.forEach((audio, index) => {
-        // Oculta el reproductor nativo
-        audio.style.display = "none";
+    audios.forEach((audio) => {
+      audio.style.display = "none";
 
-        // Crear contenedor de controles
-        const controls = document.createElement("div");
-        controls.className = "flex items-center justify-center space-x-1 p-1 bg-gray-100 rounded-lg shadow";
+      const controls = document.createElement("div");
+      controls.className =
+        "flex items-center justify-center space-x-3 p-2 bg-gray-100 rounded-lg shadow";
 
-        // Botones
-        const playBtn = document.createElement("button");
-        playBtn.innerHTML = "▶️";
-        playBtn.className = "p-1 text-sm rounded-full bg-blue-500 text-white hover:bg-blue-600 transition";
+      const restartBtn = document.createElement("button");
+      restartBtn.className =
+        "p-2 rounded-full bg-red-500 w-full cursor-pointer h-10 relative flex justify-center items-center text-white hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400";
+      restartBtn.setAttribute("aria-label", "Restart audio");
+      restartBtn.innerHTML = '<i class="fas absolute text-sm fa-undo"></i>';
 
-        const back10Btn = document.createElement("button");
-        back10Btn.innerHTML = "⏪ 10s";
-        back10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+      const back10Btn = document.createElement("button");
+      back10Btn.className =
+        "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
+      back10Btn.setAttribute("aria-label", "Rewind 10 seconds");
+      back10Btn.innerHTML = '<i class="fas absolute text-sm fa-backward"></i>';
 
-        const forward10Btn = document.createElement("button");
-        forward10Btn.innerHTML = "⏩ 10s";
-        forward10Btn.className = "p-1 text-sm bg-gray-300 rounded hover:bg-gray-400";
+      const playBtn = document.createElement("button");
+      playBtn.className =
+        "p-3 rounded-full bg-[#486faf] w-full h-10 cursor-pointer relative flex justify-center items-center text-white hover:bg-[#d8b90a] transition focus:outline-none focus:ring-2 focus:ring-[#d8b90a]";
+      playBtn.setAttribute("aria-label", "Play audio");
+      playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
 
-        const restartBtn = document.createElement("button");
-        restartBtn.innerHTML = "⏮️";
-        restartBtn.className = "p-1 text-sm bg-red-400 text-white rounded hover:bg-red-500";
+      const forward10Btn = document.createElement("button");
+      forward10Btn.className =
+        "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
+      forward10Btn.setAttribute("aria-label", "Forward 10 seconds");
+      forward10Btn.innerHTML = '<i class="fas absolute text-sm fa-forward"></i>';
 
-        // Estado local de reproducción
-        let playing = false;
+      let playing = false;
 
-        playBtn.addEventListener("click", () => {
-            if (playing) {
-                audio.pause();
-                playBtn.innerHTML = "▶️";
-            } else {
-                audio.play();
-                playBtn.innerHTML = "⏸️";
-            }
-            playing = !playing;
-        });
+      playBtn.addEventListener("click", () => {
+        if (playing) {
+          audio.pause();
+          playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+          playBtn.setAttribute("aria-label", "Play audio");
+        } else {
+          audio.play();
+          playBtn.innerHTML = '<i class="fas absolute text-sm fa-pause"></i>';
+          playBtn.setAttribute("aria-label", "Pause audio");
+        }
+        playing = !playing;
+      });
 
-        back10Btn.addEventListener("click", () => {
-            audio.currentTime = Math.max(0, audio.currentTime - 10);
-        });
+      back10Btn.addEventListener("click", () => {
+        audio.currentTime = Math.max(0, audio.currentTime - 10);
+      });
 
-        forward10Btn.addEventListener("click", () => {
-            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-        });
+      forward10Btn.addEventListener("click", () => {
+        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+      });
 
-        restartBtn.addEventListener("click", () => {
-            audio.currentTime = 0;
-            audio.play();
-            playing = true;
-            playBtn.innerHTML = "⏸️";
-        });
+      restartBtn.addEventListener("click", () => {
+        audio.currentTime = 0;
+        audio.play();
+        playing = true;
+        playBtn.innerHTML = '<i class="fas text-sm fa-pause"></i>';
+        playBtn.setAttribute("aria-label", "Pause audio");
+      });
 
-        // Insertar controles
-        controls.appendChild(restartBtn);
-        controls.appendChild(back10Btn);
-        controls.appendChild(playBtn);
-        controls.appendChild(forward10Btn);
+      controls.appendChild(restartBtn);
+      controls.appendChild(back10Btn);
+      controls.appendChild(playBtn);
+      controls.appendChild(forward10Btn);
 
-        // Insertar controles justo después del <audio>
-        audio.parentElement.appendChild(controls);
+      audio.parentElement.appendChild(controls);
     });
-
 
 
 

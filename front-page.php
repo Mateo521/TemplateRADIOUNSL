@@ -174,16 +174,16 @@ foreach ($item->category as $cat) {
                         <img class="w-full" src="<?php echo esc_url($image_url); ?>" id="noticia-g" alt="<?php echo esc_attr($entry_title); ?>">
                     </a>
 
-                    <div class="p-6 w-full bg-white h-full shadow-lg shadow-gray-500/50">
+                    <div class="px-6 py-3 w-full bg-white h-full shadow-lg shadow-gray-500/50">
                         <a href="<?php the_permalink(); ?>">
-                            <p style="color: #486faf; text-transform: uppercase;" class="font-bold py-4"><?php echo esc_html($entry_title); ?></p>
+                            <p style="color: #486faf; text-transform: uppercase;" class="font-bold py-1"><?php echo esc_html($entry_title); ?></p>
                         </a>
 
                         <a href="<?php the_permalink(); ?>">
                             <?php the_excerpt(); ?>
                         </a>
 
-                        <div class="flex items-center justify-between gap-3 py-4">
+                        <div class="flex items-center justify-between gap-3 pt-4">
                             <?php
                             if (!empty($categories)) {
                                 echo '<h5 class="text-md font-bold tracking-tight" style="text-transform:uppercase;font-size:12px;">';
@@ -231,7 +231,7 @@ foreach ($item->category as $cat) {
 
                             <div class="p-3 bg-white rounded-r-lg">
                                 <a href="<?php the_permalink(); ?>">
-                                    <h3 style="color: #486faf;" class="font-bold py-4"><?php echo esc_html($entry_title); ?></h3>
+                                    <h3 style="color: #486faf;" class="font-bold py-1"><?php echo esc_html($entry_title); ?></h3>
 
                                     <p class="py-2">
                                         <?php
