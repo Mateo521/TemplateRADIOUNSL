@@ -677,7 +677,7 @@ foreach ($item->category as $cat) {
 
 
 
-                        <div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative w-full">
+                        <div class="rounded-lg w-full shadow dark:bg-gray-800 dark:border-gray-700 relative w-full">
                             <!--style="height:0;"-->
                             <div class="relative z-1" style="height:275px;">
                                 <a href="<?php the_permalink(); ?>">
@@ -794,7 +794,7 @@ foreach ($item->category as $cat) {
                         $content = get_the_content();
                         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                         $has_audio = preg_match($pattern, $content, $matches2);
-                        $card_classes = 'flex flex-col h-full rounded-lg shadow bg-white overflow-hidden transition-all duration-300';
+                        $card_classes = ''; #flex flex-col h-full rounded-lg shadow bg-white overflow-hidden transition-all duration-300
                         if ($has_audio) {
                             $card_classes .= ' has-audio';
                         }
