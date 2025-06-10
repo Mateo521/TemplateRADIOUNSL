@@ -163,7 +163,7 @@ foreach ($item->category as $cat) {
                     setup_postdata($post);
 
                     $content = get_the_content();
-                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     $entry_title = get_the_title();
                     $categories = get_the_category();
                     $entry_date = get_the_date('d/m/Y');
@@ -174,7 +174,7 @@ foreach ($item->category as $cat) {
                         <img class="w-full" src="<?php echo esc_url($image_url); ?>" id="noticia-g" alt="<?php echo esc_attr($entry_title); ?>">
                     </a>
 
-                    <div class="px-6 py-3 w-full bg-white h-full shadow-lg shadow-gray-500/50">
+                    <div class="px-6 py-3 w-full bg-white h-full noticia-d shadow-lg shadow-gray-500/50">
                         <a href="<?php the_permalink(); ?>">
                             <p style="color: #486faf; text-transform: uppercase;" class="font-bold py-1"><?php echo esc_html($entry_title); ?></p>
                         </a>
@@ -206,7 +206,86 @@ foreach ($item->category as $cat) {
                 <?php endforeach;
                 wp_reset_postdata(); ?>
             </div>
+<style>
+       .noticia-d {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform, box-shadow;
+        }
 
+        .noticia-d:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 30px rgba(72, 111, 175, 0.3);
+            z-index: 10;
+        }
+
+        .noticia-d img {
+            transition: transform 0.4s ease;
+        }
+
+        .noticia-d:hover img {
+            transform: scale(1.01);
+        }
+/*
+        a h3 {
+            transition: color 0.3s ease;
+        }
+
+        a:hover h3 {
+            color: #2c5282;
+        }
+
+        
+        a h3::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #486faf;
+            transition: width 0.3s ease;
+            margin-top: 4px;
+            border-radius: 2px;
+        }
+*/
+        a:hover h3::after {
+            width: 100%;
+        }
+
+        .category-links a {
+            position: relative;
+            color: #486faf;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .category-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: -2px;
+            left: 0;
+            background-color: #486faf;
+            transition: width 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .category-links a:hover {
+            color: #2c5282;
+        }
+
+        .category-links a:hover::after {
+            width: 100%;
+        }
+
+        #news-audio audio {
+            width: 100%;
+            outline-offset: 4px;
+            outline-color: #486faf;
+            outline-style: solid;
+            outline-width: 2px;
+            border-radius: 0.375rem;
+        }
+</style>
             <div class="grid grid-col-1 items-center gap-3">
                 <?php
                 $counter = 0;
@@ -220,8 +299,8 @@ foreach ($item->category as $cat) {
                     $entry_date = get_the_date('d/m/Y');
                     $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
-                    <div id="noticia-d" class="w-full  shadow-lg shadow-gray-500/50">
-                        <div class="grid md:grid-cols-2 grid-cols-1">
+                    <div class="w-full noticia-d shadow-lg shadow-gray-500/50">
+                        <div class="grid md:grid-cols-2 rounded-lg grid-cols-1">
 
 
                             <?php if ($image_url) : ?>

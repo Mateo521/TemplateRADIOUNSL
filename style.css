@@ -7,7 +7,7 @@ Description:FRONTEND personalizado para Radio Universidad por Mateo, diseño hec
 Requires at least: 6.1
 Tested up to: 6.3
 Requires PHP: 5.6
-Version: 2.08
+Version: 2.09
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 Text Domain: Radio Universidad
@@ -105,19 +105,14 @@ grid-template-columns:1fr;
     height:100%;
     object-fit:cover;
 }
-#noticia-d{
 
-    grid-template-columns: 35% 1fr;
-}
 /*
 #noticia-d img{
 
     max-height: 135px;
 }
 */
-#noticia-d h3{
-    margin: 0;
-}
+
 
 .bg-white\/50{
     background-color:#B8C2CC !important;
