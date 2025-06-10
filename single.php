@@ -53,7 +53,7 @@ endwhile; // Fin del loop.
 if ($is_podcast) :
 ?>
     <div class="flex w-full justify-center p-8 text-white" style="background: rgb(7,55,106); background: linear-gradient(180deg, rgba(7,55,106,1) 0%, rgba(0,0,0,1) 100%);">
-        <div class="max-w-screen-md w-full">
+        <div class="max-w-3xl w-full">
             <div class="flex w-full gap-8 justify-between" id="infos-podcasts">
                 <div class="p-6 w-full">
                     <!-- CATEGORÍAS  -->
@@ -124,7 +124,7 @@ endif;
 
 ?>
 <div class="flex w-full justify-center p-3 md:p-8 bg-white" id="noticia">
-    <div class="max-w-screen-md" id="txt-in">
+    <div class="max-w-3xl" id="txt-in">
 
         <h1 class="md:text-4xl text-2xl my-3" style="color:#486faf;"><?php echo esc_html($entry_title); ?></h1>
 
@@ -250,7 +250,7 @@ endif;
                         $content = get_the_content();
                         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
                 ?>
-                        <div class="flex flex-col h-full rounded-lg shadow overflow-hidden bg-[#041824]">
+                        <div class="flex flex-col h-full w-full rounded-lg shadow overflow-hidden bg-[#041824]">
                             <a href="<?php the_permalink(); ?>" class="relative block h-24 w-full overflow-hidden">
                                 <img class="w-full h-full object-cover" src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
 
