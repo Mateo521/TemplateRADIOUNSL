@@ -16,7 +16,7 @@
           // WordPress loop for featured posts or latest posts for carousel
           $carousel_query = new WP_Query(array(
             'posts_per_page' => 5,
-            'post_type' => 'post',
+            'post_type' => 'noticias',
             'meta_key' => '_thumbnail_id',
             'orderby' => 'date',
             'order' => 'DESC',
@@ -77,14 +77,16 @@
           ?>
         </div>
         <!-- Navigation buttons -->
-        <button
-          aria-label="Previous slide"
-          class="swiper-button-prev absolute top-1/2 left-2 -translate-y-1/2 text-white text-lg opacity-70 hover:opacity-100"
-        ></button>
-        <button
-          aria-label="Next slide"
-          class="swiper-button-next absolute top-1/2 right-2 -translate-y-1/2 text-white text-lg opacity-70 hover:opacity-100"
-        ></button>
+       <button
+  aria-label="Previous slide"
+  class="swiper-button-prev absolute left-2 top-0 bottom-0 my-auto text-white text-lg opacity-70 hover:opacity-100"
+></button>
+<button
+  aria-label="Next slide"
+  class="swiper-button-next absolute right-2 top-0 bottom-0 my-auto text-white text-lg opacity-70 hover:opacity-100"
+></button>
+
+
       </div>
     </section>
 
@@ -97,7 +99,7 @@
       // Main query for news posts with pagination
       $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
       $news_query = new WP_Query(array(
-        'post_type' => 'post',
+        'post_type' => 'noticias',
         'posts_per_page' => 12,
         'paged' => $paged,
         'meta_key' => '_thumbnail_id',
