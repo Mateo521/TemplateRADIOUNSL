@@ -727,31 +727,62 @@ function initHomeScripts() {
 
 
 
-function initSinglePageScripts() {
-    requestAnimationFrame(() => {
-        const container = document.querySelector('[data-barba="container"]');
-        if (!container) return;
+function initSinglePageScripts(container = document) {
 
-        const subtituloElement = container.querySelector('#subtitulo');
-        const subtextoElement = container.querySelector('#subtexto');
-        const podcastElement = container.querySelector('#podcast');
+    const podcastsContainer = document.querySelector('.podcasts');
+    if (!podcastsContainer) return;
 
-        const otraUbicacionContainer_1 = document.querySelector('.subtitulos');
-        const otraUbicacionContainer_2 = document.querySelector('.subtextos');
-        const otraUbicacionContainer_3 = document.querySelector('.podcasts');
+    // 💣 Eliminar podcast anterior si existe
+    const existingPodcast = podcastsContainer.querySelector('#podcast');
+    if (existingPodcast) {
+        existingPodcast.remove();
+    }
 
-        if (subtituloElement && otraUbicacionContainer_1) {
-            otraUbicacionContainer_1.innerHTML = subtituloElement.outerHTML;
+    // 🎯 Buscar nuevo podcast en el contenido recién cargado
+    const newPodcast = container.querySelector('#podcast');
+    if (newPodcast) {
+        const clone = newPodcast.cloneNode(true);
+        newPodcast.remove(); // eliminar del contenido original
+        podcastsContainer.appendChild(clone);
+    }
+    // Containers globales
+    const subtitulosContainer = document.querySelector('.subtitulos');
+    const subtextosContainer = document.querySelector('.subtextos');
+
+
+    // Elementos dentro del container actual (el nuevo "page content")
+    const subtituloElement = container.querySelector('#subtitulo');
+    const subtextoElement = container.querySelector('#subtexto');
+    const podcastElement = container.querySelector('#podcast');
+
+    // --- Subtítulo
+    if (subtitulosContainer) {
+        subtitulosContainer.innerHTML = ''; // limpiar siempre
+        if (subtituloElement) {
+            subtitulosContainer.appendChild(subtituloElement.cloneNode(true));
         }
+    }
 
-        if (subtextoElement && otraUbicacionContainer_2) {
-            otraUbicacionContainer_2.innerHTML = subtextoElement.outerHTML;
+    // --- Subtexto
+    if (subtextosContainer) {
+        subtextosContainer.innerHTML = ''; // limpiar siempre
+        if (subtextoElement) {
+            subtextosContainer.appendChild(subtextoElement.cloneNode(true));
         }
+    }
 
-        if (podcastElement && otraUbicacionContainer_3) {
-            otraUbicacionContainer_3.innerHTML = podcastElement.outerHTML;
+    // --- Podcast
+    if (podcastsContainer) {
+        podcastsContainer.innerHTML = ''; // limpiar siempre
+        if (podcastElement) {
+            podcastsContainer.appendChild(podcastElement.cloneNode(true));
         }
-    });
+    }
+
+
+
+
+
 
     jQuery(document).ready(function ($) {
         $('#entrada img').each(function (index) {
@@ -883,9 +914,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }],
         views: [{
             namespace: 'single',
-            afterEnter() {
-                initSinglePageScripts();
-
+            afterEnter({ next }) {
+                initSinglePageScripts(next.container);
             }
         },
         {
@@ -911,14 +941,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     barba.hooks.afterLeave(() => {
-  const oldPodcast = document.querySelector('#podcast');
-  if (oldPodcast) {
-    oldPodcast.remove();
-  }
+        const oldPodcast = document.querySelector('#podcast');
+        if (oldPodcast) {
+            oldPodcast.remove();
+        }
 
-  const clone = document.querySelector('.podcasts #podcast');
-  if (clone) clone.remove();
-});
+        const clone = document.querySelector('.podcasts #podcast');
+        if (clone) clone.remove();
+    });
 
 
 
