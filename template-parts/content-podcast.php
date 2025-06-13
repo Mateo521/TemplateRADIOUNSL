@@ -40,17 +40,17 @@ $the_query = new WP_Query($args);
                     $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
             ?>
 
-                    <div class="max-w-sm rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative w-full">
+                    <div  class="max-w-sm   rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative w-full">
                         <!--style="height:0;"-->
-                        <div class="relative z-1" style="height:275px;">
+                        <div class="relative rounded-t-lg z-1 card-image-wrapper" style="height:275px;">
                             <a href="<?php the_permalink(); ?>">
-                                <div class="absolute flex flex-col justify-center p-3" style="right: 0; bottom:0; z-index:3; background-color:#e5cc2663;">
+                                <div class="absolute  flex flex-col justify-center p-3" style="right: 0; bottom:0; z-index:3; background-color:#e5cc2663;">
                                     <svg id="svgs-pod" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
                                     </svg>
                                     <p class="hora text-center p-1 text-white"></p>
                                 </div>
-                                <img class="rounded-t-lg w-full h-full object-cover absolute" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
+                                <img class=" w-full h-full object-cover absolute" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
                             </a>
                         </div>
                         <div>

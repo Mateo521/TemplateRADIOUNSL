@@ -6,7 +6,7 @@ $args = array(
     'category__not_in' => array(
         get_cat_ID('pdocast'),
         get_cat_ID('institucional'),
-       /* get_cat_ID('NombreCategoria3')*/
+        /* get_cat_ID('NombreCategoria3')*/
     )
 );
 
@@ -20,7 +20,7 @@ $args_estatico = array(
 
 $args_podcasts = array(
     'category_name' => 'podcast',
-    'posts_per_page' => 9 
+    'posts_per_page' => 9
 );
 
 $args_institucional = array(
@@ -29,7 +29,7 @@ $args_institucional = array(
 );
 
 $args_programacion = array(
-    'category_name' => 'programacion', 
+    'category_name' => 'programacion',
     'posts_per_page' => 9
 );
 
@@ -51,7 +51,7 @@ if ($rss !== false && isset($rss->channel->item[0])) {
     $title = (string) $item->title;
     $link = (string) $item->link;
 
-   
+
     $image = '';
 
     if (isset($item->enclosure)) {
@@ -67,7 +67,7 @@ $categories = [];
 foreach ($item->category as $cat) {
     $category = (string)$cat;
 
-    
+
     $categoryName = match ($category) {
         '3' => 'Institucional',
         '4' => 'Ciencia',
@@ -206,26 +206,27 @@ foreach ($item->category as $cat) {
                 <?php endforeach;
                 wp_reset_postdata(); ?>
             </div>
-<style>
-       .noticia-d {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            will-change: transform, box-shadow;
-        }
+            <style>
+                .noticia-d {
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    will-change: transform, box-shadow;
+                }
 
-        .noticia-d:hover {
-            transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 20px 30px rgba(72, 111, 175, 0.3);
-            z-index: 10;
-        }
+                .noticia-d:hover {
+                    transform: translateY(-6px) scale(1.01);
+                    box-shadow: 0 20px 30px rgba(72, 111, 175, 0.3);
+                    z-index: 10;
+                }
 
-        .noticia-d img {
-            transition: transform 0.4s ease;
-        }
+                .noticia-d img {
+                    transition: transform 0.4s ease;
+                }
 
-        .noticia-d:hover img {
-            transform: scale(1.01);
-        }
-/*
+                .noticia-d:hover img {
+                    transform: scale(1.01);
+                }
+
+                /*
         a h3 {
             transition: color 0.3s ease;
         }
@@ -246,37 +247,38 @@ foreach ($item->category as $cat) {
             border-radius: 2px;
         }
 */
-        a:hover h3::after {
-            width: 100%;
-        }
+                a:hover h3::after {
+                    width: 100%;
+                }
 
-        .category-links a {
-            position: relative;
-            color: #486faf;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
+                .category-links a {
+                    position: relative;
+                    color: #486faf;
+                    font-weight: 600;
+                    transition: color 0.3s ease;
+                }
 
-        .category-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1.5px;
-            bottom: -2px;
-            left: 0;
-            background-color: #486faf;
-            transition: width 0.3s ease;
-            border-radius: 1px;
-        }
+                .category-links a::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 1.5px;
+                    bottom: -2px;
+                    left: 0;
+                    background-color: #486faf;
+                    transition: width 0.3s ease;
+                    border-radius: 1px;
+                }
 
-        .category-links a:hover {
-            color: #2c5282;
-        }
+                .category-links a:hover {
+                    color: #2c5282;
+                }
 
-        .category-links a:hover::after {
-            width: 100%;
-        }
+                .category-links a:hover::after {
+                    width: 100%;
+                }
 
+                /*
         #news-audio audio {
             width: 100%;
             outline-offset: 4px;
@@ -284,8 +286,8 @@ foreach ($item->category as $cat) {
             outline-style: solid;
             outline-width: 2px;
             border-radius: 0.375rem;
-        }
-</style>
+        }*/
+            </style>
             <div class="grid grid-col-1 items-center gap-3">
                 <?php
                 $counter = 0;
@@ -616,12 +618,10 @@ foreach ($item->category as $cat) {
         background-color: #E5CC26;
     }
 
-   
+
     #podcast {
         padding: 0;
     }
-
-  
 </style>
 
 
@@ -798,6 +798,17 @@ foreach ($item->category as $cat) {
                         if ($has_audio) {
                             $card_classes .= ' has-audio';
                         }
+
+                        if ($counter > 3) {
+                            $has_audio = preg_match($pattern, $content, $matches2);
+                            if ($has_audio) {
+                                echo "<!-- Post $counter HAS AUDIO -->";
+                            } else {
+                                echo "<!-- Post $counter has NO audio -->";
+                            }
+                        }
+
+
                         if ($counter <= 3) continue;
                 ?>
 
@@ -1010,171 +1021,6 @@ foreach ($item->category as $cat) {
   </div-->
 
 
-
-<script>
-    
-
-
-
-
-
-
-    function obtenerDuracionDeTodosLosAudios() {
-        var tiempo = [];
-        var bloquesAudio = document.querySelectorAll('#podcasts-6 .max-w-sm');
-        let elementsArray = Array.from(bloquesAudio);
-
-        var hora1 = document.getElementsByClassName("hora");
-
-        function cargarMetadato(audio) {
-            return new Promise(function(resolve) {
-                audio.onloadedmetadata = function() {
-
-                    resolve(audio.duration);
-
-                };
-            });
-        }
-        var promesas = elementsArray.map(function(bloquesAudio) {
-
-            var reproductorAudio = bloquesAudio.querySelector('audio');
-
-
-
-            if (reproductorAudio) {
-                return cargarMetadato(reproductorAudio);
-            } else {
-                return Promise.resolve(0);
-            }
-        });
-        Promise.all(promesas).then(function(duraciones) {
-
-
-            for (var j = 0; j < duraciones.length; j++) {
-                //   console.log(duraciones[j]);
-                if (duraciones[j] != 0) {
-                    hora1[j].innerHTML = Math.floor(duraciones[j] / 60) + ' min';
-                }
-            }
-        });
-    }
-    obtenerDuracionDeTodosLosAudios();
-    class Slider {
-        constructor(el) {
-            this.el = el;
-            this.container = this.el.querySelector('.slides-container');
-            this.slides = this.container.querySelectorAll('.slide');
-            this.parallaxes = this.container.querySelectorAll('.parallax');
-            this.current = 0;
-            this.currentPos;
-            this.mouseOffset;
-            this.moving = false;
-            this.container.style.width = this.slides.length * 100 + '%';
-            this.slides[0].classList.add('current');
-            let startPos, lastTouchX;
-            const
-                dragStart = e => {
-                    e.stopPropagation();
-                    if (e.touches) lastTouchX = e.touches[0].clientX;
-                    startPos = e.clientX || lastTouchX;
-                    this.mouseOffset = 0;
-                    this.currentPos = this.container.getBoundingClientRect().left;
-                    this.moving = true;
-                    requestAnimationFrame(this.move.bind(this));
-                },
-
-                dragEnd = e => {
-                    if (this.moving) {
-                        const moveX = e.clientX || lastTouchX;
-                        if (moveX < startPos - 100) this.next();
-                        else
-                        if (moveX > startPos + 100) this.prev();
-                        else
-                            this.goTo(this.current);
-                        this.moving = false;
-                    }
-                },
-
-                dragMove = e => {
-                    if (e.touches) lastTouchX = e.touches[0].clientX;
-                    const moveX = e.clientX || lastTouchX;
-                    this.mouseOffset = moveX - startPos;
-                };
-
-            this.container.addEventListener('mousedown', dragStart);
-            this.container.addEventListener('touchstart', dragStart);
-
-            window.addEventListener('mouseup', dragEnd);
-            this.container.addEventListener('touchend', dragEnd);
-
-            window.addEventListener('mousemove', dragMove);
-            this.container.addEventListener('touchmove', dragMove);
-
-            window.addEventListener('keydown', e => {
-                e = e || window.event;
-                if (e.keyCode == '39') { // der arrow
-                    this.next();
-                } else
-                if (e.keyCode == '37') { // izq arrow
-                    this.prev();
-                }
-            });
-        }
-        move() {
-            if (this.moving) {
-                this.container.style.transform = 'translate3d(' + (this.currentPos + this.mouseOffset) + 'px, 0, 0)';
-                this.container.classList.add('moving');
-                const slideWidth = this.slides[0].offsetWidth;
-                this.slides.forEach(($_slide, i) => {
-                    const coef = 1 - Math.abs($_slide.getBoundingClientRect().left / slideWidth);
-                    //  $_slide.style.opacity = .5 + coef * .5;
-                    $_slide.style.transform = 'scale(' + (.9 + coef * .1) + ')';
-                });
-                this.parallaxes.forEach(($_item, i) => {
-                    const coef = this.slides[i].getBoundingClientRect().left / slideWidth;
-                    // $_item.style.opacity = 1 - Math.abs(coef * 1.8);
-                    $_item.style.transform = 'translate3d(' + -coef * 85 + '%, 0, 0)';
-                });
-                requestAnimationFrame(this.move.bind(this));
-            }
-        }
-
-        goTo(i) {
-            if (i >= 0 && i < this.slides.length) this.current = i;
-            this.container.classList.remove('moving');
-            this.container.style.transform = 'translate3d(' + this.current * -100 / this.slides.length + '%, 0, 0)';
-
-            this.slides.forEach(($_slide, i) => {
-                $_slide.classList.remove('current');
-                //  $_slide.removeAttribute('style');
-            });
-            this.slides[this.current].classList.add('current');
-            //this.slides[this.current].removeAttribute('style');
-
-            this.parallaxes.forEach(($_item, i) => {
-                $_item.removeAttribute('style');
-                $_item.style.transform = 'translate3d(' + (i <= this.current ? 85 : -85) + '%, 0, 0)';
-            });
-            this.slides[this.current].querySelector('.parallax').removeAttribute('style');
-        }
-
-        next() {
-            this.goTo(this.current + 1);
-        }
-
-        prev() {
-            this.goTo(this.current - 1);
-        }
-    }
-
-
-
-    const $sliders = document.querySelectorAll('.slider');
-    const sliders = [];
-    $sliders.forEach($slider => {
-        sliders.push(new Slider($slider));
-    });
-</script>
 
 <?php
 get_footer();

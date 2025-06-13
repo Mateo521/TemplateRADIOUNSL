@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const ciudades = [
         { nombre: "San Luis", lat: -33.30157712276608, lon: -66.3405876778769 },
-        { nombre: "Villa de Merlo", lat: -32.34837185554736, lon: -65.01371473234181 }, 
+        { nombre: "Villa de Merlo", lat: -32.34837185554736, lon: -65.01371473234181 },
         { nombre: "Unión", lat: -33.283, lon: -65.835 },
         { nombre: "La Punta", lat: -33.215, lon: -66.291 },
         { nombre: "Luján", lat: -32.385, lon: -65.622 },
@@ -406,6 +406,168 @@ function initHomeScripts() {
 
 
 
+
+
+
+    function obtenerDuracionDeTodosLosAudios() {
+        var tiempo = [];
+        var bloquesAudio = document.querySelectorAll('#podcasts-6 .max-w-sm');
+        let elementsArray = Array.from(bloquesAudio);
+
+        var hora1 = document.getElementsByClassName("hora");
+
+        function cargarMetadato(audio) {
+            return new Promise(function (resolve) {
+                audio.onloadedmetadata = function () {
+
+                    resolve(audio.duration);
+
+                };
+            });
+        }
+        var promesas = elementsArray.map(function (bloquesAudio) {
+
+            var reproductorAudio = bloquesAudio.querySelector('audio');
+
+
+
+            if (reproductorAudio) {
+                return cargarMetadato(reproductorAudio);
+            } else {
+                return Promise.resolve(0);
+            }
+        });
+        Promise.all(promesas).then(function (duraciones) {
+
+
+            for (var j = 0; j < duraciones.length; j++) {
+                //   console.log(duraciones[j]);
+                if (duraciones[j] != 0) {
+                    hora1[j].innerHTML = Math.floor(duraciones[j] / 60) + ' min';
+                }
+            }
+        });
+    }
+    obtenerDuracionDeTodosLosAudios();
+    class Slider {
+        constructor(el) {
+            this.el = el;
+            this.container = this.el.querySelector('.slides-container');
+            this.slides = this.container.querySelectorAll('.slide');
+            this.parallaxes = this.container.querySelectorAll('.parallax');
+            this.current = 0;
+            this.currentPos;
+            this.mouseOffset;
+            this.moving = false;
+            this.container.style.width = this.slides.length * 100 + '%';
+            this.slides[0].classList.add('current');
+            let startPos, lastTouchX;
+            const
+                dragStart = e => {
+                    e.stopPropagation();
+                    if (e.touches) lastTouchX = e.touches[0].clientX;
+                    startPos = e.clientX || lastTouchX;
+                    this.mouseOffset = 0;
+                    this.currentPos = this.container.getBoundingClientRect().left;
+                    this.moving = true;
+                    requestAnimationFrame(this.move.bind(this));
+                },
+
+                dragEnd = e => {
+                    if (this.moving) {
+                        const moveX = e.clientX || lastTouchX;
+                        if (moveX < startPos - 100) this.next();
+                        else
+                            if (moveX > startPos + 100) this.prev();
+                            else
+                                this.goTo(this.current);
+                        this.moving = false;
+                    }
+                },
+
+                dragMove = e => {
+                    if (e.touches) lastTouchX = e.touches[0].clientX;
+                    const moveX = e.clientX || lastTouchX;
+                    this.mouseOffset = moveX - startPos;
+                };
+
+            this.container.addEventListener('mousedown', dragStart);
+            this.container.addEventListener('touchstart', dragStart);
+
+            window.addEventListener('mouseup', dragEnd);
+            this.container.addEventListener('touchend', dragEnd);
+
+            window.addEventListener('mousemove', dragMove);
+            this.container.addEventListener('touchmove', dragMove);
+
+            window.addEventListener('keydown', e => {
+                e = e || window.event;
+                if (e.keyCode == '39') { // der arrow
+                    this.next();
+                } else
+                    if (e.keyCode == '37') { // izq arrow
+                        this.prev();
+                    }
+            });
+        }
+        move() {
+            if (this.moving) {
+                this.container.style.transform = 'translate3d(' + (this.currentPos + this.mouseOffset) + 'px, 0, 0)';
+                this.container.classList.add('moving');
+                const slideWidth = this.slides[0].offsetWidth;
+                this.slides.forEach(($_slide, i) => {
+                    const coef = 1 - Math.abs($_slide.getBoundingClientRect().left / slideWidth);
+                    //  $_slide.style.opacity = .5 + coef * .5;
+                    $_slide.style.transform = 'scale(' + (.9 + coef * .1) + ')';
+                });
+                this.parallaxes.forEach(($_item, i) => {
+                    const coef = this.slides[i].getBoundingClientRect().left / slideWidth;
+                    // $_item.style.opacity = 1 - Math.abs(coef * 1.8);
+                    $_item.style.transform = 'translate3d(' + -coef * 85 + '%, 0, 0)';
+                });
+                requestAnimationFrame(this.move.bind(this));
+            }
+        }
+
+        goTo(i) {
+            if (i >= 0 && i < this.slides.length) this.current = i;
+            this.container.classList.remove('moving');
+            this.container.style.transform = 'translate3d(' + this.current * -100 / this.slides.length + '%, 0, 0)';
+
+            this.slides.forEach(($_slide, i) => {
+                $_slide.classList.remove('current');
+                //  $_slide.removeAttribute('style');
+            });
+            this.slides[this.current].classList.add('current');
+            //this.slides[this.current].removeAttribute('style');
+
+            this.parallaxes.forEach(($_item, i) => {
+                $_item.removeAttribute('style');
+                $_item.style.transform = 'translate3d(' + (i <= this.current ? 85 : -85) + '%, 0, 0)';
+            });
+            this.slides[this.current].querySelector('.parallax').removeAttribute('style');
+        }
+
+        next() {
+            this.goTo(this.current + 1);
+        }
+
+        prev() {
+            this.goTo(this.current - 1);
+        }
+    }
+
+
+
+    const $sliders = document.querySelectorAll('.slider');
+    const sliders = [];
+    $sliders.forEach($slider => {
+        sliders.push(new Slider($slider));
+    });
+
+
+
+
     /*
             const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     
@@ -413,80 +575,80 @@ function initHomeScripts() {
             
     */
 
-     const grid = document.querySelector("#grids");
+    const grid = document.querySelector("#grids");
 
     if (!grid) return;
 
     const audios = grid.querySelectorAll("audio");
 
     audios.forEach((audio) => {
-      audio.style.display = "none";
+        audio.style.display = "none";
 
-      const controls = document.createElement("div");
-      controls.className =
-        "flex items-center justify-center space-x-3 p-2 bg-gray-100 rounded-lg shadow";
+        const controls = document.createElement("div");
+        controls.className =
+            "flex items-center justify-center space-x-3 p-2 bg-gray-100 rounded-lg shadow";
 
-      const restartBtn = document.createElement("button");
-      restartBtn.className =
-        "p-2 rounded-full bg-red-500 w-full cursor-pointer h-10 relative flex justify-center items-center text-white hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400";
-      restartBtn.setAttribute("aria-label", "Restart audio");
-      restartBtn.innerHTML = '<i class="fas absolute text-sm fa-undo"></i>';
+        const restartBtn = document.createElement("button");
+        restartBtn.className =
+            "p-2 rounded-full bg-red-500 w-full cursor-pointer h-10 relative flex justify-center items-center text-white hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400";
+        restartBtn.setAttribute("aria-label", "Restart audio");
+        restartBtn.innerHTML = '<i class="fas absolute text-sm fa-undo"></i>';
 
-      const back10Btn = document.createElement("button");
-      back10Btn.className =
-        "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
-      back10Btn.setAttribute("aria-label", "Rewind 10 seconds");
-      back10Btn.innerHTML = '<i class="fas absolute text-sm fa-backward"></i>';
+        const back10Btn = document.createElement("button");
+        back10Btn.className =
+            "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
+        back10Btn.setAttribute("aria-label", "Rewind 10 seconds");
+        back10Btn.innerHTML = '<i class="fas absolute text-sm fa-backward"></i>';
 
-      const playBtn = document.createElement("button");
-      playBtn.className =
-        "p-3 rounded-full bg-[#486faf] w-full h-10 cursor-pointer relative flex justify-center items-center text-white hover:bg-[#d8b90a] transition focus:outline-none focus:ring-2 focus:ring-[#d8b90a]";
-      playBtn.setAttribute("aria-label", "Play audio");
-      playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+        const playBtn = document.createElement("button");
+        playBtn.className =
+            "p-3 rounded-full bg-[#486faf] w-full h-10 cursor-pointer relative flex justify-center items-center text-white hover:bg-[#d8b90a] transition focus:outline-none focus:ring-2 focus:ring-[#d8b90a]";
+        playBtn.setAttribute("aria-label", "Play audio");
+        playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
 
-      const forward10Btn = document.createElement("button");
-      forward10Btn.className =
-        "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
-      forward10Btn.setAttribute("aria-label", "Forward 10 seconds");
-      forward10Btn.innerHTML = '<i class="fas absolute text-sm fa-forward"></i>';
+        const forward10Btn = document.createElement("button");
+        forward10Btn.className =
+            "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
+        forward10Btn.setAttribute("aria-label", "Forward 10 seconds");
+        forward10Btn.innerHTML = '<i class="fas absolute text-sm fa-forward"></i>';
 
-      let playing = false;
+        let playing = false;
 
-      playBtn.addEventListener("click", () => {
-        if (playing) {
-          audio.pause();
-          playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
-          playBtn.setAttribute("aria-label", "Play audio");
-        } else {
-          audio.play();
-          playBtn.innerHTML = '<i class="fas absolute text-sm fa-pause"></i>';
-          playBtn.setAttribute("aria-label", "Pause audio");
-        }
-        playing = !playing;
-      });
+        playBtn.addEventListener("click", () => {
+            if (playing) {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+                playBtn.setAttribute("aria-label", "Play audio");
+            } else {
+                audio.play();
+                playBtn.innerHTML = '<i class="fas absolute text-sm fa-pause"></i>';
+                playBtn.setAttribute("aria-label", "Pause audio");
+            }
+            playing = !playing;
+        });
 
-      back10Btn.addEventListener("click", () => {
-        audio.currentTime = Math.max(0, audio.currentTime - 10);
-      });
+        back10Btn.addEventListener("click", () => {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        });
 
-      forward10Btn.addEventListener("click", () => {
-        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-      });
+        forward10Btn.addEventListener("click", () => {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        });
 
-      restartBtn.addEventListener("click", () => {
-        audio.currentTime = 0;
-        audio.play();
-        playing = true;
-        playBtn.innerHTML = '<i class="fas text-sm fa-pause"></i>';
-        playBtn.setAttribute("aria-label", "Pause audio");
-      });
+        restartBtn.addEventListener("click", () => {
+            audio.currentTime = 0;
+            audio.play();
+            playing = true;
+            playBtn.innerHTML = '<i class="fas text-sm fa-pause"></i>';
+            playBtn.setAttribute("aria-label", "Pause audio");
+        });
 
-      controls.appendChild(restartBtn);
-      controls.appendChild(back10Btn);
-      controls.appendChild(playBtn);
-      controls.appendChild(forward10Btn);
+        controls.appendChild(restartBtn);
+        controls.appendChild(back10Btn);
+        controls.appendChild(playBtn);
+        controls.appendChild(forward10Btn);
 
-      audio.parentElement.appendChild(controls);
+        audio.parentElement.appendChild(controls);
     });
 
 
@@ -566,32 +728,28 @@ function initHomeScripts() {
 
 
 function initSinglePageScripts() {
-    // Asegura que el DOM del container esté listo
     requestAnimationFrame(() => {
-        const subtituloElement = document.getElementById('subtitulo');
-        const subtextoElement = document.getElementById('subtexto');
-        const podcastElement = document.getElementById('podcast');
+        const container = document.querySelector('[data-barba="container"]');
+        if (!container) return;
+
+        const subtituloElement = container.querySelector('#subtitulo');
+        const subtextoElement = container.querySelector('#subtexto');
+        const podcastElement = container.querySelector('#podcast');
 
         const otraUbicacionContainer_1 = document.querySelector('.subtitulos');
         const otraUbicacionContainer_2 = document.querySelector('.subtextos');
         const otraUbicacionContainer_3 = document.querySelector('.podcasts');
 
         if (subtituloElement && otraUbicacionContainer_1) {
-            const subtituloClone = subtituloElement.cloneNode(true);
-            subtituloElement.remove();
-            otraUbicacionContainer_1.appendChild(subtituloClone);
+            otraUbicacionContainer_1.innerHTML = subtituloElement.outerHTML;
         }
 
         if (subtextoElement && otraUbicacionContainer_2) {
-            const subtextoClone = subtextoElement.cloneNode(true);
-            subtextoElement.remove();
-            otraUbicacionContainer_2.appendChild(subtextoClone);
+            otraUbicacionContainer_2.innerHTML = subtextoElement.outerHTML;
         }
 
         if (podcastElement && otraUbicacionContainer_3) {
-            const podcastClone = podcastElement.cloneNode(true);
-            podcastElement.remove();
-            otraUbicacionContainer_3.appendChild(podcastClone);
+            otraUbicacionContainer_3.innerHTML = podcastElement.outerHTML;
         }
     });
 
@@ -752,6 +910,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    barba.hooks.afterLeave(() => {
+  const oldPodcast = document.querySelector('#podcast');
+  if (oldPodcast) {
+    oldPodcast.remove();
+  }
+
+  const clone = document.querySelector('.podcasts #podcast');
+  if (clone) clone.remove();
+});
+
+
+
     barba.hooks.afterEnter(() => {
 
 
@@ -759,6 +929,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const menu = document.getElementById('navbar-search');
         const toggle = document.querySelector('[data-collapse-toggle]');
         const links = menu?.querySelectorAll('a');
+
+        /*
+        const oldPodcast = document.querySelector('#podcast');
+        if (oldPodcast) {
+            oldPodcast.remove(); 
+        }
+
+        const clone = document.querySelector('.podcasts #podcast');
+        if (clone) clone.remove();
+*/
 
         if (menu && toggle && links) {
             links.forEach(link => {

@@ -53,7 +53,7 @@ endwhile; // Fin del loop.
 if ($is_podcast) :
 ?>
     <div class="flex w-full justify-center p-8 text-white" style="background: rgb(7,55,106); background: linear-gradient(180deg, rgba(7,55,106,1) 0%, rgba(0,0,0,1) 100%);">
-        <div class="max-w-3xl w-full">
+        <div class="max-w-6xl w-full">
             <div class="flex w-full gap-8 justify-between" id="infos-podcasts">
                 <div class="p-6 w-full">
                     <!-- CATEGORÍAS  -->
@@ -124,7 +124,7 @@ endif;
 
 ?>
 <div class="flex w-full justify-center p-3 md:p-8 bg-white" id="noticia">
-    <div class="max-w-3xl" id="txt-in">
+    <div class="max-w-5xl" id="txt-in">
 
         <h1 class="md:text-4xl text-2xl my-3" style="color:#486faf;"><?php echo esc_html($entry_title); ?></h1>
 
