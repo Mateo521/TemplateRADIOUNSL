@@ -679,7 +679,7 @@ foreach ($item->category as $cat) {
 
                         <div class="rounded-lg w-full shadow dark:bg-gray-800 dark:border-gray-700 relative w-full">
                             <!--style="height:0;"-->
-                            <div class="relative z-1" style="height:275px;">
+                            <div class="relative z-1 card-image-wrapper rounded-t-lg" style="height:275px;">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="absolute flex flex-col justify-center p-3" style="right: 0; bottom:0; z-index:3; background-color:#e5cc2663;">
                                         <svg id="svgs-pod" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -687,7 +687,7 @@ foreach ($item->category as $cat) {
                                         </svg>
                                         <p class="hora text-center p-1 text-white"></p>
                                     </div>
-                                    <img class="rounded-t-lg w-full h-full object-cover absolute" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
+                                    <img class=" w-full h-full object-cover absolute" src="<?php echo esc_html($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
                                 </a>
                             </div>
                             <div>
@@ -812,8 +812,8 @@ foreach ($item->category as $cat) {
                         if ($counter <= 3) continue;
                 ?>
 
-                        <div class="flex flex-col h-full rounded-lg shadow bg-white overflow-hidden">
-                            <a href="<?php the_permalink(); ?>" class="relative block h-24 w-full overflow-hidden">
+                        <div class="flex  flex-col h-full rounded-lg shadow bg-white overflow-hidden">
+                            <a href="<?php the_permalink(); ?>" class="relative card-image-wrapper block h-24 w-full overflow-hidden">
                                 <img class="w-full h-full object-cover" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($entry_title); ?>" />
 
                                 <div class="absolute right-0 bottom-0 p-1 bg-black bg-opacity-60 flex items-center justify-center">
