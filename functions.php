@@ -321,4 +321,39 @@ add_shortcode('clima_san_luis', 'mostrar_clima_san_luis');
 
 
 
-    ?>
+  
+
+
+
+
+
+function custom_post_types_init() {
+    // Noticias
+    register_post_type('noticias', array(
+        'labels' => array(
+            'name' => 'Noticias',
+            'singular_name' => 'Noticia'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'noticias'),
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_icon' => 'dashicons-megaphone',
+        'taxonomies' => array('post_tag', 'category') // ← Esto habilita etiquetas y categorías
+    ));
+
+    // Podcasts
+    register_post_type('podcast', array(
+    'labels' => array(
+        'name' => 'Podcasts',
+        'singular_name' => 'Podcast'
+    ),
+    'public' => true,
+    'has_archive' => true,
+    'rewrite' => array('slug' => 'podcast'),
+    'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+    'menu_icon' => 'dashicons-microphone',
+    'taxonomies' => array('post_tag', 'category') // ← Esto habilita etiquetas y categorías
+));
+}
+add_action('init', 'custom_post_types_init');

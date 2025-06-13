@@ -609,3 +609,10 @@ ul.page-numbers li {
     .pagination a:hover {
         background-color: #ddd;
     }
+
+
+
+    .entrys-content img{
+        width: 100%;
+     border-radius: 0.5rem;
+    }
