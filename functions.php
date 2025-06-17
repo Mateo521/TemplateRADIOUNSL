@@ -350,7 +350,7 @@ function custom_post_types_init() {
     ),
     'public' => true,
     'has_archive' => true,
-    'rewrite' => array('slug' => 'podcast'),
+    'rewrite' => array('slug' => 'podcasts'),
     'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
     'menu_icon' => 'dashicons-microphone',
     'taxonomies' => array('post_tag', 'category') // ← Esto habilita etiquetas y categorías
