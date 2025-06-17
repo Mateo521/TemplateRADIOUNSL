@@ -101,26 +101,28 @@
                 if ($recent_podcasts->have_posts()) :
                     while ($recent_podcasts->have_posts()) : $recent_podcasts->the_post();
                 ?>
-                        <article class="flex-none w-full text-base bg-white border border-gray-300 rounded shadow-sm">
-                            <div class="relative">
-                                <?php if (has_post_thumbnail()) : ?>
-                                    <img alt="<?php the_title_attribute(); ?>, portada del podcast" class="w-full h-40 rounded-t object-cover" height="90" loading="lazy" src="<?php the_post_thumbnail_url('medium'); ?>" width="120" />
-                                <?php else: ?>
-                                    <img alt="Imagen por defecto podcast" class="w-full h-auto rounded-t object-cover" height="90" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0cbc28ee-0742-4e9a-7057-4a2959a0009f.jpg" width="120" />
-                                <?php endif; ?>
-                                <button aria-label="Reproducir podcast <?php the_title_attribute(); ?>" class="absolute bottom-1 right-1 bg-white bg-opacity-90 rounded-full p-1 text-black">
-                                    <i class="fas fa-play text-sm"></i>
-                                </button>
-                            </div>
-                            <p class="p-2 font-semibold leading-tight">
+                        <a href="<?php echo get_permalink() ?>">
+                            <article class="flex-none w-full text-base bg-white border border-gray-300 rounded shadow-sm">
+                                <div class="relative">
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <img alt="<?php the_title_attribute(); ?>, portada del podcast" class="w-full h-40 rounded-t object-cover" height="90" loading="lazy" src="<?php the_post_thumbnail_url('medium'); ?>" width="120" />
+                                    <?php else: ?>
+                                        <img alt="Imagen por defecto podcast" class="w-full h-auto rounded-t object-cover" height="90" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0cbc28ee-0742-4e9a-7057-4a2959a0009f.jpg" width="120" />
+                                    <?php endif; ?>
+                                    <button aria-label="Reproducir podcast <?php the_title_attribute(); ?>" class="absolute bottom-1 right-1 bg-white bg-opacity-90 rounded-full p-1 text-black">
+                                        <i class="fas fa-play text-sm"></i>
+                                    </button>
+                                </div>
+                                <p class="p-2 font-semibold leading-tight">
 
 
 
-                                <?php
-                                echo esc_html(wp_trim_words(get_the_title(), 10, '...'));
-                                ?>
-                            </p>
-                        </article>
+                                    <?php
+                                    echo esc_html(wp_trim_words(get_the_title(), 10, '...'));
+                                    ?>
+                                </p>
+                            </article>
+                        </a>
                     <?php
                     endwhile;
                     wp_reset_postdata();
