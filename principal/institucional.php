@@ -1,4 +1,4 @@
-<div class="bg-white px-4 py-8">
+<div class="bg-[#F0F0F0] px-4 py-8">
     <div class="mt-8 grid grid-cols-1 max-w-6xl mx-auto md:grid-cols-3 gap-6">
         <?php
 

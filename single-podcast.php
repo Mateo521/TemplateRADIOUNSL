@@ -3,8 +3,15 @@
     <header class="bg-gradient-to-r flex from-[#0a2a4d] to-[#0f3a6a] p-6 md:p-10">
         <div class="max-w-6xl w-full grid grid-cols-[1fr_200px] gap-5 mx-auto">
             <div>
-                <p class="text-sm text-yellow-400 font-semibold mb-2">
-                    ROCK DEL PAÍS
+                <p class="text-sm text-yellow-400 font-semibold uppercase mb-2">
+                    <?php
+                    $categories = get_the_category();
+                    if (! empty($categories)) {
+
+                        echo esc_html($categories[0]->name) . ' ';
+                    }
+
+                    ?>
                 </p>
                 <h1 class="text-white font-semibold text-xl md:text-2xl leading-tight mb-3">
                     <?php echo esc_html(get_field('titulo')); ?>
@@ -107,8 +114,8 @@
 </div>
 
 <style>
-#entrys img{
-border-radius: 10px;
-}
+    #entrys img {
+        border-radius: 10px;
+    }
 </style>
 <?php get_footer() ?>

@@ -92,11 +92,12 @@ wp_footer();
         filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
     }
 </style>
+<!-- 
 <div class="marquee-wrapper" aria-label="Clima actual de ciudades">
     <div class="marquee-content" id="marquee"></div>
 </div>
 
-
+ -->    
 
 <div class="footer">
     <footer id="footer">
