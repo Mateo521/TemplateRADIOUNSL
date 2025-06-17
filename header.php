@@ -35,7 +35,7 @@
         $namespace = 'single';
     } elseif (is_page('programacion')) {
         $namespace = 'page-programacion';
-    } elseif (is_page('noticias')) {
+    } elseif (is_page('default')) {
         $namespace = 'page-noticias';
     } elseif (is_home()) {
         $namespace = 'front-page';

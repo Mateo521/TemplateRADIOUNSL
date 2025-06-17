@@ -21,10 +21,15 @@
                 </p>
 
                 <?php if (get_field('audio_podcast')): ?>
-                    <a href="<?php echo esc_url(get_field('audio_podcast')); ?>" class="inline-flex items-center gap-2 bg-yellow-400 text-sm font-semibold text-black rounded px-3 py-1.5 hover:bg-yellow-500 transition" target="_blank" rel="noopener noreferrer">
+                    <button id="podcastBtn" aria-expanded="false" aria-controls="podcastPlayer" class="inline-flex items-center gap-2 bg-yellow-400 text-sm font-semibold text-black rounded px-3 py-1.5 hover:bg-yellow-500 transition focus:outline-none focus:ring-2 focus:ring-yellow-400">
                         <i class="fas fa-play"></i>
                         Escuchar podcast
-                    </a>
+                    </button>
+                    <div id="podcastPlayer" class="max-h-0 overflow-hidden mt-4 rounded border border-yellow-400 bg-yellow-50 shadow-inner" aria-hidden="true">
+                        <audio controls class="w-full p-2" preload="none" src="<?php echo esc_url(get_field('audio_podcast')); ?>">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
                 <?php endif; ?>
 
                 <div class="mt-3 flex gap-2">

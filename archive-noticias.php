@@ -10,7 +10,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
         <!-- Carousel -->
         <section class="relative w-full max-w-full rounded-md overflow-hidden shadow-md">
-            <div class="swiper mySwiper h-[280px] sm:h-[320px] md:h-[360px] rounded-md">
+            <div class="swiper swiper-container h-[280px] sm:h-[320px] md:h-[360px] rounded-md">
                 <div class="swiper-wrapper">
                     <?php
                     // WordPress loop for featured posts or latest posts for carousel
@@ -178,21 +178,6 @@
         </nav>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper(".mySwiper", {
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-            },
-            slidesPerView: 1,
-            spaceBetween: 0,
-        });
-    </script>
 </div>
 <style>
     .swiper-pagination-bullet-active {

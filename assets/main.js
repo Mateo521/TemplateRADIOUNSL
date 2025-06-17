@@ -735,57 +735,24 @@ function initHomeScripts() {
 
 function initSinglePageScripts(container = document) {
 
-    const podcastsContainer = document.querySelector('.podcasts');
-    if (!podcastsContainer) return;
 
-    // 💣 Eliminar podcast anterior si existe
-    const existingPodcast = podcastsContainer.querySelector('#podcast');
-    if (existingPodcast) {
-        existingPodcast.remove();
-    }
+     const btn = document.getElementById('podcastBtn');
+    const player = document.getElementById('podcastPlayer');
 
-    // 🎯 Buscar nuevo podcast en el contenido recién cargado
-    const newPodcast = container.querySelector('#podcast');
-    if (newPodcast) {
-        const clone = newPodcast.cloneNode(true);
-        newPodcast.remove(); // eliminar del contenido original
-        podcastsContainer.appendChild(clone);
-    }
-    // Containers globales
-    const subtitulosContainer = document.querySelector('.subtitulos');
-    const subtextosContainer = document.querySelector('.subtextos');
-
-
-    // Elementos dentro del container actual (el nuevo "page content")
-    const subtituloElement = container.querySelector('#subtitulo');
-    const subtextoElement = container.querySelector('#subtexto');
-    const podcastElement = container.querySelector('#podcast');
-
-    // --- Subtítulo
-    if (subtitulosContainer) {
-        subtitulosContainer.innerHTML = ''; // limpiar siempre
-        if (subtituloElement) {
-            subtitulosContainer.appendChild(subtituloElement.cloneNode(true));
-        }
-    }
-
-    // --- Subtexto
-    if (subtextosContainer) {
-        subtextosContainer.innerHTML = ''; // limpiar siempre
-        if (subtextoElement) {
-            subtextosContainer.appendChild(subtextoElement.cloneNode(true));
-        }
-    }
-
-    // --- Podcast
-    if (podcastsContainer) {
-        podcastsContainer.innerHTML = ''; // limpiar siempre
-        if (podcastElement) {
-            podcastsContainer.appendChild(podcastElement.cloneNode(true));
-        }
-    }
-
-
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        player.classList.remove('max-h-96');
+        player.classList.add('max-h-0');
+        player.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        player.classList.remove('max-h-0');
+        player.classList.add('max-h-96');
+        player.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
 
 
 
