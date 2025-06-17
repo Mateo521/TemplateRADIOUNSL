@@ -588,7 +588,7 @@ function initHomeScripts() {
 
         const restartBtn = document.createElement("button");
         restartBtn.className =
-            "p-2 rounded-full bg-red-500 w-full cursor-pointer h-10 relative flex justify-center items-center text-white hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400";
+            "p-2 rounded-full bg-red-500/40 w-full cursor-pointer h-10 relative flex justify-center items-center text-white hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400";
         restartBtn.setAttribute("aria-label", "Restart audio");
         restartBtn.innerHTML = '<i class="fas absolute text-sm fa-undo"></i>';
 

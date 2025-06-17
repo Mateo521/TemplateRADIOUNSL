@@ -89,7 +89,7 @@
             <h3 class="font-semibold text-xl mb-4">
                 Últimos podcasts
             </h3>
-            <div class="grid grid-cols-4 gap-4  scrollbar-hide pb-2">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4  scrollbar-hide pb-2">
                 <?php
                 $recent_podcasts = new WP_Query(array(
                     'post_type' => 'podcast',

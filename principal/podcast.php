@@ -120,43 +120,49 @@
         <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 mb-8">
             <?php while ($podcast_query->have_posts()): $podcast_query->the_post();
                 $imagen = get_field('imagen_podcast');
-                $audio = get_field('audio_podcast');
+
             ?>
                 <!-- Tarjeta pequeña -->
 
 
                 <div class="bg-[#f0f0f0] rounded-xl flex flex-col">
-                    <a href="<?php echo get_permalink() ?>">
-                        <div class="relative">
+
+                    <div class="relative">
 
 
-
+                        <a href="<?php echo get_permalink() ?>">
                             <?php if ($imagen): ?>
                                 <img alt="<?php the_title_attribute(); ?>" class="rounded-t-md w-full h-[130px] object-cover" src="<?php echo esc_url($imagen); ?>" />
-                            <?php endif; ?>
+                            <?php endif;
+                            ?>
+                        </a>
+                        <?php
+                        $audio_url = get_field('audio_podcast'); // Ya es una URL
+                        if ($audio_url): ?>
+                            <div class="audio-wrapper">
+                                <audio class="audio-element hidden">
+                                    <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
+                                    Tu navegador no soporta audio HTML5.
+                                </audio>
+                            </div>
+                        <?php endif; ?>
 
 
-                            <?php if ($audio && isset($audio['url'])): ?>
-                                <a href="<?php echo esc_url($audio['url']); ?>" class="absolute top-1 right-1 bg-white w-5 h-5 rounded-full flex items-center justify-center text-black text-xs" target="_blank">
-                                    <i class="fas fa-play"></i>
-                                </a>
-                            <?php endif; ?>
 
-
-                        </div>
-                        <div class="p-2">
-                            <h3 class="text-sm font-semibold mt-1 leading-tight text-gray-800">
+                    </div>
+                    <div class="p-2">
+                        <h3 class="text-sm font-semibold mt-1 leading-tight text-gray-800">
 
 
 
-                                <?php
-                                $descripcion = get_the_title();
-                                echo esc_html(wp_trim_words($descripcion, 15, '...'));
-                                ?>
+                            <?php
+                            $descripcion = get_the_title();
+                            echo esc_html(wp_trim_words($descripcion, 15, '...'));
+                            ?>
 
-                            </h3>
-                        </div>
-                    </a>
+                        </h3>
+                    </div>
+
                 </div>
             <?php endwhile; ?>
         </div>
