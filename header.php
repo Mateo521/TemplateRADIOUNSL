@@ -337,7 +337,7 @@
 
 
                 #relleno {
-                    height: 155px;
+                    height: 170px;
                 }
 
                 @media screen and (max-width:766px) {

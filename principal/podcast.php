@@ -1,6 +1,6 @@
 <div class="max-w-7xl mx-auto pb-6">
     <div class="flex justify-center md:gap-12 py-6 gap-3 items-baseline select-none">
-        <h1 class="font-bold text-[150px] text-[#4a5568]" style=" font-family: 'Antonio', sans-serif;">PODCAST</h1>
+        <h1 class="font-bold text-[80px] md:text-[150px] text-[#4a5568]" style=" font-family: 'Antonio', sans-serif;">PODCAST</h1>
     </div>
 
     <?php
@@ -13,7 +13,7 @@
 
 
     <?php if ($podcast_query->have_posts()): ?>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <div class="grid grid-cols-1 sm:grid-cols-3 px-2 gap-6 mb-10">
             <?php
             $count = 0;
             while ($podcast_query->have_posts() && $count < 3): $podcast_query->the_post();
@@ -117,7 +117,7 @@
             ?>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-6 px-2 gap-4 mb-8">
             <?php while ($podcast_query->have_posts()): $podcast_query->the_post();
                 $imagen = get_field('imagen_podcast');
 
@@ -132,7 +132,7 @@
 
                         <a href="<?php echo get_permalink() ?>">
                             <?php if ($imagen): ?>
-                                <img alt="<?php the_title_attribute(); ?>" class="rounded-t-md w-full h-[130px] object-cover" src="<?php echo esc_url($imagen); ?>" />
+                                <img alt="<?php the_title_attribute(); ?>" class="rounded-t-md w-full h-[170px] md:h-[130px] object-cover" src="<?php echo esc_url($imagen); ?>" />
                             <?php endif;
                             ?>
                         </a>

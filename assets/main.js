@@ -659,7 +659,7 @@ function initHomeScripts() {
 
 
 
-    /*    document.addEventListener('DOMContentLoaded', function() {*/
+    /* document.addEventListener('DOMContentLoaded', function() {*/
     var swiper3 = new Swiper('.swiper-container', {
         navigation: {
             nextEl: '.swiper-button-next',
@@ -670,7 +670,7 @@ function initHomeScripts() {
         spaceBetween: 20,
         grabCursor: true
     });
-    /*   });*/
+  /*   });*/
 
 
 
