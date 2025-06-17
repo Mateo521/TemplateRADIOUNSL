@@ -1,8 +1,8 @@
 <?php get_header() ?>
 <div class="bg-white">
     <header class="bg-gradient-to-r flex from-[#0a2a4d] to-[#0f3a6a] p-6 md:p-10">
-        <div class="max-w-6xl w-full grid grid-cols-[1fr_200px] gap-5 mx-auto">
-            <div>
+        <div class="max-w-6xl w-full grid grid-cols-1  justify-items-center md:grid-cols-[1fr_200px] gap-5 mx-auto">
+            <div class="order-2 md:order-0">
                 <p class="text-sm text-yellow-400 font-semibold uppercase mb-2">
                     <?php
                     $categories = get_the_category();
@@ -60,6 +60,28 @@
     </header>
 
     <main class="max-w-4xl mx-auto px-4 md:px-10 py-8">
+        <?php
+        if (has_post_thumbnail()) {
+            $thumb_id = get_post_thumbnail_id();
+            $thumb_url = wp_get_attachment_image_url($thumb_id, 'large');
+            $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
+            if (!$thumb_alt) {
+                $thumb_alt = get_the_title() . ' - imagen destacada';
+            }
+        } else {
+            $thumb_url = 'https://placehold.co/900x300?text=No+Image';
+            $thumb_alt = 'Imagen destacada no disponible';
+        }
+
+        ?>
+        <img
+            src="<?php echo esc_url($thumb_url); ?>"
+            alt="<?php echo esc_attr($thumb_alt); ?>"
+            class="w-full rounded-xl h-auto mb-2"
+            width="900"
+            height="300" />
+
+
         <article id="entrys" class="mb-10 text-base leading-relaxed text-justify">
             <?php the_content(); ?>
         </article>
@@ -67,11 +89,11 @@
             <h3 class="font-semibold text-xl mb-4">
                 Últimos podcasts
             </h3>
-            <div class="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
+            <div class="grid grid-cols-4 gap-4  scrollbar-hide pb-2">
                 <?php
                 $recent_podcasts = new WP_Query(array(
                     'post_type' => 'podcast',
-                    'posts_per_page' => 5,
+                    'posts_per_page' => 4,
                     'post__not_in' => array(get_the_ID()),
                     'orderby' => 'date',
                     'order' => 'DESC',
@@ -79,10 +101,10 @@
                 if ($recent_podcasts->have_posts()) :
                     while ($recent_podcasts->have_posts()) : $recent_podcasts->the_post();
                 ?>
-                        <article class="flex-none w-[160px] text-base bg-white border border-gray-300 rounded shadow-sm">
+                        <article class="flex-none w-full text-base bg-white border border-gray-300 rounded shadow-sm">
                             <div class="relative">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <img alt="<?php the_title_attribute(); ?>, portada del podcast" class="w-full h-auto rounded-t object-cover" height="90" loading="lazy" src="<?php the_post_thumbnail_url('medium'); ?>" width="120" />
+                                    <img alt="<?php the_title_attribute(); ?>, portada del podcast" class="w-full h-40 rounded-t object-cover" height="90" loading="lazy" src="<?php the_post_thumbnail_url('medium'); ?>" width="120" />
                                 <?php else: ?>
                                     <img alt="Imagen por defecto podcast" class="w-full h-auto rounded-t object-cover" height="90" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0cbc28ee-0742-4e9a-7057-4a2959a0009f.jpg" width="120" />
                                 <?php endif; ?>
@@ -91,7 +113,12 @@
                                 </button>
                             </div>
                             <p class="p-2 font-semibold leading-tight">
-                                <?php the_title(); ?>
+
+
+
+                                <?php
+                                echo esc_html(wp_trim_words(get_the_title(), 10, '...'));
+                                ?>
                             </p>
                         </article>
                     <?php

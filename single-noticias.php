@@ -18,7 +18,7 @@
                 $category_labels[] = '<span class="font-semibold ' . esc_attr($label_color) . ' rounded px-2 py-0.5 inline-block">' . esc_html(strtoupper($cat->name)) . '</span>';
             }
 
-            // Get featured image URL and alt text
+       
             if (has_post_thumbnail()) {
                 $thumb_id = get_post_thumbnail_id();
                 $thumb_url = wp_get_attachment_image_url($thumb_id, 'large');
@@ -40,7 +40,7 @@
                 <img
                     src="<?php echo esc_url($thumb_url); ?>"
                     alt="<?php echo esc_attr($thumb_alt); ?>"
-                    class="w-full h-auto mb-2"
+                    class="w-full rounded-xl h-auto mb-2"
                     width="900"
                     height="300" />
                 <?php if (get_post_meta(get_the_ID(), 'pie_de_foto', true)) : ?>

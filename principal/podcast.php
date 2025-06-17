@@ -34,7 +34,8 @@
                                 <a href="<?php echo esc_url($audio_url); ?>" target="_blank" rel="noopener noreferrer">Escuchar podcast</a>
                             <?php endif; ?>
 
-                            <div class="absolute bottom-3 left-3 font-semibold text-[#d6d60a] uppercase leading-none">
+
+                            <div class="absolute bottom-3 bg-black/70 py-1 px-2 rounded-xl left-3 font-semibold text-[#d6d60a] uppercase leading-none">
                                 <?php
                                 $categories = get_the_category();
                                 if (! empty($categories)) {
@@ -47,10 +48,18 @@
                                 </div>
                             </div>
 
+
                         </div>
 
                         <div class="p-3">
-                            <h2 class="text-white font-semibold mb-2 leading-tight"><?php the_title(); ?></h2>
+                            <h2 class="text-white font-semibold mb-2 leading-tight">
+
+                                <?php
+                                $titulo = get_the_title();
+                                echo esc_html(wp_trim_words($titulo, 20, '...'));
+                                ?>
+
+                            </h2>
                             <p class="text-sm text-[#a0aec0] leading-snug">
                                 <?php
                                 $descripcion = get_field('descripcion_podcast');
@@ -98,12 +107,12 @@
                             <h3 class="text-sm font-semibold mt-1 leading-tight text-gray-800">
 
 
-                               
-                                    <?php
-                                    $descripcion = the_title();
-                                    echo esc_html(wp_trim_words($descripcion, 20, '...'));
-                                    ?>
-                              
+
+                                <?php
+                                $descripcion = get_the_title();
+                                echo esc_html(wp_trim_words($descripcion, 15, '...'));
+                                ?>
+
                             </h3>
                         </div>
                     </div>
