@@ -125,7 +125,7 @@
                 <!-- Tarjeta pequeña -->
 
 
-                <div class="bg-[#f0f0f0] rounded-xl flex flex-col">
+                <div class="bg-gray-100 rounded-xl flex flex-col">
 
                     <div class="relative">
 
@@ -139,7 +139,7 @@
                         <?php
                         $audio_url = get_field('audio_podcast'); // Ya es una URL
                         if ($audio_url): ?>
-                            <div class="audio-wrapper">
+                            <div class="audio-wrapper bg-gray-200">
                                 <audio class="audio-element hidden">
                                     <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
                                     Tu navegador no soporta audio HTML5.

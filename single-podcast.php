@@ -21,14 +21,31 @@
                 </p>
 
                 <?php if (get_field('audio_podcast')): ?>
-                    <button id="podcastBtn" aria-expanded="false" aria-controls="podcastPlayer" class="inline-flex items-center gap-2 bg-yellow-400 text-sm font-semibold text-black rounded px-3 py-1.5 hover:bg-yellow-500 transition focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                        <i class="fas fa-play"></i>
-                        Escuchar podcast
-                    </button>
-                    <div id="podcastPlayer" class="max-h-0 overflow-hidden mt-4 rounded border border-yellow-400 bg-yellow-50 shadow-inner" aria-hidden="true">
-                        <audio controls class="w-full p-2" preload="none" src="<?php echo esc_url(get_field('audio_podcast')); ?>">
-                            Your browser does not support the audio element.
-                        </audio>
+                    <div class="w-full max-w-md">
+                        <!-- focus:outline-none focus:ring-2 focus:ring-yellow-400 -->
+                        <button
+                            id="podcastBtn"
+                            aria-expanded="false"
+                            aria-controls="podcastPlayer"
+                            class="relative inline-flex items-center gap-2 bg-[#E5CC26] text-sm font-semibold text-black rounded px-4 py-2 hover:bg-yellow-500 transition  overflow-hidden"
+                            type="button">
+                            <i class="fas fa-play transition-transform duration-300 ease-in-out" id="iconPlay"></i>
+                            <span class="whitespace-nowrap transition-opacity duration-300 ease-in-out" id="btnText">Escuchar podcast</span>
+                        </button>
+
+                        <div
+                            id="podcastPlayer"
+                            class="max-h-0 overflow-hidden rounded-b-xl rounded-r-xl  bg-[#E5CC26] shadow-inner"
+                            aria-hidden="true">
+                            <audio
+                                controls
+                                class="w-full p-2 bg-[#E5CC26] text-black"
+                                preload="none"
+                                src="<?php echo esc_url(get_field('audio_podcast')); ?>"
+                                style="outline:none;">
+                                Su navegador no soporta reproducción de audio HTML5.
+                            </audio>
+                        </div>
                     </div>
                 <?php endif; ?>
 

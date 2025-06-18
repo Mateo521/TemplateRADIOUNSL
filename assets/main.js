@@ -618,7 +618,7 @@ function initHomeScripts() {
                 playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
                 playBtn.setAttribute("aria-label", "Play audio");
             } else {
-                // Pausar todos los otros audios primero
+               
                 document.querySelectorAll("audio").forEach((a) => {
                     if (a !== audio) {
                         a.pause();
@@ -736,21 +736,44 @@ function initHomeScripts() {
 function initSinglePageScripts(container = document) {
 
 
-     const btn = document.getElementById('podcastBtn');
+      const btn = document.getElementById('podcastBtn');
     const player = document.getElementById('podcastPlayer');
+    const iconPlay = document.getElementById('iconPlay');
+    const btnText = document.getElementById('btnText');
 
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
+
       if (expanded) {
-        player.classList.remove('max-h-96');
-        player.classList.add('max-h-0');
+   
+        player.style.maxHeight = '0';
+        player.style.padding = '0';
         player.setAttribute('aria-hidden', 'true');
         btn.setAttribute('aria-expanded', 'false');
+
+     
+        iconPlay.style.transform = 'rotate(0deg)';
+        btnText.style.opacity = '1';
+
+     
+        btn.classList.remove('rounded-b-none');
+        btn.classList.add('rounded');
       } else {
-        player.classList.remove('max-h-0');
-        player.classList.add('max-h-96');
+      
+        player.style.maxHeight = player.scrollHeight + 24 + 'px'; 
+        player.style.padding = '0.5rem 0.5rem';
+
         player.setAttribute('aria-hidden', 'false');
         btn.setAttribute('aria-expanded', 'true');
+
+
+        iconPlay.style.transform = 'rotate(90deg)';
+        
+        btnText.style.opacity = '0';
+
+       
+        btn.classList.remove('rounded');
+        btn.classList.add('rounded-t');
       }
     });
 

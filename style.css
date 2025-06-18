@@ -617,5 +617,22 @@ ul.page-numbers li {
      border-radius: 0.5rem;
     }
 
+#podcastPlayer {
+      transition: max-height 0.5s ease, padding 0.5s ease;
+    }
+    .max-h-0 {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+    .max-h-96 {
+      max-height: 24rem; 
+      transition: max-height 0.5s ease;
+    }
 
 
+   #podcastPlayer audio::-webkit-media-controls-play-button,
+  #podcastPlayer   audio::-webkit-media-controls-panel {
+     background-color: #E5CC26;
+     color: #E5CC26;
+     }
