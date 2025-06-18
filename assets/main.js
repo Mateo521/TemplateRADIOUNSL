@@ -730,7 +730,27 @@ function initHomeScripts() {
     });
 
 }
+let currentAudio = null;
+let currentLottie = null;
 
+
+function cleanupSinglePageScripts() {
+    if (currentAudio && currentAudio._listeners) {
+        currentAudio.removeEventListener('play', currentAudio._listeners.handlePlay);
+        currentAudio.removeEventListener('pause', currentAudio._listeners.handlePause);
+        currentAudio.removeEventListener('ended', currentAudio._listeners.handleEnded);
+        currentAudio._listeners = null;
+    }
+
+
+    if (currentLottie) {
+        currentLottie.pause?.();
+        currentLottie.classList.add('lottie-hidden');
+    }
+
+    currentAudio = null;
+    currentLottie = null;
+}
 
 
 function initSinglePageScripts(container = document) {
@@ -772,25 +792,37 @@ function initSinglePageScripts(container = document) {
     const audio = container.querySelector('#podcastPlayer audio');
     const lottie = container.querySelector('.podcast-lottie');
 
+
+    currentAudio = audio;
+    currentLottie = lottie;
+
     if (audio && lottie) {
-        // Pausa lottie al inicio
-        lottie.pause();
 
-        audio.addEventListener('play', () => {
+        if (audio.paused) {
+            lottie.classList.add('lottie-hidden');
+            lottie.pause?.();
+        }
+
+        const handlePlay = () => {
             lottie.classList.remove('lottie-hidden');
-            lottie.play();
-        });
+            lottie.play?.();
+        };
 
-        audio.addEventListener('pause', () => {
+        const handlePause = () => {
             lottie.classList.add('lottie-hidden');
-            lottie.pause();
-        });
+            lottie.pause?.();
+        };
 
-        audio.addEventListener('ended', () => {
+        const handleEnded = () => {
             lottie.classList.add('lottie-hidden');
-            lottie.pause();
-        });
+            lottie.pause?.();
+        };
 
+        audio.addEventListener('play', handlePlay);
+        audio.addEventListener('pause', handlePause);
+        audio.addEventListener('ended', handleEnded);
+
+        audio._listeners = { handlePlay, handlePause, handleEnded };
     }
 
 
@@ -923,6 +955,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }],
         views: [{
             namespace: 'single',
+
+            beforeLeave() {
+                cleanupSinglePageScripts(); // 🔧 limpiar antes de salir
+            },
             afterEnter({ next }) {
                 initSinglePageScripts(next.container);
             }
