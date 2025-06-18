@@ -618,7 +618,7 @@ function initHomeScripts() {
                 playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
                 playBtn.setAttribute("aria-label", "Play audio");
             } else {
-               
+
                 document.querySelectorAll("audio").forEach((a) => {
                     if (a !== audio) {
                         a.pause();
@@ -670,7 +670,7 @@ function initHomeScripts() {
         spaceBetween: 20,
         grabCursor: true
     });
-  /*   });*/
+    /*   });*/
 
 
 
@@ -734,68 +734,56 @@ function initHomeScripts() {
 
 
 function initSinglePageScripts(container = document) {
+    const btn = container.querySelector('#podcastBtn');
+    const player = container.querySelector('#podcastPlayer');
+    const iconPlay = container.querySelector('#iconPlay');
+    const btnText = container.querySelector('#btnText');
 
-
-      const btn = document.getElementById('podcastBtn');
-    const player = document.getElementById('podcastPlayer');
-    const iconPlay = document.getElementById('iconPlay');
-    const btnText = document.getElementById('btnText');
+    if (!btn || !player || !iconPlay || !btnText) return;
 
     btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
 
-      if (expanded) {
-   
-        player.style.maxHeight = '0';
-        player.style.padding = '0';
-        player.setAttribute('aria-hidden', 'true');
-        btn.setAttribute('aria-expanded', 'false');
+        if (expanded) {
+            player.style.maxHeight = '0';
+            player.style.padding = '0';
+            player.setAttribute('aria-hidden', 'true');
+            btn.setAttribute('aria-expanded', 'false');
 
-     
-        iconPlay.style.transform = 'rotate(0deg)';
-        btnText.style.opacity = '1';
+            iconPlay.style.transform = 'rotate(0deg)';
+            btnText.style.opacity = '1';
 
-     
-        btn.classList.remove('rounded-b-none');
-        btn.classList.add('rounded');
-      } else {
-      
-        player.style.maxHeight = player.scrollHeight + 24 + 'px'; 
-        player.style.padding = '0.5rem 0.5rem';
+            btn.classList.remove('rounded-b-none');
+            btn.classList.add('rounded');
+        } else {
+            player.style.maxHeight = player.scrollHeight + 24 + 'px';
+            player.style.padding = '0.5rem 0.5rem';
+            player.setAttribute('aria-hidden', 'false');
+            btn.setAttribute('aria-expanded', 'true');
 
-        player.setAttribute('aria-hidden', 'false');
-        btn.setAttribute('aria-expanded', 'true');
+            iconPlay.style.transform = 'rotate(90deg)';
+            btnText.style.opacity = '0';
 
-
-        iconPlay.style.transform = 'rotate(90deg)';
-        
-        btnText.style.opacity = '0';
-
-       
-        btn.classList.remove('rounded');
-        btn.classList.add('rounded-t');
-      }
+            btn.classList.remove('rounded');
+            btn.classList.add('rounded-t');
+        }
     });
 
-
-
-
-    jQuery(document).ready(function ($) {
-        $('#entrada img').each(function (index) {
-            var imgSrc = $(this).attr('src');
-            var hasGalleryParent = $(this).parents('figure.wp-block-gallery').length > 0;
-            var imgLink = $('<a>', {
-                href: imgSrc,
-                'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1)
-            });
-            var imgElement = $('<img>', {
-                src: imgSrc
-            });
-            $(this).wrap(imgLink).after(imgElement).remove();
+    
+    jQuery(container).find('#entrada img').each(function (index) {
+        const imgSrc = jQuery(this).attr('src');
+        const hasGalleryParent = jQuery(this).parents('figure.wp-block-gallery').length > 0;
+        const imgLink = jQuery('<a>', {
+            href: imgSrc,
+            'data-lightbox': hasGalleryParent ? 'img-gallery' : 'img-' + (index + 1)
         });
+        const imgElement = jQuery('<img>', {
+            src: imgSrc
+        });
+        jQuery(this).wrap(imgLink).after(imgElement).remove();
     });
-
 }
+
 
 
 function initNoticiasPageScripts() {

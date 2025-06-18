@@ -27,7 +27,7 @@
                             id="podcastBtn"
                             aria-expanded="false"
                             aria-controls="podcastPlayer"
-                            class="relative inline-flex items-center gap-2 bg-[#E5CC26] text-sm font-semibold text-black rounded px-4 py-2 hover:bg-yellow-500 transition  overflow-hidden"
+                            class="relative cursor-pointer inline-flex items-center gap-2 bg-[#E5CC26] text-sm font-semibold text-black rounded px-4 py-2 hover:bg-yellow-500 transition  overflow-hidden"
                             type="button">
                             <i class="fas fa-play transition-transform duration-300 ease-in-out" id="iconPlay"></i>
                             <span class="whitespace-nowrap transition-opacity duration-300 ease-in-out" id="btnText">Escuchar podcast</span>
