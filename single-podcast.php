@@ -1,8 +1,15 @@
 <?php get_header() ?>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+
+
+
 <div class="bg-white">
     <header class="bg-gradient-to-r flex from-[#0a2a4d] to-[#0f3a6a] p-6 md:p-10">
         <div class="max-w-6xl w-full grid grid-cols-1  justify-items-center md:grid-cols-[1fr_200px] gap-5 mx-auto">
-            <div class="order-2 md:order-0">
+            <div class="order-2 md:order-0 w-full">
                 <p class="text-sm text-yellow-400 font-semibold uppercase mb-2">
                     <?php
                     $categories = get_the_category();
@@ -72,13 +79,34 @@
             </div>
 
 
+
+
             <?php
             $imagen = get_field('imagen_podcast');
             if ($imagen): ?>
-                <img class="w-[200px] h-[200px] rounded-xl object-cover" src="<?php echo esc_url($imagen); ?>" alt="<?php the_title_attribute(); ?>">
+
+                <div class="w-[200px] h-[200px] relative size-full">
+
+                    <lottie-player class="podcast-lottie absolute w-full h-full top-0 left-0"
+                        src="/radiounsl/wp-content/themes/TemplateRADIOUNSL/assets/images/podcast.json"
+                        background="transparent"
+                        speed="1"
+
+                        loop
+                        autoplay>
+                    </lottie-player>
+
+                    <img class="size-full  rounded-xl object-cover" src="<?php echo esc_url($imagen); ?>" alt="<?php the_title_attribute(); ?>">
+
+
+                </div>
+
             <?php endif; ?>
 
         </div>
+
+
+
     </header>
 
     <main class="max-w-4xl mx-auto px-4 md:px-10 py-8">

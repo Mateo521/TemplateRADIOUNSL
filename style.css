@@ -727,3 +727,11 @@ ul.page-numbers li {
         vertical-align: middle;
         filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
     }
+
+
+
+    .lottie-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}

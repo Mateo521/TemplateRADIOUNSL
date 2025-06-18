@@ -769,7 +769,32 @@ function initSinglePageScripts(container = document) {
         }
     });
 
-    
+    const audio = container.querySelector('#podcastPlayer audio');
+    const lottie = container.querySelector('.podcast-lottie');
+
+    if (audio && lottie) {
+        // Pausa lottie al inicio
+        lottie.pause();
+
+        audio.addEventListener('play', () => {
+            lottie.classList.remove('lottie-hidden');
+            lottie.play();
+        });
+
+        audio.addEventListener('pause', () => {
+            lottie.classList.add('lottie-hidden');
+            lottie.pause();
+        });
+
+        audio.addEventListener('ended', () => {
+            lottie.classList.add('lottie-hidden');
+            lottie.pause();
+        });
+
+    }
+
+
+
     jQuery(container).find('#entrada img').each(function (index) {
         const imgSrc = jQuery(this).attr('src');
         const hasGalleryParent = jQuery(this).parents('figure.wp-block-gallery').length > 0;

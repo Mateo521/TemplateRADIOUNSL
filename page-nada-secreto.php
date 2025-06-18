@@ -56,7 +56,7 @@ get_header();
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
                 $noticias_query = new WP_Query([
-                    'post_type' => 'post',
+                    'post_type' => 'noticias',
                     'posts_per_page' => 3,
                     'tax_query' => [
                         'relation' => 'AND',
@@ -115,14 +115,9 @@ get_header();
             <div class="flex gap-3 overflow-x-auto pb-2">
                 <?php
                 $podcast_query = new WP_Query([
-                    'post_type' => 'post',
+                    'post_type' => 'podcast',
                     'posts_per_page' => 6,
                     'tax_query' => [
-                        [
-                            'taxonomy' => 'category',
-                            'field' => 'slug',
-                            'terms' => ['podcast'],
-                        ],
                         [
                             'taxonomy' => 'category',
                             'field' => 'slug',

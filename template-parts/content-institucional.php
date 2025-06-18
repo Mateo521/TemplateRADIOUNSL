@@ -65,26 +65,7 @@
             <h2 class="text-xl font-extrabold text-center mb-8">DIRECCIÓN</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
 
-                <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-1.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
-                </div>
-                <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-2.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
-                </div>
-                <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-3.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
-                </div>
-                <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-4.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
-                </div>
+              
             </div>
         </section>
 
@@ -93,66 +74,79 @@
             <h2 class="text-xl font-extrabold text-center mb-8">LOCUCIÓN</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
 
-                <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-5.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                  <div class="flex flex-col items-center w-40">
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/oscar_flores.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Oscar<br />Flores</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-6.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/mario_otero.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Mario<br />Otero</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-7.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/pablo_oro.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Pablo<br />Oro</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-8.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/javier_mamy.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Javier<br />Mamy</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                </div>
+
+                <div class="flex flex-col items-center w-40">
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/ivana_pereyra.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Ivana<br />Pereyra</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-9.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/laura_campo.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Laura<br />Campo</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-10.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/lucas_gallardo.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Lucas<br />Gallardo</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-11.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/juan_valdeon.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Valdeón</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-12.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/hernan_corral.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Hernan<br />Corral</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-13.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/danny_cayuman.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Danny<br />Cayuman</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-14.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/pablo_almada.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Pablo<br />Almada</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-15.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/vero_miranda.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Vero<br />Miranda</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-16.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/leo_mancuello.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Leo<br />Mancuello</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
+     <div class="flex flex-col items-center w-40">
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/maida_magdalena.png" />
+                    <p class="mt-2 text-center text-base leading-tight">Maida<br />Magdalena</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                </div>
+
+
             </div>
         </section>
 
@@ -161,15 +155,47 @@
             <h2 class="text-xl font-extrabold text-center mb-8">PRODUCCIÓN</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
 
+
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-17.png" />
-                    <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/gladys_aguilar.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Gladys<br />Aguilar</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                </div>
+
+                <div class="flex flex-col items-center w-40">
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/cristina_sosa.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Cristina<br />Sosa</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-extrabold text-center mb-8">TÉCNICA</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 justify-items-center">
+
+                <div class="flex flex-col items-center w-40">
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/di_pascuale_mauricio.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Di Pascuale<br />Mauricio</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
-                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/image-18.png" />
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/emilio_gomez.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Juan<br />Gonzalez</p>
-                    <p class="text-base text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                </div>
+
+
+                <div class="flex flex-col items-center w-40">
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/rodrigo_moraga.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Rodrigo<br />Moraga</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
+                </div>
+                <div class="flex flex-col items-center w-40">
+                    <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/naomi_benitez.jpg" />
+                    <p class="mt-2 text-center text-base leading-tight">Naomi<br />Benitez</p>
+                    <p class="text-sm text-[#d6d94a] mt-1 font-semibold">NADA SECRETO</p>
                 </div>
 
             </div>
