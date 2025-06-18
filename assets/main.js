@@ -915,7 +915,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         },
         {
-            namespace: 'page-noticias',
+            namespace: 'archive-noticias',
             afterEnter() {
                 initNoticiasPageScripts();
             }

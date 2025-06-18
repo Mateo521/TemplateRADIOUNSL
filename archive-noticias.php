@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
 <div class="bg-gray-100">
-    <header class="flex justify-center items-center py-2 border-b border-gray-300">
-        <div class="flex justify-center md:gap-12 gap-3 items-baseline" style="background-color:#F3F3F3; padding:15px 0;">
-            <h1 id="titulo-categoria" class="font-bold text- text-[#1476B3]" style=" font-family: 'Antonio', sans-serif;">NOTICIAS</h1>
+ <header class="flex justify-center items-center bg-[#f3f3f3] py-2 border-b shadow border-gray-300">
+        <div class="flex justify-center md:gap-12 gap-3 items-baseline" >
+            <h1 id="titulo-categoria" class="font-bold text-[#1476B3]" style=" font-family: 'Antonio', sans-serif;">NOTICIAS</h1>
             <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-11.png" alt="">
         </div>
     </header>

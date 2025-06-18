@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
 
-  <header class="flex justify-center items-center py-2 border-b border-gray-300">
+  <header class="flex justify-center items-center bg-[#f3f3f3] py-2 border-b border-gray-300">
         <div class="flex justify-center md:gap-12 gap-3 items-baseline" >
             <h1 id="titulo-categoria" class="font-bold text- text-[#e6c94a]" style=" font-family: 'Antonio', sans-serif;">PODCASTS</h1>
-            <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-11.png" alt="">
+            <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-12.png" alt="">
         </div>
     </header>
 
