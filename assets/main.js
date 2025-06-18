@@ -151,167 +151,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    function setRadioImage(src) {
-        const img1 = document.getElementById("radio-imagen");
-        const img2 = document.getElementById("radio-imagen2");
+ 
+    const programacion = {
+        all: [
+            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 1380, end: 1439, text: "Música", img: "icon-5.png" }
+        ],
+        weekdays: [ 
+            { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png" },
+            { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+            { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+            { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+            { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.png" },
+            { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" },
+            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
+        ],
+        1: [ 
+            { start: 840, end: 854, text: "Entre Corcheas", img: "icon-6.png" }
+        ],
+        2: [ 
+            { start: 840, end: 854, text: "Finanzas para Todos", img: "icon-6.png" }
+        ]
+    };
 
-        if (img1 && img2) {
-            img1.src = src;
-            img2.src = src;
-        } else {
-            console.warn("No se encontraron las imágenes del radio.");
-        }
-    }
-
-    function horarioslav(date) {
+   
+    function obtenerProgramaActual(date = new Date()) {
         const total = date.getHours() * 60 + date.getMinutes();
+        const day = date.getDay();
 
-        const horarios = [{
-            start: 421,
-            end: 569,
-            text: "Nada secreto",
-            img: "icon-7.png"
-        },
-        {
-            start: 570,
-            end: 719,
-            text: "Sonido urbano",
-            img: "icon-6.png"
-        },
-        {
-            start: 720,
-            end: 749,
-            text: "<p style='font-size:12px;'>Frecuencia <br> Informativa 1° Edición</p>",
-            img: "icon-6.png"
-        },
-        {
-            start: 750,
-            end: 779,
-            text: "Frecuencia <br> Universitaria",
-            img: "icon-6.png"
-        },
-        {
-            start: 780,
-            end: 899,
-            text: "Sólo un café",
-            img: "icon-6.png"
-        },
-        {
-            start: 900,
-            end: 1079,
-            text: "La locomotora",
-            img: "locomotora.png"
-        },
-        {
-            start: 1080,
-            end: 1199,
-            text: "Más que Noticias",
-            img: "icon-6.png"
-        },
-        {
-            start: 1200,
-            end: 1259,
-            text: "<p style='font-size:12px;'>Frecuencia <br> Informativa 2da Edición</p>",
-            img: "icon-6.png"
-        },
-        {
-            start: 1260,
-            end: 1439,
-            text: "Rock del país",
-            img: "icon-8.png"
-        }
+        const bloques = [
+            ...(programacion.all || []),
+            ...(day >= 1 && day <= 5 ? programacion.weekdays : []),
+            ...(programacion[day] || [])
         ];
 
-        const match = horarios.find(h => total >= h.start && total <= h.end);
-
-        if (match) {
-
-            setRadioImage(themeURL + `/assets/images/${match.img}`);
-            return match.text;
-        }
-
-        setRadioImage(themeURL + "/assets/images/icon-5.png");
-        return "Música";
+        return bloques.find(p => total >= p.start && total <= p.end) || {
+            text: "Música",
+            img: "icon-5.png"
+        };
     }
 
-    function horariossab(date) {
-        const total = date.getHours() * 60 + date.getMinutes();
+   
+    function actualizarRadio() {
+        const programa = obtenerProgramaActual();
 
-        const horarios = [{
-            start: 481,
-            end: 539,
-            text: "Rock Nacional"
-        },
-        {
-            start: 540,
-            end: 599,
-            text: "Sonidos de Latinoamérica"
-        },
-        {
-            start: 600,
-            end: 659,
-            text: "Tangos y milongas"
-        }
-        ];
+      
+        $("#open_close").html(programa.text);
+        $("#open_close-2").html(programa.text);
+        $("#prog").html("Escuchá en vivo " + programa.text);
 
-        const match = horarios.find(h => total >= h.start && total <= h.end);
-
-        if (match) {
-
-            setRadioImage(themeURL + "/assets/images/radio-9.png");
-            return match.text;
-        }
-
-
-        setRadioImage(themeURL + "/assets/images/icon-5.png");
-
-        return "Música";
+       
+        document.getElementById("radio-imagen").src = `${themeURL}/assets/images/${programa.img}`;
+        document.getElementById("radio-imagen2").src = `${themeURL}/assets/images/${programa.img}`;
     }
 
-    var date = new Date();
-    var dayOfWeek = date.getDay();
-    var openClosed = false;
-    var hour = date.getHours()
-    var minutes = date.getMinutes();
-    var horario = hour + ":" + minutes;
-    var radio = "apagado"
-    var msg = function () {
-        if (openClosed == true) {
-            return "-";
-        } else {
-            switch (dayOfWeek) {
-                case 1:
-                    return horarioslav(date);
-                    break;
-                case 2:
-                    return horarioslav(date);
-                    break;
-                case 3:
-                    return horarioslav(date);
-                    break;
-                case 4:
-                    return horarioslav(date);
-                    break;
-                case 5:
-                    return horarioslav(date);
-                    break;
-                case 6:
-                    return horariossab(date);
-                    break;
-                default:
-                    document.getElementById("radio-imagen").src = themeURL + "/assets/images/icon-5.png";
-                    document.getElementById("radio-imagen2").src = themeURL + "/images/icon-5.png";
-                    return "Música";
-            }
-        }
-    }
-    $(window).on('load', function () {
-        $("#open_close").html(msg());
-        $("#open_close-2").html(msg());
-        $("#prog").html("Escuchá en vivo " + msg());
+    
+    $(window).on('load', actualizarRadio);
 
+ 
+    setInterval(actualizarRadio, 60000);
 
-    });
 
     $(document).ready(function () {
         setTimeout(function () {
@@ -341,13 +243,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $(window).ready(hideLoader);
 
-    // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
+
     setTimeout(hideLoader, 20 * 1000);
 
 
 
 
 });
+
 
 let activado2 = false;
 function displayfooter() {

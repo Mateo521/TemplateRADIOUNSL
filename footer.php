@@ -244,7 +244,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 
     <div class=" w-full hidden md:flex" id="radio-3">
 
-        <img id="radio-imagen" src="" alt="">
+        <img class="h-[116px] w-[200px]" id="radio-imagen" src="" alt="">
         <div id="loading">
             <span class="loader"></span>
         </div>

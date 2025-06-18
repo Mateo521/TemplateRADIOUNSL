@@ -192,10 +192,11 @@ grid-template-columns:1fr;
         height:40rem;
     }
 }
+/*
 #radio-3 img{
     width:100%;
     max-width:100px;
-}
+}*/
 #seccion-radio{
      bottom:0;
 }
