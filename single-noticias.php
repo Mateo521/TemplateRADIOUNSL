@@ -3,19 +3,19 @@
     <?php
     if (have_posts()) :
         while (have_posts()) : the_post();
-            // Get categories for labels
+         
             $categories = get_the_category();
             $category_labels = [];
             foreach ($categories as $cat) {
-                // Use category slug or name for label color logic
+          
                 $slug = strtolower($cat->slug);
-                $label_color = 'bg-gray-300 text-black'; // default
+                $label_color = 'bg-gray-300 text-black'; 
                 if ($slug === 'sonido-urbano') {
                     $label_color = 'bg-blue-600 text-white';
                 } elseif ($slug === 'política' || $slug === 'politica') {
                     $label_color = 'bg-yellow-400 text-black';
                 }
-                $category_labels[] = '<span class="font-semibold ' . esc_attr($label_color) . ' rounded px-2 py-0.5 inline-block">' . esc_html(strtoupper($cat->name)) . '</span>';
+                $category_labels[] = '<span class="font-semibold ' . esc_attr($label_color) . ' rounded px-2 py-0.5 inline-block text-xs">' . esc_html(strtoupper($cat->name)) . '</span>';
             }
 
        

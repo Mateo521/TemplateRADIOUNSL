@@ -16,7 +16,7 @@
 
                 <div class="md:col-span-2 bg-white rounded-md flex justify-between flex-col shadow-md overflow-hidden">
                     <a href="<?php echo get_permalink() ?>">
-                        <img alt="<?php the_title(); ?>" class="w-full h-80 object-cover" height="200" src="<?php the_post_thumbnail_url('full'); ?>" width="600" />
+                        <img alt="<?php the_title(); ?>" class="w-full h-83 object-cover" height="200" src="<?php the_post_thumbnail_url('full'); ?>" width="600" />
                         <div class="p-4">
                             <h3 class="text-gray-900 leading-snug font-normal">
                                 <?php the_title(); ?>
@@ -24,7 +24,7 @@
                             <p class="text-gray-500 mt-2">
                                 <?php echo get_the_date(); ?>
                             </p>
-                            <p class="text-sm text-[#486faf] font-semibold uppercase mb-1">
+                            <p class="text-xs text-[#486faf] font-semibold uppercase mb-1">
                                 <?php
 
                                 $categories = get_the_category();
@@ -67,7 +67,7 @@
                                 <p class="text-gray-500 mt-1">
                                     <?php echo get_the_date(); ?>
                                 </p>
-                                <p class="text-sm text-[#486faf] font-semibold uppercase">
+                                <p class="text-xs text-[#486faf] font-semibold uppercase">
                                     <?php
 
                                     $categories = get_the_category();
