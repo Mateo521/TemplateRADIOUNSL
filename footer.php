@@ -168,8 +168,8 @@ wp_footer();
 <div id="radio" class="w-full  md:hidden fixed flex bottom-0 z-30" style=" background: rgb(249,250,251);
 background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.9) 100%);">
     <div data-accordion="collapse2" id="accordion-collapse2">
-        <h2 class="accordion-collapse-heading-4">
-            <button class="absolute flex gap-3 items-center" data-accordion-target="#accordion-collapse-body-4" aria-expanded="false" aria-controls="accordion-collapse-body-4" style="right:0; top:-53px; padding:15px 20px; background: linear-gradient(180deg, rgba(249, 250, 251, 0.9) 30%, rgba(212, 212, 212, 0.9) 100%);" type="button" onclick="displayfooter();" value="prueba">
+        <h2 class="accordion-collapse-heading-4 ">
+            <button class="absolute flex gap-3 items-center rounded-tl-xl" data-accordion-target="#accordion-collapse-body-4" aria-expanded="false" aria-controls="accordion-collapse-body-4" style="right:0; top:-53px; padding:15px 20px; background: linear-gradient(180deg, rgba(249, 250, 251, 0.9) 30%, rgba(212, 212, 212, 0.9) 100%);" type="button" onclick="displayfooter();" value="">
                 REPRODUCTOR<svg data-accordion-icon="" class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"></path>
                 </svg>
@@ -232,7 +232,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
 background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.9) 100%);">
     <div data-accordion="collapse" id="accordion-collapse">
         <h2 class="accordion-collapse-heading-3">
-            <button class="absolute md:flex cursor-pointer hidden flex gap-3 items-center" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3" style="right:0; top:-53px; padding:15px 20px; background: linear-gradient(180deg, rgba(249, 250, 251, 0.9) 30%, rgba(212, 212, 212, 0.9) 100%);" type="submit" onclick="displayfooter();" value="prueba">
+            <button class="absolute md:flex cursor-pointer hidden flex gap-3 rounded-tl-xl items-center" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3" style="right:0; top:-53px; padding:15px 20px; background: linear-gradient(180deg, rgba(249, 250, 251, 0.9) 30%, rgba(212, 212, 212, 0.9) 100%);" type="submit" onclick="displayfooter();" value="prueba">
                 REPRODUCTOR
                 <svg data-accordion-icon="" class="w-3 h-3 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"></path>
