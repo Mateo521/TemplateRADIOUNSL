@@ -763,3 +763,35 @@ background-color: #E5CC26;
   opacity: 0;
   pointer-events: none;
 }
+
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 2rem;
+}
+
+.nav-links a.page-numbers {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: #ccc;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-links a.page-numbers:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+.nav-links .page-numbers.current {
+  background-color: #eee;
+  color: #000;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}

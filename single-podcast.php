@@ -132,7 +132,7 @@
             height="300" />
 
 
-        <article id="entrys" class="mb-10 text-base leading-relaxed text-justify">
+        <article id="entrys" class="mb-10 text-base leading-relaxed ">
             <?php the_content(); ?>
         </article>
         <section>

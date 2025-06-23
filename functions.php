@@ -227,7 +227,7 @@ add_action('login_head', 'custom_login_logo');
 
 function login_url()
 {
-    return "http://radiounsl.byethost18.com";
+    return "#";
 }
 add_filter('login_headerurl', 'login_url');
 
@@ -328,7 +328,7 @@ add_shortcode('clima_san_luis', 'mostrar_clima_san_luis');
 
 
 function custom_post_types_init() {
-    // Noticias
+  
     register_post_type('noticias', array(
         'labels' => array(
             'name' => 'Noticias',
@@ -339,10 +339,10 @@ function custom_post_types_init() {
         'rewrite' => array('slug' => 'noticias'),
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
         'menu_icon' => 'dashicons-megaphone',
-        'taxonomies' => array('post_tag', 'category') // ← Esto habilita etiquetas y categorías
+        'taxonomies' => array('post_tag', 'category')  
     ));
 
-    // Podcasts
+   
     register_post_type('podcast', array(
     'labels' => array(
         'name' => 'Podcasts',
@@ -353,7 +353,14 @@ function custom_post_types_init() {
     'rewrite' => array('slug' => 'podcasts'),
     'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
     'menu_icon' => 'dashicons-microphone',
-    'taxonomies' => array('post_tag', 'category') // ← Esto habilita etiquetas y categorías
+    'taxonomies' => array('post_tag', 'category') 
 ));
 }
 add_action('init', 'custom_post_types_init');
+
+
+
+
+
+
+

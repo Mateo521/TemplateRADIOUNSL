@@ -82,21 +82,20 @@
   endif;
   ?>
 </main>
-
-
 <?php
 
-the_posts_pagination(array(
-  'mid_size' => 1,
-  'prev_text' => '<i class="fas fa-chevron-left"></i>',
-  'next_text' => '<i class="fas fa-chevron-right"></i>',
-  'screen_reader_text' => ' ',
-  'class' => 'flex gap-2',
-  'before_page_number' => '<span class="border border-white rounded px-2 py-1">',
-  'after_page_number' => '</span>',
-));
-?>
 
-<?php get_footer();
+the_posts_pagination(array(
+    'mid_size' => 1,
+    'prev_text' => '←',
+    'next_text' => 'Siguiente →',
+    'screen_reader_text' => '',
+));
+
+
+
+
+
+get_footer();
 
 ?>
