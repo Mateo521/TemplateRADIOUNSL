@@ -66,12 +66,6 @@ get_header();
                             'terms' => ['nada-secreto'],
                             'operator' => 'IN',
                         ],
-                        [
-                            'taxonomy' => 'category',
-                            'field' => 'slug',
-                            'terms' => ['podcast'],
-                            'operator' => 'NOT IN',
-                        ],
                     ],
                 ]);
 

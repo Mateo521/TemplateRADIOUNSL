@@ -12,6 +12,9 @@ get_header();
     </div>
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section class="mb-12">
+            <p class="text-sm bg-yellow-400 inline-flex px-2 py-1 rounded-md font-semibold uppercase mb-2">
+                Podcast
+            </p>
             <h1 class="font-extrabold text-xl sm:text-2xl leading-tight mb-1 tracking-wide">
                 Entre Corcheas
             </h1>
@@ -52,7 +55,7 @@ get_header();
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php
                 $noticias_query = new WP_Query([
-                    'post_type' => 'post',
+                    'post_type' => 'noticias',
                     'posts_per_page' => 3,
                     'tax_query' => [
                         'relation' => 'AND',
@@ -61,12 +64,6 @@ get_header();
                             'field' => 'slug',
                             'terms' => ['entre-corcheas'],
                             'operator' => 'IN',
-                        ],
-                        [
-                            'taxonomy' => 'category',
-                            'field' => 'slug',
-                            'terms' => ['podcast'],
-                            'operator' => 'NOT IN',
                         ],
                     ],
                 ]);
@@ -111,14 +108,9 @@ get_header();
             <div class="flex gap-3 overflow-x-auto pb-2">
                 <?php
                 $podcast_query = new WP_Query([
-                    'post_type' => 'post',
+                    'post_type' => 'podcast',
                     'posts_per_page' => 6,
                     'tax_query' => [
-                        [
-                            'taxonomy' => 'category',
-                            'field' => 'slug',
-                            'terms' => ['podcast'],
-                        ],
                         [
                             'taxonomy' => 'category',
                             'field' => 'slug',
