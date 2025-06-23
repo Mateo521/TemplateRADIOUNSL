@@ -736,3 +736,24 @@ ul.page-numbers li {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+
+
+
+.audio-wrapper {
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.audio-wrapper.active {
+  opacity: 1;
+  max-height: 200px; /* ajusta según sea necesario */
+  overflow: visible;
+}
+
+
+.play-button {
+  transition: opacity 0.3s ease;
+}
+.play-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

@@ -151,13 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
- 
+
     const programacion = {
         all: [
             { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
             { start: 1380, end: 1439, text: "Música", img: "icon-5.png" }
         ],
-        weekdays: [ 
+        weekdays: [
             { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png" },
             { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
             { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
@@ -169,15 +169,15 @@ document.addEventListener("DOMContentLoaded", function () {
             { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
             { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
         ],
-        1: [ 
+        1: [
             { start: 840, end: 854, text: "Entre Corcheas", img: "icon-6.png" }
         ],
-        2: [ 
+        2: [
             { start: 840, end: 854, text: "Finanzas para Todos", img: "icon-6.png" }
         ]
     };
 
-   
+
     function obtenerProgramaActual(date = new Date()) {
         const total = date.getHours() * 60 + date.getMinutes();
         const day = date.getDay();
@@ -194,24 +194,24 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-   
+
     function actualizarRadio() {
         const programa = obtenerProgramaActual();
 
-      
+
         $("#open_close").html(programa.text);
         $("#open_close-2").html(programa.text);
         $("#prog").html("Escuchá en vivo " + programa.text);
 
-       
+
         document.getElementById("radio-imagen").src = `${themeURL}/assets/images/${programa.img}`;
         document.getElementById("radio-imagen2").src = `${themeURL}/assets/images/${programa.img}`;
     }
 
-    
+
     $(window).on('load', actualizarRadio);
 
- 
+
     setInterval(actualizarRadio, 60000);
 
 
@@ -637,6 +637,40 @@ let currentAudio = null;
 let currentLottie = null;
 
 
+  function toggleAudio(button) {
+    const article = button.closest("article");
+    const audioWrapper = article.querySelector(".audio-wrapper");
+    const audio = audioWrapper.querySelector("audio");
+
+ 
+    document.querySelectorAll(".audio-wrapper.active").forEach(wrapper => {
+      if (wrapper !== audioWrapper) {
+        wrapper.classList.remove("active");
+        const otherAudio = wrapper.querySelector("audio");
+        otherAudio.pause();
+        otherAudio.currentTime = 0;
+        const otherButton = wrapper.closest("article").querySelector(".play-button");
+        if (otherButton) {
+          otherButton.classList.remove("hidden");
+        }
+      }
+    });
+
+    
+    audioWrapper.classList.add("active");
+    audio.play();
+    button.classList.add("hidden");
+
+
+    audio.onpause = () => {
+      audioWrapper.classList.remove("active");
+      button.classList.remove("hidden");
+      audio.currentTime = 0; 
+    };
+  }
+
+
+
 function cleanupSinglePageScripts() {
     if (currentAudio && currentAudio._listeners) {
         currentAudio.removeEventListener('play', currentAudio._listeners.handlePlay);
@@ -743,6 +777,7 @@ function initSinglePageScripts(container = document) {
         jQuery(this).wrap(imgLink).after(imgElement).remove();
     });
 }
+
 
 
 
@@ -884,6 +919,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 initNoticiasPageScripts();
             }
         },
+
         ]
     });
 

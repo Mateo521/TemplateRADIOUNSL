@@ -31,9 +31,7 @@
 
                         <?php
                         $audio_url = get_field('audio_podcast');
-                        ?>
-
-                        <?php
+                       
                         /*
                              if ($audio_url): ?>
                                 <div class="custom-audio-player bg-black text-white p-4 rounded-md w-full max-w-xl">

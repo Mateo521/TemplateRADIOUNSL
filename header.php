@@ -39,6 +39,8 @@
         $namespace = 'page-noticias';
     } elseif (is_post_type_archive('noticias')) {
         $namespace = 'archive-noticias';
+    } elseif (is_post_type_archive('podcast')) {
+        $namespace = 'archive-podcast';
     } elseif (is_home()) {
         $namespace = 'front-page';
     } else {
