@@ -1,4 +1,3 @@
-
 <div class="relative w-full max-w-full h-[320px] sm:h-[360px] md:h-[400px] rounded-md overflow-hidden">
     <div class="swiper mySwiper h-full">
         <div class="swiper-wrapper">
@@ -18,6 +17,9 @@
                     $categories = get_the_category();
                     $cat_names = wp_list_pluck($categories, 'name');
             ?>
+
+
+
                     <div class="swiper-slide relative h-full rounded-md overflow-hidden">
                         <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />
                         <div class="absolute inset-0 bg-black/50"></div>
@@ -40,6 +42,8 @@
 
                         </div>
                     </div>
+
+
                 <?php
                 endwhile;
                 wp_reset_postdata();
@@ -64,7 +68,7 @@
                     <div class="swiper-slide relative h-full rounded-md overflow-hidden">
                         <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />
                         <div class="absolute inset-0 bg-black/50"></div>
-                          <div class="absolute bottom-8 px-12 md:px-24 z-10 max-w-3xl">
+                        <div class="absolute bottom-8 px-12 md:px-24 z-10 max-w-3xl">
 
                             <div class=" flex flex-wrap gap-2 z-10">
                                 <?php foreach ($cat_names as $cat): ?>
@@ -100,7 +104,7 @@
 </div>
 
 <style>
-    .swiper-pagination-bullet-active{
-        background:#cbc315 ;
+    .swiper-pagination-bullet-active {
+        background: #cbc315;
     }
 </style>

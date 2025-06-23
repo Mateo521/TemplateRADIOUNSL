@@ -8,12 +8,12 @@
         </div>
     </header>
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-        <!-- Carousel -->
+       
         <section class="relative w-full max-w-full rounded-md overflow-hidden shadow-md">
             <div class="swiper swiper-container h-[280px] sm:h-[320px] md:h-[360px] rounded-md">
                 <div class="swiper-wrapper">
                     <?php
-                    // WordPress loop for featured posts or latest posts for carousel
+              
                     $carousel_query = new WP_Query(array(
                         'posts_per_page' => 5,
                         'post_type' => 'noticias',
@@ -23,20 +23,22 @@
                     ));
                     if ($carousel_query->have_posts()) :
                         while ($carousel_query->have_posts()) : $carousel_query->the_post();
-                            // Get categories for the post
+                         
                             $categories = get_the_category();
                             $cat_names = array();
                             foreach ($categories as $cat) {
                                 $cat_names[] = $cat->name;
                             }
-                            // Get featured image URL with exact size 1200x360 (crop)
+                           
                             $img_url = get_the_post_thumbnail_url(get_the_ID(), array(1200, 360));
                             if (!$img_url) {
-                                // fallback placeholder
+                               
                                 $img_url = "https://placehold.co/1200x360?text=No+Image";
                             }
                     ?>
+                 
                             <div class="swiper-slide relative">
+                                   <a href="<?php echo get_permalink()?>">
                                 <img
                                     src="<?php echo esc_url($img_url); ?>"
                                     alt="<?php echo esc_attr(get_the_title()); ?>"
@@ -65,7 +67,9 @@
                                         <i class="fas fa-circle"></i>
                                     </div>
                                 </div>
+                                 </a>
                             </div>
+                           
                     <?php
                         endwhile;
                         wp_reset_postdata();
