@@ -743,6 +743,12 @@ ul.page-numbers li {
   transition: opacity 0.5s ease, max-height 0.5s ease;
 }
 
+.audio-element::-webkit-media-controls-play-button,
+     .audio-element::-webkit-media-controls-panel {
+background-color: #E5CC26;
+
+}
+
 .audio-wrapper.active {
   opacity: 1;
   max-height: 200px; /* ajusta según sea necesario */
