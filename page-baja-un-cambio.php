@@ -24,7 +24,7 @@ get_header();
 
             </p>
             <p class="  mb-2 leading-tight">
-                <b>Descripción:</b>  ¡Bajá un Cambio! Magazine musical para el regreso a casa con consignas, entrevistas temáticas, historias, móviles y mucha música. 
+                <b>Descripción:</b> ¡Bajá un Cambio! Magazine musical para el regreso a casa con consignas, entrevistas temáticas, historias, móviles y mucha música.
             </p>
             <div class="flex flex-wrap gap-3">
                 <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664555555">
@@ -32,17 +32,20 @@ get_header();
                     </i>
                     2664555555
                 </a>
-                <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/LaLocomotora2021" rel="noopener noreferrer" target="_blank">
+                <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/unslradio" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-facebook-f">
                     </i>
-                    LaLocomotora2021
+                    Radio Universidad Nacional de San Luis
+
                 </a>
-                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/lalocomotorasl" rel="noopener noreferrer" target="_blank">
+                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/unslradio/?hl=es" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-instagram">
                     </i>
-                    lalocomotorasl
+                    unslradio
+
                 </a>
             </div>
+
         </section>
 
         <section class="mb-10">
