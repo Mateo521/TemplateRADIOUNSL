@@ -3,6 +3,89 @@
         <div class="swiper-wrapper">
             <?php
 
+
+
+            $rss_url = 'https://noticias.unsl.edu.ar/?call_custom_simple_rss=1';
+            $rss = simplexml_load_file($rss_url);
+
+            if ($rss !== false && isset($rss->channel->item[0])) {
+                $item = $rss->channel->item[0];
+
+                $title = (string) $item->title;
+                $link = (string) $item->link;
+
+
+                $image = '';
+
+                if (isset($item->enclosure)) {
+                    $image = (string) $item->enclosure['url'];
+                } elseif ($item->children('media', true)->content) {
+                    $media = $item->children('media', true);
+                    $image = (string) $media->content->attributes()->url;
+
+                
+
+                }
+            
+            }
+
+
+            $categories = [];
+
+            foreach ($item->category as $cat) {
+                $category = (string)$cat;
+
+
+                $categoryName = match ($category) {
+                    '3' => 'Institucional',
+                    '4' => 'Ciencia',
+                    '2218' => 'Coronavirus',
+                    '7' => 'Destacado',
+                    '8' => 'Cultura',
+                    '9' => 'Entrevistas',
+                    '5' => 'Sociedad',
+                    '6' => 'Principal',
+                    '639' => 'UNSL TV',
+                    '3457' => 'Laboratorios',
+                    default => 'Desconocida',
+                };
+
+                $categories[] = $categoryName;
+            }
+
+            function corregir_url_imagen_wp($url)
+            {
+               
+                return preg_replace('/-\d{2,4}x\d{2,4}(?=\.(jpg|jpeg|png|gif))/i', '', $url);
+            }
+
+            ?>
+
+
+
+            <div class="swiper-slide relative h-full rounded-md overflow-hidden">
+                <img src="<?php echo esc_url(corregir_url_imagen_wp($image)); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-black/50"></div>
+                <div class="absolute bottom-8 px-12 md:px-24 z-10 max-w-3xl">
+                    <div class="py-2">
+                        <h2 class="bg-blue-800 text-white font-bold rounded-xl inline-flex px-3">Noticias UNSL</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-2 z-10">
+                        <?php foreach ($categories as $cat): ?>
+                            <span class="bg-[#486faf] text-white text-xs font-semibold px-2 py-0.5 rounded">
+                                <?php echo esc_html($cat); ?>
+                            </span>
+                        <?php endforeach; ?>
+                    </div>
+                    <a class="size-full" href="<?php echo esc_url($link); ?>">
+                        <h2 class="text-white py-2 text-xl sm:text-2xl font-semibold leading-tight max-w-lg">
+                            <?php echo esc_html($title); ?>
+                        </h2>
+                    </a>
+                </div>
+            </div>
+
+            <?php
             $args_institucional = array(
                 'post_type'      => 'noticias',
                 'posts_per_page' => 1,
@@ -21,11 +104,16 @@
 
 
                     <div class="swiper-slide relative h-full rounded-md overflow-hidden">
+
+
                         <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />
+
+
                         <div class="absolute inset-0 bg-black/50"></div>
 
 
                         <div class="absolute bottom-8 px-12 md:px-24 z-10 max-w-3xl">
+
 
                             <div class=" flex flex-wrap gap-2 z-10">
                                 <?php foreach ($cat_names as $cat): ?>
@@ -33,14 +121,17 @@
                                         <?php echo esc_html($cat); ?>
                                     </span>
                                 <?php endforeach; ?>
+
                             </div>
-
-                            <h2 class="text-white py-2 text-xl sm:text-2xl font-semibold leading-tight max-w-lg">
-                                <?php echo esc_html($title); ?>
-                            </h2>
-
-
+                            <a class="size-full" href="<?php echo get_permalink() ?>">
+                                <h2 class="text-white py-2 text-xl sm:text-2xl font-semibold leading-tight max-w-lg">
+                                    <?php echo esc_html($title); ?>
+                                </h2>
+                            </a>
                         </div>
+
+
+
                     </div>
 
 
@@ -78,9 +169,11 @@
                                 <?php endforeach; ?>
                             </div>
 
-                            <h2 class="text-white py-2 text-xl sm:text-2xl font-semibold leading-tight max-w-lg">
-                                <?php echo esc_html($title); ?>
-                            </h2>
+                            <a class="size-full" href="<?php echo get_permalink() ?>">
+                                <h2 class="text-white py-2 text-xl sm:text-2xl font-semibold leading-tight max-w-lg">
+                                    <?php echo esc_html($title); ?>
+                                </h2>
+                            </a>
 
 
                         </div>
