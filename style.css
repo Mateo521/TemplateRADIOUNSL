@@ -751,7 +751,7 @@ background-color: #E5CC26;
 
 .audio-wrapper.active {
   opacity: 1;
-  max-height: 200px; /* ajusta según sea necesario */
+  max-height: 200px;  
   overflow: visible;
 }
 

@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const playIcon = document.getElementById('playbutton-5');
     const stopIcon = document.getElementById('stopbutton-5');
     let isPlaying = false;
-
-    // Asigna el evento por JavaScript
+ 
     playButton.forEach(btn => {
         btn.addEventListener("click", function () {
             togglePlay();
@@ -895,7 +894,7 @@ document.addEventListener("DOMContentLoaded", function () {
             namespace: 'single',
 
             beforeLeave() {
-                cleanupSinglePageScripts(); // 🔧 limpiar antes de salir
+                cleanupSinglePageScripts();  
             },
             afterEnter({ next }) {
                 initSinglePageScripts(next.container);

@@ -1,4 +1,4 @@
-<div class="relative w-full max-w-full h-[320px] sm:h-[360px] md:h-[400px] rounded-md overflow-hidden">
+<div class="relative w-full max-w-full h-[320px] sm:h-[360px] md:h-[500px] rounded-md overflow-hidden">
     <div class="swiper mySwiper h-full">
         <div class="swiper-wrapper">
             <?php
@@ -94,7 +94,7 @@
             $query_institucional = new WP_Query($args_institucional);
             if ($query_institucional->have_posts()) :
                 while ($query_institucional->have_posts()) : $query_institucional->the_post();
-                    // Obtener datos de la noticia institucional
+                 
                     $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     $title = get_the_title();
                     $categories = get_the_category();
@@ -150,7 +150,7 @@
 
             if ($query_otros->have_posts()) :
                 while ($query_otros->have_posts()) : $query_otros->the_post();
-                    // Obtener datos de cada noticia
+                    
                     $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     $title = get_the_title();
                     $categories = get_the_category();
