@@ -16,7 +16,7 @@ get_header();
 </div>
 <!-- FINTITULO -->
 <div>
-  <img class="w-full h-[550px] object-cover object-[0_-450px]" src="<?php echo get_template_directory_uri(); ?>/assets/images/banner-2.jpg" alt="">
+  <img class="w-full h-[280px] md:h-[550px] object-cover object-center" src="<?php echo get_template_directory_uri(); ?>/assets/images/banner-2.jpg" alt="">
 </div>
 <div class="flex justify-center p-8 bg-white">
   <section class="max-w-7xl w-full">
