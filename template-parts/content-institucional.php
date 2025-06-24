@@ -77,16 +77,12 @@
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/oscar_flores.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Oscar<br />Flores</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">NADA SECRETO</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">HACIENDO RUIDO</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">SOLO UN CAFÉ</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">LA LOCOMOTORA</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/mario_otero.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Mario<br />Otero</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">NADA SECRETO</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">HACIENDO RUIDO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/pablo_oro.jpg" />
@@ -97,20 +93,21 @@
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/javier_mamy.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Javier<br />Mamy</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">HACIENDO RUIDO</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">ENTRE CORCHEAS</p>
                 </div>
 
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/ivana_pereyra.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Ivana<br />Pereyra</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">FRECUENCIA INFORMATIVA</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">SOLO UN CAFÉ</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">LA LOCOMOTORA</p>
+                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">FRECUENCIA INFORMATIVA</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/laura_campo.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Laura<br />Campo</p>
+                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">BAJÁ UN CAMBIO</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">LA LOCOMOTORA</p>
+
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/lucas_gallardo.jpg" />
@@ -122,7 +119,6 @@
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/juan_valdeon.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Juan<br />Valdeón</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">LA LOCOMOTORA</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">BAJÁ UN CAMBIO</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/hernan_corral.jpg" />
@@ -138,14 +134,13 @@
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/pablo_almada.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Pablo<br />Almada</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">FRECUENCIA INFORMATIVA</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">BAJÁ UN CAMBIO</p>
+                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">FRECUENCIA INFORMATIVA</p>
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/vero_miranda.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Verónica<br />Miranda</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">NADA SECRETO</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">HACIENDO RUIDO </p>
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/leo_mancuello.jpg" />
@@ -177,16 +172,13 @@
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/gladys_aguilar.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Gladys<br />Aguilar</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">NADA SECRETO</p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">HACIENDO RUIDO </p>
                 </div>
 
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/cristina_sosa.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Cristina<br />Sosa</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">NADA SECRETO </p>
                     <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">HACIENDO RUIDO </p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">LA LOCOMOTORA </p>
                 </div>
 
 

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const playIcon = document.getElementById('playbutton-5');
     const stopIcon = document.getElementById('stopbutton-5');
     let isPlaying = false;
- 
+
     playButton.forEach(btn => {
         btn.addEventListener("click", function () {
             togglePlay();
@@ -193,6 +193,27 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
+    const programaActual = obtenerProgramaActual();
+    const slides = document.querySelectorAll(".swiper-slide");
+
+    slides.forEach(slide => {
+        const programa = slide.getAttribute("data-programa")?.toLowerCase();
+        const actual = programaActual.text.toLowerCase();
+
+        const btn = slide.querySelector("button");
+
+        if (btn) {
+            if (actual.includes(programa)) {
+                btn.textContent = "AL AIRE";
+                btn.classList.remove("bg-red-700");
+                btn.classList.add("bg-green-700", "hover:bg-green-800");
+            } else {
+                btn.textContent = "FUERA DEL AIRE";
+                btn.classList.remove("bg-green-700", "hover:bg-green-800");
+                btn.classList.add("bg-gray-500", "hover:bg-gray-600");
+            }
+        }
+    });
 
     function actualizarRadio() {
         const programa = obtenerProgramaActual();
@@ -636,37 +657,37 @@ let currentAudio = null;
 let currentLottie = null;
 
 
-  function toggleAudio(button) {
+function toggleAudio(button) {
     const article = button.closest("article");
     const audioWrapper = article.querySelector(".audio-wrapper");
     const audio = audioWrapper.querySelector("audio");
 
- 
+
     document.querySelectorAll(".audio-wrapper.active").forEach(wrapper => {
-      if (wrapper !== audioWrapper) {
-        wrapper.classList.remove("active");
-        const otherAudio = wrapper.querySelector("audio");
-        otherAudio.pause();
-        otherAudio.currentTime = 0;
-        const otherButton = wrapper.closest("article").querySelector(".play-button");
-        if (otherButton) {
-          otherButton.classList.remove("hidden");
+        if (wrapper !== audioWrapper) {
+            wrapper.classList.remove("active");
+            const otherAudio = wrapper.querySelector("audio");
+            otherAudio.pause();
+            otherAudio.currentTime = 0;
+            const otherButton = wrapper.closest("article").querySelector(".play-button");
+            if (otherButton) {
+                otherButton.classList.remove("hidden");
+            }
         }
-      }
     });
 
-    
+
     audioWrapper.classList.add("active");
     audio.play();
     button.classList.add("hidden");
 
 
     audio.onpause = () => {
-      audioWrapper.classList.remove("active");
-      button.classList.remove("hidden");
-      audio.currentTime = 0; 
+        audioWrapper.classList.remove("active");
+        button.classList.remove("hidden");
+        audio.currentTime = 0;
     };
-  }
+}
 
 
 
@@ -894,7 +915,7 @@ document.addEventListener("DOMContentLoaded", function () {
             namespace: 'single',
 
             beforeLeave() {
-                cleanupSinglePageScripts();  
+                cleanupSinglePageScripts();
             },
             afterEnter({ next }) {
                 initSinglePageScripts(next.container);
