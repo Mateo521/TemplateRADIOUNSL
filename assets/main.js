@@ -151,69 +151,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    const programacion = {
-        all: [
-            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 1380, end: 1439, text: "Música", img: "icon-5.png" }
-        ],
-        weekdays: [
-            { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png" },
-            { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-            { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-            { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-            { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.png" },
-            { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" },
-            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
-        ],
-        1: [
-            { start: 840, end: 854, text: "Entre Corcheas", img: "icon-6.png" }
-        ],
-        2: [
-            { start: 840, end: 854, text: "Finanzas para Todos", img: "icon-6.png" }
-        ]
-    };
 
 
-    function obtenerProgramaActual(date = new Date()) {
-        const total = date.getHours() * 60 + date.getMinutes();
-        const day = date.getDay();
 
-        const bloques = [
-            ...(programacion.all || []),
-            ...(day >= 1 && day <= 5 ? programacion.weekdays : []),
-            ...(programacion[day] || [])
-        ];
 
-        return bloques.find(p => total >= p.start && total <= p.end) || {
-            text: "Música",
-            img: "icon-5.png"
-        };
-    }
 
-    const programaActual = obtenerProgramaActual();
-    const slides = document.querySelectorAll(".swiper-slide");
 
-    slides.forEach(slide => {
-        const programa = slide.getAttribute("data-programa")?.toLowerCase();
-        const actual = programaActual.text.toLowerCase();
 
-        const btn = slide.querySelector("button");
 
-        if (btn) {
-            if (actual.includes(programa)) {
-                btn.textContent = "AL AIRE";
-                btn.classList.remove("bg-red-700");
-                btn.classList.add("bg-green-700", "hover:bg-green-800");
-            } else {
-                btn.textContent = "FUERA DEL AIRE";
-                btn.classList.remove("bg-green-700", "hover:bg-green-800");
-                btn.classList.add("bg-gray-500", "hover:bg-gray-600");
-            }
-        }
-    });
+
+
+
+
+
+
+
+
 
     function actualizarRadio() {
         const programa = obtenerProgramaActual();
@@ -242,16 +195,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const texto = encodeURIComponent(`${mensaje} ${url}`);
 
 
-            $('a[href^="https://wa.me/"]').attr('href', `https://wa.me/?text=${texto}`);
+            $('#social-share a[href^="https://wa.me/"]').attr('href', `https://wa.me/?text=${texto}`);
 
 
-            $('a[href*="twitter.com/intent/tweet"]').attr('href', `https://twitter.com/intent/tweet?text=${texto}`);
+            $('#social-share a[href*="twitter.com/intent/tweet"]').attr('href', `https://twitter.com/intent/tweet?text=${texto}`);
 
 
-            $('a[href*="facebook.com/sharer/sharer.php"]').attr('href', `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(mensaje)}`);
+            $('#social-share a[href*="facebook.com/sharer/sharer.php"]').attr('href', `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(mensaje)}`);
 
 
-            $('a[href^="mailto:"]').attr('href', `mailto:?subject=${encodeURIComponent("Escuchá en vivo")}&body=${encodeURIComponent(`${mensaje} ${url}`)}`);
+            $('#social-share a[href^="mailto:"]').attr('href', `mailto:?subject=${encodeURIComponent("Escuchá en vivo")}&body=${encodeURIComponent(`${mensaje} ${url}`)}`);
         }, 300);
     });
 
@@ -318,6 +271,74 @@ function displayfooter() {
 
 
 
+
+    const programacion = {
+        all: [
+            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 1380, end: 1439, text: "Música", img: "icon-5.png" }
+        ],
+        weekdays: [
+            { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png" },
+            { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+            { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+            { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+            { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.png" },
+            { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" },
+            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
+            { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
+        ],
+        1: [
+            { start: 840, end: 854, text: "Entre Corcheas", img: "icon-6.png" }
+        ],
+        2: [
+            { start: 840, end: 854, text: "Finanzas para Todos", img: "icon-6.png" }
+        ]
+    };
+
+function obtenerProgramaActual(date = new Date()) {
+    const total = date.getHours() * 60 + date.getMinutes();
+    const day = date.getDay();
+
+    const bloques = [
+        ...(programacion.all || []),
+        ...(day >= 1 && day <= 5 ? programacion.weekdays : []),
+        ...(programacion[day] || [])
+    ];
+
+    return bloques.find(p => total >= p.start && total <= p.end) || {
+        text: "Música",
+        img: "icon-5.png"
+    };
+}
+
+function marcarProgramaAlAire() {
+    const programaActual = obtenerProgramaActual();
+    const slides = document.querySelectorAll(".swiper-slide");
+
+    slides.forEach(slide => {
+        const programa = slide.getAttribute("data-programa")?.toLowerCase();
+        const actual = programaActual.text.toLowerCase();
+
+        const btn = slide.querySelector("button");
+
+        if (btn) {
+            if (actual.includes(programa)) {
+                btn.textContent = "AL AIRE";
+                btn.classList.remove("bg-red-700");
+                btn.classList.add("bg-green-700", "hover:bg-green-800");
+            } else {
+                btn.textContent = "FUERA DEL AIRE";
+                btn.classList.remove("bg-green-700", "hover:bg-green-800");
+                btn.classList.add("bg-gray-500", "hover:bg-gray-600");
+            }
+        }
+    });
+}
+
+
+
 function initGlobalScripts() {
 
 
@@ -328,7 +349,9 @@ function initGlobalScripts() {
 function initHomeScripts() {
 
 
-
+    requestAnimationFrame(() => {
+        marcarProgramaAlAire();
+    });
 
 
 

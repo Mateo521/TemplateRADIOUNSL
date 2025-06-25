@@ -31,7 +31,7 @@ wp_footer();
                     <img class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="">
 
                 </div>
-                <p class="py-3">Teléfono: +54(0266)</p>
+                <p class="py-3">Teléfono:  +542664361329</p>
                 <p>Dirección: Ejército de Los Andes 950, <br> San Luis, Argentina</p>
                 <p class="py-3">Email: ejemplo@gmail.com</p>
             </div>
@@ -43,7 +43,7 @@ wp_footer();
                         </li>
                     </a>
                     <a href="https://www.instagram.com/unslradio/?hl=es" target="_blank">
-                        <li><img width="35px" src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-512.png" alt=""></li>
+                        <li><img width="35px" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt=""></li>
                     </a>
                     <a href="https://www.youtube.com/@radiounslcontenidos" target="_blank">
                         <li><img width="35px" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt=""></li>
@@ -117,7 +117,7 @@ wp_footer();
             <!-- Modal body -->
             <div class="p-6">
                 <p id="prog" class="text-sm font-normal text-gray-500 dark:text-gray-400"></p>
-                <ul class="my-4 space-y-3">
+                <ul id="social-share" class="my-4 space-y-3">
                     <li>
                         <a target="_blank" href="https://wa.me/?text=radiouniversidad.unsl.edu.ar" data-action="share/whatsapp/share" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                             <img class="h-5" src="<?php echo get_template_directory_uri(); ?>/assets/images/WhatsApp.svg" />
@@ -125,15 +125,6 @@ wp_footer();
                             <span class="flex-1 ml-3 whitespace-nowrap">Whatsapp</span>
                         </a>
                     </li>
-                    <li>
-                        <a target="_blank" href="https://instagram.com" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-                            <img class="h-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" />
-
-                            <span class="flex-1 ml-3 whitespace-nowrap">Instagram</span>
-                        </a>
-
-                    </li>
-
                     <li>
                         <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=radiouniversidad.unsl.edu.ar" rel="noopener noreferrer" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                             <img class="h-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/2021_Facebook_icon.svg.png" />

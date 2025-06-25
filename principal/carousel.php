@@ -77,7 +77,7 @@
                             </span>
                         <?php endforeach; ?>
                     </div>
-                    <a class="size-full" href="<?php echo esc_url($link); ?>">
+                    <a target="_blank" class="size-full" href="<?php echo esc_url($link); ?>">
                         <h2 class="text-white py-2 text-xl sm:text-2xl font-semibold leading-tight max-w-lg">
                             <?php echo esc_html($title); ?>
                         </h2>

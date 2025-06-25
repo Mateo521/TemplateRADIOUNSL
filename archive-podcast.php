@@ -76,7 +76,7 @@
   else :
     ?>
     <p class="col-span-full text-center text-gray-400">
-      No podcasts found.
+      No se encontraron podcasts.
     </p>
   <?php
   endif;

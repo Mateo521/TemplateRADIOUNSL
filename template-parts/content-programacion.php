@@ -172,10 +172,11 @@ get_header();
       <i class="fas fa-chevron-up text-[#003366] text-xs rotate-180 transition-transform duration-300" id="icon-sabados">
       </i>
     </h2>
-    <!-- Grid for Sábados -->
+
+    
     <div id="content-sabados" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-height" style="height:auto; opacity:1;">
-      <!-- Card 1 -->
-      <article class="bg-white rounded-md shadow-sm overflow-hidden">
+   
+      <!--article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Rock Nacional text on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/813d1b14-d728-4b95-c7a6-0c9008120ccd.jpg" width="600" />
         <div class="p-4">
           <h3 class="text-sm font-semibold text-[#003366] mb-1">
@@ -191,7 +192,7 @@ get_header();
           </p>
         </div>
       </article>
-      <!-- Card 2 -->
+   
       <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Sonidos de Latinoamérica text on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/a102de11-aa9e-4279-5f08-2272cfe48b3a.jpg" width="600" />
         <div class="p-4">
@@ -208,7 +209,7 @@ get_header();
           </p>
         </div>
       </article>
-      <!-- Card 3 -->
+    
       <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Tangos y milongas text on black background with microphone" class="w-full h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/eb016dd2-bece-45c4-28fe-897dcc805b71.jpg" width="600" />
         <div class="p-4">
@@ -224,7 +225,7 @@ get_header();
             </i>
           </p>
         </div>
-      </article>
+      </article-->
     </div>
   </section>
 </div>

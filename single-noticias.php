@@ -48,7 +48,7 @@
                         Pie de foto: <?php echo esc_html(get_post_meta(get_the_ID(), 'pie_de_foto', true)); ?>
                     </p>
                 <?php else : ?>
-                    <p class="text-gray-600 mb-8">Pie de foto: La escuela está ubicada la calle Marcelino Poblet 668.</p>
+                    <p class="text-gray-600 mb-8"></p>
                 <?php endif; ?>
 
                 <?php if (get_post_meta(get_the_ID(), 'subtitulo', true)) : ?>

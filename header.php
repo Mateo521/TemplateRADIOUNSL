@@ -10,9 +10,9 @@
 
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/swiper-bundle.min.css" />
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/assets/swiper-bundle.min.js"></script>
 
 
     <?php
@@ -58,7 +58,7 @@
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center">
 
                     <img class="h-20 hidden md:block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2.png" alt="LOGO RADIO UNSL" />
-                    <img class="h-20 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="LOGO RADIO UNSL" />
+                    <img class="h-20 p-3 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="LOGO RADIO UNSL" />
 
 
                 </a>
@@ -303,7 +303,7 @@
                             </li>
                         </a>
                         <a href="https://www.instagram.com/unslradio/?hl=es" target="_blank">
-                            <li><img width="18px" src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-512.png" alt=""></li>
+                            <li><img width="18px" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt=""></li>
                         </a>
                         <a href="https://www.youtube.com/@radiounslcontenidos" target="_blank">
                             <li><img width="18px" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt="">

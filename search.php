@@ -1,96 +1,89 @@
 <?php get_header(); ?>
 
-<section id="primary" class="content-area">
-    <main id="main" class="site-main" style="background-color:white;">
-      <div class="text-center font-bold py-8 text-2xl">
-            <h1 class="page-title"><?php printf(esc_html__('Resultados de Búsqueda para: %s', 'tu-tema'), '<span>' . get_search_query() . '</span>'); ?></h1>
-            </div>
-        <div class="flex justify-center p-8 my-6">
-            <div class="max-w-screen-xl w-full">
-                <div class="grid md:grid-cols-3 gap-8 relative ">
-                    <?php if (have_posts()) : ?>
+<div class="bg-gray-100">
 
-                        <?php while (have_posts()) : the_post();
-                            $content = get_the_content();
-                       
-                            $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                            $categories = get_the_category();
-                            $date = get_the_date();
-
-         $pattern = '/<figure[^>]*class="wp-block-audio"[^>]*>.*?<\/figure>/is';
-
-
-                                            ?>
-                            <div class="grid grid-rows-2 shadow-lg shadow-gray-500/50" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                               
-                                <div>
-                                    <?php if (!empty($image_url)) : ?>
-                                        <img class="w-full" src="<?php echo esc_url($image_url); ?>" id="noticia-g" alt="<?php echo esc_attr(the_title()); ?>">
-                                    <?php else : ?>
-                                        <img class="w-full" src="https://htmlcolorcodes.com/assets/images/colors/dark-blue-color-solid-background-1920x1080.png" id="noticia-g" alt="fondo">
-                                    <?php endif; ?>
-                                </div>
-
-                                <div class="p-8">
-                                    <h2 class="font-bold py-3 " style="color:#486faf;"><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></h2>
-
-
-<?php
-                                                   if(preg_match($pattern,$content,$matches2)){
-                                                echo $matches2[0];
-                                            }
-?>
-                                    <div class="entry-content">
-                                         <a href="<?php the_permalink(); ?>" target="_blank">
-                                        <?php the_excerpt(); ?>
-                                        </a>
-                                    </div>
-
-     <div class="flex items-center justify-between gap-3">
-                           <?php
-                               // Obtener las categorías de la entrada actual
-                          if (!empty($categories)) {
-    echo '<h5 class="text-md font-bold tracking-tight" style="text-transform:uppercase;font-size:12px;">';
-
-    foreach ($categories as $index => $category) {
-        if ($category->slug !== "sin-categoria") {
-            $category_link = get_category_link($category->term_id); // Obtenemos el enlace de la categoría
-            echo '<a href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a>';
-            
-            if ($index !== count($categories) - 1) {
-                echo ', '; // Agregar coma y espacio entre categorías
-            }
-        }
-    }
-
-    echo '</h5>';
-}
-
-                            ?>
-                           <!-- <p><?php  echo $date; ?></p>-->
-                            </div>
-                                </div>
-                            </div>
-
-                        <?php endwhile; ?>
-                    <?php else : ?>
-                        <div id="info-search" style="position:absolute; left:50%;top:50%; transform:translate(-50%,-50%);" class="font-bold md:text-4xl">
-                            <p><?php esc_html_e('Lo sentimos, no se encontraron resultados.', 'tu-tema'); ?></p>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-
+    <header class="flex justify-center items-center bg-[#f3f3f3] py-2 border-b shadow border-gray-300">
+        <div class="flex justify-center md:gap-12 gap-3 items-baseline">
+            <h1 id="titulo-categoria" class="font-bold text-[#1476B3]" style=" font-family: 'Antonio', sans-serif;">
+                BÚSQUEDA
+            </h1>
+            <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-11.png" alt="">
         </div>
-          <!-- Agregar enlace a la página anterior y siguiente -->
-          <div class="flex justify-center gap-8 items-center py-8 font-bold">
+    </header>
 
-          <?php echo paginate_links(); ?>
-</div>
-          
-        
-            
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+       
+        <div class="text-center font-bold py-6 text-xl md:text-2xl">
+            <h1><?php printf(esc_html__('Resultados de búsqueda para: %s', 'tu-tema'), '<span>' . get_search_query() . '</span>'); ?></h1>
+        </div>
+
+
+        <section class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="news-grid">
+            <?php if (have_posts()) : while (have_posts()) : the_post(); 
+                $categories = get_the_category();
+                $first_cat = $categories ? $categories[0]->name : '';
+                $img_url = get_the_post_thumbnail_url(get_the_ID(), array(400, 220));
+                if (!$img_url) {
+                    $img_url = "https://placehold.co/400x220?text=Sin+imagen";
+                }
+            ?>
+                <a href="<?php the_permalink(); ?>" class="block hover:shadow-lg transition-shadow duration-200">
+                    <article class="bg-white h-full border border-gray-200 rounded-md shadow-sm overflow-hidden">
+                        <img
+                            src="<?php echo esc_url($img_url); ?>"
+                            alt="<?php echo esc_attr(get_the_title()); ?>"
+                            class="w-full h-36 object-cover"
+                            width="400"
+                            height="220" />
+                        <div class="p-3">
+                            <p class="text-xs text-[#2a7bbd] font-semibold uppercase mb-1">
+                                <?php echo esc_html($first_cat); ?>
+                            </p>
+                            <h3 class="text-sm font-normal text-gray-900 leading-snug mb-1">
+                                <?php echo wp_trim_words(get_the_title(), 20, '...'); ?>
+                            </h3>
+                            <time class="text-xs text-gray-400">
+                                <?php echo get_the_date('d/m/Y'); ?>
+                            </time>
+                        </div>
+                    </article>
+                </a>
+            <?php endwhile; else : ?>
+                <p class="col-span-full text-center text-gray-500">No se encontraron resultados.</p>
+            <?php endif; ?>
+        </section>
+
+      
+        <nav aria-label="Pagination" class="mt-8 flex justify-center items-center space-x-2 text-gray-500 text-sm select-none">
+            <?php
+            global $wp_query;
+            $big = 999999999;
+            $pagination_links = paginate_links(array(
+                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                'format' => '?paged=%#%',
+                'current' => max(1, get_query_var('paged')),
+                'total' => $wp_query->max_num_pages,
+                'type' => 'array',
+                'prev_text' => '<i class="fas fa-chevron-left"></i>',
+                'next_text' => '<i class="fas fa-chevron-right"></i>',
+                'show_all' => false,
+                'end_size' => 1,
+                'mid_size' => 1,
+            ));
+
+            if (!empty($pagination_links)) :
+                foreach ($pagination_links as $link) {
+                    if (strpos($link, 'current') !== false) {
+                        echo '<button class="w-8 h-8 rounded border border-gray-300 bg-white text-gray-400 cursor-default" disabled>' . strip_tags($link) . '</button>';
+                    } else {
+                        $link = str_replace('<a', '<a class="px-3 py-1 rounded border border-gray-300 text-[#2a7bbd] hover:underline"', $link);
+                        echo $link;
+                    }
+                }
+            endif;
+            ?>
+        </nav>
     </main>
-</section>
+</div>
 
 <?php get_footer(); ?>

@@ -192,25 +192,24 @@
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/di_pascuale_mauricio.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Di Pascuale<br />Mauricio</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">LA LOCOMOTORA</p>
+
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/emilio_gomez.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Gomez<br />Emilio</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">LA LOCOMOTORA</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">BAJÁ UN CAMBIO</p>
+
                 </div>
 
 
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/rodrigo_moraga.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Rodrigo<br />Moraga</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">NADA SECRETO</p>
+                 
                 </div>
                 <div class="flex flex-col items-center w-40">
                     <img alt="Portrait" class="rounded-full w-40 h-40 object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/naomi_benitez.jpg" />
                     <p class="mt-2 text-center text-base leading-tight">Naomi<br />Benitez</p>
-                    <p class="text-sm text-[#d6d94a] text-center mt-1 font-semibold">NADA SECRETO</p>
+                  
                 </div>
 
             </div>

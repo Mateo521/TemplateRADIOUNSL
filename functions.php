@@ -10,27 +10,65 @@ add_action('setup', 'add_theme_support');
 function linksradio_unsl_estilos()
 {
     $version = wp_get_theme()->get('Version');
-    wp_enqueue_style('unsl_estilo-style', get_template_directory_uri() . "/style.css", array('unsl_estilo-flowbite'), $version, 'all');
-    wp_enqueue_style('unsl_estilo-flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css", array(), '1.8.0', 'all');
 
-    wp_enqueue_style('lightbox-css', get_template_directory_uri() . "/assets/lightbox2-2.11.4/src/css/lightbox.css", array(), '1.1.0', 'all');
+
+
+    wp_enqueue_style(
+        'unsl_estilo-flowbite',
+        get_template_directory_uri() . "/assets/flowbite.min.css",
+        array(),
+        '3.1.2',
+        'all'
+    );
+
+    // Estilo principal
+    wp_enqueue_style(
+        'unsl_estilo-style',
+        get_template_directory_uri() . "/style.css",
+        array('unsl_estilo-flowbite'),
+        $version,
+        'all'
+    );
+
+    // Tailwind generado
+    wp_enqueue_style(
+        'unsl_tailwind-style',
+        get_template_directory_uri() . "/assets/output.css",
+        array(),
+        $version,
+        'all'
+    );
+
+    // Lightbox CSS
+    wp_enqueue_style(
+        'lightbox-css',
+        get_template_directory_uri() . "/assets/lightbox2-2.11.4/src/css/lightbox.css",
+        array(),
+        '2.11.4',
+        'all'
+    );
+
+
 }
-
 add_action('wp_enqueue_scripts', 'linksradio_unsl_estilos');
+
 
 
 function linksradio_unsl_scripts()
 {
 
 
-    wp_enqueue_script('tailwindcss', "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4", array(), '4.1.0', false);
 
-    wp_enqueue_script('flowbite', "https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js", array(), '3.1.2', false);
+    wp_enqueue_script('barba', get_template_directory_uri() . "/assets/barba.umd.js", array(), '3.1.2', false);
 
-    wp_enqueue_script('barba', "https://unpkg.com/@barba/core", array(), '3.1.2', false);
 
-    
-
+    wp_enqueue_script(
+        'unsl_flowbite',
+        get_template_directory_uri() . '/assets/flowbite.min.js',
+        array(),
+        null,
+        true
+    );
 
 
     wp_enqueue_script('unsl_estilo-fontawesome', "https://kit.fontawesome.com/19e7896a5a.js", array(), '1.0', false);
@@ -38,17 +76,22 @@ function linksradio_unsl_scripts()
     wp_enqueue_script('unsl_estilo-jquery', "https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js", array(), '3.6.4', false);
 
     wp_enqueue_script('lightbox', get_template_directory_uri() . "/assets/lightbox2-2.11.4/src/js/lightbox.js", array(), '1.0.0', false);
+
+
+
 }
 
 add_action('wp_enqueue_scripts', 'linksradio_unsl_scripts');
 
 
 
-   function mi_tema_scripts() {
-    // Registrar el archivo JS principal
+function mi_tema_scripts()
+{
+
+
     wp_enqueue_script('main', get_template_directory_uri() . "/assets/main.js", array(), '1.0.0', true);
 
-    // Pasar la URL del tema a JavaScript
+
     wp_localize_script('main', 'miTema', array(
         'themeURL' => get_template_directory_uri(),
     ));
@@ -68,11 +111,11 @@ function save_contact_form_message_as_comment()
         $email = sanitize_email($_POST['email']);
         $message = sanitize_textarea_field($_POST['message']);
         $comment_data = array(
-            'comment_post_ID' => 0, // Cambiar a la ID de la publicación o página deseada
+            'comment_post_ID' => 0,
             'comment_author' => $name,
             'comment_author_email' => $email,
             'comment_content' => $message,
-            'comment_approved' => '0', // Comentario pendiente de aprobación
+            'comment_approved' => '0',
         );
         wp_insert_comment($comment_data);
         wp_redirect(home_url());
@@ -161,12 +204,12 @@ function my_pagination($args = array())
 function wpse_modify_home_category_query($query)
 {
 
-    // Only apply to the main loop on the frontend.
+
     if (is_admin() || !$query->is_main_query()) {
         return false;
     }
 
-    // Check we're on a posts or category page.
+
     if ($query->is_home() || $query->is_category()) {
         $query->set('posts_per_page', 2);
     }
@@ -216,7 +259,7 @@ function custom_login_logo()
 {
     echo '<style type="text/css">
         .login h1 a {
-          background-image: url(https://radiouniversidad.unsl.edu.ar/images/icons/logo2.png) ;
+          background-image: url(assets/images/logo3.png);
           background-position: center center;
 		  background-size: contain;
 	      width: 100%;
@@ -289,30 +332,31 @@ add_action('wp_head', 'meta_description_personalizada');
 
 
 
-function mostrar_clima_san_luis() {
+function mostrar_clima_san_luis()
+{
     ob_start();
     ?>
-    <div id="widget-clima"></div>
-    <script>
-        async function obtenerClima() {
-            const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-33.295&longitude=-66.3356&daily=temperature_2m_max,temperature_2m_min&timezone=America/Argentina/Buenos_Aires');
-            const data = await res.json();
+        <div id="widget-clima"></div>
+        <script>
+            async function obtenerClima() {
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-33.295&longitude=-66.3356&daily=temperature_2m_max,temperature_2m_min&timezone=America/Argentina/Buenos_Aires');
+                const data = await res.json();
 
-            const hoy = 0;
-            const tempMin = data.daily.temperature_2m_min[hoy];
-            const tempMax = data.daily.temperature_2m_max[hoy];
+                const hoy = 0;
+                const tempMin = data.daily.temperature_2m_min[hoy];
+                const tempMax = data.daily.temperature_2m_max[hoy];
 
-            document.getElementById("widget-clima").innerHTML = `
+                document.getElementById("widget-clima").innerHTML = `
                 <div style="padding:15px;border-radius:10px;text-align:center;">
                     <h3>Ciudad de San Luis</h3>
                     <p><strong>Mín:</strong> ${tempMin}°C<br><strong>Máx:</strong> ${tempMax}°C</p>
                     <p>Despejado ☀️</p>
                 </div>
             `;
-        }
+            }
 
-        obtenerClima();
-    </script>
+            obtenerClima();
+        </script>
     <?php
     return ob_get_clean();
 }
@@ -321,14 +365,15 @@ add_shortcode('clima_san_luis', 'mostrar_clima_san_luis');
 
 
 
-  
 
 
 
 
 
-function custom_post_types_init() {
-  
+
+function custom_post_types_init()
+{
+
     register_post_type('noticias', array(
         'labels' => array(
             'name' => 'Noticias',
@@ -339,28 +384,21 @@ function custom_post_types_init() {
         'rewrite' => array('slug' => 'noticias'),
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
         'menu_icon' => 'dashicons-megaphone',
-        'taxonomies' => array('post_tag', 'category')  
+        'taxonomies' => array('post_tag', 'category')
     ));
 
-   
+
     register_post_type('podcast', array(
-    'labels' => array(
-        'name' => 'Podcasts',
-        'singular_name' => 'Podcast'
-    ),
-    'public' => true,
-    'has_archive' => true,
-    'rewrite' => array('slug' => 'podcasts'),
-    'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
-    'menu_icon' => 'dashicons-microphone',
-    'taxonomies' => array('post_tag', 'category') 
-));
+        'labels' => array(
+            'name' => 'Podcasts',
+            'singular_name' => 'Podcast'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'podcasts'),
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_icon' => 'dashicons-microphone',
+        'taxonomies' => array('post_tag', 'category')
+    ));
 }
 add_action('init', 'custom_post_types_init');
-
-
-
-
-
-
-

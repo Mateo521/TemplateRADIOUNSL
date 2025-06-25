@@ -91,8 +91,10 @@
 
     <!-- Button -->
     <div class="mt-8 flex justify-center">
-        <button class="bg-[#486faf] cursor-pointer text-white text-base font-semibold px-6 py-2 rounded hover:bg-[#123d83] transition" type="button">
-            Más noticias
-        </button>
+        <a href="<?php echo get_post_type_archive_link('noticias'); ?>">
+            <button class="bg-[#486faf] cursor-pointer text-white text-base font-semibold px-6 py-2 rounded hover:bg-[#123d83] transition" type="button">
+                Más noticias
+            </button>
+        </a>
     </div>
 </div>
