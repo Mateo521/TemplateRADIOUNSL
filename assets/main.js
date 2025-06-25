@@ -3,6 +3,106 @@
 
 
 
+const ciudades = [
+    { nombre: "San Luis", lat: -33.30157712276608, lon: -66.3405876778769 },
+    { nombre: "Villa de Merlo", lat: -32.34837185554736, lon: -65.01371473234181 },
+    { nombre: "Unión", lat: -33.283, lon: -65.835 },
+    { nombre: "La Punta", lat: -33.215, lon: -66.291 },
+    { nombre: "Luján", lat: -32.385, lon: -65.622 },
+    { nombre: "El Trapiche", lat: -33.10679314167354, lon: -66.06208112533947 },
+    { nombre: "Santa Rosa del Conlara", lat: -32.343, lon: -65.195 },
+    { nombre: "Renca", lat: -32.981, lon: -65.663 },
+    { nombre: "Potrero de los Funes", lat: -33.246, lon: -66.239 },
+    { nombre: "San Francisco del Monte de Oro", lat: -32.603, lon: -66.117 }
+];
+const iconos = {
+    clear: `<img class="weather-icon" src="https://openweathermap.org/img/wn/01d.png" alt="Sol despejado" />`,
+    partly_cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/03d.png" alt="Parcialmente nublado" />`,
+    cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/04d.png" alt="Nublado" />`,
+    rain: `<img class="weather-icon" src="https://openweathermap.org/img/wn/09d.png" alt="Lluvia" />`,
+    snow: `<img class="weather-icon" src="https://openweathermap.org/img/wn/13d.png" alt="Nieve" />`,
+    default: `<img class="weather-icon" src="https://placehold.co/24x24/png?text=?" alt="Clima desconocido" />`,
+};
+
+
+
+function obtenerIcono(code) {
+    if ([0].includes(code)) return iconos.clear;
+    if ([1, 2, 3].includes(code)) return iconos.partly_cloudy;
+    if ([45, 48].includes(code)) return iconos.cloudy;
+    if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return iconos.rain;
+    if ([71, 73, 75, 85, 86].includes(code)) return iconos.snow;
+    return iconos.default;
+}
+
+function descripcionClima(code) {
+    if ([0].includes(code)) return "Despejado";
+    if ([1, 2, 3].includes(code)) return "Parcial";
+    if ([45, 48].includes(code)) return "Nublado";
+    if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "Lluvia";
+    if ([71, 73, 75, 85, 86].includes(code)) return "Nieve";
+    return "Desconocido";
+}
+
+async function obtenerClima(ciudad) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${ciudad.lat}&longitude=${ciudad.lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=America/Argentina/Buenos_Aires`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const hoy = 0;
+    return {
+        nombre: ciudad.nombre,
+        tempMin: data.daily.temperature_2m_min[hoy],
+        tempMax: data.daily.temperature_2m_max[hoy],
+        weathercode: data.daily.weathercode[hoy],
+    };
+}
+
+
+
+
+function initClimaMarquee() {
+    const marquee = document.getElementById("marquee");
+
+    if (!marquee) {
+        console.warn("No se encontró el marquee");
+        return;
+    }
+  
+    cargarMarquee();
+
+
+
+    async function cargarMarquee() {
+        try {
+         
+            const datos = await Promise.all(ciudades.map(obtenerClima));
+         
+
+            const contenido = datos
+                .map(({ nombre, tempMin, tempMax, weathercode }) => {
+                    const icono = obtenerIcono(weathercode);
+                    const desc = descripcionClima(weathercode);
+                    return `
+                    <span class="city-block" aria-label="Clima en ${nombre}: mínimo ${tempMin} grados, máximo ${tempMax} grados, ${desc}">
+                      <span class="city-name">${nombre}:</span>
+                      <span class="temp">${tempMin}° / ${tempMax}°C</span>
+                      ${icono}
+                    </span>
+                `;
+                })
+                .join("");
+
+            marquee.innerHTML = contenido;
+        } catch (error) {
+            console.error("Error al cargar el clima:", error);
+            marquee.innerHTML = `<span class="error">No se pudo cargar el clima.</span>`;
+        }
+    }
+
+
+
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const myAudio = document.getElementById("player");
     const volumeSliders = [document.getElementById("vol"), document.getElementById("vol-mobile")];
@@ -46,78 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stopIcon.style.transform = 'translate(-50%, -50%)';
     };
 
-    const ciudades = [
-        { nombre: "San Luis", lat: -33.30157712276608, lon: -66.3405876778769 },
-        { nombre: "Villa de Merlo", lat: -32.34837185554736, lon: -65.01371473234181 },
-        { nombre: "Unión", lat: -33.283, lon: -65.835 },
-        { nombre: "La Punta", lat: -33.215, lon: -66.291 },
-        { nombre: "Luján", lat: -32.385, lon: -65.622 },
-        { nombre: "El Trapiche", lat: -33.10679314167354, lon: -66.06208112533947 },
-        { nombre: "Santa Rosa del Conlara", lat: -32.343, lon: -65.195 },
-        { nombre: "Renca", lat: -32.981, lon: -65.663 },
-        { nombre: "Potrero de los Funes", lat: -33.246, lon: -66.239 },
-        { nombre: "San Francisco del Monte de Oro", lat: -32.603, lon: -66.117 }
-    ];
-    const iconos = {
-        clear: `<img class="weather-icon" src="https://openweathermap.org/img/wn/01d.png" alt="Sol despejado" />`,
-        partly_cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/03d.png" alt="Parcialmente nublado" />`,
-        cloudy: `<img class="weather-icon" src="https://openweathermap.org/img/wn/04d.png" alt="Nublado" />`,
-        rain: `<img class="weather-icon" src="https://openweathermap.org/img/wn/09d.png" alt="Lluvia" />`,
-        snow: `<img class="weather-icon" src="https://openweathermap.org/img/wn/13d.png" alt="Nieve" />`,
-        default: `<img class="weather-icon" src="https://placehold.co/24x24/png?text=?" alt="Clima desconocido" />`,
-    };
 
-
-    function obtenerIcono(code) {
-        if ([0].includes(code)) return iconos.clear;
-        if ([1, 2, 3].includes(code)) return iconos.partly_cloudy;
-        if ([45, 48].includes(code)) return iconos.cloudy;
-        if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return iconos.rain;
-        if ([71, 73, 75, 85, 86].includes(code)) return iconos.snow;
-        return iconos.default;
-    }
-
-    function descripcionClima(code) {
-        if ([0].includes(code)) return "Despejado";
-        if ([1, 2, 3].includes(code)) return "Parcial";
-        if ([45, 48].includes(code)) return "Nublado";
-        if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "Lluvia";
-        if ([71, 73, 75, 85, 86].includes(code)) return "Nieve";
-        return "Desconocido";
-    }
-
-    async function obtenerClima(ciudad) {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${ciudad.lat}&longitude=${ciudad.lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=America/Argentina/Buenos_Aires`;
-        const res = await fetch(url);
-        const data = await res.json();
-        const hoy = 0;
-        return {
-            nombre: ciudad.nombre,
-            tempMin: data.daily.temperature_2m_min[hoy],
-            tempMax: data.daily.temperature_2m_max[hoy],
-            weathercode: data.daily.weathercode[hoy],
-        };
-    }
-
-    async function cargarMarquee() {
-        const datos = await Promise.all(ciudades.map(obtenerClima));
-        const contenido = datos
-            .map(({ nombre, tempMin, tempMax, weathercode }) => {
-                const icono = obtenerIcono(weathercode);
-                const desc = descripcionClima(weathercode);
-                return `
-            <span class="city-block" aria-label="Clima en ${nombre}: mínimo ${tempMin} grados, máximo ${tempMax} grados, ${desc}">
-              <span class="city-name">${nombre}:</span>
-              <span class="temp">${tempMin}° / ${tempMax}°C</span>
-              ${icono}
-            </span>
-          `;
-            })
-            .join("");
-        document.getElementById("marquee").innerHTML = contenido;
-    }
-
-    cargarMarquee();
 
 
     const themeURL = miTema.themeURL;
@@ -220,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(hideLoader, 20 * 1000);
 
 
-
+    initClimaMarquee();
 
 });
 
@@ -272,30 +301,30 @@ function displayfooter() {
 
 
 
-    const programacion = {
-        all: [
-            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 1380, end: 1439, text: "Música", img: "icon-5.png" }
-        ],
-        weekdays: [
-            { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png" },
-            { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-            { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-            { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-            { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.png" },
-            { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" },
-            { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
-            { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
-        ],
-        1: [
-            { start: 840, end: 854, text: "Entre Corcheas", img: "icon-6.png" }
-        ],
-        2: [
-            { start: 840, end: 854, text: "Finanzas para Todos", img: "icon-6.png" }
-        ]
-    };
+const programacion = {
+    all: [
+        { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
+        { start: 1380, end: 1439, text: "Música", img: "icon-5.png" }
+    ],
+    weekdays: [
+        { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png" },
+        { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+        { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
+        { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+        { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" },
+        { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+        { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.png" },
+        { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" },
+        { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
+        { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
+    ],
+    1: [
+        { start: 840, end: 854, text: "Entre Corcheas", img: "icon-6.png" }
+    ],
+    2: [
+        { start: 840, end: 854, text: "Finanzas para Todos", img: "icon-6.png" }
+    ]
+};
 
 function obtenerProgramaActual(date = new Date()) {
     const total = date.getHours() * 60 + date.getMinutes();
@@ -344,6 +373,9 @@ function initGlobalScripts() {
 
 
 }
+
+
+
 
 
 function initHomeScripts() {
@@ -981,6 +1013,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     barba.hooks.afterEnter(() => {
 
+
+        initClimaMarquee();
 
 
         const menu = document.getElementById('navbar-search');

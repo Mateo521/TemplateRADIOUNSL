@@ -21,14 +21,14 @@ wp_footer();
             <div class="p-2">
                 <p class="pb-8"> INFORMACIÓN INSTITUCIONAL</p>
 
-                <img class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/unsl.png" alt="">
+                <img width="200" height="60" class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/unsl.png" alt="">
                 <p class="py-3">Teléfono: +54(0266) 4520300</p>
                 <p>Dirección: Ejército de Los Andes 950, <br> San Luis, Argentina</p>
             </div>
             <div class="p-2">
                 <p class="pb-8"> CONTACTO</p>
                 <div class="w-full">
-                    <img class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="">
+                    <img width="200" height="60" class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="">
 
                 </div>
                 <p class="py-3">Teléfono:  +542664361329</p>
@@ -39,14 +39,14 @@ wp_footer();
                 <p class="">REDES SOCIALES</p>
                 <ul class="flex gap-3 text-gray-400 items-center md:py-8 ">
                     <a href="https://www.facebook.com/unslradio/?locale=es_LA" target="_blank">
-                        <li><img width="35px" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="">
+                        <li><img width="35" height="35" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="">
                         </li>
                     </a>
                     <a href="https://www.instagram.com/unslradio/?hl=es" target="_blank">
-                        <li><img width="35px" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt=""></li>
+                        <li><img width="35" height="35" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt=""></li>
                     </a>
                     <a href="https://www.youtube.com/@radiounslcontenidos" target="_blank">
-                        <li><img width="35px" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt=""></li>
+                        <li><img width="35" height="35" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt=""></li>
                     </a>
                 </ul>
             </div>

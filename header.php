@@ -57,8 +57,8 @@
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center">
 
-                    <img class="h-20 hidden md:block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2.webp" alt="LOGO RADIO UNSL" />
-                    <img class="h-20 p-3 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.webp" alt="LOGO RADIO UNSL" />
+                    <img width="200" height="60" class="h-20 hidden md:block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2.webp" alt="LOGO RADIO UNSL" />
+                    <img width="200" height="60" class="h-20 p-3 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.webp" alt="LOGO RADIO UNSL" />
 
 
                 </a>
@@ -66,11 +66,11 @@
 
 
 
-                    <div class="relative hidden md:flex flex gap-5 items-center">
+                    <div class="relative hidden md:flex gap-5 items-center">
                         <div class="rounded-lg  bg-red-500 text-white p-1 w-full" style="max-width:130px;">
 
-                            <button type="submit" class="flex gap-3 items-center btn play-pause" data-id="5">
-                                <img src="https://i.giphy.com/media/R9vSQdiH6I5Bqi9xzx/giphy.webp" alt="" style="width:7px;"> Radio en vivo
+                            <button aria-label="Reproducir/Pausar audio" type="submit" class="flex gap-3 items-center btn play-pause" data-id="5">
+                                <img width="7" height="7" src="https://i.giphy.com/media/R9vSQdiH6I5Bqi9xzx/giphy.webp" alt="" style="width:7px;"> Radio en vivo
                             </button>
                         </div>
 
@@ -85,9 +85,10 @@
                         </div>
 
                         <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+
                             <input type="search" id="search-navbar-2" name="s" class="block w-full pr-5  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500     " placeholder="¿Qué estás buscando?" style="padding-right: 35px;
     margin-right: 6px;" />
-
+                            <label for="search-navbar-2" class="sr-only">Buscar</label>
                         </form>
                     </div>
                     <button data-collapse-toggle="navbar-search" type="button" onclick="logostr()" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  " aria-controls="navbar-search" aria-expanded="false">
@@ -103,7 +104,8 @@
 
 
 
-                <div class="md:hidden items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
+                <!-- md:hidden -->
+                <div class=" items-center justify-between hidden w-full md:hidden md:w-auto md:order-1" id="navbar-search">
                     <div class="relative mt-3 md:hidden">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -112,7 +114,7 @@
                         </div>
                         <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                             <input type="text" id="search-navbar" name="s" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Qué estás buscando?" />
-
+                            <label for="search-navbar-2" class="sr-only">Buscar</label>
                         </form>
                     </div>
 
@@ -123,7 +125,7 @@
 
 
 
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                             <a href="<?php echo esc_url(home_url('/')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                                 <div class="flex items-center gap-3">
 
@@ -135,7 +137,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                             <a href="<?php echo esc_url(home_url('/noticias')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                                 <div class="flex items-center gap-3">
 
@@ -147,7 +149,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                             <a href="<?php echo esc_url(home_url('/podcasts')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -157,7 +159,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                             <a href="<?php echo esc_url(home_url('/programacion')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -167,7 +169,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                             <a href="<?php echo esc_url(home_url('/institucional')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
@@ -181,7 +183,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                             <a href="<?php echo esc_url(home_url('/contacto')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -299,14 +301,14 @@
 
                     <ul class="flex gap-3 text-gray-400 items-center">
                         <a href="https://www.facebook.com/unslradio/?locale=es_LA" target="_blank">
-                            <li><img width="18px" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="">
+                            <li><img width="18" height="18" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="">
                             </li>
                         </a>
                         <a href="https://www.instagram.com/unslradio/?hl=es" target="_blank">
-                            <li><img width="18px" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt=""></li>
+                            <li><img width="18" height="18" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt=""></li>
                         </a>
                         <a href="https://www.youtube.com/@radiounslcontenidos" target="_blank">
-                            <li><img width="18px" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt="">
+                            <li><img width="18" height="18" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt="">
                             </li>
                         </a>
                         <li class="header-idioma"></li>
