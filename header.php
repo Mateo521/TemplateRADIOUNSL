@@ -57,8 +57,8 @@
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center">
 
-                    <img class="h-20 hidden md:block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2.png" alt="LOGO RADIO UNSL" />
-                    <img class="h-20 p-3 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="LOGO RADIO UNSL" />
+                    <img class="h-20 hidden md:block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2.webp" alt="LOGO RADIO UNSL" />
+                    <img class="h-20 p-3 md:hidden block" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.webp" alt="LOGO RADIO UNSL" />
 
 
                 </a>
@@ -76,7 +76,7 @@
 
                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 ">
 
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
 
@@ -85,12 +85,12 @@
                         </div>
 
                         <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-                            <input type="search" id="search-navbar-2" name="s" class="block w-full pr-5  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Qué estás buscando?" style="padding-right: 35px;
+                            <input type="search" id="search-navbar-2" name="s" class="block w-full pr-5  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500     " placeholder="¿Qué estás buscando?" style="padding-right: 35px;
     margin-right: 6px;" />
 
                         </form>
                     </div>
-                    <button data-collapse-toggle="navbar-search" type="button" onclick="logostr()" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
+                    <button data-collapse-toggle="navbar-search" type="button" onclick="logostr()" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  " aria-controls="navbar-search" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
@@ -196,7 +196,7 @@
             </div>
         </nav>
         <div class="md:hidden flex justify-between items-center" style="background-color: #282828;">
-            <a href="https://wa.me/+542664361329" target="_blank" class="block py-2 pl-3 pr-4 text-white text-white rounded    md:p-0 dark:text-white  dark:border-gray-700">
+            <a href="https://wa.me/+542664361329" target="_blank" class="block py-2 pl-3 pr-4 text-white  rounded    md:p-0   ">
                 <div class="flex items-center gap-3">
                     <div>
                         <svg id="mediasvgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">

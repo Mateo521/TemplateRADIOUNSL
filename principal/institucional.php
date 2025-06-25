@@ -52,7 +52,7 @@
 
         if ($query_otros->have_posts()) :
             ?>
-            <!-- Right smaller news items -->
+            
             <div class="space-y-4 flex flex-col ">
                 <?php
                 while ($query_otros->have_posts()) : $query_otros->the_post();

@@ -19,28 +19,28 @@
                     <div class="flex gap-5">
                         <div class="mb-6 w-full">
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Nombre</label>
                             <input name="name" type="text" id="nombre"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
                                 placeholder="Tu nombre" required>
                         </div>
                         <div class="mb-6 w-full">
                             <label for="email"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mail</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Mail</label>
                             <input type="email" id="mail" placeholder="Tu mail" name="email"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
                                 required>
                         </div>
                     </div>
                     <div class="mb-6">
                         <label for="mensaje"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mensaje</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 ">Mensaje</label>
                         <input type="textarea" name="message" id="password" placeholder="Tu mensaje"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full "
                             required style="padding: 5px 5px 45px 5px;">
                     </div>
                     <button style="background-color: #486faf; margin: 25px 0 100px 0;" type="submit" name="contact_form_submit"
-                        class=" text-white text-center  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3 text-center dark:bg-blue-600">Enviar
+                        class=" text-white   hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3 text-center ">Enviar
                         mensaje</button>
                 </form>
             </div>

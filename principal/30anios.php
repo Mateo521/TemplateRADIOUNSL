@@ -1,7 +1,7 @@
 <section class="bg-white">
     <div class="max-w-7xl  bg-white" id="card-i">
         <div class="grid grid-cols-2 shadow-lg shadow-gray-500/50" id="historia">
-            <img class="w-full h-full object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/aire.png" alt="">
+            <img class="w-full h-full object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/aire.webp" alt="">
             <div class=" w-full text-center md:px-6 px-2 py-3  ">
                 <h1 class="md:text-3xl text-2xl font-bold p-6" id="title-card">30 años de Radio Universidad</h1>
                 <p class="text-xl p-3 md:p-6 font-bold" id="title-card-2">La misión de la emisora es representar los valores de

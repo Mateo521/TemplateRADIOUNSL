@@ -31,6 +31,8 @@ function linksradio_unsl_estilos()
     );
 
     // Tailwind generado
+
+  
     wp_enqueue_style(
         'unsl_tailwind-style',
         get_template_directory_uri() . "/assets/output.css",
@@ -38,7 +40,8 @@ function linksradio_unsl_estilos()
         $version,
         'all'
     );
-
+    
+   
     // Lightbox CSS
     wp_enqueue_style(
         'lightbox-css',
@@ -59,6 +62,7 @@ function linksradio_unsl_scripts()
 
 
 
+
     wp_enqueue_script('barba', get_template_directory_uri() . "/assets/barba.umd.js", array(), '3.1.2', false);
 
 
@@ -69,6 +73,17 @@ function linksradio_unsl_scripts()
         null,
         true
     );
+/*
+   wp_enqueue_script(
+        'unsl_tailwind',
+       'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4',
+        array(),
+        null,
+        true
+    );
+
+*/ 
+  
 
 
     wp_enqueue_script('unsl_estilo-fontawesome', "https://kit.fontawesome.com/19e7896a5a.js", array(), '1.0', false);
