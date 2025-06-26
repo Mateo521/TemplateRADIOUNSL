@@ -417,3 +417,145 @@ function custom_post_types_init()
     ));
 }
 add_action('init', 'custom_post_types_init');
+
+
+
+
+
+function mostrar_noticias_por_categoria($categoria_slug, $titulo = '') {
+    if (!$titulo) {
+        $titulo = "Últimas noticias de " . strtoupper(str_replace('-', ' ', $categoria_slug));
+    }
+
+    $noticias_query = new WP_Query([
+        'post_type' => 'noticias',
+        'posts_per_page' => 3,
+        'tax_query' => [
+            [
+                'taxonomy' => 'category',
+                'field' => 'slug',
+                'terms' => [$categoria_slug],
+            ],
+        ],
+    ]);
+
+    if ($noticias_query->have_posts()) : ?>
+        <section class="mb-10">
+            <h2 class="sm:text-sm font-normal mb-4"><?php echo esc_html($titulo); ?></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <?php while ($noticias_query->have_posts()) : $noticias_query->the_post(); ?>
+                    <article class="w-full bg-white rounded shadow-sm overflow-hidden flex-shrink-0 flex flex-col">
+                        <div class="relative w-full h-44">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <img src="<?php the_post_thumbnail_url('medium'); ?>"
+                                         alt="<?php the_title_attribute(); ?>"
+                                         class="w-full h-full object-cover" />
+                                <?php endif; ?>
+                            </a>
+                            <?php if (get_field('audio_de_noticia')): ?>
+                                <button aria-label="Play podcast"
+                                        class="play-button absolute bottom-3 right-3 bg-[#ffffff] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                        onclick="toggleAudio(this)">
+                                    <i class="fas fa-play text-[#0a1626] text-sm"></i>
+                                </button>
+                                <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                    <audio class="w-full mt-0 absolute top-0" controls>
+                                        <source src="<?php echo esc_url(get_field('audio_de_noticia')); ?>" type="audio/mpeg">
+                                        Tu navegador no soporta audio HTML5.
+                                    </audio>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <a href="<?php the_permalink(); ?>">
+                            <div class="p-3 flex-1 flex flex-col justify-between">
+                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">
+                                    <?php
+                                    $categories = get_the_category();
+                                    echo !empty($categories) ? esc_html($categories[0]->name) : 'Sin categoría';
+                                    ?>
+                                </p>
+                                <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2"><?php the_title(); ?></h3>
+                            </div>
+                        </a>
+                    </article>
+                <?php endwhile; ?>
+            </div>
+        </section>
+        <?php
+    endif;
+
+    wp_reset_postdata();
+}
+
+
+function mostrar_podcasts_por_categoria($categoria_slug, $titulo = '') {
+    if (!$titulo) {
+        $titulo = "Últimos podcasts de " . strtoupper(str_replace('-', ' ', $categoria_slug));
+    }
+
+    $podcast_query = new WP_Query([
+        'post_type' => 'podcast',
+        'posts_per_page' => 6,
+        'tax_query' => [
+            [
+                'taxonomy' => 'category',
+                'field' => 'slug',
+                'terms' => [$categoria_slug],
+            ],
+        ],
+    ]);
+
+    if ($podcast_query->have_posts()) : ?>
+        <section>
+            <h2 class="sm:text-sm font-normal mb-4"><?php echo esc_html($titulo); ?></h2>
+            <div class="flex gap-3 overflow-x-auto pb-2">
+                <?php while ($podcast_query->have_posts()) : $podcast_query->the_post(); ?>
+                    <article class="w-64 bg-white rounded shadow-sm overflow-hidden flex-shrink-0 flex flex-col">
+                        <div class="relative w-full h-44">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <img src="<?php the_post_thumbnail_url('medium'); ?>"
+                                         alt="<?php the_title_attribute(); ?>"
+                                         class="w-full h-full object-cover" />
+                                <?php endif; ?>
+                            </a>
+                            <?php if (get_field('audio_podcast')): ?>
+                                <button aria-label="Play podcast"
+                                        class="play-button absolute bottom-3 right-3 bg-[#ffffff] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                        onclick="toggleAudio(this)">
+                                    <i class="fas fa-play text-[#0a1626] text-sm"></i>
+                                </button>
+                                <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                    <audio class="w-full audio-element mt-0 absolute top-0" controls>
+                                        <source src="<?php echo esc_url(get_field('audio_podcast')); ?>" type="audio/mpeg">
+                                        Tu navegador no soporta audio HTML5.
+                                    </audio>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <a href="<?php the_permalink(); ?>">
+                            <div class="p-3 flex-1 flex flex-col justify-between">
+                                <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">
+                                    <?php
+                                    $categories = get_the_category();
+                                    echo !empty($categories) ? esc_html($categories[0]->name) : 'Sin categoría';
+                                    ?>
+                                </p>
+                                <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2"><?php the_title(); ?></h3>
+                            </div>
+                        </a>
+                    </article>
+                <?php endwhile; ?>
+            </div>
+        </section>
+        <?php
+    endif;
+
+    wp_reset_postdata();
+}
+
+
+
+
+
