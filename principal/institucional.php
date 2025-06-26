@@ -14,9 +14,9 @@
             while ($query_institucional->have_posts()) : $query_institucional->the_post();
         ?>
 
-                <div class="md:col-span-2 bg-white rounded-md flex justify-between flex-col shadow-md overflow-hidden">
+                <div class="md:col-span-2 bg-white rounded-xl flex justify-between flex-col shadow-md overflow-hidden">
                     <a href="<?php echo get_permalink() ?>">
-                        <img alt="<?php the_title(); ?>" class="w-full h-83 object-cover" height="200" src="<?php the_post_thumbnail_url('full'); ?>" width="600" />
+                        <img alt="<?php the_title(); ?>" class="w-full h-[350px] object-cover" height="200" src="<?php the_post_thumbnail_url('full'); ?>" width="600" />
                         <div class="p-4">
                             <h3 class="text-gray-900 leading-snug font-normal">
                                 <?php the_title(); ?>
@@ -24,7 +24,7 @@
                             <p class="text-gray-500 mt-2">
                                 <?php echo get_the_date(); ?>
                             </p>
-                            <p class="text-xs text-[#486faf] font-semibold uppercase mb-1">
+                            <p class="text-xs text-[#486faf] font-semibold uppercase mt-2">
                                 <?php
 
                                 $categories = get_the_category();
@@ -35,6 +35,18 @@
                             </p>
                         </div>
                     </a>
+                    <?php if (get_field('audio_de_noticia')): ?>
+                        <div class=" overflow-hidden rounded-xl">
+                            <audio
+                                controls
+                                class="w-full text-black"
+                                preload="none"
+                                src="<?php echo esc_url(get_field('audio_de_noticia')); ?>"
+                                style="outline:none;">
+                                Su navegador no soporta reproducción de audio HTML5.
+                            </audio>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
             <?php
@@ -52,33 +64,47 @@
 
         if ($query_otros->have_posts()) :
             ?>
-            
+
             <div class="space-y-4 flex flex-col ">
                 <?php
                 while ($query_otros->have_posts()) : $query_otros->the_post();
                 ?>
-                    <a href="<?php echo get_permalink() ?>">
-                        <div class="bg-white rounded-md shadow-md overflow-hidden flex">
-                            <img alt="<?php the_title(); ?>" class="w-28 h-34 object-cover flex-shrink-0" height="100" src="<?php the_post_thumbnail_url('thumbnail'); ?>" width="120" />
-                            <div class="p-3 flex flex-col justify-between">
-                                <h4 class="text-gray-900 leading-tight font-normal">
-                                    <?php the_title(); ?>
-                                </h4>
-                                <p class="text-gray-500 mt-1">
-                                    <?php echo get_the_date(); ?>
-                                </p>
-                                <p class="text-xs text-[#486faf] font-semibold uppercase">
-                                    <?php
+                    <div>
+                        <a href="<?php echo get_permalink() ?>">
+                            <div class="bg-white rounded-md shadow-md overflow-hidden flex">
+                                <img alt="<?php the_title(); ?>" class="w-28 h-34 object-cover flex-shrink-0" height="100" src="<?php the_post_thumbnail_url('thumbnail'); ?>" width="120" />
+                                <div class="p-3 flex flex-col justify-between">
+                                    <h4 class="text-gray-900 leading-tight font-normal">
+                                        <?php the_title(); ?>
+                                    </h4>
+                                    <p class="text-gray-500 mt-1">
+                                        <?php echo get_the_date(); ?>
+                                    </p>
+                                    <p class="text-xs text-[#486faf] font-semibold uppercase">
+                                        <?php
 
-                                    $categories = get_the_category();
-                                    if (!empty($categories)) {
-                                        echo esc_html($categories[0]->name);
-                                    }
-                                    ?>
-                                </p>
+                                        $categories = get_the_category();
+                                        if (!empty($categories)) {
+                                            echo esc_html($categories[0]->name);
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                        <?php if (get_field('audio_de_noticia')): ?>
+                            <div class=" overflow-hidden py-1 px-2 rounded-xl">
+                                <audio
+                                    controls
+                                    class="w-full rounded-xl text-black"
+                                    preload="none"
+                                    src="<?php echo esc_url(get_field('audio_de_noticia')); ?>"
+                                    style="outline:none;">
+                                    Su navegador no soporta reproducción de audio HTML5.
+                                </audio>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 <?php
                 endwhile;
                 wp_reset_postdata();

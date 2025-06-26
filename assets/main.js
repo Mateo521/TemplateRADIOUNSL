@@ -6,14 +6,14 @@
 const ciudades = [
     { nombre: "San Luis", lat: -33.30157712276608, lon: -66.3405876778769 },
     { nombre: "Villa de Merlo", lat: -32.34837185554736, lon: -65.01371473234181 },
-    { nombre: "Unión", lat: -33.283, lon: -65.835 },
-    { nombre: "La Punta", lat: -33.215, lon: -66.291 },
-    { nombre: "Luján", lat: -32.385, lon: -65.622 },
+    { nombre: "Unión", lat: -35.155887436753396, lon: -65.94699228708224 },
+    { nombre: "La Punta", lat: -33.18257333353946, lon: -66.31320965944896 },
+    { nombre: "Luján", lat: -32.368137719121115, lon: -65.93754975594317 },
     { nombre: "El Trapiche", lat: -33.10679314167354, lon: -66.06208112533947 },
-    { nombre: "Santa Rosa del Conlara", lat: -32.343, lon: -65.195 },
-    { nombre: "Renca", lat: -32.981, lon: -65.663 },
-    { nombre: "Potrero de los Funes", lat: -33.246, lon: -66.239 },
-    { nombre: "San Francisco del Monte de Oro", lat: -32.603, lon: -66.117 }
+    { nombre: "Santa Rosa del Conlara", lat: -32.340927546749306, lon: -65.21182420380036 },
+    { nombre: "Renca", lat: -32.77252345913084, lon: -65.36450706994445 },
+    { nombre: "Potrero de los Funes", lat: -33.21925819909259, lon: -66.22899030838029 },
+    { nombre: "San Francisco del Monte de Oro", lat: -32.59766621771288, lon: -66.1254636518732 }
 ];
 const iconos = {
     clear: `<img class="weather-icon" src="https://openweathermap.org/img/wn/01d.png" alt="Sol despejado" />`,
@@ -45,17 +45,17 @@ function descripcionClima(code) {
 }
 
 async function obtenerClima(ciudad) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${ciudad.lat}&longitude=${ciudad.lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=America/Argentina/Buenos_Aires`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${ciudad.lat}&longitude=${ciudad.lon}&current_weather=true&timezone=America/Argentina/Buenos_Aires`;
     const res = await fetch(url);
     const data = await res.json();
-    const hoy = 0;
+
     return {
         nombre: ciudad.nombre,
-        tempMin: data.daily.temperature_2m_min[hoy],
-        tempMax: data.daily.temperature_2m_max[hoy],
-        weathercode: data.daily.weathercode[hoy],
+        temperatura: data.current_weather.temperature,
+        weathercode: data.current_weather.weathercode,
     };
 }
+
 
 
 
@@ -67,32 +67,35 @@ function initClimaMarquee() {
         console.warn("No se encontró el marquee");
         return;
     }
-  
+
     cargarMarquee();
 
 
 
     async function cargarMarquee() {
         try {
-         
+
             const datos = await Promise.all(ciudades.map(obtenerClima));
-         
+
 
             const contenido = datos
-                .map(({ nombre, tempMin, tempMax, weathercode }) => {
+                .map(({ nombre, temperatura, weathercode }) => {
                     const icono = obtenerIcono(weathercode);
                     const desc = descripcionClima(weathercode);
                     return `
-                    <span class="city-block" aria-label="Clima en ${nombre}: mínimo ${tempMin} grados, máximo ${tempMax} grados, ${desc}">
-                      <span class="city-name">${nombre}:</span>
-                      <span class="temp">${tempMin}° / ${tempMax}°C</span>
-                      ${icono}
-                    </span>
-                `;
+            <span class="city-block" aria-label="Clima en ${nombre}: temperatura actual ${temperatura} grados, ${desc}">
+                <span class="city-name">${nombre}:</span>
+                <span class="temp">${temperatura}°C</span>
+                ${icono}
+            </span>
+        `;
                 })
                 .join("");
 
-            marquee.innerHTML = contenido;
+
+
+
+            marquee.innerHTML = contenido + contenido; 
         } catch (error) {
             console.error("Error al cargar el clima:", error);
             marquee.innerHTML = `<span class="error">No se pudo cargar el clima.</span>`;
@@ -350,7 +353,7 @@ function marcarProgramaAlAire() {
         const programa = slide.getAttribute("data-programa")?.toLowerCase();
         const actual = programaActual.text.toLowerCase();
 
-        const btn = slide.querySelector("button");
+        const btn = slide.querySelector(".btn-programa");
 
         if (btn) {
             if (actual.includes(programa)) {

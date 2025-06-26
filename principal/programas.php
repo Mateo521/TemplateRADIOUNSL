@@ -12,9 +12,11 @@
                         </i>
                         LUNES a VIERNES: 7 a 9:30 h
                     </p>
-                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+
+                    <a href="programacion/nada-secreto" class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
-                    </button>
+                    </a>
+
                 </div>
             </div>
             <div class="swiper-slide relative w-full" data-programa="Haciendo Ruido">
@@ -28,9 +30,9 @@
                         </i>
                         LUNES a VIERNES: 9 a 13 h
                     </p>
-                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                    <a href="programacion/haciendo-ruido" class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="swiper-slide relative w-full" data-programa="Frecuencia Informativa">
@@ -45,9 +47,9 @@
                         LUNES a VIERNES:
                     <p class="text-xl"> 10 a 10:15 h <br> 12 a 12:15 h <br> 16 a 16:15 h <br> 20 a 20:15 h </p>
                     </p>
-                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                    <a href="programacion/frecuencia-informativa" class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="swiper-slide relative w-full" data-programa="Solo un Café">
@@ -61,9 +63,9 @@
                         </i>
                         LUNES a VIERNES: 13 a 14 h
                     </p>
-                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                    <a href="programacion/solo-un-cafe" class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="swiper-slide relative w-full" data-programa="Rock del País">
@@ -77,9 +79,9 @@
                         </i>
                         LUNES a VIERNES: 21 a 23 h
                     </p>
-                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                    <a href="programacion/rock-del-pais" class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="swiper-slide relative w-full" data-programa="Bajá un Cambio">
@@ -93,9 +95,9 @@
                         </i>
                         LUNES a VIERNES: 18 a 21 h
                     </p>
-                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                    <a href="programacion/baja-un-cambio" class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -110,9 +112,9 @@
                         </i>
                         LUNES a VIERNES: 15 a 18 h
                     </p>
-                    <button class="mt-4 bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
+                    <a href="programacion/la-locomotora" class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                         AL AIRE
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -3,13 +3,13 @@
     <?php
     if (have_posts()) :
         while (have_posts()) : the_post();
-         
+
             $categories = get_the_category();
             $category_labels = [];
             foreach ($categories as $cat) {
-          
+
                 $slug = strtolower($cat->slug);
-                $label_color = 'bg-gray-300 text-black'; 
+                $label_color = 'bg-gray-300 text-black';
                 if ($slug === 'sonido-urbano') {
                     $label_color = 'bg-blue-600 text-white';
                 } elseif ($slug === 'política' || $slug === 'politica') {
@@ -18,7 +18,7 @@
                 $category_labels[] = '<span class="font-semibold ' . esc_attr($label_color) . ' rounded px-2 py-0.5 inline-block text-xs">' . esc_html(strtoupper($cat->name)) . '</span>';
             }
 
-       
+
             if (has_post_thumbnail()) {
                 $thumb_id = get_post_thumbnail_id();
                 $thumb_url = wp_get_attachment_image_url($thumb_id, 'large');
@@ -31,12 +31,21 @@
                 $thumb_alt = 'Imagen destacada no disponible';
             }
     ?>
+
+
+
             <main class="max-w-4xl mx-auto px-4 py-8">
+
+
                 <h1 class="font-semibold text-lg md:text-xl leading-tight mb-4"><?php the_title(); ?></h1>
                 <div class="flex flex-wrap gap-2 mb-3">
                     <?php echo implode(' ', $category_labels); ?>
                     <span class="text-gray-600 self-center"><?php echo get_the_date('d/m/Y'); ?></span>
                 </div>
+
+
+
+
                 <img
                     src="<?php echo esc_url($thumb_url); ?>"
                     alt="<?php echo esc_attr($thumb_alt); ?>"
@@ -54,6 +63,8 @@
                 <?php if (get_post_meta(get_the_ID(), 'subtitulo', true)) : ?>
                     <p class="mb-4 font-semibold"><?php echo esc_html(get_post_meta(get_the_ID(), 'subtitulo', true)); ?></p>
                 <?php endif; ?>
+
+
 
                 <div class="prose max-w-none  mb-4 leading-relaxed">
                     <?php the_content(); ?>
@@ -73,6 +84,30 @@
                             title="Fragmento de audio"></iframe>
                     </div>
                 <?php endif; ?>
+
+                
+                <?php if (get_field('audio_de_noticia')): ?>
+                    <div class="w-full bg-gradient-to-t rounded-b-xl from-gray-300 to-gray-100 flex justify-center py-6  mb-6">
+                        <div class="max-w-4xl w-full">
+                            <?php if (get_field('titulo_de_audio')): ?>
+                                <p class="px-3 pt-5 font-bold"><?php echo esc_html(get_field('titulo_de_audio')); ?> </p>
+                            <?php endif; ?>
+                            <div class="pt-5 px-4">
+                                <div class=" overflow-hidden rounded-xl">
+                                    <audio
+                                        controls
+                                        class="w-full text-black"
+                                        preload="none"
+                                        src="<?php echo esc_url(get_field('audio_de_noticia')); ?>"
+                                        style="outline:none;">
+                                        Su navegador no soporta reproducción de audio HTML5.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
 
                 <div class="flex items-center gap-3 mb-6">
                     <button class="flex items-center gap-2 font-semibold border border-gray-300 rounded px-3 py-1 hover:bg-gray-100 transition" onclick="if(navigator.share){navigator.share({title: '<?php echo esc_js(get_the_title()); ?>', url: '<?php the_permalink(); ?>'});}else{alert('Función de compartir no soportada en este navegador.');}">
