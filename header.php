@@ -108,25 +108,25 @@
                 <div class=" items-center justify-between hidden w-full md:hidden md:w-auto md:order-1" id="navbar-search">
                     <div class="relative mt-3 md:hidden">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
                         <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-                            <input type="text" id="search-navbar" name="s" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Qué estás buscando?" />
+                            <input type="text" id="search-navbar" name="s" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  " placeholder="¿Qué estás buscando?" />
                             <label for="search-navbar-2" class="sr-only">Buscar</label>
                         </form>
                     </div>
 
 
 
-                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 dark:border-gray-700">
+                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
 
 
 
 
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0  hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  ">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="block py-2 pl-3 pr-4  text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 ">
                                 <div class="flex items-center gap-3">
 
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
@@ -137,8 +137,8 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                            <a href="<?php echo esc_url(home_url('/noticias')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0  hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  ">
+                            <a href="<?php echo esc_url(home_url('/noticias')); ?>" class="block py-2 pl-3 pr-4  text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 ">
                                 <div class="flex items-center gap-3">
 
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
@@ -149,8 +149,8 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                            <a href="<?php echo esc_url(home_url('/podcasts')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0  hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  ">
+                            <a href="<?php echo esc_url(home_url('/podcasts')); ?>" class="block py-2 pl-3 pr-4  text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 ">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                         <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
@@ -159,8 +159,8 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                            <a href="<?php echo esc_url(home_url('/programacion')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0  hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  ">
+                            <a href="<?php echo esc_url(home_url('/programacion')); ?>" class="block py-2 pl-3 pr-4  text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 ">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                         <path d="M494.8 47c12.7-3.7 20-17.1 16.3-29.8S494-2.8 481.2 1L51.7 126.9c-9.4 2.7-17.9 7.3-25.1 13.2C10.5 151.7 0 170.6 0 192v4V304 448c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H218.5L494.8 47zM368 240a80 80 0 1 1 0 160 80 80 0 1 1 0-160zM80 256c0-8.8 7.2-16 16-16h96c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16zM64 320c0-8.8 7.2-16 16-16H208c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16zm16 64c0-8.8 7.2-16 16-16h96c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16z" />
@@ -169,8 +169,8 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                            <a href="<?php echo esc_url(home_url('/institucional')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 ">
+                            <a href="<?php echo esc_url(home_url('/institucional')); ?>" class="block py-2 pl-3 pr-4 text-white  rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 ">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
                                         <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z" />
@@ -183,8 +183,8 @@
                                 </div>
                             </a>
                         </li>
-                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                            <a href="<?php echo esc_url(home_url('/contacto')); ?>" class="block py-2 pl-3 pr-4 text-white text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        <li id="menusmobile" class="rounded md:bg-transparent  md:p-0  hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900   ">
+                            <a href="<?php echo esc_url(home_url('/contacto')); ?>" class="block py-2 pl-3 pr-4  text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-blue-900 md:p-0  ">
                                 <div class="flex items-center gap-3">
                                     <svg class="svgs" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                         <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />

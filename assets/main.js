@@ -203,14 +203,38 @@ document.addEventListener("DOMContentLoaded", function () {
     function actualizarRadio() {
         const programa = obtenerProgramaActual();
 
-
         $("#open_close").html(programa.text);
         $("#open_close-2").html(programa.text);
         $("#prog").html("Escuchá en vivo " + programa.text);
 
+        const imageUrl = `${themeURL}/assets/images/${programa.img}`;
+        const metaImageUrl = programa.metaImg
+            ? `${themeURL}${programa.metaImg}`  
+            : imageUrl;                         
+        document.getElementById("radio-imagen").src = imageUrl;
+        document.getElementById("radio-imagen2").src = imageUrl;
 
-        document.getElementById("radio-imagen").src = `${themeURL}/assets/images/${programa.img}`;
-        document.getElementById("radio-imagen2").src = `${themeURL}/assets/images/${programa.img}`;
+
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: programa.text,
+                artist: "Radio Universidad Nacional de San Luis",
+                album: "En Vivo",
+                artwork: [
+                    { src: metaImageUrl, sizes: '512x512', type: 'image/png' }
+                ]
+            });
+
+            navigator.mediaSession.setActionHandler('play', function () {
+                document.getElementById('player').play();
+            });
+            navigator.mediaSession.setActionHandler('pause', function () {
+                document.getElementById('player').pause();
+            });
+
+            console.log(navigator.mediaSession.metadata);
+
+        }
     }
 
 
@@ -319,13 +343,13 @@ const programacion = {
         { start: 1380, end: 1439, text: "Música", img: "icon-5.png" }
     ],
     weekdays: [
-        { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png" },
-        { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+        { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png", metaImg: "/assets/images/institucional/512x512/nada-secreto.jpg" },
+        { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png", metaImg: "/assets/images/institucional/512x512/haciendo-ruido.jpg" },
         { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
         { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
         { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" },
         { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-        { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.png" },
+        { start: 780, end: 839, text: "Sólo un café", img: "/institucional/512x512/solo-un-cafe.jpg", metaImg: "/assets/images/institucional/512x512/solo-un-cafe.jpg" },
         { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" },
         { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
         { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
@@ -366,7 +390,7 @@ function marcarProgramaAlAire() {
 
     let slideAlAire = null;
 
- 
+
     if (window.newSwiper && typeof window.newSwiper.destroy === "function") {
         window.newSwiper.destroy(true, true);
     }
@@ -390,12 +414,12 @@ function marcarProgramaAlAire() {
         }
     });
 
- 
+
     if (slideAlAire) {
         slidesWrapper.insertBefore(slideAlAire, slidesWrapper.firstChild);
     }
 
-    
+
     window.newSwiper = new Swiper(".newSwiper", {
         loop: false,
         pagination: {
@@ -408,7 +432,7 @@ function marcarProgramaAlAire() {
         },
     });
 
- 
+
     window.newSwiper.slideTo(0);
 }
 
