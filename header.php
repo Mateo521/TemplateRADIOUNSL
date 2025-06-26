@@ -70,7 +70,7 @@
                         <div class="rounded-lg  bg-red-500 text-white p-1 w-full" style="max-width:130px;">
 
                             <button aria-label="Reproducir/Pausar audio" type="submit" class="flex gap-3 items-center btn play-pause" data-id="5">
-                                <img width="7" height="7" src="https://i.giphy.com/media/R9vSQdiH6I5Bqi9xzx/giphy.webp" alt="" style="width:7px;"> Radio en vivo
+                                <img width="7" height="7" src="<?php echo get_template_directory_uri(); ?>/assets/images/giphy.webp" alt="" style="width:7px;"> Radio en vivo
                             </button>
                         </div>
 

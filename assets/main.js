@@ -378,7 +378,7 @@ function marcarProgramaAlAire() {
 
         if (btn) {
             if (actualNormalizado.includes(slideNormalizado)) {
-                btn.textContent = "AL AIRE";
+                btn.innerHTML = '<div class="flex gap-2 items-center"><img class="w-2 h-2" src="' + miTema.themeURL + '/assets/images/giphy.webp" alt=""  > AL AIRE </div>';
                 btn.classList.remove("bg-red-700");
                 btn.classList.add("bg-green-700", "hover:bg-green-800");
                 slideAlAire = slide;

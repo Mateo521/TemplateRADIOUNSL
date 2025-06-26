@@ -170,7 +170,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     </div>
     <div class="flex justify-between w-full">
         <div class="m-2 flex justify-between w-full ">
-            <div class="p-1 text-sm rounded-lg text-white flex items-center gap-1 inline-flex h-5" style="background-color:  #486faf;"><img src="https://i.giphy.com/media/R9vSQdiH6I5Bqi9xzx/giphy.webp" alt="" style="width:7px;"> En
+            <div class="p-1 text-sm rounded-lg text-white  items-center gap-1 inline-flex h-5" style="background-color:  #486faf;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/giphy.webp" alt="" style="width:7px;"> En
                 vivo</div>
 
             <div class="flex flex-col items-center pb-3">
@@ -241,7 +241,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         </div>
         <div class="flex justify-between w-full">
             <div class="m-4">
-                <div class="p-1 text-sm rounded-lg text-white flex items-center gap-1 inline-flex" style="background-color:  #486faf;"><img src="https://i.giphy.com/media/R9vSQdiH6I5Bqi9xzx/giphy.webp" alt="" style="width:7px;"> En
+                <div class="p-1 text-sm rounded-lg text-white flex items-center gap-1 inline-flex" style="background-color:  #486faf;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/giphy.webp" alt="" style="width:7px;"> En
                     vivo</div>
                 <p class="font-bold py-4" id="open_close"></p>
             </div>
