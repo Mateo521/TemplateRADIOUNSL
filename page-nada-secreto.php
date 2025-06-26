@@ -7,8 +7,8 @@ get_header();
 
     <div class="relative  flex justify-center items-center h-96">
         <img class="w-full h-full absolute z-0  object-cover" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" alt="Fondo programación">
-
-        <p class="z-10 relative  md:!text-6xl !text-2xl  text-gray-100 bold">NADA SECRETO</p>
+  <div class="absolute size-full bg-black/60"></div>
+        <p class="z-10 relative  md:!text-6xl !text-2xl  text-gray-100 font-bold">NADA SECRETO</p>
     </div>
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section class="mb-12">

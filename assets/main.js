@@ -95,7 +95,7 @@ function initClimaMarquee() {
 
 
 
-            marquee.innerHTML = contenido + contenido; 
+            marquee.innerHTML = contenido + contenido;
         } catch (error) {
             console.error("Error al cargar el clima:", error);
             marquee.innerHTML = `<span class="error">No se pudo cargar el clima.</span>`;
@@ -301,6 +301,15 @@ function displayfooter() {
 }
 
 
+function normalizarTexto(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD")                // Elimina tildes
+        .replace(/[\u0300-\u036f]/g, "") // Elimina diacríticos
+        .replace(/\(.*?\)/g, "")         // Elimina texto entre paréntesis
+        .replace(/[^\w\s]/g, "")         // Elimina signos de puntuación
+        .trim();
+}
 
 
 
@@ -345,21 +354,34 @@ function obtenerProgramaActual(date = new Date()) {
     };
 }
 
+let newSwiper; // global para poder destruirlo
+
 function marcarProgramaAlAire() {
     const programaActual = obtenerProgramaActual();
-    const slides = document.querySelectorAll(".swiper-slide");
+    const actualNormalizado = normalizarTexto(programaActual.text);
+
+    const swiperContainer = document.querySelector(".swiper.newSwiper");
+    const slidesWrapper = swiperContainer.querySelector(".swiper-wrapper");
+    const slides = Array.from(slidesWrapper.querySelectorAll(".swiper-slide"));
+
+    let slideAlAire = null;
+
+ 
+    if (window.newSwiper && typeof window.newSwiper.destroy === "function") {
+        window.newSwiper.destroy(true, true);
+    }
 
     slides.forEach(slide => {
-        const programa = slide.getAttribute("data-programa")?.toLowerCase();
-        const actual = programaActual.text.toLowerCase();
-
+        const programaSlide = slide.getAttribute("data-programa") || "";
+        const slideNormalizado = normalizarTexto(programaSlide);
         const btn = slide.querySelector(".btn-programa");
 
         if (btn) {
-            if (actual.includes(programa)) {
+            if (actualNormalizado.includes(slideNormalizado)) {
                 btn.textContent = "AL AIRE";
                 btn.classList.remove("bg-red-700");
                 btn.classList.add("bg-green-700", "hover:bg-green-800");
+                slideAlAire = slide;
             } else {
                 btn.textContent = "FUERA DEL AIRE";
                 btn.classList.remove("bg-green-700", "hover:bg-green-800");
@@ -367,6 +389,27 @@ function marcarProgramaAlAire() {
             }
         }
     });
+
+ 
+    if (slideAlAire) {
+        slidesWrapper.insertBefore(slideAlAire, slidesWrapper.firstChild);
+    }
+
+    
+    window.newSwiper = new Swiper(".newSwiper", {
+        loop: false,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
+ 
+    window.newSwiper.slideTo(0);
 }
 
 
@@ -682,34 +725,34 @@ function initHomeScripts() {
         }
     });
 
-
-    const swiper2 = new Swiper('.newSwiper', {
-        loop: true,
-        grabCursor: true,
-        spaceBetween: 20,
-        slidesPerView: 1,
-        centeredSlides: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 5000,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
+    /*
+        const swiper2 = new Swiper('.newSwiper', {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 20,
+            slidesPerView: 1,
+            centeredSlides: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
             },
-            1024: {
-                slidesPerView: 1,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 1,
+                }
             }
-        }
-    });
-
+        });
+    */
 }
 let currentAudio = null;
 let currentLottie = null;

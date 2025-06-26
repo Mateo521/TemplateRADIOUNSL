@@ -7,7 +7,9 @@
             <h1 id="titulo-categoria" class="font-bold text-[#1476B3]" style=" font-family: 'Antonio', sans-serif;">
                 BÚSQUEDA
             </h1>
+            <div class="absolute size-full bg-black/60"></div>
             <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-11.png" alt="">
+       
         </div>
     </header>
 

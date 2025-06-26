@@ -3,7 +3,7 @@
 
 
 /*
-Template Name: Plantilla de Podcasts
+Template Name: Plantilla de Programacion
 */
 
 get_header();
@@ -20,15 +20,15 @@ get_header();
 </div>
 <div class="flex justify-center p-8 bg-white">
   <section class="max-w-7xl w-full">
-    <!-- Lunes a viernes heading -->
+  
     <h2 id="toggle-lunes" class="text-sm font-semibold text-[#003366] flex items-center gap-1 mb-6 cursor-pointer select-none">
       Lunes a viernes
       <i class="fas fa-chevron-up text-[#003366] rotate-180 text-xs transition-transform duration-300" id="icon-lunes">
       </i>
     </h2>
-    <!-- Grid for Lunes a viernes -->
+ 
     <div id="content-lunes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 py-2 transition-height" style="height:auto; opacity:1;">
-      <!-- Card 1 -->
+
      <a href="<?php echo esc_url(home_url('/programacion/nada-secreto')); ?>">
         <article class="bg-white rounded-md shadow-sm overflow-hidden">
           <img alt="Nada secreto" class="w-full h-40 object-cover" height="200" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/nada-secreto.png" width="600" />
@@ -47,7 +47,7 @@ get_header();
           </div>
         </article>
       </a>
-      <!-- Card 2 -->
+    
       <a href="<?php echo esc_url(home_url('/programacion/haciendo-ruido')); ?>">
         <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Haciendo Ruido" class="w-full h-40 object-cover" height="200" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/haciendo-ruido.png" width="600" />
@@ -66,7 +66,7 @@ get_header();
         </div>
       </article>
       </a>
-      <!-- Card 3 -->
+    
       <a href="<?php echo esc_url(home_url('/programacion/la-locomotora')); ?>">
         <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Sonido Urbano" class="w-full h-40 object-cover" height="200" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/la-locomotora.png" width="600" />
@@ -85,7 +85,7 @@ get_header();
         </div>
       </article>
       </a>
-      <!-- Card 4 -->
+     
       <a href="<?php echo esc_url(home_url('/programacion/rock-del-pais')); ?>">
         <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Rock del país" class="w-full h-40 object-cover" height="200" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/rock-del-pais.png" width="600" />
@@ -104,7 +104,7 @@ get_header();
         </div>
       </article>
       </a>
-      <!-- Card 5 -->
+    
       <a href="<?php echo esc_url(home_url('/programacion/baja-un-cambio')); ?>">
         <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Bajá un cambio" class="w-full h-40 object-cover" height="200" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/baja-un-cambio.png" width="600" />
@@ -123,7 +123,7 @@ get_header();
         </div>
       </article>
       </a>
-      <!-- Card 6 -->
+   
       <a href="<?php echo esc_url(home_url('/programacion/solo-un-cafe')); ?>">
         <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Solo un café" class="w-full h-40 object-cover" height="200" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/solo-un-cafe.png" width="600" />
@@ -143,7 +143,7 @@ get_header();
       </article>
       </a>
 
-      <!-- Card 6 -->
+     
       <a href="<?php echo esc_url(home_url('/programacion/frecuencia-informativa')); ?>">
         <article class="bg-white rounded-md shadow-sm overflow-hidden">
         <img alt="Solo un café" class="w-full h-40 object-cover" height="200" src="<?php echo get_template_directory_uri(); ?>/assets/images/institucional/frecuencia-informativa.png" width="600" />
@@ -166,7 +166,7 @@ get_header();
       </article>
       </a>
     </div>
-    <!-- Sábados heading -->
+  
     <h2 id="toggle-sabados" class="text-sm font-semibold text-[#003366] flex items-center gap-1 mb-6 cursor-pointer select-none">
       Sábados
       <i class="fas fa-chevron-up text-[#003366] text-xs rotate-180 transition-transform duration-300" id="icon-sabados">
