@@ -345,14 +345,14 @@ const programacion = {
     weekdays: [
         { start: 420, end: 539, text: "Nada secreto", img: "/institucional/nada-secreto.png", metaImg: "/assets/images/institucional/512x512/nada-secreto.jpg" },
         { start: 540, end: 599, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png", metaImg: "/assets/images/institucional/512x512/haciendo-ruido.jpg" },
-        { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" },
-        { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
-        { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" },
-        { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" },
+        { start: 600, end: 614, text: "Frecuencia Informativa (10 hs)", img: "/institucional/frecuencia-informativa.png" , metaImg: "/assets/images/institucional/512x512/frecuencia-informativa.jpg" },
+        { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" , metaImg: "/assets/images/institucional/512x512/haciendo-ruido.jpg"},
+        { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png" ,  metaImg: "/assets/images/institucional/512x512/frecuencia-informativa.jpg" },
+        { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png" , metaImg: "/assets/images/institucional/512x512/haciendo-ruido.jpg"},
         { start: 780, end: 839, text: "Sólo un café", img: "/institucional/512x512/solo-un-cafe.jpg", metaImg: "/assets/images/institucional/512x512/solo-un-cafe.jpg" },
-        { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" },
-        { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" },
-        { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" }
+        { start: 900, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png" , metaImg: "/assets/images/institucional/512x512/la-locomotora.jpg"},
+        { start: 1200, end: 1214, text: "Frecuencia Informativa (20 hs)", img: "/institucional/frecuencia-informativa.png" , metaImg: "/assets/images/institucional/512x512/frecuencia-informativa.jpg"},
+        { start: 1260, end: 1379, text: "Rock del País", img: "/institucional/rock-del-pais.png" , metaImg: "/assets/images/institucional/512x512/rock-del-pais.jpg"}
     ],
     1: [
         { start: 840, end: 854, text: "Entre Corcheas", img: "icon-6.png" }
@@ -407,9 +407,8 @@ function marcarProgramaAlAire() {
                 btn.classList.add("bg-green-700", "hover:bg-green-800");
                 slideAlAire = slide;
             } else {
-                btn.textContent = "FUERA DEL AIRE";
-                btn.classList.remove("bg-green-700", "hover:bg-green-800");
-                btn.classList.add("bg-gray-500", "hover:bg-gray-600");
+                btn.textContent = "";
+                btn.classList.add("hidden");
             }
         }
     });

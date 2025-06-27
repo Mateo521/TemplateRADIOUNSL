@@ -88,7 +88,7 @@
                 <div class="w-[200px] h-[200px] relative size-full">
 
                     <lottie-player class="podcast-lottie absolute w-full h-full top-0 left-0"
-                        src="/radiounsl/wp-content/themes/TemplateRADIOUNSL/assets/images/podcast.json"
+                        src="<?php echo get_template_directory_uri(); ?>/assets/images/podcast.json"
                         background="transparent"
                         speed="1"
 
@@ -110,29 +110,23 @@
     </header>
 
     <main class="max-w-4xl mx-auto px-4 md:px-10 py-8">
-        <?php
-        if (has_post_thumbnail()) {
+        <?php if (has_post_thumbnail()) :
             $thumb_id = get_post_thumbnail_id();
             $thumb_url = wp_get_attachment_image_url($thumb_id, 'large');
             $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
             if (!$thumb_alt) {
                 $thumb_alt = get_the_title() . ' - imagen destacada';
             }
-        } else {
-            $thumb_url = 'https://placehold.co/900x300?text=No+Image';
-            $thumb_alt = 'Imagen destacada no disponible';
-        }
-
         ?>
-        <img
-            src="<?php echo esc_url($thumb_url); ?>"
-            alt="<?php echo esc_attr($thumb_alt); ?>"
-            class="w-full rounded-xl h-auto mb-2"
-            width="900"
-            height="300" />
+            <img
+                src="<?php echo esc_url($thumb_url); ?>"
+                alt="<?php echo esc_attr($thumb_alt); ?>"
+                class="w-full rounded-xl h-auto mb-2"
+                width="900"
+                height="300" />
+        <?php endif; ?>
 
-
-        <article id="entrys" class="mb-10 text-base leading-relaxed ">
+        <article id="entrys" class="mb-10 text-base leading-relaxed">
             <?php the_content(); ?>
         </article>
         <section>
@@ -150,16 +144,29 @@
                 ));
                 if ($recent_podcasts->have_posts()) :
                     while ($recent_podcasts->have_posts()) : $recent_podcasts->the_post();
+
+
+                        $imagen = get_field('imagen_podcast');
+
+                        $titulo = get_field('titulo');
+
+
+                        if ($imagen) {
+                            $thumbnail_url = esc_url($imagen);
+                        } else {
+                            $thumbnail_url = 'https://placehold.co/320x180?text=Sin+imagen';
+                        }
+
                 ?>
                         <a href="<?php echo get_permalink() ?>">
                             <article class="flex-none w-full text-base bg-white border border-gray-300 rounded shadow-sm">
                                 <div class="relative">
                                     <?php if (has_post_thumbnail()) : ?>
-                                        <img alt="<?php the_title_attribute(); ?>, portada del podcast" class="w-full h-40 rounded-t object-cover" height="90" loading="lazy" src="<?php the_post_thumbnail_url('medium'); ?>" width="120" />
+                                        <img alt="<?php the_title_attribute(); ?>, portada del podcast" class="w-full h-40 rounded-t object-cover" height="90" loading="lazy" src="<?php echo $thumbnail_url ?>" width="120" />
                                     <?php else: ?>
                                         <img alt="Imagen por defecto podcast" class="w-full h-auto rounded-t object-cover" height="90" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0cbc28ee-0742-4e9a-7057-4a2959a0009f.jpg" width="120" />
                                     <?php endif; ?>
-                                    <button aria-label="Reproducir podcast <?php the_title_attribute(); ?>" class="absolute bottom-1 right-1 bg-white bg-opacity-90 rounded-full p-1 text-black">
+                                    <button aria-label="Reproducir podcast <?php echo esc_html($titulo) ?>" class="absolute bottom-1 right-1 bg-white bg-opacity-90 rounded-full p-1 text-black">
                                         <i class="fas fa-play text-sm"></i>
                                     </button>
                                 </div>
@@ -168,7 +175,7 @@
 
 
                                     <?php
-                                    echo esc_html(wp_trim_words(get_the_title(), 10, '...'));
+                                    echo esc_html(wp_trim_words(get_field('titulo'), 10, '...'));
                                     ?>
                                 </p>
                             </article>

@@ -49,7 +49,7 @@
                                 <div class="absolute bottom-6 left-6 max-w-3xl text-white">
                                     <div class="flex space-x-2 mb-2">
                                         <?php
-                                        // Show up to 2 categories with the blue background
+                                  
                                         $count = 0;
                                         foreach ($categories as $cat) {
                                             if ($count >= 2) break;
@@ -76,7 +76,7 @@
                     endif;
                     ?>
                 </div>
-                <!-- Navigation buttons -->
+              
                 <button
                     aria-label="Previous slide"
                     class="swiper-button-prev absolute left-2 top-0 bottom-0 my-auto text-white text-lg opacity-70 hover:opacity-100"></button>
@@ -93,7 +93,7 @@
             class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
             id="news-grid">
             <?php
-            // Main query for news posts with pagination
+ 
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $news_query = new WP_Query(array(
                 'post_type' => 'noticias',
@@ -105,13 +105,13 @@
             ));
             if ($news_query->have_posts()) :
                 while ($news_query->have_posts()) : $news_query->the_post();
-                    // Get categories for the post
+                  
                     $categories = get_the_category();
                     $first_cat = $categories ? $categories[0]->name : '';
-                    // Get featured image URL with exact size 400x220 (crop)
+               
                     $img_url = get_the_post_thumbnail_url(get_the_ID(), array(400, 220));
                     if (!$img_url) {
-                        $img_url = "https://placehold.co/400x220?text=No+Image";
+                        $img_url = "https://placehold.co/400x220?text=Sin+imagen";
                     }
             ?>
                     <a href="<?php the_permalink(); ?>" class="block hover:shadow-lg transition-shadow duration-200">
@@ -145,13 +145,13 @@
             <?php endif; ?>
         </section>
 
-        <!-- Pagination -->
+        
         <nav
             aria-label="Pagination"
             class="mt-8 flex justify-center items-center space-x-2 text-gray-500 text-sm select-none">
             <?php
-            // Custom pagination with previous/next and page numbers
-            $big = 999999999; // need an unlikely integer
+         
+            $big = 999999999; 
             $pagination_links = paginate_links(array(
                 'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
                 'format' => '?paged=%#%',
@@ -166,13 +166,13 @@
             ));
 
             if (!empty($pagination_links)) :
-                // Show only current page as disabled, others as links
+          
                 foreach ($pagination_links as $link) {
-                    // Check if current page
+                
                     if (strpos($link, 'current') !== false) {
                         echo '<button class="w-8 h-8 rounded border border-gray-300 bg-white text-gray-400 cursor-default" disabled>' . strip_tags($link) . '</button>';
                     } else {
-                        // Clean up the link to add Tailwind classes
+                        
                         $link = str_replace('<a', '<a class="px-3 py-1 rounded border border-gray-300 text-[#2a7bbd] hover:underline"', $link);
                         echo $link;
                     }

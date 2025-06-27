@@ -196,8 +196,3 @@
     </div>
 </div>
 
-<style>
-    .swiper-pagination-bullet-active {
-        background: #cbc315;
-    }
-</style>

@@ -26,12 +26,12 @@
 
                     <div class="relative">
                         <a href="<?php echo get_permalink() ?>">
-                            <img alt="<?php the_title_attribute(); ?>" class="rounded-t-md w-full h-[190px] object-cover" src="<?php the_post_thumbnail_url('full'); ?>" />
+                            <img alt="<?php echo get_field('titulo'); ?>" class="rounded-t-md w-full h-[190px] object-cover" src="<?php echo esc_url($imagen); ?>" />
                         </a>
 
                         <?php
                         $audio_url = get_field('audio_podcast');
-                       
+
                         /*
                              if ($audio_url): ?>
                                 <div class="custom-audio-player bg-black text-white p-4 rounded-md w-full max-w-xl">
@@ -91,7 +91,7 @@
                                 <h2 class="text-white font-semibold mb-2 leading-tight">
 
                                     <?php
-                                    $titulo = get_the_title();
+                                    $titulo = get_field('titulo');
                                     echo esc_html(wp_trim_words($titulo, 20, '...'));
                                     ?>
 
@@ -130,7 +130,7 @@
 
                         <a href="<?php echo get_permalink() ?>">
                             <?php if ($imagen): ?>
-                                <img alt="<?php the_title_attribute(); ?>" class="rounded-t-md w-full h-[170px] md:h-[130px] object-cover" src="<?php echo esc_url($imagen); ?>" />
+                                <img alt="<?php get_field('titulo'); ?>" class="rounded-t-md w-full h-[170px] md:h-[130px] object-cover" src="<?php echo esc_url($imagen); ?>" />
                             <?php endif;
                             ?>
                         </a>
@@ -152,12 +152,12 @@
                         <h3 class="text-sm font-semibold mt-1 leading-tight text-gray-800">
 
 
-
-                            <?php
-                            $descripcion = get_the_title();
-                            echo esc_html(wp_trim_words($descripcion, 15, '...'));
-                            ?>
-
+                            <a href="<?php echo get_permalink() ?>">
+                                <?php
+                                $descripcion = get_field('titulo');
+                                echo esc_html(wp_trim_words($descripcion, 15, '...'));
+                                ?>
+                            </a>
                         </h3>
                     </div>
 
