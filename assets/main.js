@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
- 
+
 
     function actualizarRadio() {
         const programa = obtenerProgramaActual();
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('player').pause();
             });
 
-          
+
 
         }
     }
@@ -867,6 +867,13 @@ function initSinglePageScripts(container = document) {
 
             btn.classList.remove('rounded-b-none');
             btn.classList.add('rounded');
+
+             
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+
         } else {
             player.style.maxHeight = player.scrollHeight + 24 + 'px';
             player.style.padding = '0.5rem 0.5rem';
@@ -878,8 +885,14 @@ function initSinglePageScripts(container = document) {
 
             btn.classList.remove('rounded');
             btn.classList.add('rounded-t');
+
+            
+            if (audio) {
+                audio.play();
+            }
         }
     });
+
 
     const audio = container.querySelector('#podcastPlayer audio');
     const lottie = container.querySelector('.podcast-lottie');
