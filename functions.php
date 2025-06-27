@@ -71,7 +71,7 @@ function linksradio_unsl_scripts()
         null,
         true
     );
-
+/*
     wp_enqueue_script(
         'unsl_tailwind',
         'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4',
@@ -79,7 +79,7 @@ function linksradio_unsl_scripts()
         null,
         true
     );
-
+*/
 
 
 

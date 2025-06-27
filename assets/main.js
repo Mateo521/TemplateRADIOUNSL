@@ -98,7 +98,13 @@ function initClimaMarquee() {
             marquee.innerHTML = contenido + contenido;
         } catch (error) {
             console.error("Error al cargar el clima:", error);
-            marquee.innerHTML = `<span class="error">No se pudo cargar el clima.</span>`;
+            marquee.innerHTML = `
+  <span class="error text-center">
+    No se pudo cargar el clima.
+    <button onclick="location.reload()" style="margin-left: 10px;">Recargar página</button>
+  </span>
+`;
+
         }
     }
 
@@ -198,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+ 
 
     function actualizarRadio() {
         const programa = obtenerProgramaActual();
@@ -232,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('player').pause();
             });
 
-            console.log(navigator.mediaSession.metadata);
+          
 
         }
     }
@@ -328,10 +334,10 @@ function displayfooter() {
 function normalizarTexto(texto) {
     return texto
         .toLowerCase()
-        .normalize("NFD")                
-        .replace(/[\u0300-\u036f]/g, "")  
-        .replace(/\(.*?\)/g, "")          
-        .replace(/[^\w\s]/g, "")         
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\(.*?\)/g, "")
+        .replace(/[^\w\s]/g, "")
         .trim();
 }
 
@@ -382,7 +388,7 @@ function obtenerProgramaActual(date = new Date()) {
     };
 }
 
-let newSwiper;  
+let newSwiper;
 
 function marcarProgramaAlAire() {
     const programaActual = obtenerProgramaActual();
@@ -728,6 +734,7 @@ function initHomeScripts() {
     const swiper = new Swiper('.mySwiper', {
         loop: true,
         grabCursor: true,
+        effect: "fade",
         spaceBetween: 20,
         slidesPerView: 1,
         centeredSlides: true,
