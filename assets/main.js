@@ -354,7 +354,7 @@ const programacion = {
         { start: 615, end: 719, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png", metaImg: "/assets/images/institucional/512x512/haciendo-ruido.png" },
         { start: 720, end: 734, text: "Frecuencia Informativa (12 hs)", img: "/institucional/frecuencia-informativa.png", metaImg: "/assets/images/institucional/512x512/frecuencia-informativa.png" },
         { start: 735, end: 779, text: "Haciendo Ruido", img: "/institucional/haciendo-ruido.png", metaImg: "/assets/images/institucional/512x512/haciendo-ruido.png" },
-        { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.jpg", metaImg: "/assets/images/institucional/512x512/solo-un-cafe.png" },
+        { start: 780, end: 839, text: "Sólo un café", img: "/institucional/solo-un-cafe.png", metaImg: "/assets/images/institucional/512x512/solo-un-cafe.png" },
         { start: 900, end: 959, text: "La locomotora", img: "/institucional/la-locomotora.png", metaImg: "/assets/images/institucional/512x512/la-locomotora.png" },
         { start: 960, end: 974, text: "Frecuencia Informativa (16 hs)", img: "/institucional/frecuencia-informativa.png", metaImg: "/assets/images/institucional/512x512/frecuencia-informativa.png" },
         { start: 975, end: 1079, text: "La locomotora", img: "/institucional/la-locomotora.png", metaImg: "/assets/images/institucional/512x512/la-locomotora.png" },
