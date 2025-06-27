@@ -13,5 +13,10 @@
                 </a>
             </div>
         </div>
+        <!--div class="pt-12">
+            <img class="w-full rounded-xl" src="https://agenciasanluis.com/wp-content/uploads/2025/06/Patrullas970x120.gif" alt="">
+        </div-->
     </div>
+
+
 </section>
