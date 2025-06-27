@@ -1,4 +1,4 @@
-<div class="bg-[#F0F0F0] px-4 py-0">
+<div class="bg-[#F0F0F0] px-4 py-6">
     <div class="grid grid-cols-1 max-w-6xl mx-auto md:grid-cols-3 gap-6">
         <?php
 
@@ -6,6 +6,7 @@
             'post_type'      => 'noticias',
             'posts_per_page' => 1,
             'category_name'  => 'institucional',
+            'offset'         => 1
         );
         $query_institucional = new WP_Query($args);
 
@@ -47,6 +48,7 @@
             'post_type'      => 'noticias',
             'posts_per_page' => 3,
             'category__not_in' => array(get_cat_ID('institucional')),
+            'offset'         => 3
         );
         $query_otros = new WP_Query($args_otros);
 

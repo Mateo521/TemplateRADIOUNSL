@@ -1,4 +1,4 @@
-<div class="relative w-full max-w-full h-[320px] sm:h-[360px] md:h-[500px] rounded-md overflow-hidden">
+<div class="relative w-full max-w-full h-[320px]  sm:h-[360px] md:h-[500px] rounded-md overflow-hidden">
     <div class="swiper mySwiper h-full">
         <div class="swiper-wrapper">
             <?php
