@@ -148,40 +148,51 @@
                 if ($recent_podcasts->have_posts()) :
                     while ($recent_podcasts->have_posts()) : $recent_podcasts->the_post();
 
-
+                        $audio_url = get_field('audio_podcast');
+                        $title = get_field('titulo');
                         $imagen = get_field('imagen_podcast');
-
-                        $titulo = get_field('titulo');
-
-
-                        if ($imagen) {
-                            $thumbnail_url = esc_url($imagen);
-                        } else {
-                            $thumbnail_url = 'https://placehold.co/320x180?text=Sin+imagen';
-                        }
-
                 ?>
-                        <a href="<?php echo get_permalink() ?>">
-                            <article class="flex-none w-full text-base bg-white border border-gray-300 rounded shadow-sm">
-                                <div class="relative">
-                                    <?php if (has_post_thumbnail()) : ?>
-                                        <img alt="<?php the_title_attribute(); ?>, portada del podcast" class="w-full h-40 rounded-t object-cover" height="90" loading="lazy" src="<?php echo $thumbnail_url ?>" width="120" />
-                                    <?php else: ?>
-                                        <img alt="Imagen por defecto podcast" class="w-full h-auto rounded-t object-cover" height="90" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0cbc28ee-0742-4e9a-7057-4a2959a0009f.jpg" width="120" />
+                        <article class="w-full bg-white rounded shadow-sm overflow-hidden flex-shrink-0 flex flex-col">
+                            <div class="relative w-full h-44">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php if ($imagen): ?>
+                                        <img src="<?php echo esc_url($imagen); ?>"
+                                            alt="<?php echo esc_attr($title); ?>"
+                                            class="w-full h-full object-cover" />
                                     <?php endif; ?>
-                                    <button aria-label="Reproducir podcast <?php echo esc_html($titulo) ?>" class="absolute bottom-1 right-1 bg-white bg-opacity-90 rounded-full p-1 text-black">
-                                        <i class="fas fa-play text-sm"></i>
+
+                                </a>
+                                <?php if ($audio_url): ?>
+                                    <button aria-label="Play podcast"
+                                        class="play-button absolute bottom-3 right-3 bg-[#e6c94a] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                        onclick="toggleAudio(this)">
+                                        <i class="fas fa-play text-[#0a1626] text-sm"></i>
                                     </button>
+                                    <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                        <audio class="w-full audio-element mt-0 absolute top-0" controls>
+                                            <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
+                                            Tu navegador no soporta audio HTML5.
+                                        </audio>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <a href="<?php the_permalink(); ?>">
+                                <div class="p-3 flex-1 flex flex-col justify-between">
+                                    <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">
+                                        <?php
+                                        $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
+                                        echo !empty($terms) && !is_wp_error($terms) ? esc_html($terms[0]->name) : 'Sin categoría';
+                                        ?>
+                                    </p>
+                                    <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2"><?php echo esc_html($title); ?></h3>
                                 </div>
-                                <p class="p-2 font-semibold leading-tight">
+                            </a>
+                        </article>
 
 
 
-                                    <?php
-                                    echo esc_html(wp_trim_words(get_field('titulo'), 10, '...'));
-                                    ?>
-                                </p>
-                            </article>
+
+
                         </a>
                     <?php
                     endwhile;
