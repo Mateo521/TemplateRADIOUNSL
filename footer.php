@@ -31,7 +31,7 @@ wp_footer();
                     <img width="200" height="60" class="footer-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo2m.png" alt="">
 
                 </div>
-                <p class="py-3">Teléfono:  +542664361329</p>
+                <p class="py-3">Teléfono: +542664361329</p>
                 <p>Dirección: Ejército de Los Andes 950, <br> San Luis, Argentina</p>
                 <p class="py-3">Email: ejemplo@gmail.com</p>
             </div>
@@ -117,34 +117,43 @@ wp_footer();
             <!-- Modal body -->
             <div class="p-6">
                 <p id="prog" class="text-sm font-normal text-gray-500 dark:text-gray-400"></p>
+
                 <ul id="social-share" class="my-4 space-y-3">
                     <li>
-                        <a target="_blank" href="https://wa.me/?text=radiouniversidad.unsl.edu.ar" data-action="share/whatsapp/share" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <a target="_blank" href="https://wa.me/?text=radiouniversidad.unsl.edu.ar" data-action="share/whatsapp/share"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                            aria-label="Compartir en WhatsApp">
                             <img class="h-5" src="<?php echo get_template_directory_uri(); ?>/assets/images/WhatsApp.svg" />
-
                             <span class="flex-1 ml-3 whitespace-nowrap">Whatsapp</span>
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=radiouniversidad.unsl.edu.ar" rel="noopener noreferrer" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=radiouniversidad.unsl.edu.ar"
+                            rel="noopener noreferrer" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                            aria-label="Compartir en Facebook">
                             <img class="h-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/2021_Facebook_icon.svg.png" />
-
                             <span class="flex-1 ml-3 whitespace-nowrap">Facebook</span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/intent/tweet?text=radiouniversidad.unsl.edu.ar" rel="noopener noreferrer" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <a href="https://twitter.com/intent/tweet?text=radiouniversidad.unsl.edu.ar"
+                            rel="noopener noreferrer" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                            aria-label="Compartir en X (Twitter)">
                             <img class="h-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/Twitter-X-New-Logo-Vector-2.png" />
                             <span class="flex-1 ml-3 whitespace-nowrap">X</span>
                         </a>
                     </li>
                     <li>
-                        <a href="mailto:?Título&body=Contenido:%20[radiouniversidad.unsl.edu.ar]" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <a href="mailto:?Título&body=Contenido:%20[radiouniversidad.unsl.edu.ar]"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                            aria-label="Enviar por correo electrónico">
                             <img class="h-5" src="<?php echo get_template_directory_uri(); ?>/assets/images/Circle-icons-mail.svg" />
                             <span class="flex-1 ml-3 whitespace-nowrap">Correo</span>
                         </a>
                     </li>
                 </ul>
+
+
             </div>
         </div>
     </div>
@@ -183,17 +192,14 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         </div>
     </div>
     <div id="radio" class="container-4 md:hidden absolute flex justify-center w-full items-center md:gap-5 gap-1" style="left:-49px;">
-        <label class=" md:hidden flex">
-           <input type="range" id="vol-mobile" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" />   <!-- 
-        <span id="display1">
-            100
-        </span>
-         -->
+        <label class="hidden md:block" style="margin:0; z-index:45; padding:0;">
+            <span class="sr-only">Volumen</span>  
+            <input type="range" id="vol" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" aria-labelledby="vol-label" />
         </label>
 
 
 
-        <button class="btn play-pause">
+        <button class="btn play-pause" aria-label="Reproducir/Pausar">
             <div class="icon-container">
                 <svg class="icon play" id="playbutton-5">
                     <use xlink:href="#play"></use>
@@ -248,14 +254,11 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
         </div>
     </div>
     <div class="container-4 hidden absolute md:flex justify-center w-full gap-8" style="top: 50%; transform: translateY(-50%); align-items:center; left:-46px;">
-        <label class=" hidden md:block" style=" margin:0;z-index:45; padding:0;  ">
-<input type="range" id="vol" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" />            <!--
-        <span id="display1">
-            100
-        </span>
-          -->
+        <label class="hidden md:block" style="margin:0; z-index:45; padding:0;">
+            <span class="sr-only">Volumen</span>
+            <input type="range" id="vol" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" aria-labelledby="vol-label" />
         </label>
-        <button class="btn play-pause">
+        <button class="btn play-pause" aria-label="Reproducir/Pausar">
             <div class="icon-container">
                 <svg class="icon play" id="playbutton-5">
                     <use xlink:href="#play"></use>
