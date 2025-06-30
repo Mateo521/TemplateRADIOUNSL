@@ -1087,6 +1087,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 initNoticiasPageScripts();
             }
         },
+          {
+            namespace: 'tax-categoria-noticia',
+            afterEnter() {
+                console.log('tax-categoria-noticia');
+                initNoticiasPageScripts();
+            }
+        },
 
         ]
     });

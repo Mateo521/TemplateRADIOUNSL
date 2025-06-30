@@ -3,7 +3,9 @@
 <div class="bg-gray-100">
     <header class="flex justify-center items-center bg-[#f3f3f3] py-2 border-b shadow border-gray-300">
         <div class="flex justify-center md:gap-12 gap-3 items-baseline">
-            <h1 id="titulo-categoria" class="font-bold text-[#1476B3]" style=" font-family: 'Antonio', sans-serif;">NOTICIAS</h1>
+            <h1 id="titulo-categoria" class="font-bold text-[#1476B3]" style=" font-family: 'Antonio', sans-serif;">
+                <?php single_term_title(); ?>
+            </h1>
             <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-11.png" alt="">
         </div>
     </header>
@@ -13,21 +15,26 @@
             <div class="swiper swiper-container h-[280px] sm:h-[320px] md:h-[360px] rounded-md">
                 <div class="swiper-wrapper">
                     <?php
-
+                    $term = get_queried_object();
                     $carousel_query = new WP_Query(array(
                         'posts_per_page' => 5,
                         'post_type' => 'noticias',
                         'meta_key' => '_thumbnail_id',
                         'orderby' => 'date',
                         'order' => 'DESC',
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'categoria_noticia',
+                                'field' => 'slug',
+                                'terms' => $term->slug,
+                            ),
+                        ),
                     ));
+
                     if ($carousel_query->have_posts()) :
                         while ($carousel_query->have_posts()) : $carousel_query->the_post();
 
-                            $categories = get_the_terms(get_the_ID(), 'categoria_noticia');
-                            if (empty($categories) || is_wp_error($categories)) {
-                                $categories = array();
-                            }
+                            $categories = get_the_category();
                             $cat_names = array();
                             foreach ($categories as $cat) {
                                 $cat_names[] = $cat->name;
@@ -36,7 +43,7 @@
                             $img_url = get_the_post_thumbnail_url(get_the_ID(), array(1200, 360));
                             if (!$img_url) {
 
-                                $img_url = "https://placehold.co/1200x360?text=No+Image";
+                                $img_url = "https://placehold.co/1200x360?text=Sin+imagen";
                             }
                     ?>
 
@@ -98,6 +105,8 @@
             <?php
 
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+            $term = get_queried_object();
+
             $news_query = new WP_Query(array(
                 'post_type' => 'noticias',
                 'posts_per_page' => 12,
@@ -105,23 +114,27 @@
                 'meta_key' => '_thumbnail_id',
                 'orderby' => 'date',
                 'order' => 'DESC',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'categoria_noticia',
+                        'field' => 'slug',
+                        'terms' => $term->slug,
+                    ),
+                ),
             ));
+
             if ($news_query->have_posts()) :
                 while ($news_query->have_posts()) : $news_query->the_post();
 
-                    $terms = get_the_terms(get_the_ID(), 'categoria_noticia');
-                    if (!empty($terms) && !is_wp_error($terms)) {
-                        $first_term = array_shift($terms);
-                        $first_cat = esc_html($first_term->name);
-                    } else {
-                        $first_cat = ''; 
-                    }
+                    $categories = get_the_category();
+                    $first_cat = $categories ? $categories[0]->name : '';
 
                     $img_url = get_the_post_thumbnail_url(get_the_ID(), array(400, 220));
                     if (!$img_url) {
                         $img_url = "https://placehold.co/400x220?text=Sin+imagen";
                     }
             ?>
+
                     <article class="bg-white h-full  border border-gray-200 rounded-md shadow-sm overflow-hidden">
                         <div class="block relative hover:shadow-lg transition-shadow duration-200">
                             <a href="<?php the_permalink(); ?>">
@@ -163,6 +176,7 @@
 
 
                     </article>
+
 
                 <?php
                 endwhile;

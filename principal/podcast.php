@@ -59,10 +59,10 @@
 
                         <div class="absolute text-sm bottom-3 bg-black/70 py-1 px-2 rounded-xl left-3 font-semibold text-[#d6d60a] uppercase leading-none">
                             <?php
-                            $categories = get_the_category();
-                            if (! empty($categories)) {
-
-                                echo esc_html($categories[0]->name) . ' ';
+                            $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
+                            if (!empty($terms) && !is_wp_error($terms)) {
+                                $term = array_shift($terms);
+                                echo esc_html($term->name) . ' ';
                             }
                             ?>
                             <div class="font-semibold text-[#f0f0f0] leading-none">

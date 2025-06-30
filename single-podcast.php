@@ -10,13 +10,18 @@
             <div class="order-2 md:order-0 w-full">
                 <p class="text-sm text-yellow-400 font-semibold uppercase mb-2">
                     <?php
-                    $categories = get_the_category();
-                    if (! empty($categories)) {
+                    $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
+                    if (!empty($terms) && !is_wp_error($terms)) {
+                        $term = array_shift($terms);
+                        $term_link = get_term_link($term);
 
-                        echo esc_html($categories[0]->name) . ' ';
+                        if (!is_wp_error($term_link)) {
+                            echo '<a href="' . esc_url($term_link) . '" class=" font-semibold uppercase">' . esc_html($term->name) . '</a>';
+                        }
                     }
-
                     ?>
+
+
                 </p>
                 <h1 class="text-white font-semibold text-xl md:text-2xl leading-tight mb-3">
                     <?php echo esc_html(get_field('titulo')); ?>

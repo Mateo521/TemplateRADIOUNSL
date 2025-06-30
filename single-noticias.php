@@ -7,19 +7,33 @@
         if (have_posts()) :
             while (have_posts()) : the_post();
 
-                $categories = get_the_category();
+                $terms = get_the_terms(get_the_ID(), 'categoria_noticia');  
                 $category_labels = [];
-                foreach ($categories as $cat) {
 
-                    $slug = strtolower($cat->slug);
-                    $label_color = 'bg-gray-300 text-black';
-                    if ($slug === 'sonido-urbano') {
-                        $label_color = 'bg-blue-600 text-white';
-                    } elseif ($slug === 'política' || $slug === 'politica') {
-                        $label_color = 'bg-yellow-400 text-black';
+                if ($terms && !is_wp_error($terms)) {
+                    foreach ($terms as $term) {
+                        $slug = strtolower($term->slug);
+                        $label_color = 'bg-gray-300 text-black';
+
+                        if ($slug === 'sonido-urbano') {
+                            $label_color = 'bg-blue-600 text-white';
+                        } elseif ($slug === 'política' || $slug === 'politica') {
+                            $label_color = 'bg-yellow-400 text-black';
+                        }
+
+                        $term_link = get_term_link($term);
+
+                        if (!is_wp_error($term_link)) {
+                            $category_labels[] = '<a href="' . esc_url($term_link) . '" class="inline-block">
+                <span class="font-semibold ' . esc_attr($label_color) . ' rounded px-2 py-0.5 text-xs">' . esc_html(strtoupper($term->name)) . '</span>
+            </a>';
+                        }
                     }
-                    $category_labels[] = '<span class="font-semibold ' . esc_attr($label_color) . ' rounded px-2 py-0.5 inline-block text-xs">' . esc_html(strtoupper($cat->name)) . '</span>';
                 }
+
+               
+
+
 
 
                 if (has_post_thumbnail()) {
@@ -37,7 +51,7 @@
 
 
 
-                <main class="flex-1">
+                <main class="flex-1 max-w-[768px]">
 
 
                     <h1 class="font-semibold text-lg md:text-xl leading-tight mb-4"><?php the_title(); ?></h1>

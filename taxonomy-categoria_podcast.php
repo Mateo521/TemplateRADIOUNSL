@@ -1,9 +1,10 @@
 <?php get_header(); ?>
 
-
 <header class="flex justify-center items-center bg-[#f3f3f3] py-2 border-b border-gray-300">
   <div class="flex justify-center md:gap-12 gap-3 items-baseline">
-    <h1 id="titulo-categoria" class="font-bold text- text-[#e6c94a]" style=" font-family: 'Antonio', sans-serif;">PODCASTS</h1>
+    <h1 id="titulo-categoria" class="font-bold text-[#e6c94a]" style="font-family: 'Antonio', sans-serif;">
+      <?php single_term_title(); ?>
+    </h1>
     <img id="img-c" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-12.png" alt="">
   </div>
 </header>
@@ -36,11 +37,8 @@
 
 
       $date = get_the_date('d/m/Y');
-
-      $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
-    
-    $category_name = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->name : 'Podcast';
-      
+      $category = get_the_category();
+      $category_name = !empty($category) ? $category[0]->name : 'Podcast';
       $permalink = get_permalink();
   ?>
 
@@ -89,7 +87,7 @@
     <?php endwhile; ?>
   <?php else : ?>
     <p class="col-span-full text-center text-gray-400">
-      No se encontraron podcasts.
+      No se encontraron podcasts en esta categoría.
     </p>
   <?php endif; ?>
 </main>

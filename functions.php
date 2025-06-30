@@ -73,6 +73,8 @@ function linksradio_unsl_scripts()
         true
     );
 
+
+    /*
     wp_enqueue_script(
         'unsl_tailwind',
         'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4',
@@ -81,6 +83,7 @@ function linksradio_unsl_scripts()
         true
     );
 
+*/
 
 
 
@@ -429,7 +432,7 @@ function mostrar_clima_san_luis()
             'posts_per_page' => 3,
             'tax_query' => [
                 [
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'categoria_noticia',
                     'field' => 'slug',
                     'terms' => [$categoria_slug],
                 ],
@@ -468,8 +471,8 @@ function mostrar_clima_san_luis()
                                 <div class="p-3 flex-1 flex flex-col justify-between">
                                     <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">
                                         <?php
-                                        $categories = get_the_category();
-                                        echo !empty($categories) ? esc_html($categories[0]->name) : 'Sin categoría';
+                                        $terms = get_the_terms(get_the_ID(), 'categoria_noticia');
+                                        echo !empty($terms) && !is_wp_error($terms) ? esc_html($terms[0]->name) : 'Sin categoría';
                                         ?>
                                     </p>
                                     <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2"><?php the_title(); ?></h3>
@@ -497,7 +500,7 @@ function mostrar_clima_san_luis()
             'posts_per_page' => 6,
             'tax_query' => [
                 [
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'categoria_podcast',
                     'field' => 'slug',
                     'terms' => [$categoria_slug],
                 ],
@@ -541,9 +544,9 @@ function mostrar_clima_san_luis()
                             <a href="<?php the_permalink(); ?>">
                                 <div class="p-3 flex-1 flex flex-col justify-between">
                                     <p class="text-sm text-[#2a6ad1] font-semibold uppercase mb-1">
-                                        <?php
-                                        $categories = get_the_category();
-                                        echo !empty($categories) ? esc_html($categories[0]->name) : 'Sin categoría';
+                                       <?php
+                                        $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
+                                        echo !empty($terms) && !is_wp_error($terms) ? esc_html($terms[0]->name) : 'Sin categoría';
                                         ?>
                                     </p>
                                     <h3 class="text-xs sm:text-sm font-semibold leading-snug line-clamp-2"><?php echo esc_html($title); ?></h3>
@@ -561,3 +564,38 @@ function mostrar_clima_san_luis()
 
         wp_reset_postdata();
     }
+
+
+    function incluir_cpts_en_archivo_categoria($query)
+    {
+        if (!is_admin() && $query->is_main_query() && $query->is_category()) {
+            $query->set('post_type', array('post', 'noticias', 'podcast'));
+        }
+    }
+    add_action('pre_get_posts', 'incluir_cpts_en_archivo_categoria');
+
+
+
+
+    function registrar_taxonomias_personalizadas()
+    {
+
+        register_taxonomy('categoria_noticia', ['noticias'], array(
+            'label' => 'Categorías de Noticias',
+            'rewrite' => array('slug' => 'categoria-noticia', 'with_front' => false),
+            'hierarchical' => true,
+            'public' => true,
+            'show_ui' => true,
+            'show_in_nav_menus' => true,
+            'show_admin_column' => true,
+        ));
+
+
+        register_taxonomy('categoria_podcast', ['podcast'], [
+            'label' => 'Categorías de Podcast',
+            'rewrite' => ['slug' => 'categoria-podcast'],
+            'hierarchical' => true,
+            'public' => true,
+        ]);
+    }
+    add_action('init', 'registrar_taxonomias_personalizadas');
