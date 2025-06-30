@@ -179,6 +179,14 @@
                 <div class="bg-white border-gray-800 rounded-xl shadow p-2 text-sm">
                     <iframe class="rounded-lg w-full" width="320" height="390" src="https://www.instagram.com/unslradio/embed" frameborder="0"></iframe>
                 </div>
+
+                <a target="_blank" href="https://open.spotify.com/show/0dyJ0gdV0rv7fenSBPZ9eF">
+                    <div class="bg-[#1db954]  text-[#191414] font-bold border-gray-800 rounded-xl shadow p-2 text-sm flex justify-center items-center gap-2">
+                        <i class="fab fa-spotify text-2xl"></i>
+                        <h3 class="m-0">Seguinos en Spotify</h3>
+                    </div>
+                </a>
+
             </div>
         </aside>
 

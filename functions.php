@@ -58,6 +58,7 @@ add_action('wp_enqueue_scripts', 'linksradio_unsl_estilos');
 function linksradio_unsl_scripts()
 {
 
+    wp_enqueue_script('lottie', get_template_directory_uri() . "/assets/lottie-player.js", array(), '3.1.1');
 
 
 
