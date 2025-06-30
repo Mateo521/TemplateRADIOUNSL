@@ -146,6 +146,41 @@
                             </a>
                         </article>
                     <?php
+                    } else {
+
+                        $categories = get_the_category();
+                        $first_cat = $categories ? $categories[0]->name : '';
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), array(400, 220));
+                        if (!$img_url) {
+                            $img_url = "https://placehold.co/400x220?text=Sin+imagen";
+                        }
+                    ?>
+
+
+
+                        <a href="<?php the_permalink(); ?>" class="block hover:shadow-lg transition-shadow duration-200">
+                            <article class="bg-white h-full border border-gray-200 rounded-md shadow-sm overflow-hidden">
+                                <img
+                                    src="<?php echo esc_url($img_url); ?>"
+                                    alt="<?php echo esc_attr(get_the_title()); ?>"
+                                    class="w-full h-36 object-cover"
+                                    width="400"
+                                    height="220" />
+                                <div class="p-3">
+                                    <p class="text-xs text-[#2a7bbd] font-semibold uppercase mb-1">
+                                        <?php echo esc_html($first_cat); ?>
+                                    </p>
+                                    <h3 class="text-sm font-normal text-gray-900 leading-snug mb-1">
+                                        <?php echo wp_trim_words(get_the_title(), 20, '...'); ?>
+                                    </h3>
+                                    <time class="text-xs text-gray-400">
+                                        <?php echo get_the_date('d/m/Y'); ?>
+                                    </time>
+                                </div>
+                            </article>
+                        </a>
+
+                    <?php
                     }
                     ?>
 
