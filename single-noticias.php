@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 <div class="bg-gray-100 entrys-content">
 
-    <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+    <div class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-[70%_1fr]  lg:flex-row gap-8">
 
         <?php
         if (have_posts()) :
             while (have_posts()) : the_post();
 
-                $terms = get_the_terms(get_the_ID(), 'categoria_noticia');  
+                $terms = get_the_terms(get_the_ID(), 'categoria_noticia');
                 $category_labels = [];
 
                 if ($terms && !is_wp_error($terms)) {
@@ -31,7 +31,7 @@
                     }
                 }
 
-               
+
 
 
 
@@ -51,7 +51,7 @@
 
 
 
-                <main class="flex-1 max-w-[768px]">
+                <main class="flex-1 w-full max-w-[768px]">
 
 
                     <h1 class="font-semibold text-lg md:text-xl leading-tight mb-4"><?php the_title(); ?></h1>
@@ -172,15 +172,18 @@
 
 
 
-        <aside class="block w-full max-w-xs sticky top-45 self-start">
+        <aside class="block w-full  sticky top-45 self-start">
 
             <div class="space-y-4">
 
                 <div class="bg-white border-gray-800 rounded-xl shadow p-2">
+
+
+
                     <iframe
-                        class="rounded-lg"
+                        class="hidden lg:block facebook-iframe"
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Funslradio&tabs=timeline&width=305&height=370&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-                        width="250"
+                        width="100%"
                         height="370"
                         style="border:none;overflow:hidden"
                         scrolling="no"
@@ -188,6 +191,19 @@
                         allowfullscreen="true"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                     </iframe>
+                    <iframe
+                        class="lg:hidden facebook-iframe"
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Funslradio&tabs=timeline&width=350&height=370&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+                        width="100%"
+                        height="370"
+                        style="border:none;overflow:hidden"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+
+
                 </div>
 
                 <div class="bg-white border-gray-800 rounded-xl shadow p-2 text-sm">
@@ -207,4 +223,5 @@
 
     </div>
 </div>
+
 <?php get_footer(); ?>
