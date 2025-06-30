@@ -194,7 +194,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
     <div id="radio" class="container-4 md:hidden absolute flex justify-center w-full items-center md:gap-5 gap-1" style="left:-49px;">
         <label class="hidden md:block" style="margin:0; z-index:45; padding:0;">
             <span class="sr-only">Volumen</span>  
-            <input type="range" id="vol" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" aria-labelledby="vol-label" />
+            <input type="range" id="vol-mobile" min="0" max="1" value="1" step="0.01" style="background-color:inherit;" aria-labelledby="vol-label" />
         </label>
 
 
