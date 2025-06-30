@@ -94,8 +94,13 @@
 
                         $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
                         $title = get_the_title();
-                        $categories = get_the_category();
-                        $cat_names = wp_list_pluck($categories, 'name');
+
+                        $terms = get_the_terms(get_the_ID(), 'categoria_noticia');
+                        $cat_names = !empty($terms) && !is_wp_error($terms) ? wp_list_pluck($terms, 'name') : [];
+
+
+
+
                 ?>
 
 
@@ -150,8 +155,10 @@
 
                         $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
                         $title = get_the_title();
-                        $categories = get_the_category();
-                        $cat_names = wp_list_pluck($categories, 'name');
+
+                        $terms = get_the_terms(get_the_ID(), 'categoria_noticia'); 
+                        $cat_names = !empty($terms) && !is_wp_error($terms) ? wp_list_pluck($terms, 'name') : [];
+
                     ?>
                         <div class="swiper-slide relative h-full rounded-md overflow-hidden">
                             <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />

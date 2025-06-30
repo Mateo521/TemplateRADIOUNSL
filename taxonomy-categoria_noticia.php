@@ -34,11 +34,21 @@
                     if ($carousel_query->have_posts()) :
                         while ($carousel_query->have_posts()) : $carousel_query->the_post();
 
-                            $categories = get_the_category();
+                            $terms = get_the_terms(get_the_ID(), 'categoria_noticia');
+
                             $cat_names = array();
-                            foreach ($categories as $cat) {
-                                $cat_names[] = $cat->name;
+                            if ($terms && !is_wp_error($terms)) {
+                                foreach ($terms as $term) {
+                                    $cat_names[] = $term->name;
+                                }
                             }
+/*
+                            if (!empty($cat_names)) {
+                                echo implode(', ', $cat_names);
+                            } else {
+                                echo 'Sin categoría';
+                            }
+*/
 
                             $img_url = get_the_post_thumbnail_url(get_the_ID(), array(1200, 360));
                             if (!$img_url) {
@@ -59,12 +69,15 @@
                                     <div class="absolute bottom-6 left-6 max-w-3xl text-white">
                                         <div class="flex space-x-2 mb-2">
                                             <?php
-
-                                            $count = 0;
-                                            foreach ($categories as $cat) {
-                                                if ($count >= 2) break;
-                                                echo '<span class="bg-[#2a7bbd] text-xs font-semibold px-2 py-0.5 rounded">' . esc_html($cat->name) . '</span>';
-                                                $count++;
+                                            if ($terms && !is_wp_error($terms)) {
+                                                $count = 0;
+                                                foreach ($terms as $term) {
+                                                    if ($count >= 2) break;
+                                                    echo '<span class="bg-[#2a7bbd] text-xs font-semibold px-2 py-0.5 rounded">' . esc_html($term->name) . '</span>';
+                                                    $count++;
+                                                }
+                                            } else {
+                                                echo 'Sin categoría';
                                             }
                                             ?>
                                         </div>
@@ -126,8 +139,9 @@
             if ($news_query->have_posts()) :
                 while ($news_query->have_posts()) : $news_query->the_post();
 
-                    $categories = get_the_category();
-                    $first_cat = $categories ? $categories[0]->name : '';
+                    $terms = get_the_terms(get_the_ID(), 'categoria_noticia');
+
+                    $first_cat = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->name : '';
 
                     $img_url = get_the_post_thumbnail_url(get_the_ID(), array(400, 220));
                     if (!$img_url) {
