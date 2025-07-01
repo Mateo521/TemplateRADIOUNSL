@@ -580,6 +580,9 @@
   .mb-14 {
     margin-bottom: calc(var(--spacing) * 14);
   }
+  .mb-20 {
+    margin-bottom: calc(var(--spacing) * 20);
+  }
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
   }
@@ -2034,6 +2037,11 @@
   .md\:mt-0 {
     @media (width >= 48rem) {
       margin-top: calc(var(--spacing) * 0);
+    }
+  }
+  .md\:mb-3 {
+    @media (width >= 48rem) {
+      margin-bottom: calc(var(--spacing) * 3);
     }
   }
   .md\:block {
