@@ -79,6 +79,8 @@
                                 <?php echo esc_html($title); ?>
                             </h2>
                         </a>
+
+
                     </div>
                 </div>
 
@@ -86,9 +88,16 @@
                 $args_institucional = array(
                     'post_type'      => 'noticias',
                     'posts_per_page' => 1,
-                    'category_name'  => 'institucional',
+                    'tax_query'      => array(
+                        array(
+                            'taxonomy' => 'categoria_noticia',
+                            'field'    => 'slug',
+                            'terms'    => array('institucional'),
+                        ),
+                    ),
                 );
                 $query_institucional = new WP_Query($args_institucional);
+
                 if ($query_institucional->have_posts()) :
                     while ($query_institucional->have_posts()) : $query_institucional->the_post();
 
@@ -129,7 +138,12 @@
                                     <h2 class="text-white py-2 text-xl sm:text-2xl font-semibold leading-tight max-w-lg">
                                         <?php echo esc_html($title); ?>
                                     </h2>
+
                                 </a>
+
+
+
+
                             </div>
 
 
@@ -146,8 +160,16 @@
                 $args_otros = array(
                     'post_type'      => 'noticias',
                     'posts_per_page' => 3,
-                    'category__not_in' => array(get_cat_ID('institucional')),
+                    'tax_query'      => array(
+                        array(
+                            'taxonomy' => 'categoria_noticia',
+                            'field'    => 'slug',
+                            'terms'    => array('institucional'),
+                            'operator' => 'NOT IN',
+                        ),
+                    ),
                 );
+
                 $query_otros = new WP_Query($args_otros);
 
                 if ($query_otros->have_posts()) :
@@ -156,10 +178,10 @@
                         $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
                         $title = get_the_title();
 
-                        $terms = get_the_terms(get_the_ID(), 'categoria_noticia'); 
+                        $terms = get_the_terms(get_the_ID(), 'categoria_noticia');
                         $cat_names = !empty($terms) && !is_wp_error($terms) ? wp_list_pluck($terms, 'name') : [];
 
-                    ?> 
+                    ?>
                         <div class="swiper-slide relative h-full rounded-b-xl overflow-hidden">
                             <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />
                             <div class="absolute inset-0 bg-black/50"></div>
@@ -178,7 +200,21 @@
                                         <?php echo esc_html($title); ?>
                                     </h2>
                                 </a>
-
+                                <article>
+                                    <?php if (get_field('audio_de_noticia')): ?>
+                                        <button aria-label="Play podcast"
+                                            class="play-button absolute bottom-3 right-3 bg-[#ffffff] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                            onclick="toggleAudio(this)">
+                                            <i class="fas fa-play text-[#0a1626] text-sm"></i>
+                                        </button>
+                                        <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                            <audio class="w-full mt-0 absolute top-0" controls>
+                                                <source src="<?php echo esc_url(get_field('audio_de_noticia')); ?>" type="audio/mpeg">
+                                                Tu navegador no soporta audio HTML5.
+                                            </audio>
+                                        </div>
+                                    <?php endif; ?>
+                                </article>
 
                             </div>
                         </div>

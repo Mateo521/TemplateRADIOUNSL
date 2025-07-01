@@ -18,19 +18,36 @@
             $count = 0;
             while ($podcast_query->have_posts() && $count < 3): $podcast_query->the_post();
                 $imagen = get_field('imagen_podcast');
-
+                $audio_url = get_field('audio_podcast');
             ?>
                 <!-- Tarjeta grande -->
 
                 <div class="bg-[#1a1a1a] rounded-md h-full flex flex-col">
 
                     <div class="relative">
-                        <a href="<?php echo get_permalink() ?>">
-                            <img alt="<?php echo get_field('titulo'); ?>" class="rounded-t-md w-full h-[190px] object-cover" src="<?php echo esc_url($imagen); ?>" />
-                        </a>
+                        <div class="relative">
+                            <a href="<?php echo get_permalink() ?>">
+                                <img alt="<?php echo get_field('titulo'); ?>" class="rounded-t-md w-full h-[190px] object-cover" src="<?php echo esc_url($imagen); ?>" />
+                            </a>
 
+                            <?php if ($audio_url): ?>
+                                <article>
+                                    <button aria-label="Play podcast"
+                                        class="play-button absolute bottom-3 right-3 bg-[#e6c94a] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                        onclick="toggleAudio(this)">
+                                        <i class="fas fa-play text-[#0a1626] text-sm"></i>
+                                    </button>
+                                    <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                        <audio class="w-full audio-element mt-0 absolute top-0" controls>
+                                            <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
+                                            Tu navegador no soporta audio HTML5.
+                                        </audio>
+                                    </div>
+                                </article>
+                            <?php endif; ?>
+                        </div>
                         <?php
-                        $audio_url = get_field('audio_podcast');
+
 
                         /*
                              if ($audio_url): ?>
@@ -48,16 +65,8 @@
   <?php endif;
 
                             */
-
-
-
                         ?>
-
-
-
-
-
-                        <div class="absolute text-sm bottom-3 bg-black/70 py-1 px-2 rounded-xl left-3 font-semibold text-[#d6d60a] uppercase leading-none">
+                        <div class="absolute text-sm top-3 bg-black/70 py-1 px-2 rounded-xl left-3 font-semibold text-[#d6d60a] uppercase leading-none">
                             <?php
                             $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
                             if (!empty($terms) && !is_wp_error($terms)) {
@@ -69,27 +78,11 @@
                                 <?php echo get_the_date(); ?>
                             </div>
                         </div>
-
-
                     </div>
-
-                    <div>
-                        <?php
-                        if ($audio_url): ?>
-
-                            <div class="audio-wrapper">
-                                <audio class="audio-element hidden">
-                                    <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
-                                    Tu navegador no soporta audio HTML5.
-                                </audio>
-                            </div>
-
-                        <?php endif;
-                        ?>
+                    <div class="relative">
                         <a href="<?php echo get_permalink() ?>">
                             <div class="p-3">
                                 <h2 class="text-white font-semibold mb-2 leading-tight">
-
                                     <?php
                                     $titulo = get_field('titulo');
                                     echo esc_html(wp_trim_words($titulo, 20, '...'));
@@ -105,48 +98,40 @@
                             </div>
                         </a>
                     </div>
-
                 </div>
-
             <?php
-
                 $count++;
             endwhile;
             ?>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-6 px-2 gap-4 mb-8">
             <?php while ($podcast_query->have_posts()): $podcast_query->the_post();
                 $imagen = get_field('imagen_podcast');
 
             ?>
-                <!-- Tarjeta pequeña -->
-
-
                 <div class="bg-gray-100 rounded-xl flex flex-col">
-
                     <div class="relative">
-
-
                         <a href="<?php echo get_permalink() ?>">
                             <?php if ($imagen): ?>
                                 <img alt="<?php get_field('titulo'); ?>" class="rounded-t-md w-full h-[170px] md:h-[130px] object-cover" src="<?php echo esc_url($imagen); ?>" />
                             <?php endif;
                             ?>
                         </a>
-                        <?php
-                        $audio_url = get_field('audio_podcast'); // Ya es una URL
-                        if ($audio_url): ?>
-                            <div class="audio-wrapper bg-gray-200">
-                                <audio class="audio-element hidden">
-                                    <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
-                                    Tu navegador no soporta audio HTML5.
-                                </audio>
-                            </div>
+                        <?php if ($audio_url): ?>
+                            <article>
+                                <button aria-label="Play podcast"
+                                    class="play-button absolute bottom-3 right-3 bg-[#e6c94a] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                    onclick="toggleAudio(this)">
+                                    <i class="fas fa-play text-[#0a1626] text-sm"></i>
+                                </button>
+                                <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                    <audio class="w-full audio-element mt-0 absolute top-0" controls>
+                                        <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
+                                        Tu navegador no soporta audio HTML5.
+                                    </audio>
+                                </div>
+                            </article>
                         <?php endif; ?>
-
-
-
                     </div>
                     <div class="p-2">
                         <h3 class="text-sm font-semibold mt-1 leading-tight text-gray-800">
