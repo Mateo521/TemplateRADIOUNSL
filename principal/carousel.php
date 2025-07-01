@@ -60,7 +60,7 @@
 
 
 
-                <div class="swiper-slide relative h-full rounded-xl overflow-hidden">
+                <div class="swiper-slide relative h-full rounded-b-xl overflow-hidden">
                     <img src="<?php echo esc_url(corregir_url_imagen_wp($image)); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />
                     <div class="absolute inset-0 bg-black/50"></div>
                     <div class="absolute bottom-8 px-12 md:px-24 z-10 max-w-3xl">
@@ -159,8 +159,8 @@
                         $terms = get_the_terms(get_the_ID(), 'categoria_noticia'); 
                         $cat_names = !empty($terms) && !is_wp_error($terms) ? wp_list_pluck($terms, 'name') : [];
 
-                    ?>
-                        <div class="swiper-slide relative h-full rounded-md overflow-hidden">
+                    ?> 
+                        <div class="swiper-slide relative h-full rounded-b-xl overflow-hidden">
                             <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover" loading="lazy" />
                             <div class="absolute inset-0 bg-black/50"></div>
                             <div class="absolute bottom-8 px-12 md:px-24 z-10 max-w-3xl">
