@@ -209,8 +209,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function actualizarRadio() {
         const programa = obtenerProgramaActual();
 
+        /*
         $("#open_close").html(programa.text);
         $("#open_close-2").html(programa.text);
+*/
         $("#prog").html("Escuchá en vivo " + programa.text);
 
         const imageUrl = `${themeURL}/assets/images/${programa.img}`;
@@ -220,8 +222,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("radio-imagen").src = imageUrl;
         document.getElementById("radio-imagen2").src = imageUrl;
 
-
+    
         if ('mediaSession' in navigator) {
+
+
+
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: programa.text,
                 artist: "Radio Universidad Nacional de San Luis",
@@ -230,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     { src: metaImageUrl, sizes: '512x512', type: 'image/png' }
                 ]
             });
+
 
             navigator.mediaSession.setActionHandler('play', function () {
                 document.getElementById('player').play();
@@ -288,6 +294,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 let activado2 = false;
+
+
 function displayfooter() {
 
     if (activado2) {
@@ -298,37 +306,18 @@ function displayfooter() {
             bottom: "0"
         });
     } else {
-
-        var con = document.getElementById('open_close').innerHTML;
-
-        if (con == "Frecuencia <br> Universitaria") {
-            $("#radio").css({
-                bottom: "-135px"
-            });
-            $("#seccion-radio").css({
-                bottom: "-140px"
-            });
-
-
-        } else if (con == '<p style="font-size:12px;">Frecuencia <br> Informativa 2da Edición</p>' || con == '<p style="font-size:12px;">Frecuencia <br> Informativa 1° Edición</p>') {
-            $("#radio").css({
-                bottom: "-135px"
-            });
-
-            $("#seccion-radio").css({
-                bottom: "-128px"
-            });
-        } else {
-            $("#radio").css({
-                bottom: "-135px"
-            });
-            $("#seccion-radio").css({
-                bottom: "-116px"
-            });
-        }
+        $("#radio").css({
+            bottom: "-135px"
+        });
+        $("#seccion-radio").css({
+            bottom: "-116px"
+        });
     }
+
     activado2 = !activado2;
 }
+
+
 
 
 function normalizarTexto(texto) {
@@ -633,122 +622,122 @@ function initHomeScripts() {
     */
 
     document.querySelectorAll(".audio-wrapper").forEach((wrapper) => {
-    const audio = wrapper.querySelector("audio");
-    if (!audio) return;
+        const audio = wrapper.querySelector("audio");
+        if (!audio) return;
 
-    audio.style.display = "none";
+        audio.style.display = "none";
 
-    const controls = document.createElement("div");
-    controls.className = "flex items-center justify-center space-x-3 p-2 rounded-lg";
+        const controls = document.createElement("div");
+        controls.className = "flex items-center justify-center space-x-3 p-2 rounded-lg";
 
-    const restartBtn = document.createElement("button");
-    restartBtn.className = "p-2 rounded-full bg-red-500/40 w-full cursor-pointer h-10 relative flex justify-center items-center text-white hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400";
-    restartBtn.setAttribute("aria-label", "Restart audio");
-    restartBtn.innerHTML = '<i class="fas absolute text-sm fa-undo"></i>';
+        const restartBtn = document.createElement("button");
+        restartBtn.className = "p-2 rounded-full bg-red-500/40 w-full cursor-pointer h-10 relative flex justify-center items-center text-white hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400";
+        restartBtn.setAttribute("aria-label", "Restart audio");
+        restartBtn.innerHTML = '<i class="fas absolute text-sm fa-undo"></i>';
 
-    const back10Btn = document.createElement("button");
-    back10Btn.className = "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
-    back10Btn.setAttribute("aria-label", "Rewind 10 seconds");
-    back10Btn.innerHTML = '<i class="fas absolute text-sm fa-backward"></i>';
+        const back10Btn = document.createElement("button");
+        back10Btn.className = "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
+        back10Btn.setAttribute("aria-label", "Rewind 10 seconds");
+        back10Btn.innerHTML = '<i class="fas absolute text-sm fa-backward"></i>';
 
-    const playBtn = document.createElement("button");
-    playBtn.className = "p-3 rounded-full bg-[#486faf] w-full h-10 cursor-pointer relative flex justify-center items-center text-white hover:bg-[#d8b90a] transition focus:outline-none focus:ring-2 focus:ring-[#d8b90a]";
-    playBtn.setAttribute("aria-label", "Play audio");
-    playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+        const playBtn = document.createElement("button");
+        playBtn.className = "p-3 rounded-full bg-[#486faf] w-full h-10 cursor-pointer relative flex justify-center items-center text-white hover:bg-[#d8b90a] transition focus:outline-none focus:ring-2 focus:ring-[#d8b90a]";
+        playBtn.setAttribute("aria-label", "Play audio");
+        playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
 
-    const forward10Btn = document.createElement("button");
-    forward10Btn.className = "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
-    forward10Btn.setAttribute("aria-label", "Forward 10 seconds");
-    forward10Btn.innerHTML = '<i class="fas absolute text-sm fa-forward"></i>';
+        const forward10Btn = document.createElement("button");
+        forward10Btn.className = "p-2 rounded-full bg-gray-300 w-full h-10 cursor-pointer relative flex justify-center items-center text-gray-700 hover:bg-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400";
+        forward10Btn.setAttribute("aria-label", "Forward 10 seconds");
+        forward10Btn.innerHTML = '<i class="fas absolute text-sm fa-forward"></i>';
 
-    // Guardar referencias en wrapper para uso global
-    wrapper.playBtn = playBtn;
-    wrapper.playing = false;
+        // Guardar referencias en wrapper para uso global
+        wrapper.playBtn = playBtn;
+        wrapper.playing = false;
 
-    playBtn.addEventListener("click", () => {
-        if (!wrapper.playing) {
-            document.querySelectorAll(".audio-wrapper.active").forEach((otherWrapper) => {
-                if (otherWrapper !== wrapper) {
-                    const otherAudio = otherWrapper.querySelector("audio");
-                    if (otherAudio) {
-                        otherAudio.pause();
-                        otherAudio.currentTime = 0;
+        playBtn.addEventListener("click", () => {
+            if (!wrapper.playing) {
+                document.querySelectorAll(".audio-wrapper.active").forEach((otherWrapper) => {
+                    if (otherWrapper !== wrapper) {
+                        const otherAudio = otherWrapper.querySelector("audio");
+                        if (otherAudio) {
+                            otherAudio.pause();
+                            otherAudio.currentTime = 0;
+                        }
+                        if (otherWrapper.playBtn) {
+                            otherWrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+                            otherWrapper.playBtn.setAttribute("aria-label", "Play audio");
+                            otherWrapper.playing = false;
+                        }
+                        otherWrapper.classList.remove("active");
+                        const otherToggle = otherWrapper.closest("article").querySelector(".play-button");
+                        if (otherToggle) {
+                            otherToggle.classList.remove("hidden");
+                        }
                     }
-                    if (otherWrapper.playBtn) {
-                        otherWrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
-                        otherWrapper.playBtn.setAttribute("aria-label", "Play audio");
-                        otherWrapper.playing = false;
-                    }
-                    otherWrapper.classList.remove("active");
-                    const otherToggle = otherWrapper.closest("article").querySelector(".play-button");
-                    if (otherToggle) {
-                        otherToggle.classList.remove("hidden");
-                    }
-                }
-            });
+                });
 
+                audio.play();
+                playBtn.innerHTML = '<i class="fas absolute text-sm fa-pause"></i>';
+                playBtn.setAttribute("aria-label", "Pause audio");
+                wrapper.classList.add("active");
+                wrapper.playing = true;
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+                playBtn.setAttribute("aria-label", "Play audio");
+                wrapper.playing = false;
+            }
+        });
+
+        back10Btn.addEventListener("click", () => {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        });
+
+        forward10Btn.addEventListener("click", () => {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        });
+
+        restartBtn.addEventListener("click", () => {
+            audio.currentTime = 0;
             audio.play();
-            playBtn.innerHTML = '<i class="fas absolute text-sm fa-pause"></i>';
-            playBtn.setAttribute("aria-label", "Pause audio");
-            wrapper.classList.add("active");
             wrapper.playing = true;
-        } else {
-            audio.pause();
-            playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
-            playBtn.setAttribute("aria-label", "Play audio");
-            wrapper.playing = false;
-        }
-    });
+            playBtn.innerHTML = '<i class="fas text-sm fa-pause"></i>';
+            playBtn.setAttribute("aria-label", "Pause audio");
+        });
 
-    back10Btn.addEventListener("click", () => {
-        audio.currentTime = Math.max(0, audio.currentTime - 10);
-    });
+        // Eventos del audio
+        audio.addEventListener("pause", () => {
+            if (wrapper.playBtn) {
+                wrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+                wrapper.playBtn.setAttribute("aria-label", "Play audio");
+                wrapper.playing = false;
+            }
+            wrapper.classList.remove("active");
+            const toggleBtn = wrapper.closest("article").querySelector(".play-button");
+            if (toggleBtn) {
+                toggleBtn.classList.remove("hidden");
+            }
+        });
 
-    forward10Btn.addEventListener("click", () => {
-        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-    });
+        audio.addEventListener("ended", () => {
+            wrapper.classList.remove("active");
+            if (wrapper.playBtn) {
+                wrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
+                wrapper.playBtn.setAttribute("aria-label", "Play audio");
+                wrapper.playing = false;
+            }
+            const toggleBtn = wrapper.closest("article").querySelector(".play-button");
+            if (toggleBtn) {
+                toggleBtn.classList.remove("hidden");
+            }
+        });
 
-    restartBtn.addEventListener("click", () => {
-        audio.currentTime = 0;
-        audio.play();
-        wrapper.playing = true;
-        playBtn.innerHTML = '<i class="fas text-sm fa-pause"></i>';
-        playBtn.setAttribute("aria-label", "Pause audio");
+        controls.appendChild(restartBtn);
+        controls.appendChild(back10Btn);
+        controls.appendChild(playBtn);
+        controls.appendChild(forward10Btn);
+        wrapper.appendChild(controls);
     });
-
-    // Eventos del audio
-    audio.addEventListener("pause", () => {
-        if (wrapper.playBtn) {
-            wrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
-            wrapper.playBtn.setAttribute("aria-label", "Play audio");
-            wrapper.playing = false;
-        }
-        wrapper.classList.remove("active");
-        const toggleBtn = wrapper.closest("article").querySelector(".play-button");
-        if (toggleBtn) {
-            toggleBtn.classList.remove("hidden");
-        }
-    });
-
-    audio.addEventListener("ended", () => {
-        wrapper.classList.remove("active");
-        if (wrapper.playBtn) {
-            wrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
-            wrapper.playBtn.setAttribute("aria-label", "Play audio");
-            wrapper.playing = false;
-        }
-        const toggleBtn = wrapper.closest("article").querySelector(".play-button");
-        if (toggleBtn) {
-            toggleBtn.classList.remove("hidden");
-        }
-    });
-
-    controls.appendChild(restartBtn);
-    controls.appendChild(back10Btn);
-    controls.appendChild(playBtn);
-    controls.appendChild(forward10Btn);
-    wrapper.appendChild(controls);
-});
 
 
 

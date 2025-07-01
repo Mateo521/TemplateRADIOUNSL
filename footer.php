@@ -182,12 +182,12 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
             <div class="p-1 text-sm rounded-lg text-white  items-center gap-1 inline-flex h-5" style="background-color:  #486faf;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/giphy.webp" alt="" style="width:7px;"> En
                 vivo</div>
 
-            <div class="flex flex-col items-center pb-3">
-                <img id="radio-imagen2" src="" alt="" class="rounded-lg h-full" style="width:85px;">
+            <div class="flex flex-col items-center justify-center pb-3">
+                <img id="radio-imagen2" src="" alt="" class="rounded-lg h-[75px]" style="width:114px;">
                 <div id="loading-2">
                     <span class="loader"></span>
                 </div>
-                <p class="m-0 p-0" id="open_close-2"></p>
+                <!--p class="m-0 p-0" id="open_close-2"></p-->
             </div>
         </div>
     </div>
@@ -249,7 +249,7 @@ background: linear-gradient(0deg, rgba(249,250,251,0.9) 30%, rgba(212,212,212,0.
             <div class="m-4">
                 <div class="p-1 text-sm rounded-lg text-white flex items-center gap-1 inline-flex" style="background-color:  #486faf;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/giphy.webp" alt="" style="width:7px;"> En
                     vivo</div>
-                <p class="font-bold py-4" id="open_close"></p>
+                <!--p class="font-bold pt-2" id="open_close"></p-->
             </div>
         </div>
     </div>
