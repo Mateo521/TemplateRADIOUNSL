@@ -119,11 +119,14 @@
                         </a>
                         <?php if ($audio_url): ?>
                             <article>
-                                <button aria-label="Play podcast"
-                                    class="play-button absolute bottom-3 right-3 bg-[#e6c94a] w-6 h-6 rounded-full flex items-center justify-center z-10"
-                                    onclick="toggleAudio(this)">
-                                    <i class="fas fa-play text-[#0a1626] text-sm"></i>
-                                </button>
+
+                            
+                                    <button aria-label="Play podcast"
+                                        class="play-button absolute bottom-3 right-3 bg-[#e6c94a] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                        onclick="toggleAudio(this)">
+                                        <i class="fas fa-play text-[#0a1626] text-sm"></i>
+                                    </button>
+                                
                                 <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                                     <audio class="w-full audio-element mt-0 absolute top-0" controls>
                                         <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">

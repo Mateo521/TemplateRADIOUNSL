@@ -12,8 +12,9 @@
                         <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
-                            LUNES a VIERNES: 7 a 9:30 h
+                            LUNES a VIERNES: 
                         </p>
+                        <p class="text-xl"> 7 a 9:30 h </p>
 
                         <div class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                             AL AIRE
@@ -33,8 +34,9 @@
                         <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
-                            LUNES a VIERNES: 9 a 13 h
+                            LUNES a VIERNES: 
                         </p>
+                          <p class="text-xl"> 9 a 13 h </p>
                         <div class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                             AL AIRE
                         </div>
@@ -73,8 +75,9 @@
                         <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
-                            LUNES a VIERNES: 13 a 14 h
+                            LUNES a VIERNES:
                         </p>
+                            <p class="text-xl"> 13 a 14 h </p>
                         <div class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                             AL AIRE
                         </div>
@@ -91,8 +94,9 @@
                         <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
-                            LUNES a VIERNES: 21 a 23 h
+                            LUNES a VIERNES: 
                         </p>
+                         <p class="text-xl"> 21 a 23 h </p>
                         <div class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                             AL AIRE
                         </div>
@@ -109,8 +113,9 @@
                         <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
-                            LUNES a VIERNES: 18 a 21 h
+                            LUNES a VIERNES: 
                         </p>
+                          <p class="text-xl"> 18 a 21 h </p>
                         <div class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                             AL AIRE
                         </div>
@@ -128,8 +133,9 @@
                         <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
-                            LUNES a VIERNES: 15 a 18 h
+                            LUNES a VIERNES: 
                         </p>
+                        <p class="text-xl"> 15 a 18 h </p>
                         <div class="mt-4 btn-programa bg-red-700 hover:bg-red-800 text-white font-semibold text-[16px] sm:text-[18px] py-1 px-4 rounded">
                             AL AIRE
                         </div>

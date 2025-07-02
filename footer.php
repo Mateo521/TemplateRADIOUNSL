@@ -77,7 +77,7 @@ wp_footer();
         </div>
         <hr>
 
-        <p class="px-6" style="font-size:13px;">Diseño y Desarrollo a cargo de la Secretaría de Comunicación Institucional - Versión 1.0-beta - Contacto: <a href="mailto:sci@unsl.edu.ar" style="color:#007bff">sci@unsl.edu.ar</a></p>
+        <p class="px-6" style="font-size:13px;">Diseño y Desarrollo a cargo de la Secretaría de Comunicación Institucional - Versión 1.1 - Contacto: <a href="mailto:sci@unsl.edu.ar" style="color:#007bff">sci@unsl.edu.ar</a></p>
 
     </footer>
 </div>

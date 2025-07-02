@@ -35,20 +35,22 @@ get_header();
 
             </p>
             <div class="flex flex-wrap gap-3">
-                <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664555555">
+                <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664361329">
                     <i class="fab fa-whatsapp">
                     </i>
-                    2664555555
+                     2664361329
                 </a>
-                <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/LaLocomotora2021" rel="noopener noreferrer" target="_blank">
+                <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/unslradio" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-facebook-f">
                     </i>
-                    LaLocomotora2021
+                    Radio Universidad Nacional de San Luis
+
                 </a>
-                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/lalocomotorasl" rel="noopener noreferrer" target="_blank">
+                <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/unslradio/?hl=es" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-instagram">
                     </i>
-                    lalocomotorasl
+                    @unslradio
+
                 </a>
             </div>
         </section>

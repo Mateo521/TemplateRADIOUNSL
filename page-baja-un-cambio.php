@@ -28,10 +28,10 @@ get_header();
                 <b>Descripción:</b> ¡Bajá un Cambio! Magazine musical para el regreso a casa con consignas, entrevistas temáticas, historias, móviles y mucha música.
             </p>
             <div class="flex flex-wrap gap-3">
-                <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664555555">
+                <a class="flex items-center gap-2 bg-[#3b8a3b] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="tel:+2664361329">
                     <i class="fab fa-whatsapp">
                     </i>
-                    2664555555
+                     2664361329
                 </a>
                 <a class="flex items-center gap-2 bg-[#3b5998] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.facebook.com/unslradio" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-facebook-f">
@@ -42,7 +42,7 @@ get_header();
                 <a class="flex items-center gap-2 bg-[#b72f8a] text-white  sm:text-sm font-semibold px-3 py-1 rounded" href="https://www.instagram.com/unslradio/?hl=es" rel="noopener noreferrer" target="_blank">
                     <i class="fab fa-instagram">
                     </i>
-                    unslradio
+                    @unslradio
 
                 </a>
             </div>

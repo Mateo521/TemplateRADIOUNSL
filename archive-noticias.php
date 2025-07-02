@@ -49,10 +49,10 @@
                                         width="1200"
                                         height="360" />
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                                    <div class="absolute bottom-6 left-6 max-w-3xl text-white">
+                                    <div class="absolute bottom-0 left-0 px-14 pb-6 max-w-3xl text-white">
                                         <div class="flex space-x-2 mb-2">
                                             <?php
-
+ 
                                             $count = 0;
                                             foreach ($categories as $cat) {
                                                 if ($count >= 2) break;
