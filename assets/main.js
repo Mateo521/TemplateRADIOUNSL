@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("radio-imagen").src = imageUrl;
         document.getElementById("radio-imagen2").src = imageUrl;
 
-    
+
         if ('mediaSession' in navigator) {
 
 
@@ -295,23 +295,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let activado2 = false;
 
+$(document).ready(function () {
+
+    $("#radio").css({ bottom: "-135px" });
+    $("#seccion-radio").css({ bottom: "-116px" });
+    activado2 = false;
+});
 
 function displayfooter() {
+    if (!activado2) {
 
-    if (activado2) {
-        $("#radio").css({
-            bottom: "0"
-        });
-        $("#seccion-radio").css({
-            bottom: "0"
-        });
+        $("#radio").css({ bottom: "0" });
+        $("#seccion-radio").css({ bottom: "0" });
     } else {
-        $("#radio").css({
-            bottom: "-135px"
-        });
-        $("#seccion-radio").css({
-            bottom: "-116px"
-        });
+      
+        $("#radio").css({ bottom: "-135px" });
+        $("#seccion-radio").css({ bottom: "-116px" });
     }
 
     activado2 = !activado2;
@@ -738,6 +737,8 @@ function initHomeScripts() {
         controls.appendChild(forward10Btn);
         wrapper.appendChild(controls);
     });
+
+
 
 
 

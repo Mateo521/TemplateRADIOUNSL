@@ -5,11 +5,11 @@
             <div class="swiper-slide relative w-full" data-programa="Nada secreto">
                 <a href="programacion/nada-secreto">
                     <img alt="" class="w-full h-full  object-cover object-center" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
-                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-18 md:px-4">
                         <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
                             NADA SECRETO
                         </h1>
-                        <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
                             LUNES a VIERNES: 7 a 9:30 h
@@ -26,11 +26,11 @@
             <div class="swiper-slide relative w-full" data-programa="Haciendo Ruido">
                 <a href="programacion/haciendo-ruido">
                     <img alt="" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
-                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-18 md:px-4">
                         <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
                             HACIENDO RUIDO
                         </h1>
-                        <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
                             LUNES a VIERNES: 9 a 13 h
@@ -47,11 +47,11 @@
             <div class="swiper-slide relative w-full" data-programa="Frecuencia Informativa">
                 <a href="programacion/frecuencia-informativa">
                     <img alt="" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
-                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-18 md:px-4">
                         <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
                             FRECUENCIA INFORMATIVA
                         </h1>
-                        <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock text-center">
                             </i>
                             LUNES a VIERNES:
@@ -66,11 +66,11 @@
             <div class="swiper-slide relative w-full" data-programa="Solo un Café">
                 <a href="programacion/solo-un-cafe">
                     <img alt="" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
-                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-18 md:px-4">
                         <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
                             SOLO UN CAFÉ
                         </h1>
-                        <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
                             LUNES a VIERNES: 13 a 14 h
@@ -84,11 +84,11 @@
             <div class="swiper-slide relative w-full" data-programa="Rock del País">
                 <a href="programacion/rock-del-pais">
                     <img alt="" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
-                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-18 md:px-4">
                         <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
                             ROCK DEL PAÍS
                         </h1>
-                        <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
                             LUNES a VIERNES: 21 a 23 h
@@ -102,11 +102,11 @@
             <div class="swiper-slide relative w-full" data-programa="Bajá un Cambio">
                 <a href="programacion/baja-un-cambio">
                     <img alt="" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
-                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-18 md:px-4">
                         <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
                             BAJÁ UN CAMBIO
                         </h1>
-                        <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
                             LUNES a VIERNES: 18 a 21 h
@@ -121,11 +121,11 @@
             <div class="swiper-slide relative w-full" data-programa="La Locomotora">
                 <a href="programacion/la-locomotora">
                     <img alt="" class="w-full h-full object-center object-cover" height="300" src="<?php echo get_template_directory_uri(); ?>/assets/images/fondo.jpg" width="1200" />
-                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4">
+                    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-18 md:px-4">
                         <h1 class="font-italic-bold text-[32px] sm:text-[36px] md:text-[40px] leading-tight text-center">
                             LA LOCOMOTORA
                         </h1>
-                        <p class="mt-2 text-[20px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
+                        <p class="mt-2 text-[17px] sm:text-[22px] md:text-[24px] font-semibold flex items-center gap-2">
                             <i class="fas fa-clock">
                             </i>
                             LUNES a VIERNES: 15 a 18 h
