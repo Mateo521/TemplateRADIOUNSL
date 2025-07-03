@@ -2,7 +2,7 @@
 
 
 
-
+/*
 const ciudades = [
     { nombre: "San Luis", lat: -33.30157712276608, lon: -66.3405876778769 },
     { nombre: "Villa de Merlo", lat: -32.34837185554736, lon: -65.01371473234181 },
@@ -110,10 +110,12 @@ function initClimaMarquee() {
 
 
 
-}
+}*/
 
 document.addEventListener("DOMContentLoaded", function () {
-    const myAudio = document.getElementById("player");
+    /*
+        const myAudio = document.getElementById("player");
+    */
     const volumeSliders = [document.getElementById("vol"), document.getElementById("vol-mobile")];
     volumeSliders.forEach(slider => {
         slider.addEventListener("input", function () {
@@ -124,36 +126,71 @@ document.addEventListener("DOMContentLoaded", function () {
         var audioobject = document.getElementById("player");
         audioobject.volume = amount;
     }
-    const playButton = document.querySelectorAll(".btn.play-pause");
-    const playIcon = document.getElementById('playbutton-5');
-    const stopIcon = document.getElementById('stopbutton-5');
-    let isPlaying = false;
 
-    playButton.forEach(btn => {
-        btn.addEventListener("click", function () {
+
+
+    let isPlaying = false;
+    const myAudio = new Audio("https://01.solumedia.com.ar:8366/stream");  
+    myAudio.crossOrigin = "anonymous";
+
+  
+    const playButtons = document.querySelectorAll(".btn.play-pause");
+
+    const playIcons = document.querySelectorAll("#playbutton-5");
+    const pauseIcons = document.querySelectorAll("#stopbutton-5");
+
+
+
+    function updateIcons() {
+
+        playIcons.forEach(icon => icon.style.opacity = isPlaying ? '0' : '1');
+
+
+        pauseIcons.forEach(icon => icon.style.opacity = isPlaying ? '1' : '0');
+
+
+
+    }
+
+    function togglePlay() {
+        if (isPlaying) {
+            myAudio.pause();
+        } else {
+            myAudio.play();
+        }
+    }
+
+
+    playButtons.forEach(button => {
+        button.addEventListener("click", function () {
             togglePlay();
         });
     });
 
-    function togglePlay() {
-        isPlaying ? myAudio.pause() : myAudio.play();
+   
+    const triggerButton = document.getElementById("radio-en-vivo-trigger");
+    if (triggerButton) {
+        triggerButton.addEventListener("click", function () {
+            displayFooter(true); 
+            if (!isPlaying) {
+                myAudio.play();
+            }
+        });
     }
 
-    myAudio.onplaying = function () {
-        isPlaying = true;
-        playIcon.style.opacity = '0';
-        playIcon.style.transform = 'translate(-50%, -50%)';
-        stopIcon.style.opacity = '1';
-        stopIcon.style.transform = 'translate(-50%, -50%)';
-    };
 
-    myAudio.onpause = function () {
+    myAudio.addEventListener("playing", function () {
+        isPlaying = true;
+        updateIcons();
+    });
+
+    myAudio.addEventListener("pause", function () {
         isPlaying = false;
-        playIcon.style.opacity = '1';
-        playIcon.style.transform = 'translate(-50%, -50%)';
-        stopIcon.style.opacity = '0';
-        stopIcon.style.transform = 'translate(-50%, -50%)';
-    };
+        updateIcons();
+    });
+
+
+
 
 
 
@@ -287,12 +324,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(hideLoader, 20 * 1000);
 
-
-    initClimaMarquee();
+/*
+    initClimaMarquee();*/
 
 });
 
 
+/*
 let activado2 = false;
 
 $(document).ready(function () {
@@ -302,13 +340,14 @@ $(document).ready(function () {
     activado2 = false;
 });
 
+
 function displayfooter() {
     if (!activado2) {
 
         $("#radio").css({ bottom: "0" });
         $("#seccion-radio").css({ bottom: "0" });
     } else {
-      
+
         $("#radio").css({ bottom: "-135px" });
         $("#seccion-radio").css({ bottom: "-116px" });
     }
@@ -316,8 +355,22 @@ function displayfooter() {
     activado2 = !activado2;
 }
 
+*/
+   $("#radio").css({ bottom: "-135px" });
+    $("#seccion-radio").css({ bottom: "-116px" });
 
-
+ let activado2 = false;
+    function displayFooter(forceOpen = false) {
+        if (!activado2 || forceOpen) {
+            $("#radio").css({ bottom: "0" });
+            $("#seccion-radio").css({ bottom: "0" });
+            activado2 = true;
+        } else {
+            $("#radio").css({ bottom: "-135px" });
+            $("#seccion-radio").css({ bottom: "-116px" });
+            activado2 = false;
+        }
+    }
 
 function normalizarTexto(texto) {
     return texto
@@ -1166,10 +1219,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     barba.hooks.afterEnter(() => {
 
-
+/*
         initClimaMarquee();
 
-
+*/
         const menu = document.getElementById('navbar-search');
         const toggle = document.querySelector('[data-collapse-toggle]');
         const links = menu?.querySelectorAll('a');

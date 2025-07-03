@@ -74,7 +74,7 @@
                     <div class="relative hidden md:flex gap-5 items-center">
                         <div class="rounded-lg  bg-red-500 text-white p-1 w-full" style="max-width:130px;">
 
-                            <button aria-label="Reproducir/Pausar audio" type="submit" class="flex gap-3 items-center btn play-pause" data-id="5">
+                            <button id="radio-en-vivo-trigger" aria-label="Reproducir/Pausar audio" type="button" class="flex gap-3 items-center">
                                 <img width="7" height="7" src="<?php echo get_template_directory_uri(); ?>/assets/images/giphy.webp" alt="" style="width:7px;"> Radio en vivo
                             </button>
                         </div>
@@ -305,19 +305,24 @@
                     </ul>
 
                     <ul class="flex gap-3 text-gray-400 items-center">
-                        <a href="https://www.facebook.com/unslradio/?locale=es_LA" target="_blank">
-                            <li><img width="18" height="18" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="">
-                            </li>
-                        </a>
-                        <a href="https://www.instagram.com/unslradio/?hl=es" target="_blank">
-                            <li><img width="18" height="18" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt=""></li>
-                        </a>
-                        <a href="https://www.youtube.com/@radiounslcontenidos" target="_blank">
-                            <li><img width="18" height="18" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt="">
-                            </li>
-                        </a>
+                        <li>
+                            <a href="https://www.facebook.com/unslradio/?locale=es_LA" aria-label="Ir a Facebook" target="_blank">
+                                <img width="18" height="18" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook de UNSL Radio">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/unslradio/?hl=es" aria-label="Ir a Instagram" target="_blank">
+                                <img width="18" height="18" src="<?php echo get_template_directory_uri(); ?>/assets/images/Instagram_logo_2016.svg" alt="Instagram de UNSL Radio">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@radiounslcontenidos" aria-label="Ir a Youtube" target="_blank">
+                                <img width="18" height="18" src="https://freelogopng.com/images/all_img/1656501968youtube-icon-png.png" alt="YouTube de UNSL Radio">
+                            </a>
+                        </li>
                         <li class="header-idioma"></li>
                     </ul>
+
                 </div>
             </div>
         </nav>
