@@ -130,15 +130,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     let isPlaying = false;
-    const myAudio = new Audio("https://01.solumedia.com.ar:8366/stream");  
+    const myAudio = document.getElementById("player");
+    myAudio.preload = "none";
     myAudio.crossOrigin = "anonymous";
 
-  
-    const playButtons = document.querySelectorAll(".btn.play-pause");
+
+
+
+
 
     const playIcons = document.querySelectorAll("#playbutton-5");
     const pauseIcons = document.querySelectorAll("#stopbutton-5");
-
+    const playButtons = document.querySelectorAll(".btn.play-pause");
 
 
     function updateIcons() {
@@ -152,32 +155,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
+
+
+
+
+
+    function updateIcons() {
+        playIcons.forEach(icon => icon.style.opacity = isPlaying ? '0' : '1');
+        pauseIcons.forEach(icon => icon.style.opacity = isPlaying ? '1' : '0');
+    }
+
     function togglePlay() {
         if (isPlaying) {
             myAudio.pause();
         } else {
-            myAudio.play();
+            myAudio.play().catch(err => {
+                console.error("No se pudo reproducir el audio:", err);
+            });
         }
     }
 
-
     playButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            togglePlay();
-        });
+        button.addEventListener("click", togglePlay);
     });
 
-   
     const triggerButton = document.getElementById("radio-en-vivo-trigger");
     if (triggerButton) {
         triggerButton.addEventListener("click", function () {
-            displayFooter(true); 
-            if (!isPlaying) {
-                myAudio.play();
-            }
+            displayFooter(true);
+            if (!isPlaying) togglePlay();
         });
     }
-
 
     myAudio.addEventListener("playing", function () {
         isPlaying = true;
@@ -324,8 +333,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(hideLoader, 20 * 1000);
 
-/*
-    initClimaMarquee();*/
+    /*
+        initClimaMarquee();*/
 
 });
 
@@ -356,21 +365,21 @@ function displayfooter() {
 }
 
 */
-   $("#radio").css({ bottom: "-135px" });
-    $("#seccion-radio").css({ bottom: "-116px" });
+$("#radio").css({ bottom: "-135px" });
+$("#seccion-radio").css({ bottom: "-116px" });
 
- let activado2 = false;
-    function displayFooter(forceOpen = false) {
-        if (!activado2 || forceOpen) {
-            $("#radio").css({ bottom: "0" });
-            $("#seccion-radio").css({ bottom: "0" });
-            activado2 = true;
-        } else {
-            $("#radio").css({ bottom: "-135px" });
-            $("#seccion-radio").css({ bottom: "-116px" });
-            activado2 = false;
-        }
+let activado2 = false;
+function displayFooter(forceOpen = false) {
+    if (!activado2 || forceOpen) {
+        $("#radio").css({ bottom: "0" });
+        $("#seccion-radio").css({ bottom: "0" });
+        activado2 = true;
+    } else {
+        $("#radio").css({ bottom: "-135px" });
+        $("#seccion-radio").css({ bottom: "-116px" });
+        activado2 = false;
     }
+}
 
 function normalizarTexto(texto) {
     return texto
@@ -1219,10 +1228,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     barba.hooks.afterEnter(() => {
 
-/*
-        initClimaMarquee();
-
-*/
+        /*
+                initClimaMarquee();
+        
+        */
         const menu = document.getElementById('navbar-search');
         const toggle = document.querySelector('[data-collapse-toggle]');
         const links = menu?.querySelectorAll('a');
