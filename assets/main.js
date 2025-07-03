@@ -503,8 +503,48 @@ function initGlobalScripts() {
 
 }
 
+function formatDuration(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        if (mins > 0) {
+            return `${mins}:${secs.toString().padStart(2, '0')} m`;
+        } else {
+            return `${secs} s`;
+        }
+    }
 
+function initAudioControls() {
+    document.querySelectorAll(".audio-wrapper").forEach((wrapper) => {
+        if (wrapper.dataset.initialized === "true") return;
+        wrapper.dataset.initialized = "true";
 
+        const audio = wrapper.querySelector("audio");
+        if (!audio) return;
+
+        audio.style.display = "none";
+
+        const article = wrapper.closest("article");
+        const duracionP = article?.querySelector("p.duracion");
+
+    
+        const setDuration = () => {
+            const duration = audio.duration;
+            if (isNaN(duration) || duration === Infinity || duration === 0) return;
+            const formatted = formatDuration(duration);
+            if (duracionP) duracionP.textContent = formatted;
+        };
+
+        if (audio.readyState >= 1) {
+            
+            setDuration();
+        } else {
+          
+            audio.addEventListener("loadedmetadata", setDuration);
+        }
+
+        
+    });
+}
 
 
 function initHomeScripts() {
@@ -682,11 +722,25 @@ function initHomeScripts() {
             
     */
 
+    
+
     document.querySelectorAll(".audio-wrapper").forEach((wrapper) => {
         const audio = wrapper.querySelector("audio");
         if (!audio) return;
 
         audio.style.display = "none";
+
+        audio.addEventListener("loadedmetadata", () => {
+            const durationInSeconds = audio.duration;
+            const formattedDuration = formatDuration(durationInSeconds);
+
+            const parentArticle = wrapper.closest("article");
+            const duracionP = parentArticle.querySelector("p.duracion");
+
+            if (duracionP) {
+                duracionP.textContent = formattedDuration;
+            }
+        });
 
         const controls = document.createElement("div");
         controls.className = "flex items-center justify-center space-x-3 p-2 rounded-lg";
@@ -711,7 +765,7 @@ function initHomeScripts() {
         forward10Btn.setAttribute("aria-label", "Forward 10 seconds");
         forward10Btn.innerHTML = '<i class="fas absolute text-sm fa-forward"></i>';
 
-        // Guardar referencias en wrapper para uso global
+
         wrapper.playBtn = playBtn;
         wrapper.playing = false;
 
@@ -888,7 +942,9 @@ function toggleAudio(button) {
     const audio = audioWrapper.querySelector("audio");
     if (!audio) return;
 
+    const duracionP = article.querySelector("p.duracion"); 
 
+    // Pausar y resetear otros audios
     document.querySelectorAll(".audio-wrapper.active").forEach(wrapper => {
         if (wrapper !== audioWrapper) {
             wrapper.classList.remove("active");
@@ -898,12 +954,15 @@ function toggleAudio(button) {
                 otherAudio.currentTime = 0;
             }
 
-
             const otherButton = wrapper.closest("article").querySelector(".play-button");
             if (otherButton) {
                 otherButton.classList.remove("hidden");
             }
 
+            const otherDuracion = wrapper.closest("article").querySelector("p.duracion");
+            if (otherDuracion) {
+                otherDuracion.style.display = "block"; 
+            }
 
             if (wrapper.playBtn) {
                 wrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
@@ -913,11 +972,14 @@ function toggleAudio(button) {
         }
     });
 
-
     audioWrapper.classList.add("active");
     audio.play();
     button.classList.add("hidden");
 
+
+    if (duracionP) {
+        duracionP.style.display = "none";
+    }
 
     if (audioWrapper.playBtn) {
         audioWrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-pause"></i>';
@@ -925,11 +987,15 @@ function toggleAudio(button) {
         audioWrapper.playing = true;
     }
 
-
     audio.onpause = () => {
         audioWrapper.classList.remove("active");
         button.classList.remove("hidden");
         audio.currentTime = 0;
+
+
+        if (duracionP) {
+            duracionP.style.display = "block";
+        }
 
         if (audioWrapper.playBtn) {
             audioWrapper.playBtn.innerHTML = '<i class="fas absolute text-sm fa-play"></i>';
@@ -1195,6 +1261,7 @@ document.addEventListener("DOMContentLoaded", function () {
             namespace: 'front-page',
             afterEnter() {
                 initHomeScripts();
+                initAudioControls();
             }
         },
         {

@@ -46,26 +46,7 @@
                                 </article>
                             <?php endif; ?>
                         </div>
-                        <?php
-
-
-                        /*
-                             if ($audio_url): ?>
-                                <div class="custom-audio-player bg-black text-white p-4 rounded-md w-full max-w-xl">
-                                    <button class="play-pause bg-yellow-400 text-black font-bold px-4 py-2 rounded mr-4">▶️</button>
-                                    <div class="progress-bar-container bg-gray-700 h-2 w-full relative rounded overflow-hidden">
-                                        <div class="progress-bar bg-yellow-400 h-2 absolute left-0 top-0 w-0"></div>
-                                    </div>
-                                    <audio class="audio-element hidden">
-                                        <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
-                                        Tu navegador no soporta audio HTML5.
-                                    </audio>
-                                </div>
-                        
-  <?php endif;
-
-                            */
-                        ?>
+                      
                         <div class="absolute text-sm top-3 bg-black/70 py-1 px-2 rounded-xl left-3 font-semibold text-[#d6d60a] uppercase leading-none">
                             <?php
                             $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
@@ -108,6 +89,8 @@
             <?php while ($podcast_query->have_posts()): $podcast_query->the_post();
                 $imagen = get_field('imagen_podcast');
 
+                $audio_url = get_field('audio_podcast');
+
             ?>
                 <div class="bg-gray-100 rounded-xl flex flex-col">
                     <div class="relative">
@@ -120,13 +103,15 @@
                         <?php if ($audio_url): ?>
                             <article>
 
-                            
+                                <div class="flex flex-col absolute text-center gap-1 items-center justify-center bottom-1 right-3">
                                     <button aria-label="Play podcast"
-                                        class="play-button absolute bottom-3 right-3 bg-[#e6c94a] w-6 h-6 rounded-full flex items-center justify-center z-10"
+                                        class="play-button  bg-[#e6c94a] w-6 h-6 rounded-full flex items-center justify-center z-10"
                                         onclick="toggleAudio(this)">
                                         <i class="fas fa-play text-[#0a1626] text-sm"></i>
+
                                     </button>
-                                
+                                    <p class="duracion text-center bg-black/50 px-2 text-sm  text-white rounded-sm">...</p>
+                                </div>
                                 <div class="audio-wrapper opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                                     <audio class="w-full audio-element mt-0 absolute top-0" controls>
                                         <source src="<?php echo esc_url($audio_url); ?>" type="audio/mpeg">
