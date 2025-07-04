@@ -504,14 +504,14 @@ function initGlobalScripts() {
 }
 
 function formatDuration(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        if (mins > 0) {
-            return `${mins}:${secs.toString().padStart(2, '0')} m`;
-        } else {
-            return `${secs} s`;
-        }
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    if (mins > 0) {
+        return `${mins}:${secs.toString().padStart(2, '0')} m`;
+    } else {
+        return `${secs} s`;
     }
+}
 
 function initAudioControls() {
     document.querySelectorAll(".audio-wrapper").forEach((wrapper) => {
@@ -526,7 +526,7 @@ function initAudioControls() {
         const article = wrapper.closest("article");
         const duracionP = article?.querySelector("p.duracion");
 
-    
+
         const setDuration = () => {
             const duration = audio.duration;
             if (isNaN(duration) || duration === Infinity || duration === 0) return;
@@ -535,14 +535,14 @@ function initAudioControls() {
         };
 
         if (audio.readyState >= 1) {
-            
+
             setDuration();
         } else {
-          
+
             audio.addEventListener("loadedmetadata", setDuration);
         }
 
-        
+
     });
 }
 
@@ -722,7 +722,7 @@ function initHomeScripts() {
             
     */
 
-    
+
 
     document.querySelectorAll(".audio-wrapper").forEach((wrapper) => {
         const audio = wrapper.querySelector("audio");
@@ -860,16 +860,20 @@ function initHomeScripts() {
 
 
     /* document.addEventListener('DOMContentLoaded', function() {*/
-    var swiper3 = new Swiper('.swiper-container', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        grabCursor: true
-    });
+
+    /*
+        var swiper3 = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            grabCursor: true
+        });
+    
+    */
     /*   });*/
 
 
@@ -942,7 +946,7 @@ function toggleAudio(button) {
     const audio = audioWrapper.querySelector("audio");
     if (!audio) return;
 
-    const duracionP = article.querySelector("p.duracion"); 
+    const duracionP = article.querySelector("p.duracion");
 
     // Pausar y resetear otros audios
     document.querySelectorAll(".audio-wrapper.active").forEach(wrapper => {
@@ -961,7 +965,7 @@ function toggleAudio(button) {
 
             const otherDuracion = wrapper.closest("article").querySelector("p.duracion");
             if (otherDuracion) {
-                otherDuracion.style.display = "block"; 
+                otherDuracion.style.display = "block";
             }
 
             if (wrapper.playBtn) {
@@ -1137,6 +1141,10 @@ function initNoticiasPageScripts() {
     const swiper = new Swiper('.swiper-container', {
         loop: false,
         effect: "fade",
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',

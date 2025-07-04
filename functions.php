@@ -599,3 +599,77 @@ function mostrar_clima_san_luis()
         ]);
     }
     add_action('init', 'registrar_taxonomias_personalizadas');
+
+
+
+
+
+
+
+
+    function anuncios_customizer_settings($wp_customize) {
+    
+    $wp_customize->add_section('anuncios_section', array(
+        'title' => __('Anuncios del Home', 'tu-tema'),
+        'priority' => 30,
+    ));
+
+    // --- Anuncio 1 ---
+
+    $wp_customize->add_setting('anuncio1_link', array('default' => '#'));
+    $wp_customize->add_control('anuncio1_link', array(
+        'label' => __('Enlace del Anuncio 1'),
+        'section' => 'anuncios_section',
+        'type' => 'url',
+    ));
+
+   
+    $wp_customize->add_setting('anuncio1_img_desktop');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'anuncio1_img_desktop', array(
+        'label' => __('Imagen Desktop Anuncio 1'),
+        'section' => 'anuncios_section',
+    )));
+
+  
+    $wp_customize->add_setting('anuncio1_img_mobile');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'anuncio1_img_mobile', array(
+        'label' => __('Imagen Mobile Anuncio 1'),
+        'section' => 'anuncios_section',
+    )));
+
+    
+    $wp_customize->add_setting('anuncio1_alt', array('default' => ''));
+    $wp_customize->add_control('anuncio1_alt', array(
+        'label' => __('Texto Alternativo Anuncio 1'),
+        'section' => 'anuncios_section',
+        'type' => 'text',
+    ));
+
+  
+    $wp_customize->add_setting('anuncio2_link', array('default' => '#'));
+    $wp_customize->add_control('anuncio2_link', array(
+        'label' => __('Enlace del Anuncio 2'),
+        'section' => 'anuncios_section',
+        'type' => 'url',
+    ));
+
+    $wp_customize->add_setting('anuncio2_img_desktop');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'anuncio2_img_desktop', array(
+        'label' => __('Imagen Desktop Anuncio 2'),
+        'section' => 'anuncios_section',
+    )));
+
+    $wp_customize->add_setting('anuncio2_img_mobile');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'anuncio2_img_mobile', array(
+        'label' => __('Imagen Mobile Anuncio 2'),
+        'section' => 'anuncios_section',
+    )));
+
+    $wp_customize->add_setting('anuncio2_alt', array('default' => ''));
+    $wp_customize->add_control('anuncio2_alt', array(
+        'label' => __('Texto Alternativo Anuncio 2'),
+        'section' => 'anuncios_section',
+        'type' => 'text',
+    ));
+}
+add_action('customize_register', 'anuncios_customizer_settings');

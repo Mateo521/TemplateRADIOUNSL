@@ -111,4 +111,24 @@
             </button>
         </a>
     </div>
+
+
 </div>
+
+
+
+
+
+<section class="anuncio">
+    <div class="max-w-6xl mx-auto py-1 px-3 md:py-3 md:px-12">
+
+        <a class="md:block hidden" target="_blank" href="<?php echo esc_url(get_theme_mod('anuncio2_link')); ?>">
+            <img class="w-full rounded-xl" src="<?php echo esc_url(get_theme_mod('anuncio2_img_desktop')); ?>" alt="<?php echo esc_attr(get_theme_mod('anuncio2_alt')); ?>">
+        </a>
+
+        <a class="block md:hidden" target="_blank" href="<?php echo esc_url(get_theme_mod('anuncio2_link')); ?>">
+            <img class="w-full rounded-xl" src="<?php echo esc_url(get_theme_mod('anuncio2_img_mobile')); ?>" alt="<?php echo esc_attr(get_theme_mod('anuncio2_alt')); ?>">
+        </a>
+
+    </div>
+</section>

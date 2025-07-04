@@ -61,14 +61,18 @@
                                             }
                                             ?>
                                         </div>
-                                        <h2 class="text-xl sm:text-2xl font-semibold leading-tight max-w-xl">
+                                        <h2 class="text-base sm:text-2xl font-semibold leading-tight max-w-xl">
                                             <?php the_title(); ?>
                                         </h2>
-                                        <div class="flex space-x-1 mt-2 text-white text-lg opacity-80">
+
+                                        
+                                        <!--div class="flex space-x-1 mt-2 text-white text-lg opacity-80">
                                             <i class="fas fa-circle"></i>
                                             <i class="fas fa-circle"></i>
                                             <i class="fas fa-circle"></i>
-                                        </div>
+                                        </div-->
+
+
                                     </div>
                                 </a>
                             </div>
@@ -86,12 +90,13 @@
                 <button
                     aria-label="Next slide"
                     class="swiper-button-next absolute right-2 top-0 bottom-0 my-auto text-white text-lg opacity-70 hover:opacity-100"></button>
-                <div class="swiper-pagination"></div>
+                  <div class="swiper-pagination absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10"></div>
+
 
             </div>
         </section>
 
-        <!-- News grid -->
+   
         <section
             class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
             id="news-grid">
@@ -105,6 +110,7 @@
                 'meta_key' => '_thumbnail_id',
                 'orderby' => 'date',
                 'order' => 'DESC',
+                'offset' => 5, 
             ));
             if ($news_query->have_posts()) :
                 while ($news_query->have_posts()) : $news_query->the_post();

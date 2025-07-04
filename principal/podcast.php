@@ -46,7 +46,7 @@
                                 </article>
                             <?php endif; ?>
                         </div>
-                      
+
                         <div class="absolute text-sm top-3 bg-black/70 py-1 px-2 rounded-xl left-3 font-semibold text-[#d6d60a] uppercase leading-none">
                             <?php
                             $terms = get_the_terms(get_the_ID(), 'categoria_podcast');
@@ -146,3 +146,20 @@
         </a>
     </div>
 </div>
+
+
+<section class="anuncio">
+    <div class="max-w-6xl mx-auto py-1 px-3 md:py-3 md:px-12">
+
+        <a class="md:block hidden" target="_blank" href="<?php echo esc_url(get_theme_mod('anuncio1_link')); ?>">
+            <img class="w-full rounded-xl" src="<?php echo esc_url(get_theme_mod('anuncio1_img_desktop')); ?>" alt="<?php echo esc_attr(get_theme_mod('anuncio1_alt')); ?>">
+        </a>
+
+        <a class="block md:hidden" target="_blank" href="<?php echo esc_url(get_theme_mod('anuncio1_link')); ?>">
+            <img class="w-full rounded-xl" src="<?php echo esc_url(get_theme_mod('anuncio1_img_mobile')); ?>" alt="<?php echo esc_attr(get_theme_mod('anuncio1_alt')); ?>">
+        </a>
+
+    </div>
+</section>
+
+

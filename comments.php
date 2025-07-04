@@ -30,7 +30,6 @@ $comment_email = $commenter['comment_author_email'];
 $comment_content = '';
 
 
-// Definir los argumentos en variables
 $comment_form_args = array(
     'fields' => array(
         'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Nombre', 'domain' ) . '</label> ' .
@@ -46,10 +45,9 @@ $comment_form_args = array(
                        '</p>',
                        'title_reply' => '',
     'label_submit' => 'Enviar comentario'
-    // Otros argumentos según tus necesidades
+
 );
 
-// Mostrar el formulario de comentarios utilizando los argumentos
 comment_form($comment_form_args);
 ?>
 <h2 class="comments-title">
